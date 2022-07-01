@@ -9,16 +9,15 @@ public class MainController {
     @GetMapping("/home")
     public String viewHomePage() {
         return "home-page";
+        //return "starter-page";
     }
 
-    @GetMapping("/login")
-    public String viewLoginPage() {
-        return "login";
-    }
 
     @GetMapping("/after-login-dashboard")
     public String afterLogin() {
         return "/after-login-dashboard";
     }
+
+
 
 }
