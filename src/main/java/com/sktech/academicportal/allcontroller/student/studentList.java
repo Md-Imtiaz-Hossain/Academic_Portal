@@ -59,6 +59,13 @@ public class studentList {
         existingStudent.setFirstName(student.getFirstName());
         existingStudent.setLastName(student.getLastName());
         existingStudent.setEmail(student.getEmail());
+        existingStudent.setFatherName(student.getFatherName());
+        existingStudent.setMotherName(student.getMotherName());
+        existingStudent.setAdmissionDate(student.getAdmissionDate());
+        existingStudent.setBirthDate(student.getBirthDate());
+        existingStudent.setBirthDate(student.getBirthDate());
+        existingStudent.setUsername(student.getUsername());
+        existingStudent.setPassword(student.getPassword());
 
         // save updated student object
         studentRepositoryService.updateStudent(existingStudent);

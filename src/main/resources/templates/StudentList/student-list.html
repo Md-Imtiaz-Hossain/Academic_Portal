@@ -262,17 +262,25 @@
                                     <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Parents</th>
+                                        <th>DOB</th>
+                                        <th>Admission</th>
                                         <th>Email</th>
+                                        <th>Username</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="student: ${student}">
+                                        <td th:text="${student.firstName} + ' ' + ${student.lastName}"></td>
                                         <td>
-                                            <span th:text="${student.firstName}"></span>
-                                            <span th:text="${student.lastName}"></span>
+                                            <span th:text="F + ' - ' + ${student.fatherName}"></span><br>
+                                            <span th:text="M + ' - ' + ${student.motherName}"></span>
                                         </td>
+                                        <td th:text="${student.birthDate}"></td>
+                                        <td th:text="${student.admissionDate}"></td>
                                         <td th:text="${student.email}"></td>
+                                        <td th:text="${student.username}"></td>
                                         <td>
                                             <a th:href="@{/student/edit/{id}(id=${student.id})}"
                                                class="btn btn-primary">Update</a>

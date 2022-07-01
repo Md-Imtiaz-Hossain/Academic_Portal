@@ -1,8 +1,10 @@
 package com.sktech.academicportal.entity;
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,9 +25,37 @@ public class StudentEntity {
 
     @Column(name = "last_name")
     private String lastName;
-    
-    @Column(nullable=false, length=200)
+
+    @Column(nullable = false, length = 200)
     private String email;
+
+
+
+    @Column(name = "father_name")
+    private String fatherName;
+
+    @Column(name = "mother_name")
+    private String motherName;
+
+
+
+    @Column(name = "admission_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date admissionDate;
+
+    @Column(name = "birth_date")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthDate;
+
+
+
+    @Column(name = "username")
+    private String username;
+
+    @Column(name = "password")
+    private String password;
 
 
 
