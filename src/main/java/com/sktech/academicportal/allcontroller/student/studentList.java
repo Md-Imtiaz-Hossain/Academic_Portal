@@ -2,6 +2,8 @@ package com.sktech.academicportal.allcontroller.student;
 
 
 import com.sktech.academicportal.entity.StudentEntity;
+import com.sktech.academicportal.enums.AcademicClass;
+import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.service.StudentRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/student")
 public class studentList {
-
-    // http://localhost:8082/student/list
 
     @Autowired
     StudentRepositoryService studentRepositoryService;
@@ -28,6 +28,8 @@ public class studentList {
     @GetMapping("/new")
     public String addNewStudentForm(Model model) {
         StudentEntity student = new StudentEntity();
+        model.addAttribute("currentClass", AcademicClass.values());
+        model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("student", student);
         return "/StudentList/student-new-form";
     }
@@ -50,9 +52,7 @@ public class studentList {
 
     // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
-    public String updateStudent(@PathVariable Long id,
-                                @ModelAttribute("student") StudentEntity student,
-                                Model model) {
+    public String updateStudent(@PathVariable Long id, @ModelAttribute("student") StudentEntity student, Model model) {
 
         StudentEntity existingStudent = studentRepositoryService.getStudentById(id);
         existingStudent.setId(id);
@@ -63,7 +63,15 @@ public class studentList {
         existingStudent.setMotherName(student.getMotherName());
         existingStudent.setAdmissionDate(student.getAdmissionDate());
         existingStudent.setBirthDate(student.getBirthDate());
-        existingStudent.setBirthDate(student.getBirthDate());
+
+        existingStudent.setClassRoll(student.getClassRoll());
+        existingStudent.setCurrentClass(student.getCurrentClass());
+        existingStudent.setClassSection(student.getClassSection());
+        existingStudent.setAcademicID(student.getAcademicID());
+        existingStudent.setContactNo(student.getContactNo());
+        existingStudent.setAddress(student.getAddress());
+
+
         existingStudent.setUsername(student.getUsername());
         existingStudent.setPassword(student.getPassword());
 
@@ -82,3 +90,9 @@ public class studentList {
 
 
 }
+
+
+// View all student-  http://localhost:8082/student/list
+// Add new student-  http://localhost:8082/student/new
+// Edit student info-  http://localhost:8082/student/edit/3
+// Delete student-  http://localhost:8082/student/delete/3

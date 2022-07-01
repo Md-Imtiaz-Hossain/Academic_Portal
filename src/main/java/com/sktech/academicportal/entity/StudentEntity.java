@@ -30,13 +30,11 @@ public class StudentEntity {
     private String email;
 
 
-
     @Column(name = "father_name")
     private String fatherName;
 
     @Column(name = "mother_name")
     private String motherName;
-
 
 
     @Column(name = "admission_date")
@@ -50,13 +48,30 @@ public class StudentEntity {
     private Date birthDate;
 
 
+    @Column(name = "class_roll")
+    private Integer classRoll;
+
+    @Column(name = "current_class")
+    private String currentClass;
+
+    @Column(name = "class_section")
+    private String classSection;
+
+    @Column(name = "academic_ID")
+    private String academicID;
+
+    @Column(name = "contact_No")
+    private String contactNo;
+
+    @Column(name = "address")
+    private String address;
+
 
     @Column(name = "username")
     private String username;
 
     @Column(name = "password")
     private String password;
-
 
 
 }
