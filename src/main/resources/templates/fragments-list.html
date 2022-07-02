@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+
+<!--Navigation Fragment Start-->
+<nav th:fragment="sidebarMenu" class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+        data-accordion="false">
+        <!-- Add icons to the links using the .nav-icon class
+             with font-awesome or any other icon font library -->
+        <li class="nav-item menu-open">
+            <a th:href="@{/after-login-dashboard}" class="nav-link active">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                    Profile
+                </p>
+            </a>
+            <a th:href="@{/student/list}" class="nav-link active">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>
+                    Student List
+                </p>
+            </a>
+            <a th:href="@{/user/list}" class="nav-link active">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>
+                    User List
+                </p>
+            </a>
+            <a th:href="@{/login}" class="nav-link active">
+                <i class="nav-icon fas fa-sign-out-alt"></i>
+                <p>
+                    Logout
+                </p>
+            </a>
+        </li>
+    </ul>
+</nav>
+<!--Navigation Fragment End-->
+
+
+</body>
+</html>

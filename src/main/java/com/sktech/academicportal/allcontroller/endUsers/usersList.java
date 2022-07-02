@@ -9,10 +9,7 @@ import com.sktech.academicportal.service.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -49,6 +46,44 @@ public class usersList {
         userRepositoryService.saveUser(user);
         return "redirect:/user/list";
     }
+
+
+    // Open the Update form for person Information updating
+    @GetMapping("/edit/{id}")
+    public String editUserForm(@PathVariable Integer id, Model model) {
+        model.addAttribute("user", userRepositoryService.getUserById(id));
+        List<Role> listRoles = userRepositoryService.listRoles();
+        model.addAttribute("listRoles", listRoles);
+        return "/BackEndUsersList/user-update-form";
+    }
+
+
+    // Process the updated information after update button clicked.
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user, Model model) {
+
+        User existingUser= userRepositoryService.getUserById(id);
+        existingUser.setId(id);
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+        existingUser.setEmail(user.getEmail());
+        existingUser.setPassword(user.getPassword());
+        existingUser.setRoles(user.getRoles());
+        //existingUser.setPhotos(user.getPhotos());
+
+        // save updated student object
+        userRepositoryService.updateUser(existingUser);
+        return "redirect:/user/list";
+    }
+
+
+    // Delete the person information and confirm before delete.
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        userRepositoryService.deleteUserById(id);
+        return "redirect:/user/list";
+    }
+
 
 
 

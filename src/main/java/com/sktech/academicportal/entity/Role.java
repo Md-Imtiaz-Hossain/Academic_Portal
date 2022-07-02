@@ -24,4 +24,8 @@ public class Role {
     @Column(name = "description", nullable = false, length = 150)
     private String description;
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

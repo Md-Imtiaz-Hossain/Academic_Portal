@@ -24,7 +24,7 @@ public class StudentRepositoryService {
 	}
 
 	// Get a single student by an id
-	public StudentEntity getStudentById(Long id) {
+	public StudentEntity getStudentById(Integer id) {
 		return studentRepository.findById(id).get();
 	}
 
@@ -34,7 +34,7 @@ public class StudentRepositoryService {
 	}
 
 	// delete Student by their id
-	public void deleteStudentById(Long id) {
+	public void deleteStudentById(Integer id) {
 		studentRepository.deleteById(id);
 	}
 

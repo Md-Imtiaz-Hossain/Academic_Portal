@@ -12,6 +12,10 @@ public class MainController {
         //return "starter-page";
     }
 
+    @GetMapping("/login")
+    public String viewLoginPage() {
+        return "login";
+    }
 
     @GetMapping("/after-login-dashboard")
     public String afterLogin() {

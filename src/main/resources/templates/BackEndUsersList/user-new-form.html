@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -205,22 +205,9 @@
             </div>
 
             <!-- Sidebar Menu -->
-            <nav class="mt-2">
-                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                    data-accordion="false">
-                    <!-- Add icons to the links using the .nav-icon class
-                         with font-awesome or any other icon font library -->
-                    <li class="nav-item menu-open">
-                        <a th:href="@{/user/new}" class="nav-link active">
-                            <i class="nav-icon fas fa-plus-square"></i>
-                            <p>
-                                New User Form
-                            </p>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
             <!-- /.sidebar-menu -->
+
         </div>
         <!-- /.sidebar -->
     </aside>
@@ -253,14 +240,14 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">View <a th:href="@{/user/list}">List</a></h3>
+                                <h3 class="card-title">View All User <a th:href="@{/user/list}">List</a></h3>
                             </div>
 
-                            <form th:action="@{/user/save}" th:object="${user}" method="POST">
+                            <form th:action="@{/user/save}" method="post"
+                                  enctype="multipart/form-data"
+                                  th:object="${user}">
 
-                                <!-- /.card-header -->
                                 <div class="card-body">
-
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -273,24 +260,17 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="lastName">Last Name</label>
-                                                <input type="text" class="form-control" id="lastName"
-                                                       th:field="*{lastName}"
-                                                       placeholder="Last Name">
-                                            </div>
-
-                                            <div class="form-group">
                                                 <label for="email">Email</label>
                                                 <input type="email" class="form-control" id="email"
                                                        th:field="*{email}"
                                                        placeholder="Email">
                                             </div>
 
-                                            <div class="form-group row">
-                                                <label class="col-sm-4 col-form-label">Roles</label>
+                                            <div class="form-group">
+                                                <label for="lastName">Roles</label>
                                                 <div class="col-sm-8">
                                                     <th:block th:each="role : ${listRoles}">
-                                                        <input type="checkbox" field="*{roles}" name="roles"
+                                                        <input type="checkbox" th:field="*{roles}"
                                                                th:text="${role.name}" th:value="${role.id}"
                                                                class="m-2"/>
                                                         - <small>[[${role.description}]]</small>
@@ -302,32 +282,53 @@
 
                                         </div>
 
-
                                         <!-- /.col -->
                                         <div class="col-md-6">
 
-
                                             <div class="form-group">
-                                                <label for="inputEmail7">Password</label>
-                                                <input type="text" class="form-control" id="inputEmail7"
-                                                       th:field="*{password}"
-                                                       placeholder="Password">
+                                                <label for="lastName">Last Name</label>
+                                                <input type="text" class="form-control" id="lastName"
+                                                       th:field="*{lastName}"
+                                                       placeholder="Last Name">
                                             </div>
 
+                                            <div class="form-group">
+                                                <label>Password</label>
+                                                <input th:if="${user.id == null}" type="password"
+                                                       class="form-control"
+                                                       th:field="*{password}" required minlength="8"
+                                                       maxlength="20"/>
+                                                <input th:if="${user.id != null}" type="password"
+                                                       class="form-control"
+                                                       th:field="*{password}" minlength="8" maxlength="20"/>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="lastName">Enabled: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="checkbox" th:field="*{enabled}"/>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="lastName">Photo: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="hidden" th:field="*{photos}">
+                                                    <input type="file" id="fileImage" name="image"
+                                                           accept="image/png, image/jpeg"
+                                                           class="mb-2"/>
+                                                    <img id="thumbnail" alt="Photos preview"
+                                                         th:src="@{${user.photosImagePath}}"
+                                                         class="img-fluid"/>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-
-
                                 </div>
-                                <!-- /.card-body -->
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                 </div>
-
-
                             </form>
-
                         </div>
                         <!-- /.card -->
                     </div>
@@ -403,5 +404,7 @@
         });
     });
 </script>
+
+
 </body>
 </html>

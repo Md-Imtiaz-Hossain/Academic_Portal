@@ -13,45 +13,56 @@ import java.util.List;
 
 @Service
 public class UserRepositoryService {
-	
-	@Autowired
-	UserRepository userRepository;
 
-	@Autowired
-	RoleRepository roleRepository;
+    @Autowired
+    UserRepository userRepository;
 
-	// Get All Users
-	public List<User> getAllUser(){
-		return userRepository.findAll();
-	}
+    @Autowired
+    RoleRepository roleRepository;
 
-	// Save Users
-	public User saveUser(User user) {
-		return userRepository.save(user);
-	}
+    // Get All Users
+    public List<User> getAllUser() {
+        return userRepository.findAll();
+    }
 
-	// Get a single User by an id
-	public User getUserById(Long id) {
-		return userRepository.findById(id).get();
-	}
+    // Save Users
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
 
-	// Update User information
-	public User updateUser(User user) {
-		return userRepository.save(user);
-	}
+    // Get a single User by an id
+    public User getUserById(Integer id) {
+        return userRepository.findById(id).get();
+    }
 
-	// delete User by their id
-	public void deleteUserById(Long id) {
-		userRepository.deleteById(id);
-	}
+    // Update User information
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
 
-
-	public List<Role> listRoles() {
-		return (List<Role>) roleRepository.findAll();
-	}
+    // delete User by their id
+    public void deleteUserById(Integer id) {
+        userRepository.deleteById(id);
+    }
 
 
+    public List<Role> listRoles() {
+        return (List<Role>) roleRepository.findAll();
+    }
 
+
+    public boolean isEmailUnique(Integer id, String email) {
+        User userByEmail = userRepository.getUserByEmail(email);
+        if (userByEmail == null) {
+            return true;
+        }
+
+        if (id == null) {
+            return false;
+        } else {
+            return userByEmail.getId().equals(id);
+        }
+    }
 
 
 }

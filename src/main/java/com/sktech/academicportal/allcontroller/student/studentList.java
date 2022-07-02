@@ -44,7 +44,7 @@ public class studentList {
 
     // Open the Update form for person Information updating
     @GetMapping("/edit/{id}")
-    public String editStudentForm(@PathVariable Long id, Model model) {
+    public String editStudentForm(@PathVariable Integer id, Model model) {
         model.addAttribute("student", studentRepositoryService.getStudentById(id));
         return "/StudentList/student-update-form";
     }
@@ -52,7 +52,7 @@ public class studentList {
 
     // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
-    public String updateStudent(@PathVariable Long id, @ModelAttribute("student") StudentEntity student, Model model) {
+    public String updateStudent(@PathVariable Integer id, @ModelAttribute("student") StudentEntity student, Model model) {
 
         StudentEntity existingStudent = studentRepositoryService.getStudentById(id);
         existingStudent.setId(id);
@@ -83,7 +83,7 @@ public class studentList {
 
     // Delete the person information and confirm before delete.
     @GetMapping("/delete/{id}")
-    public String deleteStudent(@PathVariable Long id) {
+    public String deleteStudent(@PathVariable Integer id) {
         studentRepositoryService.deleteStudentById(id);
         return "redirect:/student/list";
     }
