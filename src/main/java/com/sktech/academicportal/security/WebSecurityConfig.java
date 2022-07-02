@@ -47,11 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/users/**").hasAnyAuthority("Admin")
                 .antMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Editor")
-                .antMatchers("/home").permitAll()
+                .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login").defaultSuccessUrl("/after-login-dashboard", true)
+                .loginPage("/login").defaultSuccessUrl("/after-login-dashboard", true).failureUrl("/")
                 .usernameParameter("email") //default parameter to login
                 .permitAll()
                 .and().logout().permitAll()
@@ -66,7 +66,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
                 .antMatchers("/h2-console/**")
-                .antMatchers("/images/**", "/js/**", "/webjars/**");
+                .antMatchers("/images/**", "/js/**", "/css/**");
 
     }
 

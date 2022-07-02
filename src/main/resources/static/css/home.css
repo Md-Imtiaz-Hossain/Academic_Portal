@@ -1,0 +1,135 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+/*noinspection ALL*/
+body .container-my {
+    width: calc(100vw-100px);
+    height: 100vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -ms-scroll-snap-type: y mandatory;
+    scroll-snap-type: y mandatory;
+}
+
+body .container-my section {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100vw;
+    height: calc(100vh - 54px);
+    scroll-snap-align: start;
+    scroll-margin-top: 54px;
+}
+
+body .container-my section:nth-of-type(1) {
+    background-color: #1c1c1c;
+}
+
+body .container-my section:nth-of-type(2) {
+    background-color: #262626;
+    color: blue;
+}
+
+body .container-my section:nth-of-type(3) {
+    background-color: #303030;
+    color: yellow;
+}
+
+body .container-my section h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12em;
+}
+
+body .container-my section .carousel-item {
+    width: 100vw;
+    height: calc(100vh - 56px);
+}
+
+body .container-my section .custom_box {
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+body .container-my section .carousel-caption {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    line-height: 2em;
+    -webkit-animation: fade-text 1.5s normal 1 ease;
+    animation: fade-text 1.5s normal 1 ease;
+}
+
+body .container-my section .carousel-caption h5 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    font-size: xx-large;
+    text-align: left;
+}
+
+body .container-my section .carousel-caption p {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+}
+
+body .container-my section img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+@-webkit-keyframes fade-text {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(0%, 5%);
+        transform: translate(0%, 5%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes fade-text {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate(0%, 5%);
+        transform: translate(0%, 5%);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0%, 0%);
+        transform: translate(0%, 0%);
+    }
+}
+/*# sourceMappingURL=style.css.map*/
