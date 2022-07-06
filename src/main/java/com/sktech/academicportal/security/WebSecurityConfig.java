@@ -53,6 +53,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         // to make allow public access without authentication
         /*http.headers().frameOptions().sameOrigin();
         http.csrf().disable();*/
+
+
         http.authorizeRequests()
                 .antMatchers("/users/**").hasAnyAuthority("Admin")
                 .antMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Editor")
@@ -69,6 +71,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .and().rememberMe().key("AbcDefgHijKlmnOpqrs_1234567890") //this will be create jsession id (cookies) when login
                 .tokenValiditySeconds(7 * 24 * 60 * 60);
+
+
+//        http.authorizeRequests().anyRequest().permitAll();
 
 //        form th:action="@{/logout} will automatic map with spring authen logout?
     }

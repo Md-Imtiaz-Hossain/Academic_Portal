@@ -16,16 +16,22 @@
                     Profile
                 </p>
             </a>
-            <a th:href="@{/student/list}" class="nav-link active">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
+            <a th:href="@{/user/list}" class="nav-link active">
+                <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Student List
+                    User List - <small>Admin 1st layer</small>
                 </p>
             </a>
-            <a th:href="@{/user/list}" class="nav-link active">
-                <i class="nav-icon fas fa-sign-out-alt"></i>
+            <a th:href="@{/student/list}" class="nav-link active">
+                <i class="nav-icon fas fa-list"></i>
                 <p>
-                    User List
+                    Student List - <small>Teacher 2nd layer</small>
+                </p>
+            </a>
+            <a th:href="@{/student/list}" class="nav-link active">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    Teacher List - <small>Assistant 2nd layer</small>
                 </p>
             </a>
             <a th:href="@{/login}" class="nav-link active">

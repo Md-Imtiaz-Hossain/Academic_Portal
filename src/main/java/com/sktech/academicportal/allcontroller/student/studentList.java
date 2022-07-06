@@ -5,6 +5,7 @@ import com.sktech.academicportal.entity.StudentEntity;
 import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.service.StudentRepositoryService;
+import com.sktech.academicportal.service.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +17,15 @@ public class studentList {
 
     @Autowired
     StudentRepositoryService studentRepositoryService;
+    @Autowired
+    UserRepositoryService userRepositoryService;
 
     // View All Student store in DB with Datatable
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
+        model.addAttribute("user", userRepositoryService.getAllUser());
         model.addAttribute("student", studentRepositoryService.getAllStudent());
+        model.addAttribute("roleType", userRepositoryService.listRoles());
         return "/StudentList/student-list";
     }
 
