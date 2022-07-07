@@ -8,7 +8,11 @@ import com.sktech.academicportal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -62,6 +66,41 @@ public class UserRepositoryService {
         } else {
             return userByEmail.getId().equals(id);
         }
+    }
+
+
+    // This methode will return with user List which contain Role-Student
+    public List<User> getAllUserByStudentRole() {
+        List<User> userListWithStudentRole = new ArrayList<>();
+        List<User> userList = userRepository.findAll();
+        for (User u : userList) {
+            for (Role r : u.getRoles()) {
+                if (Objects.equals(r.getName(), "Student")) {
+                    System.out.println(u);
+                    userListWithStudentRole.add(u);
+                }
+            }
+        }
+        System.out.println(userListWithStudentRole);
+        return userListWithStudentRole;
+    }
+
+
+    // This methode will return with user List which contain Role without Admin
+    public List<User> getAllUserWithoutAdminAndStudentRole() {
+        List<User> getAllUserWithoutAdminRole = new ArrayList<>();
+        List<User> userList = userRepository.findAll();
+        for (User u : userList) {
+            for (Role r : u.getRoles()) {
+                if (Objects.equals(r.getName(), "Admin" ) || Objects.equals(r.getName(), "Student" )) {
+                    break;
+                }else {
+                    getAllUserWithoutAdminRole.add(u);
+                }
+            }
+        }
+        System.out.println(getAllUserWithoutAdminRole);
+        return getAllUserWithoutAdminRole;
     }
 
 

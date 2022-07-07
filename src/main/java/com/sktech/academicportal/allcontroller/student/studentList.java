@@ -23,9 +23,17 @@ public class studentList {
     // View All Student store in DB with Datatable
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
-        model.addAttribute("user", userRepositoryService.getAllUser());
-        model.addAttribute("student", studentRepositoryService.getAllStudent());
+
+        userRepositoryService.getAllUserWithoutAdminAndStudentRole();
+        userRepositoryService.getAllUserByStudentRole();
+
         model.addAttribute("roleType", userRepositoryService.listRoles());
+
+        model.addAttribute("user", userRepositoryService.getAllUser());
+        model.addAttribute("userListWithStudentRole", userRepositoryService.getAllUserWithoutAdminAndStudentRole());
+
+        model.addAttribute("student", studentRepositoryService.getAllStudent());
+
         return "/StudentList/student-list";
     }
 
