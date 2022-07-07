@@ -30,12 +30,14 @@ public class usersList {
     // For create a new User. Open a from for create new Student
     @GetMapping("/new")
     public String addNewUserForm(Model model) {
+
         User user = new User();
         List<Role> listRoles = userRepositoryService.listRoles();
-        model.addAttribute("classSection", AcademicSection.values());
 
+        model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("listRoles", listRoles);
         model.addAttribute("user", user);
+
         return "/BackEndUsersList/user-new-form";
     }
 
@@ -51,9 +53,12 @@ public class usersList {
     // Open the Update form for person Information updating
     @GetMapping("/edit/{id}")
     public String editUserForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("user", userRepositoryService.getUserById(id));
+
         List<Role> listRoles = userRepositoryService.listRoles();
+
+        model.addAttribute("user", userRepositoryService.getUserById(id));
         model.addAttribute("listRoles", listRoles);
+
         return "/BackEndUsersList/user-update-form";
     }
 
@@ -62,7 +67,7 @@ public class usersList {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user, Model model) {
 
-        User existingUser= userRepositoryService.getUserById(id);
+        User existingUser = userRepositoryService.getUserById(id);
         existingUser.setId(id);
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
@@ -83,8 +88,6 @@ public class usersList {
         userRepositoryService.deleteUserById(id);
         return "redirect:/user/list";
     }
-
-
 
 
 }

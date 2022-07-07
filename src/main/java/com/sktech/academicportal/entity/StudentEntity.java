@@ -66,7 +66,6 @@ public class StudentEntity {
     @Column(name = "address")
     private String address;
 
-
     @Column(name = "username")
     private String username;
 

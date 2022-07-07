@@ -86,7 +86,7 @@ public class UserRepositoryService {
     }
 
 
-    // This methode will return with user List which contain Role without Admin
+    // This methode will return with user List which contain all Role except Admin
     public List<User> getAllUserWithoutAdminAndStudentRole() {
         List<User> getAllUserWithoutAdminRole = new ArrayList<>();
         List<User> userList = userRepository.findAll();

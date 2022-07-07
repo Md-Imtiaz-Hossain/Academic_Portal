@@ -1,7 +1,9 @@
 package com.sktech.academicportal.allcontroller.student;
 
 
+import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.StudentEntity;
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.service.StudentRepositoryService;
@@ -10,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/student")
@@ -24,13 +28,10 @@ public class studentList {
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
 
-        userRepositoryService.getAllUserWithoutAdminAndStudentRole();
-        userRepositoryService.getAllUserByStudentRole();
-
         model.addAttribute("roleType", userRepositoryService.listRoles());
 
         model.addAttribute("user", userRepositoryService.getAllUser());
-        model.addAttribute("userListWithStudentRole", userRepositoryService.getAllUserWithoutAdminAndStudentRole());
+        model.addAttribute("userListWithStudentRole", userRepositoryService.getAllUserByStudentRole());
 
         model.addAttribute("student", studentRepositoryService.getAllStudent());
 
@@ -58,7 +59,11 @@ public class studentList {
     // Open the Update form for person Information updating
     @GetMapping("/edit/{id}")
     public String editStudentForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("student", studentRepositoryService.getStudentById(id));
+
+        model.addAttribute("currentClass", AcademicClass.values());
+        model.addAttribute("classSection", AcademicSection.values());
+        model.addAttribute("user", userRepositoryService.getUserById(id));
+
         return "/StudentList/student-update-form";
     }
 
@@ -67,11 +72,8 @@ public class studentList {
     @PostMapping("/update/{id}")
     public String updateStudent(@PathVariable Integer id, @ModelAttribute("student") StudentEntity student, Model model) {
 
-        StudentEntity existingStudent = studentRepositoryService.getStudentById(id);
+        User existingStudent = userRepositoryService.getUserById(id);
         existingStudent.setId(id);
-        existingStudent.setFirstName(student.getFirstName());
-        existingStudent.setLastName(student.getLastName());
-        existingStudent.setEmail(student.getEmail());
         existingStudent.setFatherName(student.getFatherName());
         existingStudent.setMotherName(student.getMotherName());
         existingStudent.setAdmissionDate(student.getAdmissionDate());
@@ -85,11 +87,8 @@ public class studentList {
         existingStudent.setAddress(student.getAddress());
 
 
-        existingStudent.setUsername(student.getUsername());
-        existingStudent.setPassword(student.getPassword());
-
         // save updated student object
-        studentRepositoryService.updateStudent(existingStudent);
+        userRepositoryService.updateUser(existingStudent);
         return "redirect:/student/list";
     }
 

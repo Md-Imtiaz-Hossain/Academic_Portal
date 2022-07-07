@@ -239,10 +239,11 @@
                     <div class="col-12">
 
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Add or Register a new User <a
-                                        th:href="@{/user/new}">Add</a></h3>
-                            </div>
+                            <!--                            <div class="card-header">-->
+                            <!--                                <h3 class="card-title">Add or Register a new User <a-->
+                            <!--                                        th:href="@{/user/new}">Add</a></h3>-->
+                            <!--                            </div>-->
+
                             <!-- /.card-header -->
                             <div class="card-body">
 
@@ -250,7 +251,11 @@
                                     <thead>
                                     <tr>
                                         <th>Name</th>
+                                        <th>Class & Roll</th>
+                                        <th>Parent</th>
                                         <th>Email</th>
+                                        <th>DOB</th>
+                                        <th>Admission</th>
                                         <th>Role</th>
                                         <th>Action</th>
                                     </tr>
@@ -259,29 +264,32 @@
                                     <tr th:each="user: ${userListWithStudentRole}">
                                         <td>
                                             <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span><br>
+                                            <span th:text="Cell + ' - ' + ${user.contactNo}"></span><br>
+                                            <span th:text="ID + ' - ' + ${user.academicID}"></span>
+                                        </td>
+                                        <td>
+                                            <span th:text="Class + ' - ' + ${user.currentClass}"></span><br>
+                                            <span th:text="Sec + ' - ' + ${user.classSection}"></span><br>
+                                            <span th:text="Roll + ' - ' + ${user.classRoll}"></span>
+                                        </td>
+                                        <td>
+                                            <span th:text="F + ' - ' + ${user.fatherName}"></span><br>
+                                            <span th:text="M + ' - ' + ${user.motherName}"></span>
                                         </td>
                                         <td th:text="${user.email}"></td>
+                                        <td th:text="${user.birthDate}"></td>
+                                        <td th:text="${user.admissionDate}"></td>
                                         <td th:text="${user.roles}"></td>
-                                        <!--                                        <td th:each="role : ${user.roles}"-->
-                                        <!--                                            th:unless="(${role.name} == ${'Student'})"-->
-                                        <!--                                            th:text="${user.roles}">Product Types-->
-                                        <!--                                        </td>-->
-                                        <!--                                        <td th:each="role : ${user.roles}"  th:if="${role.name} == ${'Student'}">This is Student</td>-->
-                                        <!--                                        <td th:each="role : ${user.roles}"  th:if="${role.name} != ${'Student'}">This is not Student</td>-->
-
-                                        <!--                                        <td th:each="role : ${user.roles}">-->
-                                        <!--                                            <span  th:if="${role.name} == ${'Student'}" th:text="${user.roles}"></span>-->
-                                        <!--                                        </td>-->
-
                                         <td>
-                                            <a th:href="@{/user/edit/{id}(id=${user.id})}"
+                                            <a th:href="@{/student/edit/{id}(id=${user.id})}"
                                                class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a>
 
-                                            <a th:href="@{/user/delete/{id}(id=${user.id})}"
-                                               onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"
-                                               class="btn btn-danger">
-                                                <i class="fas fa-trash ml-2"></i>
-                                            </a>
+                                            <!--                                            <a th:href="@{/student/delete/{id}(id=${user.id})}"-->
+                                            <!--                                               onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"-->
+                                            <!--                                               class="btn btn-danger">-->
+                                            <!--                                                <i class="fas fa-trash ml-2"></i>-->
+                                            <!--                                            </a>-->
+
                                         </td>
                                     </tr>
                                     </tbody>
@@ -296,78 +304,6 @@
                 <!-- /.row -->
             </div>
         </section>
-
-        <!--        <section class="content">-->
-        <!--        <div class="container-fluid">-->
-        <!--            <div class="row">-->
-        <!--                <div class="col-12">-->
-
-        <!--                    <div class="card">-->
-        <!--                        <div class="card-header">-->
-        <!--                            <h3 class="card-title">Add or Register a new Student <a-->
-        <!--                                    th:href="@{/student/new}">Add</a></h3>-->
-        <!--                        </div>-->
-        <!--                        &lt;!&ndash; /.card-header &ndash;&gt;-->
-        <!--                        <div class="card-body">-->
-        <!--                            <table id="example2" class="table table-bordered table-striped">-->
-        <!--                                <thead>-->
-        <!--                                <tr>-->
-        <!--                                    <th>Name & Id</th>-->
-        <!--                                    <th>Class & Roll</th>-->
-        <!--                                    <th>Parents</th>-->
-        <!--                                    <th>DOB</th>-->
-        <!--                                    <th>Admission</th>-->
-        <!--                                    <th>Email</th>-->
-        <!--                                    <th>Username</th>-->
-        <!--                                    <th>Action</th>-->
-        <!--                                </tr>-->
-        <!--                                </thead>-->
-        <!--                                <tbody>-->
-        <!--                                <tr th:each="student: ${student}">-->
-        <!--                                    <td>-->
-        <!--                                        <span th:text="${student.firstName} + ' ' + ${student.lastName}"></span><br>-->
-        <!--                                        <span th:text="Cell + ' - ' + ${student.contactNo}"></span><br>-->
-        <!--                                        <span th:text="ID + ' - ' + ${student.academicID}"></span>-->
-        <!--                                    </td>-->
-        <!--                                    <td>-->
-        <!--                                        <span th:text="Class + ' - ' + ${student.currentClass}"></span><br>-->
-        <!--                                        <span th:text="Sec + ' - ' + ${student.classSection}"></span><br>-->
-        <!--                                        <span th:text="Roll + ' - ' + ${student.classRoll}"></span>-->
-        <!--                                    </td>-->
-        <!--                                    <td>-->
-        <!--                                        <span th:text="F + ' - ' + ${student.fatherName}"></span><br>-->
-        <!--                                        <span th:text="M + ' - ' + ${student.motherName}"></span>-->
-        <!--                                    </td>-->
-        <!--                                    <td th:text="${student.birthDate}"></td>-->
-        <!--                                    <td th:text="${student.admissionDate}"></td>-->
-        <!--                                    <td th:text="${student.email}"></td>-->
-        <!--                                    <td th:text="${student.username}"></td>-->
-        <!--                                    <td>-->
-        <!--                                        <a th:href="@{/student/edit/{id}(id=${student.id})}"-->
-        <!--                                           class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a>-->
-
-        <!--                                        <a th:href="@{/student/delete/{id}(id=${student.id})}"-->
-        <!--                                           onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"-->
-        <!--                                           class="btn btn-danger">-->
-        <!--                                            <i class="fas fa-trash ml-2"></i>-->
-        <!--                                        </a>-->
-        <!--                                    </td>-->
-        <!--                                </tr>-->
-        <!--                                </tbody>-->
-        <!--                            </table>-->
-        <!--                        </div>-->
-        <!--                        &lt;!&ndash; /.card-body &ndash;&gt;-->
-        <!--                    </div>-->
-        <!--                    &lt;!&ndash; /.card &ndash;&gt;-->
-        <!--                </div>-->
-        <!--                &lt;!&ndash; /.col &ndash;&gt;-->
-        <!--            </div>-->
-        <!--            &lt;!&ndash; /.row &ndash;&gt;-->
-        <!--        </div>-->
-        <!--        &lt;!&ndash; /.container-fluid &ndash;&gt;-->
-        <!--    </section>-->
-        <!-- /.container-fluid -->
-        <!-- /.content -->
     </div>
 
     <!-- Control Sidebar -->
