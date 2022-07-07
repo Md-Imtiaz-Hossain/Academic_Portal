@@ -1,4 +1,4 @@
-package com.sktech.academicportal.allcontroller.student;
+package com.sktech.academicportal.allcontroller.allUsers;
 
 
 import com.sktech.academicportal.entity.Role;

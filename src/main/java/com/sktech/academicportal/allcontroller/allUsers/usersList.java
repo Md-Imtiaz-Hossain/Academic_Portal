@@ -1,9 +1,7 @@
-package com.sktech.academicportal.allcontroller.endUsers;
+package com.sktech.academicportal.allcontroller.allUsers;
 
 import com.sktech.academicportal.entity.Role;
-import com.sktech.academicportal.entity.StudentEntity;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.service.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;

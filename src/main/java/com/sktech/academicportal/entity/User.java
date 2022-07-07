@@ -49,13 +49,24 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
 
-    // User (Student)
+    // User (Student + Teacher)
     @Column(name = "father_name")
     private String fatherName;
 
     @Column(name = "mother_name")
     private String motherName;
 
+    @Column(name = "academic_ID")
+    private String academicID;
+
+    @Column(name = "contact_No")
+    private String contactNo;
+
+    @Column(name = "address")
+    private String address;
+
+
+    // User (Student)
 
     @Column(name = "admission_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -67,7 +78,6 @@ public class User {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
 
-
     @Column(name = "class_roll")
     private Integer classRoll;
 
@@ -77,16 +87,25 @@ public class User {
     @Column(name = "class_section")
     private String classSection;
 
-    @Column(name = "academic_ID")
-    private String academicID;
-
-    @Column(name = "contact_No")
-    private String contactNo;
-
-    @Column(name = "address")
-    private String address;
 
     // User (Teacher and all other role)
+    @Column(name = "subject_Speciality")
+    private String subjectSpeciality;
+
+    @Column(name = "designation")
+    private String designation;
+
+    @Column(name = "teachingStart_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date teachingStartDate;
+
+    @Column(name = "teachingEnd_date")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
+    private Date teachingEndDate;
+
+
 
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;
