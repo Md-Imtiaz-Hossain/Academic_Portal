@@ -1,12 +1,9 @@
 package com.sktech.academicportal.allcontroller.allUsers;
 
 
-import com.sktech.academicportal.entity.StudentEntity;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.enums.Designation;
-import com.sktech.academicportal.service.StudentRepositoryService;
 import com.sktech.academicportal.service.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/teacher")
-public class TeacherList {
+public class teacherList {
 
     @Autowired
     UserRepositoryService userRepositoryService;
@@ -24,11 +21,7 @@ public class TeacherList {
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
 
-        model.addAttribute("roleType", userRepositoryService.listRoles());
-
-        model.addAttribute("user", userRepositoryService.getAllUser());
         model.addAttribute("getAllUserWithoutAdminAndStudentRole", userRepositoryService.getAllUserWithoutAdminAndStudentRole());
-
 
         return "/TeacherList/teacher-list";
     }
@@ -72,7 +65,5 @@ public class TeacherList {
 }
 
 
-// View all student-  http://localhost:8082/student/list
-// Add new student-  http://localhost:8082/student/new
-// Edit student info-  http://localhost:8082/student/edit/3
-// Delete student-  http://localhost:8082/student/delete/3
+// View all student-  http://localhost:8082/teacher/list
+// Edit student info-  http://localhost:8082/teacher/edit/3

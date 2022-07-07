@@ -6,6 +6,7 @@ import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.repository.RoleRepository;
 import com.sktech.academicportal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayDeque;
@@ -24,6 +25,9 @@ public class UserRepositoryService {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
     // Get All Users
     public List<User> getAllUser() {
         return userRepository.findAll();
@@ -31,6 +35,7 @@ public class UserRepositoryService {
 
     // Save Users
     public User saveUser(User user) {
+        encodePassword(user);
         return userRepository.save(user);
     }
 
@@ -41,6 +46,7 @@ public class UserRepositoryService {
 
     // Update User information
     public User updateUser(User user) {
+
         return userRepository.save(user);
     }
 
@@ -101,6 +107,16 @@ public class UserRepositoryService {
         }
         System.out.println(getAllUserWithoutAdminRole);
         return getAllUserWithoutAdminRole;
+    }
+
+    // Method of password encoder of user which is from parameter.
+    private void encodePassword(User user) {
+        String encodePassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encodePassword);
+    }
+
+    public String encodePasswordUsingString(String password) {
+        return passwordEncoder.encode(password);
     }
 
 

@@ -18,6 +18,7 @@ public class usersList {
     @Autowired
     UserRepositoryService userRepositoryService;
 
+
     // View All User store in DB with Datatable
     @GetMapping("/list")
     public String viewUserListPage(Model model) {
@@ -70,9 +71,10 @@ public class usersList {
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
         existingUser.setEmail(user.getEmail());
-        existingUser.setPassword(user.getPassword());
         existingUser.setRoles(user.getRoles());
-        //existingUser.setPhotos(user.getPhotos());
+
+        String encodedPassword = userRepositoryService.encodePasswordUsingString(user.getPassword());
+        existingUser.setPassword(encodedPassword);
 
         // save updated student object
         userRepositoryService.updateUser(existingUser);
