@@ -79,21 +79,33 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
+                                        <th>Id</th>
                                         <th>Name</th>
+                                        <th>Photo</th>
                                         <th>Email</th>
                                         <th>Role</th>
-                                        <th>Password</th>
+                                        <!--                                        <th>Password</th>-->
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr th:each="user: ${user}">
+
+                                        <td th:text="${user.id}"></td>
+
                                         <td>
                                             <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span><br>
                                         </td>
+
+                                        <td>
+                                            <span th:if="${user.photos == null}" class="fas fa-user ml-5-"></span>
+                                            <img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
+                                                 style="width: 100px ; height: 100px"/>
+                                        </td>
+
                                         <td th:text="${user.email}"></td>
                                         <td th:text="${user.roles}"></td>
-                                        <td th:text="${user.password}"></td>
+                                        <!--                                        <td th:text="${user.password}"></td>-->
                                         <td>
                                             <a th:href="@{/user/edit/{id}(id=${user.id})}"
                                                class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a>

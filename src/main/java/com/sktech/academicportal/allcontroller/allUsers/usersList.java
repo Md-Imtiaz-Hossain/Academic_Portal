@@ -3,12 +3,16 @@ package com.sktech.academicportal.allcontroller.allUsers;
 import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.enums.AcademicSection;
+import com.sktech.academicportal.helper.FileUploadUtil;
 import com.sktech.academicportal.service.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -43,8 +47,27 @@ public class usersList {
 
     // Process the fill up form after save button clicked.
     @PostMapping("/save")
-    public String processNewUserForm(@ModelAttribute("user") User user) {
-        userRepositoryService.saveUser(user);
+    public String processNewUserForm(@ModelAttribute("user") User user,
+                                     @RequestParam("image") MultipartFile multipartFile) throws IOException {
+
+        if (!multipartFile.isEmpty()) {
+            String fileNameSelected = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            user.setPhotos(fileNameSelected);
+            Integer userId = userRepositoryService.saveUser(user).getId();
+
+            String uploadDir = "user-photos/" + userId;
+            FileUploadUtil.cleanDirectory(uploadDir);
+            FileUploadUtil.saveFile(uploadDir, fileNameSelected, multipartFile);
+        } else {
+            if (user.getPhotos().isEmpty()) {
+                user.setPhotos(null);
+            }
+            userRepositoryService.saveUser(user);
+        }
+
+
+
+        //userRepositoryService.saveUser(user);
         return "redirect:/user/list";
     }
 

@@ -67,7 +67,6 @@ public class User {
 
 
     // User (Student)
-
     @Column(name = "admission_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
