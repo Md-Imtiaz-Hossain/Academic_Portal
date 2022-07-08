@@ -109,12 +109,13 @@ public class UserRepositoryService {
         return getAllUserWithoutAdminRole;
     }
 
-    // Method of password encoder of user which is from parameter.
+    // Method of password encoder using User object
     private void encodePassword(User user) {
         String encodePassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encodePassword);
     }
 
+    // Method of password encoder using String
     public String encodePasswordUsingString(String password) {
         return passwordEncoder.encode(password);
     }
