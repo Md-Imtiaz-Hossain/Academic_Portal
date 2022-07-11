@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>All Students List</h1>
+                        <h1>All Subject List</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">All Students List</li>
+                            <li class="breadcrumb-item active">All Subject List</li>
                         </ol>
                     </div>
                 </div>
@@ -63,64 +63,46 @@
         </section>
 
         <!-- Main content -->
-
         <section class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
 
                         <div class="card">
-                            <!--                            <div class="card-header">-->
-                            <!--                                <h3 class="card-title">Add or Register a new User <a-->
-                            <!--                                        th:href="@{/user/new}">Add</a></h3>-->
-                            <!--                            </div>-->
-
+                            <div class="card-header">
+                                <h3 class="card-title">Add  new Subject <a
+                                        th:href="@{/subject/new}">Add</a></h3>
+                            </div>
                             <!-- /.card-header -->
                             <div class="card-body">
 
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Class & Roll</th>
-                                        <th>Parent</th>
-                                        <th>Email</th>
-                                        <th>DOB</th>
-                                        <th>Admission</th>
-                                        <th>Role</th>
+                                        <th>Id</th>
+                                        <th>Subject Name</th>
+                                        <th>Subject code</th>
+                                        <th>Subject Class</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="user: ${userListWithStudentRole}">
+                                    <tr th:each="subject: ${subjectList}">
+
+                                        <td th:text="${subject.id}"></td>
+                                        <td th:text="${subject.subjectName}"></td>
+                                        <td th:text="${subject.subjectCode}"></td>
+                                        <td th:text="${subject.subjectClass}"></td>
+                                        <td th:text="${subject.subjectType}"></td>
                                         <td>
-                                            <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span><br>
-                                            <span th:text="Cell + ' - ' + ${user.contactNo}"></span><br>
-                                            <span th:text="ID + ' - ' + ${user.academicID}"></span>
-                                        </td>
-                                        <td>
-                                            <span th:text="Class + ' - ' + ${user.currentClass}"></span><br>
-                                            <span th:text="Sec + ' - ' + ${user.classSection}"></span><br>
-                                            <span th:text="Roll + ' - ' + ${user.classRoll}"></span>
-                                        </td>
-                                        <td>
-                                            <span th:text="F + ' - ' + ${user.fatherName}"></span><br>
-                                            <span th:text="M + ' - ' + ${user.motherName}"></span>
-                                        </td>
-                                        <td th:text="${user.email}"></td>
-                                        <td th:text="${user.birthDate}"></td>
-                                        <td th:text="${user.admissionDate}"></td>
-                                        <td th:text="${user.roles}"></td>
-                                        <td>
-                                            <a th:href="@{/student/edit/{id}(id=${user.id})}"
+                                            <a th:href="@{/subject/edit/{id}(id=${subject.id})}"
                                                class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a>
 
-                                            <!--                                            <a th:href="@{/student/delete/{id}(id=${user.id})}"-->
-                                            <!--                                               onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"-->
-                                            <!--                                               class="btn btn-danger">-->
-                                            <!--                                                <i class="fas fa-trash ml-2"></i>-->
-                                            <!--                                            </a>-->
-
+                                            <a th:href="@{/subject/delete/{id}(id=${subject.id})}"
+                                               onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"
+                                               class="btn btn-danger">
+                                                <i class="fas fa-trash ml-2"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -134,7 +116,9 @@
                 </div>
                 <!-- /.row -->
             </div>
+            <!-- /.container-fluid -->
         </section>
+        <!-- /.content -->
     </div>
 
     <!-- Control Sidebar -->
