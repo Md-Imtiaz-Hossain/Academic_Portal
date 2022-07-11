@@ -22,25 +22,16 @@ public class SubjectRepositoryService {
     @Autowired
     SubjectRepository subjectRepository;
 
-    @Autowired
-    UserRepository userRepository;
-
-    @Autowired
-    RoleRepository roleRepository;
-
-    @Autowired
-    PasswordEncoder passwordEncoder;
 
     // Get All Subject
     public List<Subject> getAllSubject() {
         return subjectRepository.findAll();
     }
 
-//    // Save Users
-//    public User saveUser(User user) {
-//        encodePassword(user);
-//        return userRepository.save(user);
-//    }
+    // Save Subject
+    public Subject saveSubject(Subject subject) {
+        return subjectRepository.save(subject);
+    }
 //
 //    // Get a single User by an id
 //    public User getUserById(Integer id) {
