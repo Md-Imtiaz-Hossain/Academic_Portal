@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>New subject Form</h1>
+                        <h1>New User Registration Form</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">New subject Form</li>
+                            <li class="breadcrumb-item active">New Subject add Form</li>
                         </ol>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">View All Subject <a th:href="@{/subject/list}">List</a></h3>
+                                <h3 class="card-title">View All Subject <a th:href="@{/subject/list}"> List</a></h3>
                             </div>
 
                             <form th:action="@{/subject/save}" method="post"
@@ -84,39 +84,44 @@
                                             <div class="form-group">
                                                 <label for="subjectName">Subject Name</label>
                                                 <input type="text" class="form-control" id="subjectName"
-                                                       th:field="*{subjectaName}"
+                                                       th:field="*{subjectName}"
                                                        placeholder="Subject Name">
                                             </div>
 
-<!--                                            <div class="form-group">-->
-<!--                                                <label for="subjectCode">Subject Code</label>-->
-<!--                                                <input type="text" class="form-control" id="subjectCode"-->
-<!--                                                       th:field="*{subjectCode}"-->
-<!--                                                       placeholder="Subject Code">-->
-<!--                                            </div>-->
+                                            <div class="form-group">
+                                                <label for="subjectCode">Subject Code</label>
+                                                <input type="text" class="form-control" id="subjectCode"
+                                                       th:field="*{subjectCode}"
+                                                       placeholder="Subject Code">
+                                            </div>
 
-<!--                                            <div class="form-group">-->
-<!--                                                <label for="subjectClass">subjectCode</label>-->
-<!--                                                <input type="text" class="form-control" id="subjectClass"-->
-<!--                                                       th:field="*{subjectClass}"-->
-<!--                                                       placeholder="Email">-->
-<!--                                            </div>-->
+                                            <div class="form-group">
+                                                <label for="currentClass">Class </label>
+                                                <select th:field="*{subjectClass}" id="currentClass"
+                                                        class="form-control">
+                                                    <option th:each=" currentClass : ${class}"
+                                                            th:text="${currentClass.name}"
+                                                            th:value="${currentClass}">
+                                                    </option>
+                                                </select>
+                                            </div>
 
-<!--                                            <div class="form-group">-->
-<!--                                                <label for="subjectType">subjectCode</label>-->
-<!--                                                <input type="text" class="form-control" id="subjectType"-->
-<!--                                                       th:field="*{subjectType}"-->
-<!--                                                       placeholder="Email">-->
-<!--                                            </div>-->
 
                                         </div>
 
                                         <!-- /.col -->
                                         <div class="col-md-6">
 
-
-
-
+                                            <div class="form-group">
+                                                <label>Subject Type</label>
+                                                <select th:field="*{subjectType}" class="form-control select2"
+                                                        style="width: 100%;">
+                                                    <option th:value="'Theory'" th:text="Theory"
+                                                            selected="selected"></option>
+                                                    <option th:value="'Practical'" th:text="Practical"></option>
+                                                    <option th:value="'Other'" th:text="Other"></option>
+                                                </select>
+                                            </div>
 
                                         </div>
                                     </div>

@@ -17,21 +17,17 @@ public class Subject {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "subject_name", nullable = false, length = 40, unique = true)
+    @Column(name = "subject_name")
     private String subjectName;
 
-    @Column(name = "subject_code", nullable = false, length = 40, unique = true)
+    @Column(name = "subject_code")
     private String subjectCode;
 
-    @Column(name = "subject_class", nullable = false, length = 40)
+    @Column(name = "subject_class")
     private String subjectClass;
 
-    @Column(name = "subject_type", nullable = false, length = 40)
+    @Column(name = "subject_type")
     private String subjectType;
 
 
-    @Override
-    public String toString() {
-        return this.subjectName;
-    }
 }
