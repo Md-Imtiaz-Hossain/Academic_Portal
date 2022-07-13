@@ -31,6 +31,6 @@ public class Subject {
 
     @Override
     public String toString() {
-        return this.subjectName + "_" + this.subjectCode;
+        return this.subjectName + "_" + this.subjectCode + "_" + this.subjectClass + "\n";
     }
 }

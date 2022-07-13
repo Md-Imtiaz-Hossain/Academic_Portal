@@ -15,6 +15,7 @@ public class SubjectList {
     @Autowired
     SubjectRepositoryService subjectRepositoryService;
 
+
     // List of all subject
     @GetMapping("/list")
     public String subjectHome(Model model){
@@ -43,6 +44,7 @@ public class SubjectList {
     public String processSubjectForm(@ModelAttribute("subject") Subject subject){
 
         subjectRepositoryService.saveSubject(subject);
+
         return "redirect:/subject/list";
     }
 

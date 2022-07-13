@@ -46,7 +46,6 @@ public class UserRepositoryService {
 
     // Update User information
     public User updateUser(User user) {
-
         return userRepository.save(user);
     }
 
@@ -92,7 +91,7 @@ public class UserRepositoryService {
     }
 
 
-    // This methode will return with user List which contain all Role except Admin
+    // This methode will return with user List which contain all Role except Admin and student
     public List<User> getAllUserWithoutAdminAndStudentRole() {
         List<User> getAllUserWithoutAdminRole = new ArrayList<>();
         List<User> userList = userRepository.findAll();
@@ -107,6 +106,23 @@ public class UserRepositoryService {
         }
         System.out.println(getAllUserWithoutAdminRole);
         return getAllUserWithoutAdminRole;
+    }
+
+
+    // This methode will return with user List which contain all Role except student
+    public List<User> getAllUserWithoutStudentRole() {
+        List<User> getAllUserWithoutStudentRole = new ArrayList<>();
+        List<User> userList = userRepository.findAll();
+        for (User u : userList) {
+            for (Role r : u.getRoles()) {
+                if (Objects.equals(r.getName(), "Student" )) {
+                    break;
+                }else {
+                    getAllUserWithoutStudentRole.add(u);
+                }
+            }
+        }
+        return getAllUserWithoutStudentRole;
     }
 
     // Method of password encoder using User object

@@ -37,7 +37,6 @@ public class usersList {
         User user = new User();
         List<Role> listRoles = userRepositoryService.listRoles();
 
-        model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("listRoles", listRoles);
         model.addAttribute("user", user);
 
@@ -64,8 +63,6 @@ public class usersList {
             }
             userRepositoryService.saveUser(user);
         }
-
-
 
         //userRepositoryService.saveUser(user);
         return "redirect:/user/list";
