@@ -105,6 +105,15 @@ public class User {
     private Date teachingEndDate;
 
 
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_subject",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "subject_id")
+    )
+    private Set<Subject> subjects = new HashSet<>();
+
+
 
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;

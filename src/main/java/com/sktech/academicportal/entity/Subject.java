@@ -29,5 +29,8 @@ public class Subject {
     @Column(name = "subject_type")
     private String subjectType;
 
-
+    @Override
+    public String toString() {
+        return this.subjectName + "_" + this.subjectCode;
+    }
 }
