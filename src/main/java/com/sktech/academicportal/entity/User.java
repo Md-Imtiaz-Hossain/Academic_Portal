@@ -86,6 +86,14 @@ public class User {
     @Column(name = "class_section")
     private String classSection;
 
+    @ManyToMany (fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_result",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "result_id")
+    )
+    private Set<StudentResult> studentResults = new HashSet<>();
+
 
     // User (Teacher and all other role)
     @Column(name = "subject_Speciality")

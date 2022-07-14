@@ -2,6 +2,7 @@ package com.sktech.academicportal.allcontroller.teacherPortal;
 
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
+import com.sktech.academicportal.service.ResultRepositoryService;
 import com.sktech.academicportal.service.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,9 @@ public class TeacherPortal {
     @Autowired
     UserRepositoryService userRepositoryService;
 
+    @Autowired
+    ResultRepositoryService resultRepositoryService;
+
     @GetMapping("/mySubject")
     public String teacherPortalHome(Model model, Principal principal){
 
@@ -33,17 +37,25 @@ public class TeacherPortal {
         return "TeacherPortal/taking-subject-of-mine";
     }
 
+    @GetMapping("/resultList")
+    public String resultList(Model model){
+        model.addAttribute("allResult", resultRepositoryService.getAllResult());
+        model.addAttribute("user", userRepositoryService.getAllUserByStudentRole());
+        return "/TeacherPortal/my-subject-result-list";
+    }
+
 
     // Open the Update form for Student Result Information
     @GetMapping("/edit/{id}")
     public String updateResultForm(@PathVariable Integer id, Model model) {
 
-//        List<Subject> subjectList = subjectRepositoryService.getAllSubject();
-//
-//        model.addAttribute("user", userRepositoryService.getUserById(id));
-//        model.addAttribute("subjectList", subjectList);
 
-        return "/SubjectAssign/subject-Assign-update-form";
+        model.addAttribute("allResult", resultRepositoryService.getAllResult());
+
+        model.addAttribute("user", userRepositoryService.getUserById(id));
+
+
+        return "/TeacherPortal/my-subject-result-update";
     }
 
 
