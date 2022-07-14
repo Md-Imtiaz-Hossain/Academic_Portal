@@ -2,6 +2,7 @@ package com.sktech.academicportal.service;
 
 
 import com.sktech.academicportal.entity.Role;
+import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.repository.RoleRepository;
 import com.sktech.academicportal.repository.UserRepository;
@@ -54,11 +55,9 @@ public class UserRepositoryService {
         userRepository.deleteById(id);
     }
 
-
     public List<Role> listRoles() {
         return (List<Role>) roleRepository.findAll();
     }
-
 
     public boolean isEmailUnique(Integer id, String email) {
         User userByEmail = userRepository.getUserByEmail(email);
@@ -72,7 +71,6 @@ public class UserRepositoryService {
             return userByEmail.getId().equals(id);
         }
     }
-
 
     // This methode will return with user List which contain Role-Student
     public List<User> getAllUserByStudentRole() {
@@ -89,7 +87,6 @@ public class UserRepositoryService {
         System.out.println(userListWithStudentRole);
         return userListWithStudentRole;
     }
-
 
     // This methode will return with user List which contain all Role except Admin and student
     public List<User> getAllUserWithoutAdminAndStudentRole() {
@@ -108,7 +105,6 @@ public class UserRepositoryService {
         return getAllUserWithoutAdminRole;
     }
 
-
     // This methode will return with user List which contain all Role except student
     public List<User> getAllUserWithoutStudentRole() {
         List<User> getAllUserWithoutStudentRole = new ArrayList<>();
@@ -123,6 +119,12 @@ public class UserRepositoryService {
             }
         }
         return getAllUserWithoutStudentRole;
+    }
+
+    // Method for get assigned subject to a teacher
+    public List<Subject> getAllAssignedSubjectToATeacher(String email){
+        List<Subject> subjectByEmail = (List<Subject>) userRepository.getSubjectByEmail(email);
+        return subjectByEmail;
     }
 
     // Method of password encoder using User object
