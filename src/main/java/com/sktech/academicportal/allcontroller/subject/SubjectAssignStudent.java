@@ -1,9 +1,7 @@
 package com.sktech.academicportal.allcontroller.subject;
 
-import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.service.SubjectRepositoryService;
 import com.sktech.academicportal.service.UserRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @Controller
-@RequestMapping("subject-assign")
-public class SubjectAssign {
+@RequestMapping("subject-assign-s")
+public class SubjectAssignStudent {
 
     @Autowired
     UserRepositoryService userRepositoryService;
@@ -23,12 +22,12 @@ public class SubjectAssign {
     @Autowired
     SubjectRepositoryService subjectRepositoryService;
 
-    @GetMapping("/assign")
+    @GetMapping("/assignStudent")
     public String subjectAssign( Model model ){
 
-        model.addAttribute("user", userRepositoryService.getAllUserWithoutStudentRole());
+        model.addAttribute("user", userRepositoryService.getAllUserByStudentRole());
 
-        return "/SubjectAssign/assign-And-list";
+        return "/SubjectAssign/assign-And-list-student";
     }
 
 
@@ -37,12 +36,14 @@ public class SubjectAssign {
     @GetMapping("/edit/{id}")
     public String editUserForm(@PathVariable Integer id, Model model) {
 
-        List<Subject> subjectList = subjectRepositoryService.getAllSubject();
+        User user = userRepositoryService.getUserById(id);
+        String currentClass = user.getCurrentClass();
+        List<Subject> allSubjectByClass = subjectRepositoryService.getAllSubjectByClass(currentClass);
 
-        model.addAttribute("user", userRepositoryService.getUserById(id));
-        model.addAttribute("subjectList", subjectList);
+        model.addAttribute("user", user);
+        model.addAttribute("subjectList", allSubjectByClass);
 
-        return "/SubjectAssign/subject-Assign-update-form";
+        return "/SubjectAssign/subject-Assign-update-form-student";
     }
 
 
@@ -56,7 +57,7 @@ public class SubjectAssign {
 
         // save updated student object
         userRepositoryService.updateUser(existingUser);
-        return "redirect:/subject-assign/assign";
+        return "redirect:/subject-assign-s/assignStudent";
     }
 
 }
