@@ -22,22 +22,26 @@ public class SubjectAssignStudent {
     @Autowired
     SubjectRepositoryService subjectRepositoryService;
 
+    // List of Student and assigned subject to them.
     @GetMapping("/assignStudent")
-    public String subjectAssign( Model model ){
+    public String subjectAssign(Model model) {
 
+        // Here don's showing all user, showing just Student in datatable.
         model.addAttribute("user", userRepositoryService.getAllUserByStudentRole());
 
         return "/SubjectAssign/assign-And-list-student";
     }
 
 
-
-    // Open the Update form for person Information updating
+    // Open the Update form for assign subject
     @GetMapping("/edit/{id}")
     public String editUserForm(@PathVariable Integer id, Model model) {
 
+        // Find user using id
         User user = userRepositoryService.getUserById(id);
+        // Find student current class using student/user
         String currentClass = user.getCurrentClass();
+        // Send the class info to a service class methode and get list of class using current class
         List<Subject> allSubjectByClass = subjectRepositoryService.getAllSubjectByClass(currentClass);
 
         model.addAttribute("user", user);
@@ -47,7 +51,7 @@ public class SubjectAssignStudent {
     }
 
 
-    // Process the updated information after update button clicked.
+    // Process the subject assigned form.
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user) {
 

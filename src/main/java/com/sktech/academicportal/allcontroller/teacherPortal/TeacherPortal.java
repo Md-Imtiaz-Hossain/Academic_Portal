@@ -21,15 +21,15 @@ public class TeacherPortal {
     @GetMapping("/mySubject")
     public String teacherPortalHome(Model model, Principal principal){
 
+        // Get the logged-in user email
         String principalName = principal.getName();
+        // Get the list of Subject using logged-in user email
         List<Subject> allAssignedSubjectToATeacher = userRepositoryService.getAllAssignedSubjectToATeacher(principalName);
-        System.out.println("=====================================");
-        System.out.println(allAssignedSubjectToATeacher);
-        System.out.println("=====================================");
 
         model.addAttribute("principalName", principalName);
         model.addAttribute("user", userRepositoryService.getAllUser());
         model.addAttribute("allAssignedSubjectToATeacher", allAssignedSubjectToATeacher);
+
         return "TeacherPortal/taking-subject-of-mine";
     }
 
@@ -47,18 +47,24 @@ public class TeacherPortal {
     }
 
 
-    // Process the updated information after update button clicked.
+
+    /**
+     * Process the updated information after update button clicked.
+     * Find existing user use id
+     * Set the existing id and replace with new all attribute value with old
+     * Finally save the user
+     */
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user) {
 
         User existingUser = userRepositoryService.getUserById(id);
         existingUser.setId(id);
         existingUser.setSubjects(user.getSubjects());
-
-        // save updated student object
         userRepositoryService.updateUser(existingUser);
+
         return "redirect:/subject-assign/assign";
     }
 
 
 }
+

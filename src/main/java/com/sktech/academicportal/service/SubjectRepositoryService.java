@@ -1,6 +1,5 @@
 package com.sktech.academicportal.service;
 
-
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.repository.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
