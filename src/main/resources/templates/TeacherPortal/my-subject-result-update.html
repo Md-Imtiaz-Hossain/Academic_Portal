@@ -76,7 +76,7 @@
 
                             <form th:action="@{/teacher-portal/update/{id} (id=${user.id})}" method="POST"
                                   enctype="multipart/form-data"
-                                  th:object="${user}">
+                                  th:object="${allResult}">
 
                                 <div class="card-body">
 
@@ -86,7 +86,7 @@
                                             <div class="form-group">
                                                 <label for="firstName">First Name</label>
                                                 <input type="text" class="form-control" id="firstName"
-                                                       th:field="*{firstName}" disabled
+                                                       th:field="*{ct1Mark}" disabled
                                                        placeholder="First Name">
                                             </div>
 
@@ -122,9 +122,16 @@
 
 
                                             <div class="form-group" th:each="r : ${allResult}">
-                                                <label>Email</label>
-                                                <input type="text" th:field="*{studentResults}"
-                                                       th:text="${r.ct1Mark}" th:value="${r.id}"
+                                                <label>CT 1</label>
+                                                <input type="number" th:field="*{studentResults}"
+                                                       th:text="${ct1Mark}" th:value="${r.id}"
+                                                       class="form-control"/>
+                                            </div>
+
+                                            <div class="form-group" th:each="r : ${allResult}">
+                                                <label>CT 2</label>
+                                                <input type="number" th:field="*{studentResults}"
+                                                       th:text="${r.ct2Mark}" th:value="${r.id}"
                                                        class="form-control"/>
                                             </div>
 

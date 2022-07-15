@@ -2,8 +2,10 @@ package com.sktech.academicportal.service;
 
 
 import com.sktech.academicportal.entity.Role;
+import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
+import com.sktech.academicportal.repository.ResultRepository;
 import com.sktech.academicportal.repository.RoleRepository;
 import com.sktech.academicportal.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class UserRepositoryService {
 
     @Autowired
     PasswordEncoder passwordEncoder;
+
+    @Autowired
+    ResultRepository resultRepository;
 
     // Get All Users
     public List<User> getAllUser() {
@@ -57,6 +62,10 @@ public class UserRepositoryService {
 
     public List<Role> listRoles() {
         return (List<Role>) roleRepository.findAll();
+    }
+
+    public List<StudentResult> studentResults(){
+        return resultRepository.findAll();
     }
 
     public boolean isEmailUnique(Integer id, String email) {

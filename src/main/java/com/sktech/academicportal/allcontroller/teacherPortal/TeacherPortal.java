@@ -1,5 +1,6 @@
 package com.sktech.academicportal.allcontroller.teacherPortal;
 
+import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.service.ResultRepositoryService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/teacher-portal")
@@ -39,7 +41,7 @@ public class TeacherPortal {
 
     @GetMapping("/resultList")
     public String resultList(Model model){
-        model.addAttribute("allResult", resultRepositoryService.getAllResult());
+        model.addAttribute("allResult", userRepositoryService.studentResults());
         model.addAttribute("user", userRepositoryService.getAllUserByStudentRole());
         return "/TeacherPortal/my-subject-result-list";
     }
@@ -49,8 +51,9 @@ public class TeacherPortal {
     @GetMapping("/edit/{id}")
     public String updateResultForm(@PathVariable Integer id, Model model) {
 
-
-        model.addAttribute("allResult", resultRepositoryService.getAllResult());
+        User user = userRepositoryService.getUserById(id);
+        Set<StudentResult> studentResults = user.getStudentResults();
+        model.addAttribute("allResult", studentResults);
 
         model.addAttribute("user", userRepositoryService.getUserById(id));
 

@@ -38,4 +38,16 @@ public class StudentResult {
 
     @Column(name = "final_mark")
     private Integer finalMark;
+
+    @Override
+    public String toString() {
+        return "StudentResult{" +
+                "id=" + id +
+                ", ct1Mark=" + ct1Mark +
+                ", ct2Mark=" + ct2Mark +
+                ", ct3Mark=" + ct3Mark +
+                ", midMark=" + midMark +
+                ", finalMark=" + finalMark +
+                '}';
+    }
 }
