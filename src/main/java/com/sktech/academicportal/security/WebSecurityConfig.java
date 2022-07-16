@@ -58,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/users/**").hasAnyAuthority("Admin")
                 .antMatchers("/categories/**", "/brands/**").hasAnyAuthority("Admin", "Editor")
-                .antMatchers("/home").permitAll()
+                .antMatchers("/").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -68,7 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .permitAll()
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/")
                 .and().rememberMe().key("AbcDefgHijKlmnOpqrs_1234567890") //this will be create jsession id (cookies) when login
                 .tokenValiditySeconds(7 * 24 * 60 * 60);
 
@@ -80,6 +80,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/css/**").antMatchers("/js/**");
 //        web.ignoring()
 //                .antMatchers("/h2-console/**")
 //                .antMatchers("/images/**", "/js/**", "/webjars/**");
