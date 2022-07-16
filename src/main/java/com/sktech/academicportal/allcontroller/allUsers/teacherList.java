@@ -20,9 +20,8 @@ public class teacherList {
     // View All Student store in DB with Datatable
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
-
+        model.addAttribute("pageTitle", "Teacher List");
         model.addAttribute("getAllUserWithoutAdminAndStudentRole", userRepositoryService.getAllUserWithoutAdminAndStudentRole());
-
         return "/TeacherList/teacher-list";
     }
 
@@ -31,6 +30,7 @@ public class teacherList {
     @GetMapping("/edit/{id}")
     public String editStudentForm(@PathVariable Integer id, Model model) {
 
+        model.addAttribute("pageTitle", "Edit  Teacher Information");
         model.addAttribute("designation", Designation.values());
         model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("user", userRepositoryService.getUserById(id));

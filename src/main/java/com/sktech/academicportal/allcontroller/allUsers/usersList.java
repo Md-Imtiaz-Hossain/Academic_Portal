@@ -26,7 +26,10 @@ public class usersList {
     // View All User store in DB with Datatable
     @GetMapping("/list")
     public String viewUserListPage(Model model) {
+
+        model.addAttribute("pageTitle", "User List");
         model.addAttribute("user", userRepositoryService.getAllUser());
+
         return "/BackEndUsersList/user-list";
     }
 
@@ -37,6 +40,7 @@ public class usersList {
         User user = new User();
         List<Role> listRoles = userRepositoryService.listRoles();
 
+        model.addAttribute("pageTitle", "User Registration");
         model.addAttribute("listRoles", listRoles);
         model.addAttribute("user", user);
 
@@ -75,6 +79,7 @@ public class usersList {
 
         List<Role> listRoles = userRepositoryService.listRoles();
 
+        model.addAttribute("pageTitle", "Edit  User Information");
         model.addAttribute("user", userRepositoryService.getUserById(id));
         model.addAttribute("listRoles", listRoles);
 

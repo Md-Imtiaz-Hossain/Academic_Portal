@@ -73,7 +73,7 @@
                                 <h3 class="card-title">View Teacher & Subject Assigned <a th:href="@{/subject-assign/assign}">List</a></h3>
                             </div>
 
-                            <form th:action="@{/subject-assign/update/{id} (id=${user.id})}" method="POST"
+                            <form th:action="@{/subject-assign-t/update/{id} (id=${user.id})}" method="POST"
                                   enctype="multipart/form-data"
                                   th:object="${user}">
 

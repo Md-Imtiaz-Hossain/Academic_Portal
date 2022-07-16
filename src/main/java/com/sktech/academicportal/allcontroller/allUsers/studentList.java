@@ -20,6 +20,7 @@ public class studentList {
     // View All Student store in DB with Datatable
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
+        model.addAttribute("pageTitle", "Student List");
         model.addAttribute("userListWithStudentRole", userRepositoryService.getAllUserByStudentRole());
         return "/StudentList/student-list";
     }
@@ -29,6 +30,7 @@ public class studentList {
     @GetMapping("/edit/{id}")
     public String editStudentForm(@PathVariable Integer id, Model model) {
 
+        model.addAttribute("pageTitle", "Edit  Student Information");
         model.addAttribute("currentClass", AcademicClass.values());
         model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("user", userRepositoryService.getUserById(id));
