@@ -24,6 +24,15 @@ public class HomepageRepositoryService {
         homepageRepo.save(h);
     }
 
+    public void saveMultiple(List<HomepageEntity> h){
+        homepageRepo.saveAll(h);
+    }
+    public void clearAll(){
+        homepageRepo.deleteAll();
+    }
 
+    public void delete(HomepageEntity h){
+        homepageRepo.delete(h);
+    }
 
 }

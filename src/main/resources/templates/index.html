@@ -14,101 +14,24 @@
 <div class="container-my">
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#home">XYZ School</a>
+      <a class="navbar-brand" th:href="'#' + ${sections[0].section}">XYZ School</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#home">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#history">History</a>
-          </li>
-          <li class="nav-item">
-            <a href="#achievements" class="nav-link">Achievements</a>
-          </li>
-          <li class="nav-item">
-            <a href="#notices" class="nav-link">Notice</a>
-          </li>
-          <li class="nav-item">
-            <a href="#contact" class="nav-link">Contact</a>
+          <li class="nav-item" th:each="sect: ${sections}">
+            <a class="nav-link"  th:href="'#'+${sect.section}" th:text="${sect.section}">Home</a>
           </li>
         </ul>
         <a th:href="@{/login}" class="btn btn-outline-success">Login</a>
       </div>
     </div>
   </nav>
-  <!-- <div class="container-my"> -->
-  <section id="home">
-    <div class="custom">
-      <div id="welcomeImages" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#welcomeImages" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#welcomeImages" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#welcomeImages" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="custom_box">
-              <img th:src="@{/images/1.png}" class="active" alt="...">
-            </div>
-            <div class="carousel-caption ps-2 pt-5 ps-sm-4 ps-md-5">
-              <h5>This is the heading</h5>
-              <p>This is the description</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="custom_box">
-              <img th:src="@{/images/2.jpg}"  class="" alt="...">
-            </div>
-            <div class="carousel-caption ps-2 pt-5 ps-sm-4 ps-md-5">
-              <h5>This is the heading too</h5>
-              <p>This is the description</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="custom_box">
-              <img th:src="@{/images/3.jpg}" class="" alt="...">
-              <div class="carousel-caption ps-2 pt-5 ps-sm-4 ps-md-5">
-                <h5>This is the, well you Know</h5>
-                <p>This is the description</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#welcomeImages" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#welcomeImages" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </div>
+
+  <section th:each="sect : ${sections}" th:id="${sect.section}" th:utext="${sect.data}">
   </section>
-  <section id="history">
-    <h1>
-      Page Two
-    </h1>
-  </section>
-  <section id="achievements">
-    <h1>
-      Page Three
-    </h1>
-  </section>
-  <section id="notices">
-    <h1>
-      Page Four
-    </h1>
-  </section>
-  <section id="contact">
-    <h1>
-      Page Five
-    </h1>
-  </section>
+
 </div>
 <script th:src="@{/js/bootstrap.bundle.js}"></script>
 <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->

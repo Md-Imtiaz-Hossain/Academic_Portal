@@ -19,6 +19,6 @@ public class HomepageEntity {
 
     @Column(name = "section")
     private String section;
-    @Column(name = "data")
+    @Column(name = "data", columnDefinition = "TEXT")
     private String data;
 }
