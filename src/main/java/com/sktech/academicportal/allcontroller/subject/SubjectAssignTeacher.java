@@ -24,6 +24,7 @@ public class SubjectAssignTeacher {
     @GetMapping("/assignTeacher")
     public String subjectAssign( Model model ){
 
+        model.addAttribute("pageTitle", "Teacher and Assigned Subjects");
         model.addAttribute("user", userRepositoryService.getAllUserWithoutStudentRole());
 
         return "/SubjectAssign/assign-And-list-teacher";
@@ -37,6 +38,7 @@ public class SubjectAssignTeacher {
 
         List<Subject> subjectList = subjectRepositoryService.getAllSubject();
 
+        model.addAttribute("pageTitle", "Update Assigned Subject Information");
         model.addAttribute("user", userRepositoryService.getUserById(id));
         model.addAttribute("subjectList", subjectList);
 

@@ -32,6 +32,7 @@ public class TeacherPortal {
         // Get the list of Subject using logged-in user email
         List<Subject> allAssignedSubjectToATeacher = userRepositoryService.getAllAssignedSubjectToATeacher(principalName);
 
+        model.addAttribute("pageTitle", "Assigned Subject List of Logged-in User");
         model.addAttribute("principalName", principalName);
         model.addAttribute("user", userRepositoryService.getAllUser());
         model.addAttribute("allAssignedSubjectToATeacher", allAssignedSubjectToATeacher);

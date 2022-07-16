@@ -20,6 +20,7 @@ public class SubjectList {
     @GetMapping("/list")
     public String subjectHome(Model model){
 
+        model.addAttribute("pageTitle", "Subject List");
         model.addAttribute("subjectList", subjectRepositoryService.getAllSubject());
 
         return "/SubjectList/subject-list";
@@ -32,6 +33,7 @@ public class SubjectList {
 
         Subject subject = new Subject();
 
+        model.addAttribute("pageTitle", "Add Subject");
         model.addAttribute("class", AcademicClass.values());
         model.addAttribute("subject", subject);
 
@@ -53,6 +55,7 @@ public class SubjectList {
     @GetMapping("/edit/{id}")
     public String editSubjectForm(@PathVariable Integer id, Model model) {
 
+        model.addAttribute("pageTitle", "Edit  Subject Information");
         model.addAttribute("class", AcademicClass.values());
         model.addAttribute("subject", subjectRepositoryService.getSubjectById(id));
 
