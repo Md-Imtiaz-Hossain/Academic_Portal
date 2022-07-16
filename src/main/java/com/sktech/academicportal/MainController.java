@@ -10,15 +10,16 @@ public class MainController {
     @GetMapping("/home")
     public String viewHomePage(Model model) {
         model.addAttribute("pageTitle", "Homepage");
-        return "home-page";
+        return "/home-page";
         //return "starter-page";
     }
 
     @GetMapping("/login")
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Log in here");
-        return "login";
+        return "/login";
     }
+
 
     @GetMapping("/after-login-dashboard")
     public String afterLogin(Model model) {
