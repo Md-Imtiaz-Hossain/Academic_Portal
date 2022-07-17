@@ -1,18 +1,13 @@
 package com.sktech.academicportal.allcontroller.allRoles;
 
 import com.sktech.academicportal.entity.Role;
-import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.helper.FileUploadUtil;
 import com.sktech.academicportal.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/user-role")
@@ -21,8 +16,9 @@ public class roleList {
     @Autowired
     RoleRepository roleRepository;
 
+    // User role List
     @GetMapping("/list")
-    public String roleListHome(Model model){
+    public String roleListHome(Model model) {
         model.addAttribute("pageTitle", "Role List");
         model.addAttribute("role", roleRepository.findAll());
         return "/RoleList/role-list";
@@ -37,7 +33,6 @@ public class roleList {
         return "/RoleList/role-new-form";
     }
 
-
     // Process the fill up form after save button clicked.
     @PostMapping("/save")
     public String processNewUserForm(@ModelAttribute("role") Role role) {
@@ -46,40 +41,25 @@ public class roleList {
     }
 
 
-//
-//
-//    // Open the Update form for person Information updating
-//    @GetMapping("/edit/{id}")
-//    public String editUserForm(@PathVariable Integer id, Model model) {
-//
-//        List<Role> listRoles = userRepositoryService.listRoles();
-//
-//        model.addAttribute("pageTitle", "Edit  User Information");
-//        model.addAttribute("user", userRepositoryService.getUserById(id));
-//        model.addAttribute("listRoles", listRoles);
-//
-//        return "/BackEndUsersList/user-update-form";
-//    }
-//
-//
-//    // Process the updated information after update button clicked.
-//    @PostMapping("/update/{id}")
-//    public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user, Model model) {
-//
-//        User existingUser = userRepositoryService.getUserById(id);
-//        existingUser.setId(id);
-//        existingUser.setFirstName(user.getFirstName());
-//        existingUser.setLastName(user.getLastName());
-//        existingUser.setEmail(user.getEmail());
-//        existingUser.setRoles(user.getRoles());
-//
-//        String encodedPassword = userRepositoryService.encodePasswordUsingString(user.getPassword());
-//        existingUser.setPassword(encodedPassword);
-//
-//        // save updated student object
-//        userRepositoryService.updateUser(existingUser);
-//        return "redirect:/user/list";
-//    }
+    // Open the Update form for Role Information updating
+    @GetMapping("/edit/{id}")
+    public String editUserForm(@PathVariable Integer id, Model model) {
+        model.addAttribute("pageTitle", "Update  Role Information");
+        model.addAttribute("role", roleRepository.findById(id).get());
+        return "/RoleList/role-update-form";
+    }
+
+
+    // Process the updated information after update button clicked.
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable Integer id, @ModelAttribute("role") Role role) {
+        Role existingRole = roleRepository.findById(id).get();
+        existingRole.setId(id);
+        existingRole.setName(role.getName());
+        existingRole.setDescription(role.getDescription());
+        roleRepository.save(existingRole);
+        return "redirect:/user-role/list";
+    }
 
 
     // Delete the Role information and confirm before delete.

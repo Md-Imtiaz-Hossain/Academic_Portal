@@ -69,9 +69,6 @@
                     <div class="col-12">
 
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">View All Role <a th:href="@{/user-role/list}">List</a></h3>
-                            </div>
 
                             <form th:action="@{/user-role/save}" method="post"
                                   th:object="${role}">
@@ -100,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Save</button>
                                 </div>
                             </form>
                         </div>
