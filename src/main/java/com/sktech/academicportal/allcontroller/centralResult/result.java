@@ -30,6 +30,11 @@ public class result {
     }
 
 
+    /**
+     * After add button clicked we got user id
+     * Using the user id we find out the user and sent to the form through model attribute
+     * And we send the Student Result for scanning the StudentResult variable
+     */
     @GetMapping("/add/{id}")
     public String resultAdd(@PathVariable Integer id, Model model) {
 
@@ -43,6 +48,12 @@ public class result {
     }
 
 
+    /**
+     * After click button to save we got user id and StudentResult object
+     * All result save to the resultDB
+     * Take the newly saved result id and through id we find the whole Student result Optional data
+     * And finally saved into the user variable which is studentResults.
+     */
     @PostMapping("/addProcess/{id}")
     public String processResultAddForm(@PathVariable Integer id,
                                        @ModelAttribute("result") StudentResult result) {

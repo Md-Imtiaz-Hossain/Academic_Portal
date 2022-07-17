@@ -18,10 +18,6 @@ public class ResultRepositoryService {
         return resultRepository.findAll();
     }
 
-    public List<StudentResult> getAllResult() {
-        return resultRepository.findAll();
-    }
-
     public Optional<StudentResult> getResultById(Integer id) {
         return resultRepository.findById(id);
     }
