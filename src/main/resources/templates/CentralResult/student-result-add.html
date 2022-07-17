@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Subject Assign </h1>
+                        <h1>Add Mark </h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Subject Assign</li>
+                            <li class="breadcrumb-item active">Add Mark</li>
                         </ol>
                     </div>
                 </div>
@@ -70,12 +70,13 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">View Student & Subject Assigned <a th:href="@{/subject-assign-s/assignStudent}">List</a></h3>
+                                <h3 class="card-title">View Student & Marks <a
+                                        th:href="@{/central-result/list}"> List</a></h3>
                             </div>
 
-                            <form th:action="@{/subject-assign-s/update/{id} (id=${user.id})}" method="POST"
+                            <form th:action="@{/central-result/addProcess/{id} (id=${user.id})}" method="POST"
                                   enctype="multipart/form-data"
-                                  th:object="${user}">
+                                  th:object="${result}">
 
                                 <div class="card-body">
 
@@ -83,26 +84,25 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label for="firstName">First Name</label>
-                                                <input type="text" class="form-control" id="firstName"
-                                                       th:field="*{firstName}" disabled
-                                                       placeholder="First Name">
+                                                <label for="ct1Mark">CT - 1</label>
+                                                <input type="text" class="form-control" id="ct1Mark"
+                                                       th:field="*{ct1Mark}"
+                                                       placeholder="ct - 1">
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="lastName">Last Name</label>
-                                                <input type="text" class="form-control" id="lastName"
-                                                       th:field="*{lastName}" disabled
-                                                       placeholder="First Name">
+                                                <label for="ct2Mark">CT - 2</label>
+                                                <input type="text" class="form-control" id="ct2Mark"
+                                                       th:field="*{ct2Mark}"
+                                                       placeholder="ct - 2">
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email"
-                                                       th:field="*{email}" disabled
-                                                       placeholder="Email">
+                                                <label for="ct3Mark">CT - 3</label>
+                                                <input type="text" class="form-control" id="ct3Mark"
+                                                       th:field="*{ct3Mark}"
+                                                       placeholder="ct - 3">
                                             </div>
-
 
                                         </div>
 
@@ -110,30 +110,25 @@
                                         <div class="col-md-6">
 
                                             <div class="form-group">
-                                                <label>Assigned Subject</label>
-                                                <div>
-                                                    <th:block th:each="subject : ${subjectList}">
-                                                        <input checked type="checkbox" th:field="*{subjects}"
-                                                               th:text="${subject.subjectName}" th:value="${subject.id}"
-                                                               class="m-2"/>
-                                                        -- <small>
-                                                        Subject Code- [[${subject.subjectCode}]]
-                                                        , Class- [[${subject.subjectClass}]]
-                                                        , Subject Type- [[${subject.subjectType}]]
-                                                    </small>
-                                                        <br>
-                                                    </th:block>
-                                                </div>
+                                                <label for="midMark">Mid Mark</label>
+                                                <input type="text" class="form-control" id="midMark"
+                                                       th:field="*{midMark}"
+                                                       placeholder="Mid Mark">
                                             </div>
 
+                                            <div class="form-group">
+                                                <label for="finalMark">Final Mark</label>
+                                                <input type="text" class="form-control" id="finalMark"
+                                                       th:field="*{finalMark}"
+                                                       placeholder="Final Mark">
+                                            </div>
 
                                         </div>
-
 
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                    <button type="submit" class="btn btn-primary btn-block">Save</button>
                                 </div>
                             </form>
                         </div>

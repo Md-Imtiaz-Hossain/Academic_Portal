@@ -71,12 +71,12 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">View Student & Subject Assigned <a
-                                        th:href="@{/subject-assign-s/assignStudent}">List</a></h3>
+                                        th:href="@{/teacher-portal/resultList}">List</a></h3>
                             </div>
 
                             <form th:action="@{/teacher-portal/update/{id} (id=${user.id})}" method="POST"
                                   enctype="multipart/form-data"
-                                  th:object="${allResult}">
+                                  th:object="${user}">
 
                                 <div class="card-body">
 
@@ -86,22 +86,8 @@
                                             <div class="form-group">
                                                 <label for="firstName">First Name</label>
                                                 <input type="text" class="form-control" id="firstName"
-                                                       th:field="*{ct1Mark}" disabled
+                                                       th:field="*{email}"
                                                        placeholder="First Name">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="lastName">Last Name</label>
-                                                <input type="text" class="form-control" id="lastName"
-                                                       th:field="*{lastName}" disabled
-                                                       placeholder="First Name">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email"
-                                                       th:field="*{email}" disabled
-                                                       placeholder="Email">
                                             </div>
 
 
@@ -110,29 +96,24 @@
                                         <!-- /.col -->
                                         <div class="col-md-6">
 
-<!--                                            <div class="form-group">-->
-<!--                                                <label for="lastName">Results</label>-->
-<!--                                                <th:block th:each="r : ${allResult}">-->
-<!--                                                    <input type="text" th:field="*{studentResults}"-->
-<!--                                                           th:text="${r.ct1Mark}" th:value="${r.id}"-->
-<!--                                                           class="form-control"/>-->
-<!--                                                    <br>-->
-<!--                                                </th:block>-->
-<!--                                            </div>-->
-
-
-                                            <div class="form-group" th:each="r : ${allResult}">
+                                            <div class="form-group">
                                                 <label>CT 1</label>
-                                                <input type="number" th:field="*{studentResults}"
-                                                       th:text="${ct1Mark}" th:value="${r.id}"
-                                                       class="form-control"/>
+                                                <th:block th:each="r : ${allResult}">
+                                                    <input type="number" th:field="*{studentResults}"
+                                                            th:value="${r.ct1Mark}"
+                                                           class="form-control"/>
+                                                    <br>
+                                                </th:block>
                                             </div>
 
-                                            <div class="form-group" th:each="r : ${allResult}">
+                                            <div class="form-group">
                                                 <label>CT 2</label>
-                                                <input type="number" th:field="*{studentResults}"
-                                                       th:text="${r.ct2Mark}" th:value="${r.id}"
-                                                       class="form-control"/>
+                                                <th:block th:each="r : ${allResult}">
+                                                    <input type="number" th:field="*{studentResults}"
+                                                            th:value="${r.ct2Mark}"
+                                                           class="form-control"/>
+                                                    <br>
+                                                </th:block>
                                             </div>
 
 

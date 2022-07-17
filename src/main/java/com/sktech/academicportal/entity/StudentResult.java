@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@Table(name = "Result")
 public class StudentResult {
 
     @Id
@@ -41,13 +42,10 @@ public class StudentResult {
 
     @Override
     public String toString() {
-        return "StudentResult{" +
-                "id=" + id +
-                ", ct1Mark=" + ct1Mark +
-                ", ct2Mark=" + ct2Mark +
-                ", ct3Mark=" + ct3Mark +
-                ", midMark=" + midMark +
-                ", finalMark=" + finalMark +
-                '}';
+        return "CT (1) = " + ct1Mark + "\n" +
+                "___ CT (2) = " + ct2Mark + "\n" +
+                "___ CT (3) = " + ct3Mark + "\n" +
+                "___ Mid  = " + midMark + "\n" +
+                "___ Final = " + finalMark ;
     }
 }

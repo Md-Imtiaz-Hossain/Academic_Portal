@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Subject Assign </h1>
+                        <h1>Student and Marks List</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Subject Assign</li>
+                            <li class="breadcrumb-item active">Student and Marks List</li>
                         </ol>
                     </div>
                 </div>
@@ -69,73 +69,47 @@
                     <div class="col-12">
 
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">View Student & Subject Assigned <a th:href="@{/subject-assign-s/assignStudent}">List</a></h3>
+                            <div class="card-body">
+
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Name & Email</th>
+                                        <th>Class & Section</th>
+                                        <th>Result</th>
+                                        <th>Action</th>
+                                    </tr>
+
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="u: ${user}">
+
+                                        <td th:text="${u.id}"></td>
+                                        <td>
+                                            <span th:text="${u.fullName}"></span><br>
+                                            <span th:text="${u.email}"></span><br>
+                                        </td>
+                                        <td>
+                                            <span th:text="Class + ' - ' + ${u.currentClass}"></span><br>
+                                            <span th:text="Sec + ' - ' + ${u.classSection}"></span><br>
+                                            <span th:text="Roll + ' - ' + ${u.classRoll}"></span>
+                                        </td>
+                                        <td th:text="${u.studentResults}"></td>
+                                        <td>
+                                            <a th:href="@{/central-result/add/{id} (id=${u.id})}"
+                                               class="btn btn-primary"><i class="fas fa-plus ml-2"></i>
+                                                Add</a>
+
+                                            <a th:href="@{/central-result/update/{id} (id=${u.id})}"
+                                               class="btn btn-info"><i class="fas fa-edit ml-2"></i>
+                                                Update</a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
-
-                            <form th:action="@{/subject-assign-s/update/{id} (id=${user.id})}" method="POST"
-                                  enctype="multipart/form-data"
-                                  th:object="${user}">
-
-                                <div class="card-body">
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label for="firstName">First Name</label>
-                                                <input type="text" class="form-control" id="firstName"
-                                                       th:field="*{firstName}" disabled
-                                                       placeholder="First Name">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="lastName">Last Name</label>
-                                                <input type="text" class="form-control" id="lastName"
-                                                       th:field="*{lastName}" disabled
-                                                       placeholder="First Name">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email"
-                                                       th:field="*{email}" disabled
-                                                       placeholder="Email">
-                                            </div>
-
-
-                                        </div>
-
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label>Assigned Subject</label>
-                                                <div>
-                                                    <th:block th:each="subject : ${subjectList}">
-                                                        <input checked type="checkbox" th:field="*{subjects}"
-                                                               th:text="${subject.subjectName}" th:value="${subject.id}"
-                                                               class="m-2"/>
-                                                        -- <small>
-                                                        Subject Code- [[${subject.subjectCode}]]
-                                                        , Class- [[${subject.subjectClass}]]
-                                                        , Subject Type- [[${subject.subjectType}]]
-                                                    </small>
-                                                        <br>
-                                                    </th:block>
-                                                </div>
-                                            </div>
-
-
-                                        </div>
-
-
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                                </div>
-                            </form>
+                            <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
@@ -211,7 +185,7 @@
         });
     });
 </script>
-
-
 </body>
 </html>
+
+

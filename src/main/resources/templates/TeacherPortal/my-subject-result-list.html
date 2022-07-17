@@ -78,7 +78,7 @@
                                         <th>Full Name</th>
                                         <th>Email</th>
                                         <th>Results</th>
-                                        <th>ct1</th>
+
                                         <th>Action</th>
                                     </tr>
 
@@ -90,9 +90,7 @@
                                         <td th:text="${u.fullName}"></td>
                                         <td th:text="${u.email}"></td>
                                         <td th:text="${u.studentResults}"></td>
-                                        <td th:each=" r : ${allResult}">
-                                            <span th:text="${u.ct1Mark}"></span>
-                                        </td>
+
 
                                         <td>
                                             <a th:href="@{/teacher-portal/edit/{id}(id=${u.id})}"
