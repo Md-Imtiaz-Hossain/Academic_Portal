@@ -1,8 +1,8 @@
-package com.sktech.academicportal.allcontroller.subject;
+package com.sktech.academicportal.controllers.subject;
 
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.enums.AcademicClass;
-import com.sktech.academicportal.service.SubjectRepositoryService;
+import com.sktech.academicportal.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class SubjectList {
 
     @Autowired
-    SubjectRepositoryService subjectRepositoryService;
+    SubjectService subjectService;
 
 
     // List of all subject
@@ -21,9 +21,9 @@ public class SubjectList {
     public String subjectHome(Model model){
 
         model.addAttribute("pageTitle", "Subject List");
-        model.addAttribute("subjectList", subjectRepositoryService.getAllSubject());
+        model.addAttribute("subjectList", subjectService.getAllSubject());
 
-        return "/SubjectList/subject-list";
+        return "/subjectlist/subject-list";
     }
 
 
@@ -37,7 +37,7 @@ public class SubjectList {
         model.addAttribute("class", AcademicClass.values());
         model.addAttribute("subject", subject);
 
-        return "/SubjectList/subject-new-form";
+        return "/subjectlist/subject-new-form";
     }
 
 
@@ -45,7 +45,7 @@ public class SubjectList {
     @PostMapping("/save")
     public String processSubjectForm(@ModelAttribute("subject") Subject subject){
 
-        subjectRepositoryService.saveSubject(subject);
+        subjectService.saveSubject(subject);
 
         return "redirect:/subject/list";
     }
@@ -57,9 +57,9 @@ public class SubjectList {
 
         model.addAttribute("pageTitle", "Edit  Subject Information");
         model.addAttribute("class", AcademicClass.values());
-        model.addAttribute("subject", subjectRepositoryService.getSubjectById(id));
+        model.addAttribute("subject", subjectService.getSubjectById(id));
 
-        return "/SubjectList/subject-update-form";
+        return "/subjectlist/subject-update-form";
     }
 
 
@@ -67,7 +67,7 @@ public class SubjectList {
     @PostMapping("/update/{id}")
     public String updateSubject(@PathVariable Integer id, @ModelAttribute("subject") Subject subject) {
 
-        Subject existingSubject = subjectRepositoryService.getSubjectById(id);
+        Subject existingSubject = subjectService.getSubjectById(id);
         existingSubject.setId(id);
         existingSubject.setSubjectName(subject.getSubjectName());
         existingSubject.setSubjectCode(subject.getSubjectCode());
@@ -76,7 +76,7 @@ public class SubjectList {
 
 
         // save updated student object
-        subjectRepositoryService.updateSubject(existingSubject);
+        subjectService.updateSubject(existingSubject);
         return "redirect:/subject/list";
     }
 
@@ -84,7 +84,7 @@ public class SubjectList {
     // Delete the Subject information and confirm before delete.
     @GetMapping("/delete/{id}")
     public String deleteSubject(@PathVariable Integer id) {
-        subjectRepositoryService.deleteSubjectById(id);
+        subjectService.deleteSubjectById(id);
         return "redirect:/subject/list";
     }
 

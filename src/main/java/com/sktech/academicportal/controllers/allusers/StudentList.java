@@ -1,10 +1,10 @@
-package com.sktech.academicportal.allcontroller.allUsers;
+package com.sktech.academicportal.controllers.allusers;
 
 
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.enums.AcademicSection;
-import com.sktech.academicportal.service.UserRepositoryService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/student")
-public class studentList {
+public class StudentList {
 
     @Autowired
-    UserRepositoryService userRepositoryService;
+    UserService userService;
 
     // View All Student store in DB with Datatable
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Student List");
-        model.addAttribute("userListWithStudentRole", userRepositoryService.getAllUserByStudentRole());
-        return "/StudentList/student-list";
+        model.addAttribute("userListWithStudentRole", userService.getAllUserByStudentRole());
+        return "/studentlist/student-list";
     }
 
 
@@ -33,9 +33,9 @@ public class studentList {
         model.addAttribute("pageTitle", "Edit  Student Information");
         model.addAttribute("currentClass", AcademicClass.values());
         model.addAttribute("classSection", AcademicSection.values());
-        model.addAttribute("user", userRepositoryService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
 
-        return "/StudentList/student-update-form";
+        return "/studentlist/student-update-form";
     }
 
 
@@ -43,7 +43,7 @@ public class studentList {
     @PostMapping("/update/{id}")
     public String updateStudent(@PathVariable Integer id,  @ModelAttribute("user") User user, Model model) {
 
-        User existingStudent = userRepositoryService.getUserById(id);
+        User existingStudent = userService.getUserById(id);
         existingStudent.setId(id);
         existingStudent.setFatherName(user.getFatherName());
         existingStudent.setMotherName(user.getMotherName());
@@ -59,7 +59,7 @@ public class studentList {
 
 
         // save updated student object
-        userRepositoryService.updateUser(existingStudent);
+        userService.updateUser(existingStudent);
         return "redirect:/student/list";
     }
 

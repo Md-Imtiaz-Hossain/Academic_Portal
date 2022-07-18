@@ -5,22 +5,20 @@ import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.repository.ResultRepository;
-import com.sktech.academicportal.repository.RoleRepository;
-import com.sktech.academicportal.repository.UserRepository;
+import com.sktech.academicportal.repositories.ResultRepository;
+import com.sktech.academicportal.repositories.RoleRepository;
+import com.sktech.academicportal.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 
 @Service
-public class UserRepositoryService {
+public class UserService {
 
     @Autowired
     UserRepository userRepository;

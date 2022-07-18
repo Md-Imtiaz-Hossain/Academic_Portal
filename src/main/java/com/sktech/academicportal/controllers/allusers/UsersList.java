@@ -1,10 +1,9 @@
-package com.sktech.academicportal.allcontroller.allUsers;
+package com.sktech.academicportal.controllers.allusers;
 
 import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.helper.FileUploadUtil;
-import com.sktech.academicportal.service.UserRepositoryService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,10 +16,10 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class usersList {
+public class UsersList {
 
     @Autowired
-    UserRepositoryService userRepositoryService;
+    UserService userService;
 
 
     // View All User store in DB with Datatable
@@ -28,9 +27,9 @@ public class usersList {
     public String viewUserListPage(Model model) {
 
         model.addAttribute("pageTitle", "User List");
-        model.addAttribute("user", userRepositoryService.getAllUser());
+        model.addAttribute("user", userService.getAllUser());
 
-        return "/BackEndUsersList/user-list";
+        return "/backenduserslist/user-list";
     }
 
     // For create a new User. Open a from for create new Student
@@ -38,13 +37,13 @@ public class usersList {
     public String addNewUserForm(Model model) {
 
         User user = new User();
-        List<Role> listRoles = userRepositoryService.listRoles();
+        List<Role> listRoles = userService.listRoles();
 
         model.addAttribute("pageTitle", "User Registration");
         model.addAttribute("listRoles", listRoles);
         model.addAttribute("user", user);
 
-        return "/BackEndUsersList/user-new-form";
+        return "/backenduserslist/user-new-form";
     }
 
 
@@ -56,7 +55,7 @@ public class usersList {
         if (!multipartFile.isEmpty()) {
             String fileNameSelected = StringUtils.cleanPath(multipartFile.getOriginalFilename());
             user.setPhotos(fileNameSelected);
-            Integer userId = userRepositoryService.saveUser(user).getId();
+            Integer userId = userService.saveUser(user).getId();
 
             String uploadDir = "user-photos/" + userId;
             FileUploadUtil.cleanDirectory(uploadDir);
@@ -65,7 +64,7 @@ public class usersList {
             if (user.getPhotos().isEmpty()) {
                 user.setPhotos(null);
             }
-            userRepositoryService.saveUser(user);
+            userService.saveUser(user);
         }
 
         //userRepositoryService.saveUser(user);
@@ -77,13 +76,13 @@ public class usersList {
     @GetMapping("/edit/{id}")
     public String editUserForm(@PathVariable Integer id, Model model) {
 
-        List<Role> listRoles = userRepositoryService.listRoles();
+        List<Role> listRoles = userService.listRoles();
 
         model.addAttribute("pageTitle", "Edit  User Information");
-        model.addAttribute("user", userRepositoryService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("listRoles", listRoles);
 
-        return "/BackEndUsersList/user-update-form";
+        return "/backenduserslist/user-update-form";
     }
 
 
@@ -91,18 +90,18 @@ public class usersList {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user, Model model) {
 
-        User existingUser = userRepositoryService.getUserById(id);
+        User existingUser = userService.getUserById(id);
         existingUser.setId(id);
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
         existingUser.setEmail(user.getEmail());
         existingUser.setRoles(user.getRoles());
 
-        String encodedPassword = userRepositoryService.encodePasswordUsingString(user.getPassword());
+        String encodedPassword = userService.encodePasswordUsingString(user.getPassword());
         existingUser.setPassword(encodedPassword);
 
         // save updated student object
-        userRepositoryService.updateUser(existingUser);
+        userService.updateUser(existingUser);
         return "redirect:/user/list";
     }
 
@@ -110,7 +109,7 @@ public class usersList {
     // Delete the person information and confirm before delete.
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable Integer id) {
-        userRepositoryService.deleteUserById(id);
+        userService.deleteUserById(id);
         return "redirect:/user/list";
     }
 

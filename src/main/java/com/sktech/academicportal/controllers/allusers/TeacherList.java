@@ -1,10 +1,10 @@
-package com.sktech.academicportal.allcontroller.allUsers;
+package com.sktech.academicportal.controllers.allusers;
 
 
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.enums.AcademicSection;
 import com.sktech.academicportal.enums.Designation;
-import com.sktech.academicportal.service.UserRepositoryService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,17 +12,17 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/teacher")
-public class teacherList {
+public class TeacherList {
 
     @Autowired
-    UserRepositoryService userRepositoryService;
+    UserService userService;
 
     // View All Student store in DB with Datatable
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Teacher List");
-        model.addAttribute("getAllUserWithoutAdminAndStudentRole", userRepositoryService.getAllUserWithoutAdminAndStudentRole());
-        return "/TeacherList/teacher-list";
+        model.addAttribute("getAllUserWithoutAdminAndStudentRole", userService.getAllUserWithoutAdminAndStudentRole());
+        return "/teacherlist/teacher-list";
     }
 
 
@@ -33,9 +33,9 @@ public class teacherList {
         model.addAttribute("pageTitle", "Edit  Teacher Information");
         model.addAttribute("designation", Designation.values());
         model.addAttribute("classSection", AcademicSection.values());
-        model.addAttribute("user", userRepositoryService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
 
-        return "/TeacherList/teacher-update-form";
+        return "/teacherlist/teacher-update-form";
     }
 
 
@@ -43,7 +43,7 @@ public class teacherList {
     @PostMapping("/update/{id}")
     public String updateStudent(@PathVariable Integer id, @ModelAttribute("user") User user, Model model) {
 
-        User existingTeacher = userRepositoryService.getUserById(id);
+        User existingTeacher = userService.getUserById(id);
         existingTeacher.setId(id);
         existingTeacher.setFatherName(user.getFatherName());
         existingTeacher.setMotherName(user.getMotherName());
@@ -57,7 +57,7 @@ public class teacherList {
 
 
         // save updated student object
-        userRepositoryService.updateUser(existingTeacher);
+        userService.updateUser(existingTeacher);
         return "redirect:/teacher/list";
     }
 

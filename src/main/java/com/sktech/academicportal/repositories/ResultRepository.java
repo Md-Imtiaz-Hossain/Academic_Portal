@@ -1,4 +1,4 @@
-package com.sktech.academicportal.repository;
+package com.sktech.academicportal.repositories;
 
 
 import com.sktech.academicportal.entity.StudentResult;

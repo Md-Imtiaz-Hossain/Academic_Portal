@@ -2,7 +2,7 @@ package com.sktech.academicportal.security;
 
 
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.repository.UserRepository;
+import com.sktech.academicportal.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

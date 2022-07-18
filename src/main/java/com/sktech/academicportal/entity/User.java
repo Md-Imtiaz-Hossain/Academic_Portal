@@ -56,10 +56,10 @@ public class User {
     @Column(name = "mother_name")
     private String motherName;
 
-    @Column(name = "academic_ID")
+    @Column(name = "academic_id")
     private String academicID;
 
-    @Column(name = "contact_No")
+    @Column(name = "contact_no")
     private String contactNo;
 
     @Column(name = "address")
@@ -96,18 +96,18 @@ public class User {
 
 
     // User (Teacher and all other role)
-    @Column(name = "subject_Speciality")
+    @Column(name = "subject_speciality")
     private String subjectSpeciality;
 
     @Column(name = "designation")
     private String designation;
 
-    @Column(name = "teachingStart_date")
+    @Column(name = "teaching_start_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date teachingStartDate;
 
-    @Column(name = "teachingEnd_date")
+    @Column(name = "teaching_end_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date teachingEndDate;

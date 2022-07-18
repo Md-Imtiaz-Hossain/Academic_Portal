@@ -1,10 +1,9 @@
-package com.sktech.academicportal.allcontroller.centralResult;
+package com.sktech.academicportal.controllers.centralresult;
 
 import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.repository.UserRepository;
-import com.sktech.academicportal.service.ResultRepositoryService;
-import com.sktech.academicportal.service.UserRepositoryService;
+import com.sktech.academicportal.service.ResultService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,19 +13,19 @@ import java.util.*;
 
 @Controller
 @RequestMapping("/central-result")
-public class result {
+public class Result {
 
     @Autowired
-    UserRepositoryService userRepositoryService;
+    UserService userService;
 
     @Autowired
-    ResultRepositoryService resultRepositoryService;
+    ResultService resultService;
 
 
     @GetMapping("/list")
     public String resultHome(Model model) {
-        model.addAttribute("user", userRepositoryService.getAllUserByStudentRole());
-        return "/CentralResult/student-result-list";
+        model.addAttribute("user", userService.getAllUserByStudentRole());
+        return "/centralresult/student-result-list";
     }
 
 
@@ -41,10 +40,10 @@ public class result {
         StudentResult results = new StudentResult();
 
         model.addAttribute("pageTitle", "Result Add");
-        model.addAttribute("user", userRepositoryService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("result", results);
 
-        return "/CentralResult/student-result-add";
+        return "/centralresult/student-result-add";
     }
 
 
@@ -58,11 +57,11 @@ public class result {
     public String processResultAddForm(@PathVariable Integer id,
                                        @ModelAttribute("result") StudentResult result) {
 
-        Integer studentsResultId = resultRepositoryService.save(result);
-        Optional<StudentResult> r = resultRepositoryService.getResultById(studentsResultId);
-        User user = userRepositoryService.getUserById(id);
+        Integer studentsResultId = resultService.save(result);
+        Optional<StudentResult> r = resultService.getResultById(studentsResultId);
+        User user = userService.getUserById(id);
         user.setStudentResults(r.get());
-        userRepositoryService.saveUser(user);
+        userService.saveUser(user);
 
         return "redirect:/central-result/list";
     }
@@ -70,14 +69,14 @@ public class result {
     @GetMapping("/update/{id}")
     public String resultUpdate(@PathVariable Integer id, Model model) {
 
-        User u = userRepositoryService.getUserById(id);
+        User u = userService.getUserById(id);
         StudentResult studentResults = u.getStudentResults();
 
         model.addAttribute("pageTitle", "Result Add");
-        model.addAttribute("user", userRepositoryService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("result", studentResults);
 
-        return "/CentralResult/student-result-update";
+        return "/centralresult/student-result-update";
     }
 
 
@@ -85,11 +84,11 @@ public class result {
     public String processResultUpdateForm(@PathVariable Integer id,
                                           @ModelAttribute("result") StudentResult result) {
 
-        Integer studentResultId = resultRepositoryService.save(result);
-        Optional<StudentResult> resultById = resultRepositoryService.getResultById(studentResultId);
-        User user = userRepositoryService.getUserById(id);
+        Integer studentResultId = resultService.save(result);
+        Optional<StudentResult> resultById = resultService.getResultById(studentResultId);
+        User user = userService.getUserById(id);
         user.setStudentResults(resultById.get());
-        userRepositoryService.saveUser(user);
+        userService.saveUser(user);
 
         return "redirect:/central-result/list";
     }

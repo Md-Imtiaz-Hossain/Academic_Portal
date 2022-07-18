@@ -1,7 +1,7 @@
 package com.sktech.academicportal.service;
 
 import com.sktech.academicportal.entity.Subject;
-import com.sktech.academicportal.repository.SubjectRepository;
+import com.sktech.academicportal.repositories.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Service
-public class SubjectRepositoryService {
+public class SubjectService {
 
     @Autowired
     SubjectRepository subjectRepository;

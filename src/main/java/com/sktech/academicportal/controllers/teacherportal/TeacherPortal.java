@@ -1,44 +1,40 @@
-package com.sktech.academicportal.allcontroller.teacherPortal;
+package com.sktech.academicportal.controllers.teacherportal;
 
-import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.Subject;
-import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.service.ResultRepositoryService;
-import com.sktech.academicportal.service.UserRepositoryService;
+import com.sktech.academicportal.service.ResultService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("/teacher-portal")
 public class TeacherPortal {
 
     @Autowired
-    UserRepositoryService userRepositoryService;
+    UserService userService;
 
     @Autowired
-    ResultRepositoryService resultRepositoryService;
+    ResultService resultService;
 
-    @GetMapping("/mySubject")
+    @GetMapping("/my-subject")
     public String teacherPortalHome(Model model, Principal principal){
 
         // Get the logged-in user email
         String principalName = principal.getName();
         // Get the list of Subject using logged-in user email
-        List<Subject> allAssignedSubjectToATeacher = userRepositoryService.getAllAssignedSubjectToATeacher(principalName);
+        List<Subject> allAssignedSubjectToATeacher = userService.getAllAssignedSubjectToATeacher(principalName);
 
         model.addAttribute("pageTitle", "Assigned Subject List of Logged-in User");
         model.addAttribute("principalName", principalName);
-        model.addAttribute("user", userRepositoryService.getAllUser());
+        model.addAttribute("user", userService.getAllUser());
         model.addAttribute("allAssignedSubjectToATeacher", allAssignedSubjectToATeacher);
 
-        return "TeacherPortal/taking-subject-of-mine";
+        return "teacherportal/taking-subject-of-mine";
     }
 
 

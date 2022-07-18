@@ -1,9 +1,9 @@
-package com.sktech.academicportal.allcontroller.subject;
+package com.sktech.academicportal.controllers.subject;
 
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.service.SubjectRepositoryService;
-import com.sktech.academicportal.service.UserRepositoryService;
+import com.sktech.academicportal.service.SubjectService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,18 +16,18 @@ import java.util.List;
 public class SubjectAssignTeacher {
 
     @Autowired
-    UserRepositoryService userRepositoryService;
+    UserService userService;
 
     @Autowired
-    SubjectRepositoryService subjectRepositoryService;
+    SubjectService subjectService;
 
-    @GetMapping("/assignTeacher")
+    @GetMapping("/assign-teacher")
     public String subjectAssign( Model model ){
 
         model.addAttribute("pageTitle", "Teacher and Assigned Subjects");
-        model.addAttribute("user", userRepositoryService.getAllUserWithoutStudentRole());
+        model.addAttribute("user", userService.getAllUserWithoutStudentRole());
 
-        return "/SubjectAssign/assign-And-list-teacher";
+        return "/subjectassign/assign-And-list-teacher";
     }
 
 
@@ -36,13 +36,13 @@ public class SubjectAssignTeacher {
     @GetMapping("/edit/{id}")
     public String editUserForm(@PathVariable Integer id, Model model) {
 
-        List<Subject> subjectList = subjectRepositoryService.getAllSubject();
+        List<Subject> subjectList = subjectService.getAllSubject();
 
         model.addAttribute("pageTitle", "Update Assigned Subject Information");
-        model.addAttribute("user", userRepositoryService.getUserById(id));
+        model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("subjectList", subjectList);
 
-        return "/SubjectAssign/subject-Assign-update-form";
+        return "/subjectassign/subject-Assign-update-form";
     }
 
 
@@ -50,13 +50,13 @@ public class SubjectAssignTeacher {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user) {
 
-        User existingUser = userRepositoryService.getUserById(id);
+        User existingUser = userService.getUserById(id);
         existingUser.setId(id);
         existingUser.setSubjects(user.getSubjects());
 
         // save updated student object
-        userRepositoryService.updateUser(existingUser);
-        return "redirect:/subject-assign-t/assignTeacher";
+        userService.updateUser(existingUser);
+        return "redirect:/subject-assign-t/assign-teacher";
     }
 
 }

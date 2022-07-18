@@ -43,9 +43,9 @@ public class StudentResult {
     @Override
     public String toString() {
         return "CT (1) = " + ct1Mark + "\n" +
-                "_,_ CT (2) = " + ct2Mark + "\n" +
-                "_,_ CT (3) = " + ct3Mark + "\n" +
-                "_,_ Mid  = " + midMark + "\n" +
-                "_,_ Final = " + finalMark ;
+                " ,  CT (2) = " + ct2Mark + "\n" +
+                " ,  CT (3) = " + ct3Mark + "\n" +
+                " ,  Mid  = " + midMark + "\n" +
+                " ,  Final = " + finalMark ;
     }
 }
