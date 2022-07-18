@@ -21,6 +21,7 @@ public class TeacherPortal {
     @Autowired
     ResultService resultService;
 
+    // List of subject assign to me.
     @GetMapping("/my-subject")
     public String teacherPortalHome(Model model, Principal principal){
 
@@ -35,6 +36,14 @@ public class TeacherPortal {
         model.addAttribute("allAssignedSubjectToATeacher", allAssignedSubjectToATeacher);
 
         return "teacherportal/taking-subject-of-mine";
+    }
+
+    // Get all student Using subject id for result creation.
+    @GetMapping("/result/{subjectId}")
+    public String subjectHome(@PathVariable Integer subjectId,  Model model) {
+        model.addAttribute("pageTitle", "Subject List with user");
+        model.addAttribute("user", userService.getAllUserBySubjectId(subjectId));
+        return "/teacherportal/student-subject-list-using-subjectid";
     }
 
 

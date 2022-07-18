@@ -86,13 +86,30 @@ public class UserService {
         for (User u : userList) {
             for (Role r : u.getRoles()) {
                 if (Objects.equals(r.getName(), "Student")) {
-                    System.out.println(u);
                     userListWithStudentRole.add(u);
                 }
             }
         }
-        System.out.println(userListWithStudentRole);
         return userListWithStudentRole;
+    }
+
+
+    // This methode will return with user List which contain Role-Student
+    public List<User> getAllUserBySubjectId(Integer subjectId) {
+
+        List<User> getAllUserBySubjectId = new ArrayList<>();
+        List<User> userList = getAllUserByStudentRole();
+
+        for (User u : userList) {
+            for (Subject r : u.getSubjects()) {
+                if (Objects.equals(r.getId(), subjectId)) {
+                    System.out.println(u);
+                    getAllUserBySubjectId.add(u);
+                }
+            }
+        }
+        System.out.println(getAllUserBySubjectId);
+        return getAllUserBySubjectId;
     }
 
     // This methode will return with user List which contain all Role except Admin and student
@@ -108,7 +125,6 @@ public class UserService {
                 }
             }
         }
-        System.out.println(getAllUserWithoutAdminRole);
         return getAllUserWithoutAdminRole;
     }
 

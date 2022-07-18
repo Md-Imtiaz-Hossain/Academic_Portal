@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 sec:authentication="principal.fullName" ></h1>
+                        <h1>Subject Assign </h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Assign Subject to a Teacher</li>
+                            <li class="breadcrumb-item active">Subject Assign</li>
                         </ol>
                     </div>
                 </div>
@@ -69,37 +69,90 @@
                     <div class="col-12">
 
                         <div class="card">
-                            <div class="card-body">
-
-                                <table id="example1" class="table table-bordered table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>Id</th>
-                                        <th>Subject Name</th>
-                                        <th>Subject Code</th>
-                                        <th>Subject Class</th>
-                                        <th>Subject Type</th>
-                                        <th>Action</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="user: ${allAssignedSubjectToATeacher}">
-
-                                        <td th:text="${user.id}"></td>
-                                        <td th:text="${user.subjectName}"></td>
-                                        <td th:text="${user.subjectCode}"></td>
-                                        <td th:text="${user.subjectClass}"></td>
-                                        <td th:text="${user.subjectType}"></td>
-
-                                        <td>
-                                            <a th:href="@{/teacher-portal/result/{id}(id=${user.id})}"
-                                               class="btn btn-primary"><i class="fas fa-edit ml-2"></i>  Result Update</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                            <div class="card-header">
+                                <h3 class="card-title">View Student & Subject Result <a
+                                        th:href="@{/subject-assign-s/assignStudent}">List</a></h3>
                             </div>
-                            <!-- /.card-body -->
+
+                            <form th:action="@{/student-subject-view/update/{id} (id=${result.id})}" method="POST"
+                                  th:object="${result}">
+
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div>
+                                                <h3>Student:- </h3>
+                                                <h6 th:text="*{userName}"></h6>
+                                                <h3>Subject:- </h3>
+                                                <h6 th:text="*{subjectName}"></h6>
+                                            </div>
+
+
+                                            <div hidden class="form-group">
+                                                <label for="studentName">Student Name</label>
+                                                <input type="text" class="form-control" id="studentName"
+                                                       th:field="*{userName}">
+                                            </div>
+
+                                            <div hidden class="form-group">
+                                                <label for="subjectName">Subject Name</label>
+                                                <input type="text" class="form-control" id="subjectName"
+                                                       th:field="*{subjectName}">
+                                            </div>
+
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+
+
+                                            <div class="form-group">
+                                                <label for="ct1Mark">C.T. - 1 Mark</label>
+                                                <input type="number" class="form-control" id="ct1Mark"
+                                                       th:field="*{ct1Mark}"
+                                                       placeholder="C.T. - 1">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="ct2Mark">C.T. - 2 Mark</label>
+                                                <input type="number" class="form-control" id="ct2Mark"
+                                                       th:field="*{ct2Mark}"
+                                                       placeholder="C.T. - 2">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="ct3Mark">C.T. - 3 Mark</label>
+                                                <input type="number" class="form-control" id="ct3Mark"
+                                                       th:field="*{ct3Mark}"
+                                                       placeholder="C.T. - 3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="midMark">Mid Term Mark</label>
+                                                <input type="number" class="form-control" id="midMark"
+                                                       th:field="*{midMark}"
+                                                       placeholder="Mid Term">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="finalMark">Final Mark</label>
+                                                <input type="number" class="form-control" id="finalMark"
+                                                       th:field="*{finalMark}"
+                                                       placeholder="Final">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                </div>
+                            </form>
                         </div>
                         <!-- /.card -->
                     </div>
@@ -175,5 +228,7 @@
         });
     });
 </script>
+
+
 </body>
 </html>

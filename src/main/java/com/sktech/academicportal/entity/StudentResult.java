@@ -1,10 +1,8 @@
 package com.sktech.academicportal.entity;
 
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -40,12 +38,30 @@ public class StudentResult {
     @Column(name = "final_mark")
     private Integer finalMark;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "user_name")
+    private String userName;
+    @Column(name = "subject_id")
+    private Integer subjectId;
+
+    @Column(name = "subject_name")
+    private String subjectName;
+
+
+
     @Override
     public String toString() {
-        return "CT (1) = " + ct1Mark + "\n" +
-                " ,  CT (2) = " + ct2Mark + "\n" +
-                " ,  CT (3) = " + ct3Mark + "\n" +
-                " ,  Mid  = " + midMark + "\n" +
-                " ,  Final = " + finalMark ;
+        return "StudentResult{" +
+                "id=" + id +
+                ", ct1Mark=" + ct1Mark +
+                ", ct2Mark=" + ct2Mark +
+                ", ct3Mark=" + ct3Mark +
+                ", midMark=" + midMark +
+                ", finalMark=" + finalMark +
+                ", userId=" + userId +
+                ", subjectId=" + subjectId +
+                '}';
     }
 }

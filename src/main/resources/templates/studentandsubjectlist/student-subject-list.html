@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 sec:authentication="principal.fullName" ></h1>
+                        <h1>Student and Assigned Subject</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Assign Subject to a Teacher</li>
+                            <li class="breadcrumb-item active">Student and Assigned Subject</li>
                         </ol>
                     </div>
                 </div>
@@ -69,31 +69,42 @@
                     <div class="col-12">
 
                         <div class="card">
+                            <!-- /.card-header -->
                             <div class="card-body">
 
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Subject Name</th>
-                                        <th>Subject Code</th>
-                                        <th>Subject Class</th>
-                                        <th>Subject Type</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Class</th>
+                                        <th>Assigned Subject</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="user: ${allAssignedSubjectToATeacher}">
+                                    <tr th:each="user: ${user}">
 
                                         <td th:text="${user.id}"></td>
-                                        <td th:text="${user.subjectName}"></td>
-                                        <td th:text="${user.subjectCode}"></td>
-                                        <td th:text="${user.subjectClass}"></td>
-                                        <td th:text="${user.subjectType}"></td>
-
                                         <td>
-                                            <a th:href="@{/teacher-portal/result/{id}(id=${user.id})}"
-                                               class="btn btn-primary"><i class="fas fa-edit ml-2"></i>  Result Update</a>
+                                            <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span><br>
+                                        </td>
+                                        <td th:text="${user.email}"></td>
+                                        <td th:text="${user.currentClass}"></td>
+                                        <td>
+                                            <div th:each=" sub : ${user.subjects}">
+                                                <ul>
+                                                    <li><a th:href="@{/student-subject-view/mark/{userId}/{subjectId} (userId=${user.id}, subjectId=${sub.id})}"
+                                                           th:text="${sub.subjectName} + ' ' + ${sub.subjectCode} + ' Class- ' + ${sub.subjectClass}"
+                                                           th:value="${sub.id}"></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{/student-subject-view/mark/{id}(id=${user.id})}"
+                                               class="btn btn-primary">Assign Subject</a>
                                         </td>
                                     </tr>
                                     </tbody>

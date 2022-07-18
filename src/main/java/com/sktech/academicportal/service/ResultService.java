@@ -28,4 +28,7 @@ public class ResultService {
     }
 
 
+    public void deleteById(Integer id) {
+        resultRepository.deleteById(id);
+    }
 }

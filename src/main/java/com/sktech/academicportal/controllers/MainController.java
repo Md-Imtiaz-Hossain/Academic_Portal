@@ -13,7 +13,6 @@ public class MainController {
     public String viewHomePage(Model model) {
         model.addAttribute("pageTitle", "Homepage");
         return "/home-page";
-        //return "starter-page";
     }
 
     @GetMapping("/login")
