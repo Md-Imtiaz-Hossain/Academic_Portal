@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+        <!-- Left navbar links -->
+        <ul th:replace="fragments-list::leftNavbar"></ul>
+
+        <!-- Right navbar links -->
+        <ul th:replace="fragments-list::rightNavbar"></ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Brand Logo -->
+        <a th:replace="fragments-list::brandLogo"></a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div th:replace="fragments-list::sidebarUserPanel"></div>
+
+            <!-- SidebarSearch Form -->
+            <div th:replace="fragments-list::sidebarSearchForm"></div>
+
+            <!-- Sidebar Menu -->
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="container-fluid">
+            <div class="px-lg-5">
+
+                <!-- For demo purpose -->
+                <div class="row py-5">
+                    <div class="col-lg-12 mx-auto">
+                        <div class="text-white p-5 shadow-sm rounded"
+                             style="background: #a770ef;
+                             background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+                             background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);">
+                            <h1 class="display-4">Image Gallery</h1>
+                            <p class="lead">All Images uploaded to gallery are found here</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+
+                <div class="row">
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Red paint cup</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+<!--                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">-->
+<!--                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>-->
+<!--                                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>-->
+<!--                                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-2.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Blorange</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+                                    <div class="badge badge-primary px-3 rounded-pill font-weight-normal">Trend</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-3.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">And She Realized</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+                                    <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-4.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">DOSE Juice</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPEG</span></p>
+                                    <div class="badge badge-success px-3 rounded-pill font-weight-normal">Hot</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-5.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Pineapple</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+                                    <div class="badge badge-primary px-3 rounded-pill font-weight-normal">New</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-6.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Yellow banana</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+                                    <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-7.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Teal Gameboy</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPEG</span></p>
+                                    <div class="badge badge-info px-3 rounded-pill font-weight-normal">Hot</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-8.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Color in Guatemala.</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+                                    <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-1.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Red paint cup</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+                                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">New</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-2.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Lorem ipsum dolor</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">PNG</span></p>
+                                    <div class="badge badge-primary px-3 rounded-pill font-weight-normal">Trend</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-3.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Lorem ipsum dolor</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPG</span></p>
+                                    <div class="badge badge-warning px-3 rounded-pill font-weight-normal text-white">Featured</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                    <!-- Gallery item -->
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                        <div class="bg-white rounded shadow-sm"><img src="https://bootstrapious.com/i/snippets/sn-gallery/img-4.jpg" alt="" class="img-fluid card-img-top">
+                            <div class="p-4">
+                                <h5> <a href="#" class="text-dark">Lorem ipsum dolor</a></h5>
+                                <p class="small text-muted mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                                    <p class="small mb-0"><i class="fa fa-picture-o mr-2"></i><span class="font-weight-bold">JPEG</span></p>
+                                    <div class="badge badge-success px-3 rounded-pill font-weight-normal">Hot</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End -->
+
+                </div>
+                <div class="py-5 text-right"><a href="#" class="btn btn-dark px-5 py-3 text-uppercase">Show me more</a></div>
+            </div>
+        </div>
+
+        <!-- /.content -->
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2014-2021 <a href="#">XYZ Student Portal</a>.</strong> All rights reserved.
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+<!--    -->
+</script>
+</body>
+</html>

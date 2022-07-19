@@ -1,7 +1,7 @@
 package com.sktech.academicportal.service;
 
 import com.sktech.academicportal.entity.HomepageEntity;
-import com.sktech.academicportal.repository.HomepageRepo;
+import com.sktech.academicportal.repository.HomepageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,29 +10,29 @@ import java.util.List;
 @Service
 public class HomepageRepositoryService {
     @Autowired
-    HomepageRepo homepageRepo;
+    HomepageRepository homepageRepository;
 
     public List<HomepageEntity> getAll(){
-        return homepageRepo.findAll();
+        return homepageRepository.findAll();
     }
 
     public HomepageEntity getSectionData(String s){
-        return homepageRepo.findBySection(s);
+        return homepageRepository.findBySection(s);
     }
 
     public void saveSection(HomepageEntity h){
-        homepageRepo.save(h);
+        homepageRepository.save(h);
     }
 
     public void saveMultiple(List<HomepageEntity> h){
-        homepageRepo.saveAll(h);
+        homepageRepository.saveAll(h);
     }
     public void clearAll(){
-        homepageRepo.deleteAll();
+        homepageRepository.deleteAll();
     }
 
     public void delete(HomepageEntity h){
-        homepageRepo.delete(h);
+        homepageRepository.delete(h);
     }
 
 }

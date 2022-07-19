@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Sajon Test</title>
 </head>
 <body>
-<div th:utext = ${text1}></div>
+<form th:action="@{/upload/gallery/save}" method="post" enctype="multipart/form-data">
+
+    <div>
+        <input type="text" name="heading">
+    </div>
+    <div>
+        <input type="text" name="description">
+    </div>
+
+    <div class="mb-3">
+        <input class="form-control" type="file" id="imageFile" name="image" accept="image/jpeg, image/png" required>
+    </div>
+    <div class="card-footer">
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+    </div>
+</form>
 </body>
 </html>

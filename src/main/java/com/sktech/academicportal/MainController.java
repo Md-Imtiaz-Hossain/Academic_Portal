@@ -11,9 +11,12 @@ public class MainController {
     @Autowired
     HomepageRepositoryService hrs;
 
+
+
     @GetMapping("/")
     public String viewHomePage(Model model) {
         if(hrs.getAll().isEmpty()) return "redirect:/homepage/init";
+
         model.addAttribute("sections", hrs.getAll());
         return "index";
     }
@@ -24,8 +27,13 @@ public class MainController {
     }
 
     @GetMapping("/after-login-dashboard")
-    public String afterLogin() {
+    public String afterLogin(Model model) {
         return "/after-login-dashboard";
+    }
+
+    @GetMapping("/test")
+    public String tst(){
+        return "/gallery";
     }
 
 }

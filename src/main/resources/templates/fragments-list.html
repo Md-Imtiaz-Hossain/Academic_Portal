@@ -31,7 +31,8 @@
 
 <body>
 
-<!-- Left navbar links Start -->
+
+ Left navbar links Start
 <ul th:fragment="leftNavbar" class="navbar-nav">
     <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
@@ -266,6 +267,26 @@
                     Update Result
                 </p>
             </a>
+<!--            ------------------------------------------------------------------------------------>
+            <a th:href="@{/upload/gallery}" class="nav-link active">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    Upload Gallery Images
+                </p>
+            </a>
+            <a th:href="@{/upload/notice}" class="nav-link active">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    Upload Notices
+                </p>
+            </a>
+            <a th:href="@{/edit/carousel}" class="nav-link active">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    Edit Homepage Carousel
+                </p>
+            </a>
+
             <a th:href="@{/login}" class="nav-link active">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
