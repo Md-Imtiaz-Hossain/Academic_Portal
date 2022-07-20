@@ -75,7 +75,7 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Id</th>
+                                        <th>Student Id</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Class</th>
@@ -94,8 +94,8 @@
                                         <td>
                                             <div th:each=" sub : ${user.subjects}">
                                                 <ul>
-                                                    <li><a th:href="@{/student-subject-view/mark/{userId}/{subjectId} (userId=${user.id}, subjectId=${sub.id})}"
-                                                           th:text="${sub.subjectName} + ' ' + ${sub.subjectCode} + ' Class- ' + ${sub.subjectClass}"
+                                                    <li><a th:href="@{/teacher-portal/mark/{userId}/{subjectId} (userId=${user.id}, subjectId=${sub.id})}"
+                                                           th:text="${sub.subjectName} + ' ' + ${sub.subjectCode} + ' , Class- ' + ${sub.subjectClass}"
                                                            th:value="${sub.id}"></a>
                                                     </li>
                                                 </ul>

@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Subject Assign </h1>
+                        <h1>Student Mark List</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Subject Assign</li>
+                            <li class="breadcrumb-item active">Student Mark List</li>
                         </ol>
                     </div>
                 </div>
@@ -70,60 +70,53 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">View Student & Subject Assigned <a
-                                        th:href="@{/teacher-portal/resultList}">List</a></h3>
+                                <h3 class="card-title">Student Mark <a
+                                        th:href="@{/student-subject-view/list}">Add</a></h3>
                             </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
 
-                            <form th:action="@{/teacher-portal/update/{id} (id=${user.id})}" method="POST"
-                                  enctype="multipart/form-data"
-                                  th:object="${user}">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>user Name</th>
+                                        <th>subject Name</th>
+                                        <th>C.T. - 1</th>
+                                        <th>C.T. - 2</th>
+                                        <th>C.T. - 3</th>
+                                        <th>Mid term</th>
+                                        <th>Final</th>
+                                        <th>Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="m: ${mark}">
 
-                                <div class="card-body">
+                                        <td th:text="${m.id}"></td>
+                                        <td th:text="${m.userName}"></td>
+                                        <td th:text="${m.subjectName}"></td>
+                                        <td th:text="${m.ct1Mark}"></td>
+                                        <td th:text="${m.ct2Mark}"></td>
+                                        <td th:text="${m.ct3Mark}"></td>
+                                        <td th:text="${m.midMark}"></td>
+                                        <td th:text="${m.finalMark}"></td>
 
-                                    <div class="row">
-                                        <div class="col-md-6">
+                                        <td>
+                                            <a th:href="@{/teacher-portal/edit/{id}(id=${m.id})}"
+                                               class="btn btn-primary"><i class="fas fa-edit ml-2"></i> Update</a>
 
-                                            <div class="form-group">
-                                                <label for="firstName">First Name</label>
-                                                <input type="text" class="form-control" id="firstName"
-                                                       th:field="*{email}"
-                                                       placeholder="First Name">
-                                            </div>
-
-
-                                        </div>
-
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label>CT 1</label>
-                                                <th:block th:each="r : ${allResult}">
-                                                    <input type="number" th:field="*{studentResults}"
-                                                            th:value="${r.ct1Mark}"
-                                                           class="form-control"/>
-                                                    <br>
-                                                </th:block>
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>CT 2</label>
-                                                <th:block th:each="r : ${allResult}">
-                                                    <input type="number" th:field="*{studentResults}"
-                                                            th:value="${r.ct2Mark}"
-                                                           class="form-control"/>
-                                                    <br>
-                                                </th:block>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
-                                </div>
-                            </form>
+                                            <a th:href="@{/teacher-portal/delete/{id}(id=${m.id})}"
+                                               onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"
+                                               class="btn btn-danger">
+                                                <i class="fas fa-trash ml-2"></i> Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
@@ -199,7 +192,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>

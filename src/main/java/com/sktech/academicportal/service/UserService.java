@@ -48,6 +48,10 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
+    public Integer getUserByPrincipal(String s) {
+        return userRepository.getUserByEmail(s).getId();
+    }
+
     // Update User information
     public User updateUser(User user) {
         return userRepository.save(user);

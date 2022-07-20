@@ -1,7 +1,10 @@
 package com.sktech.academicportal.controllers.teacherportal;
 
+import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.Subject;
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.service.ResultService;
+import com.sktech.academicportal.service.SubjectService;
 import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,85 +24,130 @@ public class TeacherPortal {
     @Autowired
     ResultService resultService;
 
-    // List of subject assign to me.
+    @Autowired
+    SubjectService subjectService;
+
+    // List of subject assign to me (logged in teacher).
     @GetMapping("/my-subject")
-    public String teacherPortalHome(Model model, Principal principal){
+    public String teacherPortalHome(Model model, Principal principal) {
 
-        // Get the logged-in user email
-        String principalName = principal.getName();
-        // Get the list of Subject using logged-in user email
-        List<Subject> allAssignedSubjectToATeacher = userService.getAllAssignedSubjectToATeacher(principalName);
+        String loggedInUserName = principal.getName();
+        List<Subject> allAssignedSubjectToATeacher = userService.getAllAssignedSubjectToATeacher(loggedInUserName);
 
-        model.addAttribute("pageTitle", "Assigned Subject List of Logged-in User");
-        model.addAttribute("principalName", principalName);
+        model.addAttribute("pageTitle", " Logged-in User's Assigned Subject");
+        model.addAttribute("principalName", loggedInUserName);
         model.addAttribute("user", userService.getAllUser());
         model.addAttribute("allAssignedSubjectToATeacher", allAssignedSubjectToATeacher);
 
         return "teacherportal/taking-subject-of-mine";
     }
 
+    // Mark list of Teacher(logged-in) assigned all subject's all student.
+    @GetMapping("/mark-list")
+    public String markHome(Model model, Principal principal) {
+
+        String userEmail = principal.getName();
+        List<StudentResult> resultUsingUserId = resultService.getResultUsingUserEmail(userEmail);
+
+        model.addAttribute("pageTitle", "Mark List with Username and Subject name");
+        model.addAttribute("mark", resultUsingUserId);
+
+        return "/teacherportal/student-mark-list";
+    }
+
+
     // Get all student Using subject id for result creation.
     @GetMapping("/result/{subjectId}")
-    public String subjectHome(@PathVariable Integer subjectId,  Model model) {
-        model.addAttribute("pageTitle", "Subject List with user");
+    public String subjectHome(@PathVariable Integer subjectId, Model model) {
+
+        model.addAttribute("pageTitle", "Result Add link in here");
         model.addAttribute("user", userService.getAllUserBySubjectId(subjectId));
+
         return "/teacherportal/student-subject-list-using-subjectid";
     }
 
 
-//
-//
-//
-//    @GetMapping("/resultList")
-//    public String resultList(Model model){
-//        model.addAttribute("allResult", userRepositoryService.studentResults());
-//        model.addAttribute("user", userRepositoryService.getAllUserByStudentRole());
-//        return "/TeacherPortal/my-subject-result-list";
-//    }
-//
-//
-//    // Open the Update form for Student Result Information
-//    @GetMapping("/edit/{id}")
-//    public String updateResultForm(@PathVariable Integer id, Model model) {
-//
-//        User user = userRepositoryService.getUserById(id);
-//        //List<StudentResult> allResult = user.getStudentResults();
-//        //model.addAttribute("allResult", userRepositoryService.studentResults());
-//        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++");
-//        System.out.println(user);
-//
-//        Set<StudentResult> studentResults = user.getStudentResults();
-//        System.out.println(studentResults);
-//
-//        List<StudentResult> allResult = new ArrayList<>(studentResults);
-//
-//        model.addAttribute("allResult", allResult);
-//
-//        model.addAttribute("user", userRepositoryService.getUserById(id));
-//
-//
-//        return "/TeacherPortal/my-subject-result-update";
-//    }
-//
-//
-//
-//    /**
-//     * Process the updated information after update button clicked.
-//     * Find existing user use id
-//     * Set the existing id and replace with new all attribute value with old
-//     * Finally save the user
-//     */
-//    @PostMapping("/update/{id}")
-//    public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user) {
-//
-//        User existingUser = userRepositoryService.getUserById(id);
-//        existingUser.setId(id);
-//
-//        existingUser.setStudentResults(user.getStudentResults());
-//        userRepositoryService.updateUser(existingUser);
-//
-//        return "redirect:/teacher-portal/resultList";
-//    }
+    // List of student and assigned subject
+    @GetMapping("/mark/{userId}/{subjectId}")
+    public String subjectMark(@PathVariable Integer userId,
+                              @PathVariable Integer subjectId,
+                              Model model) {
+
+        Subject getSubjectUsingSubjectId = subjectService.getSubjectById(subjectId);
+        User getUserByUsingUserId = userService.getUserById(userId);
+
+        model.addAttribute("pageTitle", "Result add");
+        model.addAttribute("subject", getSubjectUsingSubjectId);
+        model.addAttribute("user", getUserByUsingUserId);
+        model.addAttribute("result", new StudentResult());
+
+        return "/teacherportal/subject-wise-result-add";
+    }
+
+
+    // Save result
+    @PostMapping("/update/{userId}/{subjectId}")
+    public String processResultForm(@PathVariable Integer userId,
+                                    @PathVariable Integer subjectId,
+                                    @ModelAttribute("result") StudentResult result) {
+
+        Subject subjectById = subjectService.getSubjectById(subjectId);
+        User userById = userService.getUserById(userId);
+
+        String subjectName = subjectById.getSubjectName() + " " + subjectById.getSubjectCode() + " \nClass- " + subjectById.getSubjectClass();
+        String userName = userById.getFirstName() + " " + userById.getLastName() + " \nEmail- " + userById.getEmail();
+
+        result.setSubjectId(result.getSubjectId());
+        result.setUserId(result.getUserId());
+
+        result.setSubjectName(subjectName);
+        result.setUserName(userName);
+
+        resultService.save(result);
+
+        return "redirect:/teacher-portal/mark-list";
+    }
+
+
+    // Open the Update form for result
+    @GetMapping("/edit/{id}")
+    public String editUserForm(@PathVariable Integer id, Model model) {
+
+        model.addAttribute("pageTitle", "Result Update");
+        model.addAttribute("result", resultService.getResultById(id).get());
+
+        return "/teacherportal/subject-wise-result-update";
+    }
+
+
+    // Update the result
+    @PostMapping("/update-result/{id}")
+    public String updateUser(@PathVariable Integer id,
+                             @ModelAttribute("result") StudentResult result) {
+
+        StudentResult existingResult = resultService.getResultById(id).get();
+
+        existingResult.setId(id);
+        existingResult.setUserName(result.getUserName());
+        existingResult.setSubjectName(result.getSubjectName());
+        existingResult.setCt1Mark(result.getCt1Mark());
+        existingResult.setCt2Mark(result.getCt2Mark());
+        existingResult.setCt3Mark(result.getCt3Mark());
+        existingResult.setMidMark(result.getMidMark());
+        existingResult.setFinalMark(result.getFinalMark());
+
+        resultService.save(existingResult);
+
+        return "redirect:/teacher-portal/mark-list";
+    }
+
+
+    // Delete result
+    @GetMapping("/delete/{id}")
+    public String delete(@PathVariable Integer id) {
+        resultService.deleteById(id);
+        return "redirect:/teacher-portal/mark-list";
+    }
 
 
 }
