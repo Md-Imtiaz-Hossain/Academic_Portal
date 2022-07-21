@@ -1,6 +1,8 @@
 package com.sktech.academicportal.service;
 
+import com.sktech.academicportal.entity.ClassRoutine;
 import com.sktech.academicportal.entity.Subject;
+import com.sktech.academicportal.repositories.RoutineRepository;
 import com.sktech.academicportal.repositories.SubjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,13 @@ public class RoutineService {
     @Autowired
     SubjectRepository subjectRepository;
 
+    @Autowired
+    RoutineRepository routineRepository;
+
 
     // Get All Subject
-    public List<Subject> getAllSubject() {
-        return subjectRepository.findAll();
+    public List<ClassRoutine> getAllClassRoutine() {
+        return routineRepository.findAll();
     }
 
     // Save Subject

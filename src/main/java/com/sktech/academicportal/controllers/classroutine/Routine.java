@@ -1,5 +1,7 @@
 package com.sktech.academicportal.controllers.classroutine;
 
+import com.sktech.academicportal.service.RoutineService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/routine")
 public class Routine {
 
+    @Autowired
+    RoutineService routineService;
+
     @GetMapping("/all-class")
     public String home(Model model){
         System.out.println("+++++++++++++++++++++++");
 
         model.addAttribute("pageTitle", "All classes routine");
+        model.addAttribute("routineList", routineService.getAllClassRoutine());
 
         return "/classroutine/routine-all-classes";
     }
