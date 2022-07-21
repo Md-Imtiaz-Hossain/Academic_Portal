@@ -27,13 +27,14 @@ public class RoutineService {
     }
 
 
-    public List<ClassRoutine> getRoutineByClass(String classOf) {
+    public List<ClassRoutine> getRoutineByClass(String classOf) throws NullPointerException{
 
         List<ClassRoutine> routineRepositoryAll = routineRepository.findAll();
         List<ClassRoutine> routineRepositoryAllNew = new ArrayList<>();
 
         for (ClassRoutine cr : routineRepositoryAll){
-            if (cr.getSubjectClass().equals(classOf)){
+            String subjectClass = String.valueOf(cr.getSubjectClass());
+            if (subjectClass.equals(classOf)){
                 routineRepositoryAllNew.add(cr);
             }
         }

@@ -12,9 +12,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @Controller
-@RequestMapping("/routine")
-public class Routine {
+@RequestMapping("/specific-routine")
+public class ClassWiseRoutine {
 
     @Autowired
     RoutineService routineService;
@@ -22,36 +23,34 @@ public class Routine {
     @Autowired
     SubjectService subjectService;
 
-    // ========================================   Routine , Routine add from All routine form. =============================
 
-    // View all classes routine
-    @GetMapping("/all-class")
-    public String home(Model model) {
-        model.addAttribute("pageTitle", "All classes routine");
-        model.addAttribute("routineList", routineService.getAllClassRoutine());
-        return "/classroutine/routine-all-classes";
+    @GetMapping("/class/{classOf}")
+    public String home(@PathVariable String classOf, Model model) {
+        List<ClassRoutine> routineByClass = routineService.getRoutineByClass(classOf);
+        model.addAttribute("pageTitle", "Class - " + classOf + "  routine");
+        model.addAttribute("routineList", routineService.getRoutineByClass(classOf));
+        model.addAttribute("className", classOf);
+        return "/specificclassroutine/routine-using-class-name";
     }
 
-    // Add new routine from full listed.
-    @GetMapping("/new")
-    public String newRoutine(Model model) {
+    @GetMapping("/new/{className}")
+    public String newRoutine(@PathVariable String className, Model model) {
         model.addAttribute("pageTitle", "Routine Add");
         model.addAttribute("routine", new ClassRoutine());
-        model.addAttribute("classList", AcademicClass.values());
+        model.addAttribute("className", className);
         model.addAttribute("weekDays", WeekDay.values());
-        model.addAttribute("subjects", subjectService.getAllSubject());
-        return "/classroutine/new-routine";
+        model.addAttribute("subjects", subjectService.getAllSubjectByClass(className));
+        return "/specificclassroutine/new-routine";
     }
 
-    // Add routine form process
-    @PostMapping("/save")
-    public String processForm(@ModelAttribute("routine") ClassRoutine classRoutine) {
+    @PostMapping("/save/{className}")
+    public String processForm(@PathVariable String className,
+                              @ModelAttribute("routine") ClassRoutine classRoutine) {
+        classRoutine.setSubjectClass(className);
         routineService.save(classRoutine);
-        return "redirect:/routine/all-class";
+        return "redirect:/specific-routine/class/{className}";
     }
 
-
-    // Routine Update form
     @GetMapping("/edit/{id}")
     public String editRoutineForm(@PathVariable Integer id, Model model) {
         model.addAttribute("pageTitle", "Routine Update");
@@ -59,11 +58,9 @@ public class Routine {
         model.addAttribute("classList", AcademicClass.values());
         model.addAttribute("weekDays", WeekDay.values());
         model.addAttribute("subjects", subjectService.getAllSubject());
-        return "/classroutine/routine-update-form";
+        return "/allclassroutine/routine-update-form";
     }
 
-
-    // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("routine") ClassRoutine routine) {
         ClassRoutine existingRoutine = routineService.getRoutineById(id);
@@ -77,29 +74,14 @@ public class Routine {
         existingRoutine.setPeriod5th(routine.getPeriod5th());
         existingRoutine.setPeriod6th(routine.getPeriod6th());
         routineService.updateRoutine(existingRoutine);
-        return "redirect:/routine/all-class";
+        return "redirect:/specific-routine/all-class";
     }
-
 
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable Integer id) {
         routineService.deleteRoutineById(id);
-        return "redirect:/routine/all-class";
+        return "redirect:/specific-routine/all-class";
     }
 
-
-    // ========================================  Routine , Routine add from specific subject. =============================
-
-    // View  classes routine to a specific class
-    @GetMapping("/class/{classOf}")
-    public String home(@PathVariable String classOf, Model model) {
-
-        List<ClassRoutine> routineByClass = routineService.getRoutineByClass(classOf);
-
-        model.addAttribute("pageTitle", "Class - " + classOf + "  routine");
-        model.addAttribute("routineList", routineByClass);
-
-        return "/classroutine/routine-using-class-name";
-    }
 
 }
