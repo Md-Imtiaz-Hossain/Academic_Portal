@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Update routine</h1>
+                        <h1>Routine Add form</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Update routine</li>
+                            <li class="breadcrumb-item active">Routine Add form</li>
                         </ol>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
 
                         <div class="card">
 
-                            <form th:action="@{/routine/update/{id} (id=${routine.id})}"  method="POST" enctype="multipart/form-data"
+                            <form th:action="@{/specific-routine/update/{id}/{className} (id=${routine.id}, className=${className})}" method="post"
                                   th:object="${routine}">
 
                                 <div class="card-body">
@@ -90,14 +90,11 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="subjectClass">Class </label>
-                                                <select th:field="*{subjectClass}" id="subjectClass"
-                                                        class="form-control">
-                                                    <option th:each=" currentClass : ${classList}"
-                                                            th:text="${currentClass.name}"
-                                                            th:value="${currentClass}">
-                                                    </option>
-                                                </select>
+                                                <label for="subjectClass">Class Name</label>
+                                                <input type="text" class="form-control" id="subjectClass"
+                                                       th:field="*{subjectClass}" disabled
+                                                       th:value="${className}"
+                                                       th:placeholder="${className}">
                                             </div>
 
                                         </div>

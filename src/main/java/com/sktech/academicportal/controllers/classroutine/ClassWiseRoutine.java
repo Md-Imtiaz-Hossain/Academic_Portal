@@ -1,7 +1,6 @@
 package com.sktech.academicportal.controllers.classroutine;
 
 import com.sktech.academicportal.entity.ClassRoutine;
-import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.enums.WeekDay;
 import com.sktech.academicportal.service.RoutineService;
 import com.sktech.academicportal.service.SubjectService;
@@ -51,22 +50,29 @@ public class ClassWiseRoutine {
         return "redirect:/specific-routine/class/{className}";
     }
 
-    @GetMapping("/edit/{id}")
-    public String editRoutineForm(@PathVariable Integer id, Model model) {
-        model.addAttribute("pageTitle", "Routine Update");
+    @GetMapping("/edit/{id}/{className}")
+    public String editRoutineForm(@PathVariable Integer id,
+                                  @PathVariable String className,
+                                  Model model) {
+        model.addAttribute("pageTitle", "Specific Routine Update");
         model.addAttribute("routine", routineService.getRoutineById(id));
-        model.addAttribute("classList", AcademicClass.values());
+        model.addAttribute("className", className);
         model.addAttribute("weekDays", WeekDay.values());
-        model.addAttribute("subjects", subjectService.getAllSubject());
-        return "/allclassroutine/routine-update-form";
+        model.addAttribute("subjects", subjectService.getAllSubjectByClass(className));
+        System.out.println("====================================================");
+        System.out.println(className);
+        return "/specificclassroutine/routine-update-form";
     }
 
-    @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable Integer id, @ModelAttribute("routine") ClassRoutine routine) {
+    @PostMapping("/update/{id}/{className}")
+    public String updateUser(@PathVariable Integer id,
+                             @PathVariable String className,
+                             @ModelAttribute("routine") ClassRoutine routine) {
+
         ClassRoutine existingRoutine = routineService.getRoutineById(id);
         existingRoutine.setId(id);
         existingRoutine.setWeekDay(routine.getWeekDay());
-        existingRoutine.setSubjectClass(routine.getSubjectClass());
+        existingRoutine.setSubjectClass(className);
         existingRoutine.setPeriod1st(routine.getPeriod1st());
         existingRoutine.setPeriod2nd(routine.getPeriod2nd());
         existingRoutine.setPeriod3rd(routine.getPeriod3rd());
@@ -74,13 +80,16 @@ public class ClassWiseRoutine {
         existingRoutine.setPeriod5th(routine.getPeriod5th());
         existingRoutine.setPeriod6th(routine.getPeriod6th());
         routineService.updateRoutine(existingRoutine);
-        return "redirect:/specific-routine/all-class";
+
+        return "redirect:/specific-routine/class/{className}";
     }
 
-    @GetMapping("/delete/{id}")
-    public String deleteRoutine(@PathVariable Integer id) {
+    @GetMapping("/delete/{id}/{className}")
+    public String deleteRoutine(@PathVariable Integer id,
+                                @PathVariable String className) {
         routineService.deleteRoutineById(id);
-        return "redirect:/specific-routine/all-class";
+        return "redirect:/specific-routine/class/{className}";
+
     }
 
 
