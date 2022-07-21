@@ -54,8 +54,8 @@ public class SubjectWithStudent {
         Subject subjectById = subjectService.getSubjectById(subjectId);
         User userById = userService.getUserById(userId);
 
-        String subjectName = subjectById.getSubjectName() + " " + subjectById.getSubjectCode() + " \nClass- " + subjectById.getSubjectClass();
-        String userName = userById.getFirstName() + " " + userById.getLastName() + " \nEmail- " + userById.getEmail();
+        String subjectName = subjectById.getSubjectName() + " " + subjectById.getSubjectCode() + " Class- " + subjectById.getSubjectClass();
+        String userName = userById.getFirstName() + " " + userById.getLastName() + " Email- " + userById.getEmail();
 
         result.setSubjectId(result.getSubjectId());
         result.setUserId(result.getUserId());
