@@ -78,7 +78,7 @@ public class ClassWiseRoutine {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Integer id) {
+    public String deleteRoutine(@PathVariable Integer id) {
         routineService.deleteRoutineById(id);
         return "redirect:/specific-routine/all-class";
     }
