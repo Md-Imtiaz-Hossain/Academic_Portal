@@ -26,10 +26,25 @@ public class RoutineService {
         return routineRepository.findAll();
     }
 
-    // Save Subject
-    public Subject saveSubject(Subject subject) {
-        return subjectRepository.save(subject);
+
+    public List<ClassRoutine> getRoutineByClass(String classOf) {
+
+        List<ClassRoutine> routineRepositoryAll = routineRepository.findAll();
+        List<ClassRoutine> routineRepositoryAllNew = new ArrayList<>();
+
+        for (ClassRoutine cr : routineRepositoryAll){
+            if (cr.getSubjectClass().equals(classOf)){
+                routineRepositoryAllNew.add(cr);
+            }
+        }
+        return routineRepositoryAllNew;
     }
+
+    public void save(ClassRoutine classRoutine) {
+        routineRepository.save(classRoutine);
+    }
+
+
 
     // Get a single Subject by an id
     public Subject getSubjectById(Integer id) {
@@ -60,4 +75,5 @@ public class RoutineService {
         }
         return subjectListNew;
     }
+
 }
