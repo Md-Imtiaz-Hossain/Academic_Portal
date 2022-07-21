@@ -48,7 +48,36 @@ public class Routine {
     public String processForm(@ModelAttribute("routine") ClassRoutine classRoutine) {
         routineService.save(classRoutine);
         return "redirect:/routine/all-class";
+    }
 
+
+    // Routine Update form
+    @GetMapping("/edit/{id}")
+    public String editRoutineForm(@PathVariable Integer id, Model model) {
+        model.addAttribute("pageTitle", "Routine Update");
+        model.addAttribute("routine", routineService.getRoutineById(id));
+        model.addAttribute("classList", AcademicClass.values());
+        model.addAttribute("weekDays", WeekDay.values());
+        model.addAttribute("subjects", subjectService.getAllSubject());
+        return "/classroutine/routine-update-form";
+    }
+
+
+    // Process the updated information after update button clicked.
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable Integer id, @ModelAttribute("routine") ClassRoutine routine) {
+        ClassRoutine existingRoutine = routineService.getRoutineById(id);
+        existingRoutine.setId(id);
+        existingRoutine.setWeekDay(routine.getWeekDay());
+        existingRoutine.setSubjectClass(routine.getSubjectClass());
+        existingRoutine.setPeriod1st(routine.getPeriod1st());
+        existingRoutine.setPeriod2nd(routine.getPeriod2nd());
+        existingRoutine.setPeriod3rd(routine.getPeriod3rd());
+        existingRoutine.setPeriod4th(routine.getPeriod4th());
+        existingRoutine.setPeriod5th(routine.getPeriod5th());
+        existingRoutine.setPeriod6th(routine.getPeriod6th());
+        routineService.updateRoutine(existingRoutine);
+        return "redirect:/routine/all-class";
     }
 
 

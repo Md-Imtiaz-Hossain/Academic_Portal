@@ -81,4 +81,11 @@ public class RoutineService {
         return subjectListNew;
     }
 
+    public ClassRoutine getRoutineById(Integer id) {
+        return routineRepository.findById(id).get();
+    }
+
+    public void updateRoutine(ClassRoutine existingRoutine) {
+        routineRepository.save(existingRoutine);
+    }
 }
