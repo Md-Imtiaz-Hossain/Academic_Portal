@@ -52,6 +52,13 @@ public class Routine {
     }
 
 
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Integer id) {
+        routineService.deleteRoutineById(id);
+        return "redirect:/routine/all-class";
+    }
+
+
     // ========================================  Routine , Routine add from specific subject. =============================
 
     // View  classes routine to a specific class

@@ -45,6 +45,11 @@ public class RoutineService {
     }
 
 
+    public void deleteRoutineById(Integer id) {
+        routineRepository.deleteById(id);
+    }
+
+
 
     // Get a single Subject by an id
     public Subject getSubjectById(Integer id) {
