@@ -10,6 +10,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -66,6 +67,15 @@ public class UserService {
 
     public List<Role> listRoles() {
         return (List<Role>) roleRepository.findAll();
+    }
+
+    public List<Role> listRolesWithoutAdminAndRootAdmin() {
+        List<Role> roleList = roleRepository.findAll();
+        List<Role> tmpR = roleList.stream()
+                .filter(role -> (!role.getName().equals("Admin")))
+                .filter(role -> (!role.getName().equals("RootAdmin")))
+                .collect(Collectors.toList());
+        return tmpR;
     }
 
     public List<StudentResult> studentResults() {
@@ -133,6 +143,23 @@ public class UserService {
         }
         return getAllUserWithoutAdminRole;
     }
+
+    // This methode will return with user List which contain all Role except  Root Admin
+    public Set<User> getAllUserWithoutRootAdminRole() {
+        Set<User> getAllUserWithoutAdminRole = new HashSet<>();
+        List<User> userList = userRepository.findAll();
+        for (User u : userList) {
+            for (Role r : u.getRoles()) {
+                if (Objects.equals(r.getName(), "RootAdmin")) {
+                    break;
+                } else {
+                    getAllUserWithoutAdminRole.add(u);
+                }
+            }
+        }
+        return getAllUserWithoutAdminRole;
+    }
+
 
     // This methode will return with user List which contain all Role except student
     public List<User> getAllUserWithoutStudentRole() {
