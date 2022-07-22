@@ -1,10 +1,7 @@
 package com.sktech.academicportal.service;
 
 
-import com.sktech.academicportal.entity.Role;
-import com.sktech.academicportal.entity.StudentResult;
-import com.sktech.academicportal.entity.Subject;
-import com.sktech.academicportal.entity.User;
+import com.sktech.academicportal.entity.*;
 import com.sktech.academicportal.repositories.ResultRepository;
 import com.sktech.academicportal.repositories.RoleRepository;
 import com.sktech.academicportal.repositories.UserRepository;
@@ -12,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 
 @Service
@@ -31,6 +26,9 @@ public class UserService {
 
     @Autowired
     ResultRepository resultRepository;
+
+    @Autowired
+    RoutineService routineService;
 
     // Get All Users
     public List<User> getAllUser() {
@@ -70,7 +68,7 @@ public class UserService {
         return (List<Role>) roleRepository.findAll();
     }
 
-    public List<StudentResult> studentResults(){
+    public List<StudentResult> studentResults() {
         return resultRepository.findAll();
     }
 
@@ -126,9 +124,9 @@ public class UserService {
         List<User> userList = userRepository.findAll();
         for (User u : userList) {
             for (Role r : u.getRoles()) {
-                if (Objects.equals(r.getName(), "Admin" ) || Objects.equals(r.getName(), "Student" )) {
+                if (Objects.equals(r.getName(), "Admin") || Objects.equals(r.getName(), "Student")) {
                     break;
-                }else {
+                } else {
                     getAllUserWithoutAdminRole.add(u);
                 }
             }
@@ -142,9 +140,9 @@ public class UserService {
         List<User> userList = userRepository.findAll();
         for (User u : userList) {
             for (Role r : u.getRoles()) {
-                if (Objects.equals(r.getName(), "Student" )) {
+                if (Objects.equals(r.getName(), "Student")) {
                     break;
-                }else {
+                } else {
                     getAllUserWithoutStudentRole.add(u);
                 }
             }
@@ -153,7 +151,7 @@ public class UserService {
     }
 
     // Method for get assigned subject to a teacher
-    public List<Subject> getAllAssignedSubjectToATeacher(String email){
+    public List<Subject> getAllAssignedSubjectToATeacher(String email) {
         List<Subject> subjectByEmail = (List<Subject>) userRepository.getSubjectByEmail(email);
         return subjectByEmail;
     }
@@ -170,4 +168,33 @@ public class UserService {
     }
 
 
+    public List<ClassRoutine> getAllClassRoutineByAssignSubject(List<Subject> allAssignedSubjectToATeacher) {
+        List<ClassRoutine> routines = new ArrayList<>();
+        List<ClassRoutine> routineList = routineService.getAllClassRoutine();
+        for (Subject subject : allAssignedSubjectToATeacher) {
+            for (ClassRoutine classRoutine : routineList) {
+                if (subject.getSubjectClass().equals(classRoutine.getSubjectClass())) {
+                    routines.add(classRoutine);
+                }
+            }
+        }
+        return routines;
+    }
+
+    public Set<String> getAllClassNameByAssignSubject(List<Subject> allAssignedSubjectToATeacher) {
+        List<String> classList = new ArrayList<>();
+        List<ClassRoutine> routineList = routineService.getAllClassRoutine();
+        for (Subject subject : allAssignedSubjectToATeacher) {
+            for (ClassRoutine classRoutine : routineList) {
+                if (subject.getSubjectClass().equals(classRoutine.getSubjectClass())) {
+                    classList.add(subject.getSubjectClass());
+                }
+            }
+        }
+
+        // Clear the duplication
+        Set<String> set = new HashSet<>(classList);
+        classList.addAll(set);
+        return set;
+    }
 }

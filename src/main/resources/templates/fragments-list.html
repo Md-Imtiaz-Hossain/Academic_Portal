@@ -311,7 +311,16 @@
             <a th:href="@{/teacher-portal/my-subject}" class="nav-link active">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    I am taking this subject
+                    I am (logged-in teacher) taking this subject
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a th:href="@{/teacher-portal/my-class-routine}" class="nav-link active">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    My (logged-in teacher) class routine
                 </p>
             </a>
         </li>

@@ -1,5 +1,6 @@
 package com.sktech.academicportal.controllers.teacherportal;
 
+import com.sktech.academicportal.entity.ClassRoutine;
 import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.User;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/teacher-portal")
@@ -40,6 +42,22 @@ public class TeacherPortal {
         model.addAttribute("allAssignedSubjectToATeacher", allAssignedSubjectToATeacher);
 
         return "teacherportal/taking-subject-of-mine";
+    }
+
+    @GetMapping("/my-class-routine")
+    public String teacherClassRoutine(Model model, Principal principal) {
+
+        String loggedInUserName = principal.getName();
+        List<Subject> allAssignedSubjectToATeacher = userService.getAllAssignedSubjectToATeacher(loggedInUserName);
+        List<ClassRoutine> classRoutines = userService.getAllClassRoutineByAssignSubject(allAssignedSubjectToATeacher);
+        Set<String> assignedSubjectClassList = userService.getAllClassNameByAssignSubject(allAssignedSubjectToATeacher);
+
+        model.addAttribute("pageTitle", " Logged-in User's Class routine");
+        model.addAttribute("principalName", loggedInUserName);
+        model.addAttribute("classRoutines", classRoutines);
+        model.addAttribute("assignedSubjectClassList", assignedSubjectClassList);
+
+        return "teacherportal/my-subject-class-routine";
     }
 
     // Mark list of Teacher(logged-in) assigned all subject's all student.
