@@ -261,7 +261,6 @@
             <a th:href="@{/normal-user/list}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/normal-user/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                >
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     User List - <small>Site Admin 1st layer</small>
