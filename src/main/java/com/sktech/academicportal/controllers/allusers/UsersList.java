@@ -25,10 +25,8 @@ public class UsersList {
     // View All User store in DB with Datatable
     @GetMapping("/list")
     public String viewUserListPage(Model model) {
-
         model.addAttribute("pageTitle", "User List");
         model.addAttribute("user", userService.getAllUser());
-
         return "/backenduserslist/user-list";
     }
 
@@ -66,8 +64,6 @@ public class UsersList {
             }
             userService.saveUser(user);
         }
-
-        //userRepositoryService.saveUser(user);
         return "redirect:/user/list";
     }
 
@@ -100,7 +96,6 @@ public class UsersList {
         String encodedPassword = userService.encodePasswordUsingString(user.getPassword());
         existingUser.setPassword(encodedPassword);
 
-        // save updated student object
         userService.updateUser(existingUser);
         return "redirect:/user/list";
     }

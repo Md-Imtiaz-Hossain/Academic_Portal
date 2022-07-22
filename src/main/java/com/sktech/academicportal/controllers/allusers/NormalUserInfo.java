@@ -25,10 +25,8 @@ public class NormalUserInfo {
     // View All User store in DB with Datatable
     @GetMapping("/list")
     public String viewUserListPage(Model model) {
-
         model.addAttribute("pageTitle", "Normal User List");
         model.addAttribute("user", userService.getAllUserWithoutRootAdminRole());
-
         return "/normaluserlist/user-list";
     }
 
@@ -40,7 +38,7 @@ public class NormalUserInfo {
         List<Role> listRoles = userService.listRoles();
 
         model.addAttribute("pageTitle", "User Registration");
-//        model.addAttribute("listRoles", listRoles);
+//      model.addAttribute("listRoles", listRoles);
         model.addAttribute("listRoles", userService.listRolesWithoutAdminAndRootAdmin());
         model.addAttribute("user", user);
 
@@ -67,8 +65,6 @@ public class NormalUserInfo {
             }
             userService.saveUser(user);
         }
-
-        //userRepositoryService.saveUser(user);
         return "redirect:/normal-user/list";
     }
 
@@ -89,7 +85,7 @@ public class NormalUserInfo {
 
     // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user, Model model) {
+    public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user) {
 
         User existingUser = userService.getUserById(id);
         existingUser.setId(id);
@@ -101,7 +97,6 @@ public class NormalUserInfo {
         String encodedPassword = userService.encodePasswordUsingString(user.getPassword());
         existingUser.setPassword(encodedPassword);
 
-        // save updated student object
         userService.updateUser(existingUser);
         return "redirect:/normal-user/list";
     }

@@ -235,8 +235,8 @@
         data-accordion="false">
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-        <li class="nav-item menu-open">
-            <a th:href="@{/after-login-dashboard}" class="nav-link active">
+        <li class="nav-item" >
+            <a th:href="@{/after-login-dashboard}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/after-login-dashboard' ? 'active':''}">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                     Profile
@@ -245,7 +245,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/user/list}" class="nav-link active">
+            <a th:href="@{/user/list}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/user/list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     User List - <small>Root Admin 1st layer</small>
@@ -255,7 +255,7 @@
 
 
         <li class="nav-item">
-            <a th:href="@{/normal-user/list}" class="nav-link active">
+            <a th:href="@{/normal-user/list}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/normal-user/list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     User List - <small>Site Admin 1st layer</small>
@@ -264,7 +264,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/user-role/list}" class="nav-link active">
+            <a th:href="@{/user-role/list}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/user-role/list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Role List - <small>Admin 1st layer</small>
@@ -273,7 +273,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/student/list}" class="nav-link active">
+            <a th:href="@{/student/list}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/student/list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Student List - <small>Teacher 2nd layer</small>
@@ -282,7 +282,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/teacher/list}" class="nav-link active">
+            <a th:href="@{/teacher/list}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/teacher/list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Teacher List - <small>Assistant 2nd layer</small>
@@ -291,7 +291,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/subject/list}" class="nav-link active">
+            <a th:href="@{/subject/list}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/subject/list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Subject List
@@ -300,7 +300,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/subject-assign-t/assign-teacher}" class="nav-link active">
+            <a th:href="@{/subject-assign-t/assign-teacher}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-t/assign-teacher' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Subject Assign and View List (Teacher)
@@ -309,7 +309,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/subject-assign-s/assign-student}" class="nav-link active">
+            <a th:href="@{/subject-assign-s/assign-student}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-s/assign-student' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Subject Assign and View List (Student)
@@ -318,7 +318,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/teacher-portal/my-subject}" class="nav-link active">
+            <a th:href="@{/teacher-portal/my-subject}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-portal/my-subject' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     I am (logged-in teacher) taking this subject
@@ -327,7 +327,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/teacher-portal/my-class-routine}" class="nav-link active">
+            <a th:href="@{/teacher-portal/my-class-routine}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-portal/my-class-routine' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     My (logged-in teacher) class routine
@@ -336,7 +336,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/student-subject-view/list}" class="nav-link active">
+            <a th:href="@{/student-subject-view/list}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     All Student And subject View and mark update
@@ -345,7 +345,7 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/student-subject-view/mark-list}" class="nav-link active">
+            <a th:href="@{/student-subject-view/mark-list}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/mark-list' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Student And Mark View
@@ -354,7 +354,7 @@
         </li>
 
         <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/#' ? 'active':''}">
                 <i class="nav-icon fas fa-search"></i>
                 <p>
                     Class routine
@@ -363,79 +363,79 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a th:href="@{/routine/all-class}" class="nav-link">
+                    <a th:href="@{/routine/all-class}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/routine/all-class' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>All Classes Routine</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/ONE}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/ONE}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/ONE' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 1</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/TWO}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/TWO}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TWO' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 2</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/THREE}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/THREE}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/THREE' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 3</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/FOUR}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/FOUR}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/FOUR' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 4</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/FIVE}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/FIVE}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/FIVE' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 5</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/SIX}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/SIX}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/SIX' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 6</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/SEVEN}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/SEVEN}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/SEVEN' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 7</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/EIGHT}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/EIGHT}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/EIGHT' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 8</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/NINE}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/NINE}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/NINE' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 9</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/TEN}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/TEN}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TEN' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 10</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/ELEVEN}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/ELEVEN}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/ELEVEN' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 11</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/specific-routine/class/TWELVE}" class="nav-link">
+                    <a th:href="@{/specific-routine/class/TWELVE}" class="nav-link" th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TWELVE' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 12</p>
                     </a>
@@ -445,7 +445,7 @@
 
 
         <li class="nav-item">
-            <a th:href="@{/student-portal/my-routine}" class="nav-link active">
+            <a th:href="@{/student-portal/my-routine}" class="nav-link " th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-routine' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     My Class routine (Logged-in Student)
@@ -455,7 +455,7 @@
 
 
         <li class="nav-item">
-            <a th:href="@{/login}" class="nav-link active">
+            <a th:href="@{/login}" class="nav-link ">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                     Logout
