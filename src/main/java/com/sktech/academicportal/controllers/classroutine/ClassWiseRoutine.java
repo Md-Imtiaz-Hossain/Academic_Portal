@@ -9,8 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 
 @Controller
 @RequestMapping("/specific-routine")
@@ -25,7 +23,6 @@ public class ClassWiseRoutine {
 
     @GetMapping("/class/{classOf}")
     public String home(@PathVariable String classOf, Model model) {
-        List<ClassRoutine> routineByClass = routineService.getRoutineByClass(classOf);
         model.addAttribute("pageTitle", "Class - " + classOf + "  routine");
         model.addAttribute("routineList", routineService.getRoutineByClass(classOf));
         model.addAttribute("className", classOf);

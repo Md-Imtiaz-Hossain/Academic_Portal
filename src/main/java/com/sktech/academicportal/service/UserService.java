@@ -52,6 +52,10 @@ public class UserService {
         return userRepository.getUserByEmail(s).getId();
     }
 
+    public User getUserByEmail(String s) {
+        return userRepository.getUserByEmail(s);
+    }
+
     // Update User information
     public User updateUser(User user) {
         return userRepository.save(user);
