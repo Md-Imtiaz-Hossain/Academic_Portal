@@ -15,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Table(name = "Users")
 public class User {
 
     // User (Student, Teacher and all other role)
