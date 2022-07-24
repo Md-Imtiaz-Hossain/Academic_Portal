@@ -17,13 +17,13 @@ public class MainController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
         model.addAttribute("pageTitle", "Homepage");
-        return "/home-page";
+        return "home-page";
     }
 
     @GetMapping("/login")
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Log in here");
-        return "/login";
+        return "login";
     }
 
 
@@ -31,7 +31,7 @@ public class MainController {
     public String afterLogin(Model model, Principal principal) {
 //        loggedInUser.commonDate(model, principal);
         model.addAttribute("pageTitle", "Welcome | Dashboard");
-        return "/after-login-dashboard";
+        return "after-login-dashboard";
     }
 
     @GetMapping("/calendar")
