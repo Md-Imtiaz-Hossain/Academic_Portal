@@ -256,7 +256,7 @@
         <li class="nav-item">
             <a th:href="@{/user/list}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/user/list' ? 'active':''}"
-               sec:authorize="hasAuthority('RootAdmin')">
+               sec:authorize="hasAnyAuthority('Admin','RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     User List - <small>Root Admin 1st layer</small>

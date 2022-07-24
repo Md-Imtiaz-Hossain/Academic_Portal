@@ -13,7 +13,7 @@ public class Calendar {
     @GetMapping("/view")
     public String calendar(Model model) {
         model.addAttribute("pageTitle", "Calendar");
-        return "/pages/calendar";
+        return "pages/calendar";
     }
 
 
