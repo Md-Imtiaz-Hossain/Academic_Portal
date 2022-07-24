@@ -20,7 +20,23 @@ public class PublicFilesRepositoryService {
     }
 
     public List<PublicFiles> getAllImages(){
-        return  publicFilesRepository.findAllByType(FileTypes.GalleryImage.type);
+        List <PublicFiles> images = publicFilesRepository.findAllByType(FileTypes.GalleryImage.type);
+        //Reverse order to maintain upload order
+//        Collections.reverse(images); //Not working as intended
+        return  images;
+    }
+
+    public List<PublicFiles> getAllPublicImages(){
+        List <PublicFiles> images = new ArrayList<>();
+        for (PublicFiles p: publicFilesRepository.findAllByType(FileTypes.GalleryImage.type)) {
+            if(p.isPublic) images.add(p);
+        }
+
+        return  images;
+    }
+
+    public PublicFiles getById(Long id){
+        return publicFilesRepository.findById(id).get();
     }
 
     public List<PublicFiles> getAllPdfNotice(){
@@ -33,9 +49,20 @@ public class PublicFilesRepositoryService {
 
     public List<PublicFiles> getAllNotices(){
         List<PublicFiles> allNotice = new ArrayList<>();
-        allNotice.addAll(publicFilesRepository.findAllByType(FileTypes.NoticePDF.type));
-        allNotice.addAll(publicFilesRepository.findAllByType(FileTypes.NoticeWritten.type));
-        return  allNotice;
+        for (PublicFiles p: publicFilesRepository.findAll()) {
+            if(!p.type.equals(FileTypes.GalleryImage.type)) allNotice.add(p);
+        }
+        //Reverse order to maintain upload order
+//        Collections.reverse(allNotice); //Not working as intended
+        return allNotice;
+    }
+
+    public List<PublicFiles> getAllPublicNotices(){
+        List <PublicFiles> notices = new ArrayList<>();
+        for (PublicFiles p: getAllNotices()) {
+            if(p.isPublic) notices.add(p);
+        }
+        return  notices;
     }
 
     public void save(PublicFiles p){

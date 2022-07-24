@@ -27,4 +27,7 @@ public class PublicFiles {
     @Column(name = "description", columnDefinition = "TEXT")
     public String description;
 
+    @Column(name = "public_visibiliy")
+    public Boolean isPublic;
+
 }

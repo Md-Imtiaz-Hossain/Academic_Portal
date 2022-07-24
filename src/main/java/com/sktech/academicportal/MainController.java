@@ -1,6 +1,7 @@
 package com.sktech.academicportal;
 
 import com.sktech.academicportal.service.HomepageRepositoryService;
+import com.sktech.academicportal.service.PublicFilesRepositoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
     @Autowired
     HomepageRepositoryService hrs;
-
+    @Autowired
+    PublicFilesRepositoryService publicFilesRepositoryService;
 
 
     @GetMapping("/")
@@ -31,9 +33,6 @@ public class MainController {
         return "/after-login-dashboard";
     }
 
-    @GetMapping("/test")
-    public String tst(){
-        return "/gallery";
-    }
+
 
 }

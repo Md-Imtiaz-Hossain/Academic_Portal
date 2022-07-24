@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dashboard</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- Bootstrap 5.0 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" >
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+        <!-- Left navbar links -->
+        <ul th:replace="fragments-list::leftNavbar"></ul>
+
+        <!-- Right navbar links -->
+        <ul th:replace="fragments-list::rightNavbar"></ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Brand Logo -->
+        <a th:replace="fragments-list::brandLogo"></a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div th:replace="fragments-list::sidebarUserPanel"></div>
+
+            <!-- SidebarSearch Form -->
+            <div th:replace="fragments-list::sidebarSearchForm"></div>
+
+            <!-- Sidebar Menu -->
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="container-fluid">
+            <div class="px-lg-5">
+
+                <!-- Title -->
+                <div class="row py-5">
+                    <div class="col-lg-12 mx-auto">
+                        <div class="text-white p-5 shadow-sm rounded"
+                             style="background: #a770ef;
+                             background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
+                             background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);">
+                            <h1 class="display-4">Upload Image to Gallery</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- End -->
+                <!-- Upload  Form -->
+                <div class="d-flex justify-content-center">
+                    <form th:action="@{/upload/galleryManage/save}" method="post" enctype="multipart/form-data">
+                        <div class="form-group row p-2">
+                            <label class="col-5 col-form-label" for="imageFile">Select image</label>
+                            <div class="col-12">
+                                <input class="form-control" type="file" id="imageFile" name="image" accept="image/jpeg, image/png" required>
+                            </div>
+                        </div>
+                        <div class="form-group row p-2">
+                            <label class="col-5 col-form-label" for="heading">Heading</label>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            H
+                                        </div>
+                                    </div>
+                                    <input id="heading" name="heading" placeholder="Heading" type="text" class="form-control" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row p-2">
+                            <label for="description" class="col-5 col-form-label">Description</label>
+                            <div class="col-12">
+                                <textarea id="description" name="description" cols="40" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row p-2 form-check form-switch">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Publicly Viewable</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="isPublic" value="public" checked>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                </div>
+                <!--End -->
+
+
+
+            </div>
+        </div>
+
+        <!-- /.content -->
+    </div>
+    </div>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2014-2021 <a href="#">XYZ Student Portal</a>.</strong> All rights reserved.
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 5 -->
+<<script th:src="@{/js/bootstrap.bundle.js}"></script>
+<!-- DataTables  & Plugins -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App-->
+<script src="/dist/js/adminlte.min.js"></script>
+
+<!-- Page specific script -->
+<script>
+<!--    -->
+</script>
+</body>
+</html>
