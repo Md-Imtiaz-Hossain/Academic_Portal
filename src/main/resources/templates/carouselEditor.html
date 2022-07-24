@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard</title>
+    <title>Update Carousel</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -25,6 +25,69 @@
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <!-- Bootstrap 5.0 -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" >
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        input[type="checkbox"][id^="myCheckbox"] {
+            display: none;
+        }
+
+        label {
+            border: 1px solid #fff;
+            padding: 10px;
+            display: block;
+            position: relative;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        label:before {
+            background-color: white;
+            color: white;
+            content: " ";
+            display: block;
+            border-radius: 50%;
+            border: 1px solid grey;
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 25px;
+            height: 25px;
+            text-align: center;
+            line-height: 28px;
+            transition-duration: 0.4s;
+            transform: scale(0);
+        }
+
+        label img {
+            height: 100px;
+            width: 100px;
+            transition-duration: 0.2s;
+            transform-origin: 50% 50%;
+        }
+
+        :checked + label {
+            border-color: #ddd;
+        }
+
+        :checked + label:before {
+            content: "✓";
+            background-color: grey;
+            transform: scale(1);
+        }
+
+        :checked + label img {
+            transform: scale(0.9);
+            /* box-shadow: 0 0 5px #333; */
+            z-index: -1;
+        }
+    </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -77,63 +140,51 @@
                              style="background: #a770ef;
                              background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
                              background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);">
-                            <h1 class="display-4">Upload Image to Gallery</h1>
+                            <h1 class="display-4">Image Gallery</h1>
+                            <p class="lead">All Images uploaded to gallery are found here</p>
                         </div>
                     </div>
                 </div>
                 <!-- End -->
-                <!-- Upload  Form -->
                 <div class="d-flex justify-content-center">
-                    <form th:action="@{/upload/galleryManage/save}" method="post" enctype="multipart/form-data">
-                        <div class="form-group row p-2">
-                            <label class="col-5 col-form-label" for="imageFile">Select image</label>
-                            <div class="col-12">
-                                <input class="form-control" type="file" id="imageFile" name="image" accept="image/jpeg, image/png" required>
-                            </div>
-                        </div>
-                        <div class="form-group row p-2">
-                            <label class="col-5 col-form-label" for="heading">Heading</label>
-                            <div class="col-12">
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <div class="input-group-text">
-                                            H
-                                        </div>
-                                    </div>
-                                    <input id="heading" name="heading" placeholder="Heading" type="text" class="form-control" >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group row p-2">
-                            <label for="description" class="col-5 col-form-label">Description</label>
-                            <div class="col-12">
-                                <textarea id="description" name="description" cols="40" rows="5" class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group row p-2 form-check form-switch">
-                            <label class="form-check-label" for="flexSwitchCheckChecked">Publicly Viewable</label>
-                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="isPublic" value="public" checked>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Upload</button>
-                        </div>
+                    <form th:action="@{edit/carousel/update}" method="post">
+                        <ul>
+                            <li>
+                                <input type="checkbox" id="myCheckbox1" name="selectImages"/>
+                                <label for="myCheckbox1"><img src="http://townandcountryremovals.com/wp-content/uploads/2013/10/firefox-logo-200x200.png" /><p>Hello</p></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="myCheckbox2" name="selectImages"/>
+                                <label for="myCheckbox2"><img src="http://tech21info.com/admin/wp-content/uploads/2013/03/chrome-logo-200x200.png" /><p>sssssS</p></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="myCheckbox4" name="selectImages"/>
+                                <label for="myCheckbox4"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="myCheckbox5" name="selectImages"/>
+                                <label for="myCheckbox5"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="myCheckbox6" name="selectImages"/>
+                                <label for="myCheckbox6"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="myCheckbox7" name="selectImages"/>
+                                <label for="myCheckbox7"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" id="myCheckbox8" name="selectImages"/>
+                                <label for="myCheckbox8"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
+                            </li>
+
+                        </ul>
+                        <button class="btn btn-outline-success" type="submit" id="submitButton">Submit</button>
                     </form>
-                    <div class="m-3" style="width: 400px; height: 400px">
-                        <label id="labelPreview" for="preview" class="form-check-label"></label>
-                        <img id="preview" class="m-3 border border-secondary" src="" style="max-width: 100%; max-height: 100%; ">
-                    </div>
+
                 </div>
-                <!--End -->
-
-<!--<div class="d-flex justify-content-center">-->
-<!--    -->
-<!--    </div>-->
-
-            </div>
-        </div>
-
         <!-- /.content -->
-    </div>
+        </div>
     </div>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -181,18 +232,12 @@
 
 <!-- Page specific script -->
 <script>
-<!--    -->
-imageFile = document.getElementById("imageFile");
-preview = document.getElementById("preview");
-previewLabel = document.getElementById("labelPreview")
-imageFile.onchange = evt =>{
-    const [file] = imageFile.files;
-    if(file){
-        preview.src = URL.createObjectURL(file);
-
-        previewLabel.innerText = "Preview";
-    }
-}
+    $("input:checkbox").click(function() {
+        var bol = $("input:checkbox:checked").length >= 10;
+        var bol2 = $("inpu:checkbox:checked").length < 1;
+        $("input:checkbox").not(":checked").attr("disabled",bol);
+        $("submitButton").hide();
+    });
 </script>
 </body>
 </html>

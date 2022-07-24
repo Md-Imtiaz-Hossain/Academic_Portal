@@ -13,13 +13,12 @@ public class MainController {
     HomepageRepositoryService hrs;
     @Autowired
     PublicFilesRepositoryService publicFilesRepositoryService;
-
+    
 
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        if(hrs.getAll().isEmpty()) return "redirect:/homepage/init";
-
-        model.addAttribute("sections", hrs.getAll());
+//        if(hrs.getAll().isEmpty()) return "redirect:/homepage/init";
+//        model.addAttribute("sections", hrs.getAll());
         return "index";
     }
 
@@ -31,6 +30,11 @@ public class MainController {
     @GetMapping("/after-login-dashboard")
     public String afterLogin(Model model) {
         return "/after-login-dashboard";
+    }
+
+    @GetMapping("/edit/carousel")
+    public String carouselEdit(Model model){
+        return "carouselEditor";
     }
 
 
