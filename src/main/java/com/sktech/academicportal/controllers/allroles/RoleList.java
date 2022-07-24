@@ -19,7 +19,7 @@ public class RoleList {
     public String roleListHome(Model model) {
         model.addAttribute("pageTitle", "Role List");
         model.addAttribute("role", roleRepository.findAll());
-        return "/rolelist/role-list";
+        return "rolelist/role-list";
     }
 
 
@@ -28,7 +28,7 @@ public class RoleList {
     public String addNewRoleForm(Model model) {
         model.addAttribute("pageTitle", "Add Role Form");
         model.addAttribute("role", new Role());
-        return "/rolelist/role-new-form";
+        return "rolelist/role-new-form";
     }
 
     // Process the fill up form after save button clicked.
@@ -44,7 +44,7 @@ public class RoleList {
     public String editUserForm(@PathVariable Integer id, Model model) {
         model.addAttribute("pageTitle", "Update  Role Information");
         model.addAttribute("role", roleRepository.findById(id).get());
-        return "/rolelist/role-update-form";
+        return "rolelist/role-update-form";
     }
 
 
