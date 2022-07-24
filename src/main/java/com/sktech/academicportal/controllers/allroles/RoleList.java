@@ -32,7 +32,7 @@ public class RoleList {
     }
 
     // Process the fill up form after save button clicked.
-    @PostMapping("/save")
+    @PostMapping("save")
     public String processNewUserForm(@ModelAttribute("role") Role role) {
         roleRepository.save(role);
         return "redirect:user-role/list";
