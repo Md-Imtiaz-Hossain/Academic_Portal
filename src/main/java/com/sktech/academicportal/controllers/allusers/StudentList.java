@@ -22,7 +22,7 @@ public class StudentList {
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Student List");
         model.addAttribute("userListWithStudentRole", userService.getAllUserByStudentRole());
-        return "/studentlist/student-list";
+        return "studentlist/student-list";
     }
 
 
@@ -35,7 +35,7 @@ public class StudentList {
         model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("user", userService.getUserById(id));
 
-        return "/studentlist/student-update-form";
+        return "studentlist/student-update-form";
     }
 
 
@@ -65,6 +65,3 @@ public class StudentList {
 
 }
 
-
-// View all student-  http://localhost:8082/student/list
-// Edit student info-  http://localhost:8082/student/edit/3

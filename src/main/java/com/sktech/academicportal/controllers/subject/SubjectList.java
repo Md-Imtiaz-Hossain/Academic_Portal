@@ -23,7 +23,7 @@ public class SubjectList {
         model.addAttribute("pageTitle", "Subject List");
         model.addAttribute("subjectList", subjectService.getAllSubject());
 
-        return "/subjectlist/subject-list";
+        return "subjectlist/subject-list";
     }
 
 
@@ -37,7 +37,7 @@ public class SubjectList {
         model.addAttribute("class", AcademicClass.values());
         model.addAttribute("subject", subject);
 
-        return "/subjectlist/subject-new-form";
+        return "subjectlist/subject-new-form";
     }
 
 
@@ -59,7 +59,7 @@ public class SubjectList {
         model.addAttribute("class", AcademicClass.values());
         model.addAttribute("subject", subjectService.getSubjectById(id));
 
-        return "/subjectlist/subject-update-form";
+        return "subjectlist/subject-update-form";
     }
 
 

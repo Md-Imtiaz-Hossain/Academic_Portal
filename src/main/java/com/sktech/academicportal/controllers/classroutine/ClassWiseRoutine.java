@@ -26,7 +26,7 @@ public class ClassWiseRoutine {
         model.addAttribute("pageTitle", "Class - " + classOf + "  routine");
         model.addAttribute("routineList", routineService.getRoutineByClass(classOf));
         model.addAttribute("className", classOf);
-        return "/specificclassroutine/routine-using-class-name";
+        return "specificclassroutine/routine-using-class-name";
     }
 
     @GetMapping("/new/{className}")
@@ -36,7 +36,7 @@ public class ClassWiseRoutine {
         model.addAttribute("className", className);
         model.addAttribute("weekDays", WeekDay.values());
         model.addAttribute("subjects", subjectService.getAllSubjectByClass(className));
-        return "/specificclassroutine/new-routine";
+        return "specificclassroutine/new-routine";
     }
 
     @PostMapping("/save/{className}")
@@ -58,7 +58,7 @@ public class ClassWiseRoutine {
         model.addAttribute("subjects", subjectService.getAllSubjectByClass(className));
         System.out.println("====================================================");
         System.out.println(className);
-        return "/specificclassroutine/routine-update-form";
+        return "specificclassroutine/routine-update-form";
     }
 
     @PostMapping("/update/{id}/{className}")

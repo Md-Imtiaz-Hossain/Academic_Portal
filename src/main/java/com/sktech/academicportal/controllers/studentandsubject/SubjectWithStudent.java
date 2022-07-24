@@ -27,7 +27,7 @@ public class SubjectWithStudent {
     public String subjectHome(Model model) {
         model.addAttribute("pageTitle", "Subject List with user");
         model.addAttribute("user", userService.getAllUserByStudentRole());
-        return "/studentandsubjectlist/student-subject-list";
+        return "studentandsubjectlist/student-subject-list";
     }
 
 
@@ -43,7 +43,7 @@ public class SubjectWithStudent {
         model.addAttribute("user", user);
         model.addAttribute("result", new StudentResult());
 
-        return "/studentandsubjectlist/subject-wise-result-add";
+        return "studentandsubjectlist/subject-wise-result-add";
     }
 
     @PostMapping("/update/{userId}/{subjectId}")
@@ -75,7 +75,7 @@ public class SubjectWithStudent {
         model.addAttribute("pageTitle", "Mark List with user and subject");
         model.addAttribute("mark", resultService.getAllResul());
 
-        return "/studentandsubjectlist/student-mark-list";
+        return "studentandsubjectlist/student-mark-list";
     }
 
 
@@ -86,7 +86,7 @@ public class SubjectWithStudent {
         model.addAttribute("pageTitle", "Edit  Result Information");
         model.addAttribute("result", resultService.getResultById(id).get());
 
-        return "/studentandsubjectlist/subject-wise-result-update";
+        return "studentandsubjectlist/subject-wise-result-update";
     }
 
 

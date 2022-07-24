@@ -27,7 +27,7 @@ public class SubjectAssignTeacher {
         model.addAttribute("pageTitle", "Teacher and Assigned Subjects");
         model.addAttribute("user", userService.getAllUserWithoutStudentRole());
 
-        return "/subjectassign/assign-And-list-teacher";
+        return "subjectassign/assign-And-list-teacher";
     }
 
 
@@ -42,7 +42,7 @@ public class SubjectAssignTeacher {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("subjectList", subjectList);
 
-        return "/subjectassign/subject-Assign-update-form";
+        return "subjectassign/subject-Assign-update-form";
     }
 
 

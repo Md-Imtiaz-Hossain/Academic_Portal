@@ -70,7 +70,7 @@ public class TeacherPortal {
         model.addAttribute("pageTitle", "Mark List with Username and Subject name");
         model.addAttribute("mark", resultUsingUserId);
 
-        return "/teacherportal/student-mark-list";
+        return "teacherportal/student-mark-list";
     }
 
 
@@ -81,7 +81,7 @@ public class TeacherPortal {
         model.addAttribute("pageTitle", "Result Add link in here");
         model.addAttribute("user", userService.getAllUserBySubjectId(subjectId));
 
-        return "/teacherportal/student-subject-list-using-subjectid";
+        return "teacherportal/student-subject-list-using-subjectid";
     }
 
 
@@ -99,7 +99,7 @@ public class TeacherPortal {
         model.addAttribute("user", getUserByUsingUserId);
         model.addAttribute("result", new StudentResult());
 
-        return "/teacherportal/subject-wise-result-add";
+        return "teacherportal/subject-wise-result-add";
     }
 
 
@@ -134,7 +134,7 @@ public class TeacherPortal {
         model.addAttribute("pageTitle", "Result Update");
         model.addAttribute("result", resultService.getResultById(id).get());
 
-        return "/teacherportal/subject-wise-result-update";
+        return "teacherportal/subject-wise-result-update";
     }
 
 

@@ -27,7 +27,7 @@ public class NormalUserInfo {
     public String viewUserListPage(Model model) {
         model.addAttribute("pageTitle", "Normal User List");
         model.addAttribute("user", userService.getAllUserWithoutRootAdminRole());
-        return "/normaluserlist/user-list";
+        return "normaluserlist/user-list";
     }
 
     // For create a new User. Open a from for create new Student
@@ -42,7 +42,7 @@ public class NormalUserInfo {
         model.addAttribute("listRoles", userService.listRolesWithoutAdminAndRootAdmin());
         model.addAttribute("user", user);
 
-        return "/normaluserlist/user-new-form";
+        return "normaluserlist/user-new-form";
     }
 
 
@@ -79,7 +79,7 @@ public class NormalUserInfo {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("listRoles", listRoles);
 
-        return "/normaluserlist/user-update-form";
+        return "normaluserlist/user-update-form";
     }
 
 

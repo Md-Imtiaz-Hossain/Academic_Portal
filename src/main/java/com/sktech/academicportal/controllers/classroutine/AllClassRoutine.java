@@ -25,7 +25,7 @@ public class AllClassRoutine {
     public String home(Model model) {
         model.addAttribute("pageTitle", "All classes routine");
         model.addAttribute("routineList", routineService.getAllClassRoutine());
-        return "/allclassroutine/routine-all-classes";
+        return "allclassroutine/routine-all-classes";
     }
 
     // Add new routine from full listed.
@@ -36,7 +36,7 @@ public class AllClassRoutine {
         model.addAttribute("classList", AcademicClass.values());
         model.addAttribute("weekDays", WeekDay.values());
         model.addAttribute("subjects", subjectService.getAllSubject());
-        return "/allclassroutine/new-routine";
+        return "allclassroutine/new-routine";
     }
 
     // Add routine form process
@@ -55,7 +55,7 @@ public class AllClassRoutine {
         model.addAttribute("classList", AcademicClass.values());
         model.addAttribute("weekDays", WeekDay.values());
         model.addAttribute("subjects", subjectService.getAllSubject());
-        return "/allclassroutine/routine-update-form";
+        return "allclassroutine/routine-update-form";
     }
 
 

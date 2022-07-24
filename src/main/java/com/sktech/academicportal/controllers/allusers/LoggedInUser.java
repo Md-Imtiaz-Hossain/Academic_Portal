@@ -24,9 +24,8 @@ public class LoggedInUser {
         String userEmail = principal.getName();
         User user = userService.getUserByEmail(userEmail);
         model.addAttribute("userPhoto", user.getPhotos());
-
         model.addAttribute("principleUser", user);
-        return "/fragments-list";
+        return "fragments-list";
     }
 
 

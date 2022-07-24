@@ -22,7 +22,7 @@ public class TeacherList {
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Teacher List");
         model.addAttribute("getAllUserWithoutAdminAndStudentRole", userService.getAllUserWithoutAdminAndStudentRole());
-        return "/teacherlist/teacher-list";
+        return "teacherlist/teacher-list";
     }
 
 
@@ -35,7 +35,7 @@ public class TeacherList {
         model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("user", userService.getUserById(id));
 
-        return "/teacherlist/teacher-update-form";
+        return "teacherlist/teacher-update-form";
     }
 
 
@@ -63,7 +63,3 @@ public class TeacherList {
 
 
 }
-
-
-// View all student-  http://localhost:8082/teacher/list
-// Edit student info-  http://localhost:8082/teacher/edit/3

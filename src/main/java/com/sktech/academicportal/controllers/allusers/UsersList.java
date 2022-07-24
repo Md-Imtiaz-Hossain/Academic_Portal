@@ -27,7 +27,7 @@ public class UsersList {
     public String viewUserListPage(Model model) {
         model.addAttribute("pageTitle", "User List");
         model.addAttribute("user", userService.getAllUser());
-        return "/backenduserslist/user-list";
+        return "backenduserslist/user-list";
     }
 
     // For create a new User. Open a from for create new Student
@@ -41,7 +41,7 @@ public class UsersList {
         model.addAttribute("listRoles", listRoles);
         model.addAttribute("user", user);
 
-        return "/backenduserslist/user-new-form";
+        return "backenduserslist/user-new-form";
     }
 
 
@@ -78,7 +78,7 @@ public class UsersList {
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("listRoles", listRoles);
 
-        return "/backenduserslist/user-update-form";
+        return "backenduserslist/user-update-form";
     }
 
 

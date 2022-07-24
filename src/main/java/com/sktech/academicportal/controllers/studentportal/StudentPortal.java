@@ -36,7 +36,7 @@ public class StudentPortal {
         model.addAttribute("routineList", routineService.getRoutineByClass(loggedUserClass));
         model.addAttribute("className", loggedUserClass);
 
-        return "/studentportal/my-routine";
+        return "studentportal/my-routine";
     }
 
 }

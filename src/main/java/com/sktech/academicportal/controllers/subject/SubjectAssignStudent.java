@@ -26,10 +26,10 @@ public class SubjectAssignStudent {
     public String subjectAssign(Model model) {
 
         model.addAttribute("pageTitle", "Student and Assigned Subjects");
-        // Here don's showing all user, showing just Student in datatable.
+        // Here dont's showing all user, showing just Student in datatable.
         model.addAttribute("user", userService.getAllUserByStudentRole());
 
-        return "/subjectassign/assign-And-list-student";
+        return "subjectassign/assign-And-list-student";
     }
 
 
@@ -48,7 +48,7 @@ public class SubjectAssignStudent {
         model.addAttribute("user", user);
         model.addAttribute("subjectList", allSubjectByClass);
 
-        return "/subjectassign/subject-Assign-update-form-student";
+        return "subjectassign/subject-Assign-update-form-student";
     }
 
 
