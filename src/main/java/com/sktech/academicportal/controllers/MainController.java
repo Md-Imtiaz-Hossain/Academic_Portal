@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.security.Principal;
-
 @Controller
 public class MainController {
 
@@ -28,16 +26,9 @@ public class MainController {
 
 
     @GetMapping("/after-login-dashboard")
-    public String afterLogin(Model model, Principal principal) {
-//        loggedInUser.commonDate(model, principal);
+    public String afterLogin(Model model) {
         model.addAttribute("pageTitle", "Welcome | Dashboard");
         return "after-login-dashboard";
-    }
-
-    @GetMapping("/calendar")
-    public String calendar(Model model) {
-        model.addAttribute("pageTitle", "Calendar");
-        return "/pages/calendar";
     }
 
 
