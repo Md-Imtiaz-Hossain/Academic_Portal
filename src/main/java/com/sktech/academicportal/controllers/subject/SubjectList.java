@@ -44,9 +44,7 @@ public class SubjectList {
     // Process the fill up form after save button clicked.
     @PostMapping("/save")
     public String processSubjectForm(@ModelAttribute("subject") Subject subject){
-
         subjectService.saveSubject(subject);
-
         return "redirect:/subject/list";
     }
 
@@ -54,11 +52,9 @@ public class SubjectList {
     // Open the Update form for Subject Information updating
     @GetMapping("/edit/{id}")
     public String editSubjectForm(@PathVariable Integer id, Model model) {
-
         model.addAttribute("pageTitle", "Edit  Subject Information");
         model.addAttribute("class", AcademicClass.values());
         model.addAttribute("subject", subjectService.getSubjectById(id));
-
         return "subjectlist/subject-update-form";
     }
 
@@ -66,16 +62,12 @@ public class SubjectList {
     // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
     public String updateSubject(@PathVariable Integer id, @ModelAttribute("subject") Subject subject) {
-
         Subject existingSubject = subjectService.getSubjectById(id);
         existingSubject.setId(id);
         existingSubject.setSubjectName(subject.getSubjectName());
         existingSubject.setSubjectCode(subject.getSubjectCode());
         existingSubject.setSubjectClass(subject.getSubjectClass());
         existingSubject.setSubjectType(subject.getSubjectType());
-
-
-        // save updated student object
         subjectService.updateSubject(existingSubject);
         return "redirect:/subject/list";
     }

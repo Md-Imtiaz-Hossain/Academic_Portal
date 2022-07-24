@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@Table(name = "Routine")
 public class ClassRoutine {
 
     @Id

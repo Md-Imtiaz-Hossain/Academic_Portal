@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.security.Principal;
 
 @Controller
-@RequestMapping("student-portal")
+@RequestMapping("/student-portal")
 public class StudentPortal {
 
     @Autowired

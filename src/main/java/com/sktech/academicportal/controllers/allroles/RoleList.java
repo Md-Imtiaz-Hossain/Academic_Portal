@@ -32,16 +32,16 @@ public class RoleList {
     }
 
     // Process the fill up form after save button clicked.
-    @PostMapping("save")
-    public String processNewUserForm(@ModelAttribute("role") Role role) {
+    @PostMapping("/save")
+    public String processNewRoleForm(@ModelAttribute("role") Role role) {
         roleRepository.save(role);
-        return "redirect:user-role/list";
+        return "redirect:/user-role/list";
     }
 
 
     // Open the Update form for Role Information updating
     @GetMapping("/edit/{id}")
-    public String editUserForm(@PathVariable Integer id, Model model) {
+    public String editRoleForm(@PathVariable Integer id, Model model) {
         model.addAttribute("pageTitle", "Update  Role Information");
         model.addAttribute("role", roleRepository.findById(id).get());
         return "rolelist/role-update-form";
