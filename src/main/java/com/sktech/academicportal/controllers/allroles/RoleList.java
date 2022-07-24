@@ -35,7 +35,7 @@ public class RoleList {
     @PostMapping("/save")
     public String processNewUserForm(@ModelAttribute("role") Role role) {
         roleRepository.save(role);
-        return "redirect:/user-role/list";
+        return "redirect:user-role/list";
     }
 
 
