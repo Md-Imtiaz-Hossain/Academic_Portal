@@ -486,7 +486,8 @@
 
         <li class="nav-item">
             <a th:href="@{/student-portal/my-routine}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-routine' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-routine' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Student')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     My Class routine (Logged-in Student)
@@ -496,7 +497,8 @@
 
         <li class="nav-item">
             <a th:href="@{/student-portal/my-result}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Student')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     My Result (Logged-in Student)
