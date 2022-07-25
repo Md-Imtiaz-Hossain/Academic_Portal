@@ -1,10 +1,9 @@
-# Academic_Portal
-
+# Academic_Portal  [(Project Demo)](https://xyzacademicportal.herokuapp.com/) 
 The scope of this project will be schools or colleges inside Bangladesh. Most schools and colleges are still using pen and paper records to manage all academic activities and transactions. Our project will replace
 most of the manual work and automate most of the processes which will be accessible anywhere online. Our project’s main focus is on Bangladeshi schools and colleges. It may not be suitable for university
 management or higher academic systems. After slight modifications, this project might work in other countries.
 
-# Users
+##  Users
 ## Admin:
 ID || Password
 >1. admin_1_@gmail.com || admin_1_
