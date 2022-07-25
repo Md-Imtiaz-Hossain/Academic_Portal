@@ -29,6 +29,9 @@ public class Subject {
     @Column(name = "subject_type")
     private String subjectType;
 
+    @ManyToOne
+    User user;
+
     @Override
     public String toString() {
         return this.subjectName + "_" + this.subjectCode + "_" + this.subjectClass + "\n";

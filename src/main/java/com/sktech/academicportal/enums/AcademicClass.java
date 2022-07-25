@@ -10,10 +10,8 @@ public enum AcademicClass {
     SIX ("6"),
     SEVEN ("7"),
     EIGHT ("8"),
-    NINE ("9"),
-    TEN ("10"),
-    ELEVEN ("11"),
-    TWELVE ("12");
+    NINE_TEN ("9_10"),
+    ELEVEN_TWELVE ("11_12");
 
     private final String  className;
 

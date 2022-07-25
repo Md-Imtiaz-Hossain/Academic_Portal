@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments-list::head">
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+        <!-- Left navbar links -->
+        <ul th:replace="fragments-list::leftNavbar"></ul>
+
+        <!-- Right navbar links -->
+        <ul th:replace="fragments-list::rightNavbar"></ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Brand Logo -->
+        <a th:replace="fragments-list::brandLogo"></a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div th:replace="fragments-list::sidebarUserPanel"></div>
+
+            <!-- SidebarSearch Form -->
+            <div th:replace="fragments-list::sidebarSearchForm"></div>
+
+            <!-- Sidebar Menu -->
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Subject Assign </h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Subject Assign</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">View Student & Subject Result <a
+                                        th:href="@{/subject-assign-s/assignStudent}">List</a></h3>
+                            </div>
+
+                            <form th:action="@{/student-subject-view/update/{id} (id=${result.id})}" method="POST"
+                                  th:object="${result}">
+
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div>
+                                                <h3>Student:- </h3>
+                                                <h6 th:text="*{userName}"></h6>
+                                                <h3>Subject:- </h3>
+                                                <h6 th:text="*{subjectName}"></h6>
+                                            </div>
+
+
+                                            <div hidden class="form-group">
+                                                <label for="studentName">Student Name</label>
+                                                <input type="text" class="form-control" id="studentName"
+                                                       th:field="*{userName}">
+                                            </div>
+
+                                            <div hidden class="form-group">
+                                                <label for="subjectName">Subject Name</label>
+                                                <input type="text" class="form-control" id="subjectName"
+                                                       th:field="*{subjectName}">
+                                            </div>
+
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+
+
+                                            <div class="form-group">
+                                                <label for="ct1Mark">C.T. - 1 Mark</label>
+                                                <input type="number" class="form-control" id="ct1Mark"
+                                                       th:field="*{ct1Mark}"
+                                                       placeholder="C.T. - 1">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="ct2Mark">C.T. - 2 Mark</label>
+                                                <input type="number" class="form-control" id="ct2Mark"
+                                                       th:field="*{ct2Mark}"
+                                                       placeholder="C.T. - 2">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="ct3Mark">C.T. - 3 Mark</label>
+                                                <input type="number" class="form-control" id="ct3Mark"
+                                                       th:field="*{ct3Mark}"
+                                                       placeholder="C.T. - 3">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="midMark">Mid Term Mark</label>
+                                                <input type="number" class="form-control" id="midMark"
+                                                       th:field="*{midMark}"
+                                                       placeholder="Mid Term">
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="finalMark">Final Mark</label>
+                                                <input type="number" class="form-control" id="finalMark"
+                                                       th:field="*{finalMark}"
+                                                       placeholder="Final">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside th:replace="fragments-list::rightNavbarOptions"></aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer th:replace="fragments-list::footer" class="main-footer"></footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+
+
+</body>
+</html>

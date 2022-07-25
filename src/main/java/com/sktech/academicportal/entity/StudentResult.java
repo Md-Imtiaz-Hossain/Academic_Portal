@@ -1,10 +1,8 @@
 package com.sktech.academicportal.entity;
 
 import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Entity
+@Table(name = "Result")
 public class StudentResult {
 
     @Id
@@ -39,6 +38,19 @@ public class StudentResult {
     @Column(name = "final_mark")
     private Integer finalMark;
 
+    @Column(name = "user_id")
+    private Integer userId;
+
+    @Column(name = "user_name")
+    private String userName;
+    @Column(name = "subject_id")
+    private Integer subjectId;
+
+    @Column(name = "subject_name")
+    private String subjectName;
+
+
+
     @Override
     public String toString() {
         return "StudentResult{" +
@@ -48,6 +60,8 @@ public class StudentResult {
                 ", ct3Mark=" + ct3Mark +
                 ", midMark=" + midMark +
                 ", finalMark=" + finalMark +
+                ", userId=" + userId +
+                ", subjectId=" + subjectId +
                 '}';
     }
 }

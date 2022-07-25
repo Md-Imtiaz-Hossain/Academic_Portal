@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments-list::head">
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+        <!-- Left navbar links -->
+        <ul th:replace="fragments-list::leftNavbar"></ul>
+
+        <!-- Right navbar links -->
+        <ul th:replace="fragments-list::rightNavbar"></ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Brand Logo -->
+        <a th:replace="fragments-list::brandLogo"></a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div th:replace="fragments-list::sidebarUserPanel"></div>
+
+            <!-- SidebarSearch Form -->
+            <div th:replace="fragments-list::sidebarSearchForm"></div>
+
+            <!-- Sidebar Menu -->
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Routine Add form</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Routine Add form</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="card">
+
+                            <form th:action="@{/specific-routine/update/{id}/{className} (id=${routine.id}, className=${className})}" method="post"
+                                  th:object="${routine}">
+
+                                <div class="card-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="weekDay">Week Day </label>
+                                                <select th:field="*{weekDay}" id="weekDay"
+                                                        class="form-control">
+                                                    <option th:each=" weekDay : ${weekDays}"
+                                                            th:text="${weekDay.name}"
+                                                            th:value="${weekDay}">
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="subjectClass">Class Name</label>
+                                                <input type="text" class="form-control" id="subjectClass"
+                                                       th:field="*{subjectClass}" disabled
+                                                       th:value="${className}"
+                                                       th:placeholder="${className}">
+                                            </div>
+
+                                        </div>
+
+                                        <!-- /.col -->
+                                        <div class="col-md-6">
+
+                                            <div class="form-group">
+                                                <label for="period1st">1st Period Subject <small> ( 10:10 am - 11:10 am
+                                                    ) </small></label>
+                                                <select th:field="*{period1st}" id="period1st"
+                                                        class="form-control">
+                                                    <option value=""></option>
+                                                    <option th:each=" subject : ${subjects}"
+                                                            th:text="${subject.subjectName} + ' , Class- ' + ${subject.subjectClass}"
+                                                            th:value="${subject.subjectName}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="period2nd">2nd Period Subject <small> ( 11:10 am - 12:00 pm
+                                                    ) </small></label>
+                                                <select th:field="*{period2nd}" id="period2nd"
+                                                        class="form-control">
+                                                    <option value=""></option>
+                                                    <option th:each=" subject : ${subjects}"
+                                                            th:text="${subject.subjectName} + ' , Class- ' + ${subject.subjectClass}"
+                                                            th:value="${subject.subjectName}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="period3rd">3rd Period Subject <small> ( 12:10 pm - 12:40 pm
+                                                    ) </small></label>
+                                                <select th:field="*{period3rd}" id="period3rd"
+                                                        class="form-control">
+                                                    <option value=""></option>
+                                                    <option th:each=" subject : ${subjects}"
+                                                            th:text="${subject.subjectName} + ' , Class- ' + ${subject.subjectClass}"
+                                                            th:value="${subject.subjectName}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="period4th">4th Period Subject <small> ( 12:40 pm - 01:20 pm
+                                                    ) </small></label>
+                                                <select th:field="*{period4th}" id="period4th"
+                                                        class="form-control">
+                                                    <option value=""></option>
+                                                    <option th:each=" subject : ${subjects}"
+                                                            th:text="${subject.subjectName} + ' , Class- ' + ${subject.subjectClass}"
+                                                            th:value="${subject.subjectName}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="period5th">5th Period Subject <small> ( 02:00 pm - 03:00 pm
+                                                    ) </small></label>
+                                                <select th:field="*{period5th}" id="period5th"
+                                                        class="form-control">
+                                                    <option value=""></option>
+                                                    <option th:each=" subject : ${subjects}"
+                                                            th:text="${subject.subjectName} + ' , Class- ' + ${subject.subjectClass}"
+                                                            th:value="${subject.subjectName}">
+                                                    </option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="period6th">6th Period Subject <small> ( 03:00 pm - 04:00 pm
+                                                    ) </small></label>
+                                                <select th:field="*{period6th}" id="period6th"
+                                                        class="form-control">
+                                                    <option value=""></option>
+                                                    <option th:each=" subject : ${subjects}"
+                                                            th:text="${subject.subjectName} + ' , Class- ' + ${subject.subjectClass}"
+                                                            th:value="${subject.subjectName}">
+                                                    </option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside th:replace="fragments-list::rightNavbarOptions"></aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer th:replace="fragments-list::footer" class="main-footer"></footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+
+
+</body>
+</html>

@@ -15,6 +15,7 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
+@Table(name = "Users")
 public class User {
 
     // User (Student, Teacher and all other role)
@@ -40,7 +41,7 @@ public class User {
     @Column(name = "enabled", length = 40)
     private boolean enabled;
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
@@ -56,10 +57,10 @@ public class User {
     @Column(name = "mother_name")
     private String motherName;
 
-    @Column(name = "academic_ID")
+    @Column(name = "academic_id")
     private String academicID;
 
-    @Column(name = "contact_No")
+    @Column(name = "contact_no")
     private String contactNo;
 
     @Column(name = "address")
@@ -86,41 +87,40 @@ public class User {
     @Column(name = "class_section")
     private String classSection;
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinTable(
-            name = "users_result",
-            joinColumns = @JoinColumn(name = "user_id"),
+            name = "students_result",
+            joinColumns = @JoinColumn(name = "student_id"),
             inverseJoinColumns = @JoinColumn(name = "result_id")
     )
-    private Set<StudentResult> studentResults = new HashSet<>();
+    private StudentResult studentResults;
 
 
     // User (Teacher and all other role)
-    @Column(name = "subject_Speciality")
+    @Column(name = "subject_speciality")
     private String subjectSpeciality;
 
     @Column(name = "designation")
     private String designation;
 
-    @Column(name = "teachingStart_date")
+    @Column(name = "teaching_start_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date teachingStartDate;
 
-    @Column(name = "teachingEnd_date")
+    @Column(name = "teaching_end_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
     private Date teachingEndDate;
 
 
-    @ManyToMany (fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_subject",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "subject_id")
     )
     private Set<Subject> subjects = new HashSet<>();
-
 
 
     public User(String email, String password, String firstName, String lastName) {
@@ -148,6 +148,8 @@ public class User {
     public Set<Role> getRoles() {
         return roles;
     }
+
+
 
 
 }
