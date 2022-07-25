@@ -66,7 +66,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
+        <a th:href="@{/after-login-dashboard}" class="nav-link">Home</a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>
@@ -543,7 +543,9 @@
 <footer th:fragment="footer"  class="main-footer">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
-        Anything you want
+        <a th:href="@{/about/us}" class="nav-link ">
+            About Us
+        </a>
     </div>
     <!-- Default to the left -->
     <strong>Copyright &copy; 2014-2021 <a href="#">XYZ Student Portal</a>.</strong> All rights reserved.
