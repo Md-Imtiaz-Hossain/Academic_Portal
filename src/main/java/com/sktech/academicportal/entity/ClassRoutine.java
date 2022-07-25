@@ -24,22 +24,22 @@ public class ClassRoutine {
     @Column(name = "subject_class")
     private String subjectClass;
 
-    @Column(name = "1st_period")
+    @Column(name = "period_1st")
     private String period1st;
 
-    @Column(name = "2nd_period")
+    @Column(name = "period_2nd")
     private String period2nd;
 
-    @Column(name = "3rd_period")
+    @Column(name = "period_3rd")
     private String period3rd;
 
-    @Column(name = "4th_period")
+    @Column(name = "period_4th")
     private String period4th;
 
-    @Column(name = "5th_period")
+    @Column(name = "period_5th")
     private String period5th;
 
-    @Column(name = "6th_period")
+    @Column(name = "period_6th")
     private String period6th;
 
 
