@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>User Role Update Form</h1>
+                        <h1 sec:authentication="principal.fullName"></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">User Role Update Form</li>
+                            <li class="breadcrumb-item active">All Subjects Result</li>
                         </ol>
                     </div>
                 </div>
@@ -69,40 +69,39 @@
                     <div class="col-12">
 
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">View All Role <a th:href="@{/user-role/list}">List</a></h3>
+                            <!-- /.card-header -->
+                            <div class="card-body">
+
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>user Name</th>
+                                        <th>subject Name</th>
+                                        <th>C.T. - 1</th>
+                                        <th>C.T. - 2</th>
+                                        <th>C.T. - 3</th>
+                                        <th>Mid term</th>
+                                        <th>Final</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="m: ${mark}">
+
+                                        <td th:text="${m.id}"></td>
+                                        <td th:text="${m.userName}"></td>
+                                        <td th:text="${m.subjectName}"></td>
+                                        <td th:text="${m.ct1Mark}"></td>
+                                        <td th:text="${m.ct2Mark}"></td>
+                                        <td th:text="${m.ct3Mark}"></td>
+                                        <td th:text="${m.midMark}"></td>
+                                        <td th:text="${m.finalMark}"></td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
                             </div>
-
-                            <form th:action="@{/user-role/update/{id} (id=${role.id})}" method="post"
-                                  th:object="${role}">
-
-                                <div class="card-body">
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="name">Role Name</label>
-                                                <input type="text" class="form-control" id="name"
-                                                       th:field="*{name}"
-                                                       placeholder="Role Name">
-                                            </div>
-                                        </div>
-
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label for="description">Description</label>
-                                                <input type="text" class="form-control" id="description"
-                                                       th:field="*{description}"
-                                                       placeholder="Description">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-block">Update</button>
-                                </div>
-                            </form>
+                            <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
@@ -165,7 +164,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>
