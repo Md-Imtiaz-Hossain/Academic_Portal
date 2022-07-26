@@ -321,6 +321,16 @@
         </li>
 
         <li class="nav-item">
+            <a th:href="@{/payment-scheme/list}" class="nav-link "
+               th:classappend="${#httpServletRequest.getRequestURI() == '/payment-scheme/list' ? 'active':''}">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    Payment Scheme List
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a th:href="@{/subject-assign-t/assign-teacher}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-t/assign-teacher' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>
