@@ -56,7 +56,7 @@ public class PaymentInformationHandle {
 
 
     @RequestMapping("/pay-success")
-    @ResponseBody
+//    @ResponseBody
     public String paymentSuccessful(@RequestParam Map<String, String> requestMap, @RequestParam Map<String, String> postData, Model model) {
 
         System.out.println(requestMap.get("cus_name"));
@@ -79,8 +79,8 @@ public class PaymentInformationHandle {
         model.addAttribute("requestMapStr", requestMapStr);
         model.addAttribute("postData", postData);
 
-        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
-//        return "studentportal/payment-success";
+//        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
+        return "studentportal/payment-success";
 
     }
 

@@ -31,11 +31,11 @@ public class ParameterBuilder {
 
     public static Map<String, String> constructRequestParameters() {
         // CREATING LIST OF POST DATA
-        String baseUrl = "https://xyzacademicportal.herokuapp.com/"; //Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
+        String baseUrl = "https://xyzacademicportal.herokuapp.com/data/pay-success"; //Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
         Map<String, String> postData = new HashMap<String, String>();
         postData.put("total_amount", "150.00");
         postData.put("tran_id", "TESTASPNET1234");
-        postData.put("success_url", baseUrl + "data/pay-success");
+        postData.put("success_url", baseUrl);
         postData.put("fail_url", "https://sandbox.sslcommerz.com/developer/fail.php");
         postData.put("cancel_url", "https://sandbox.sslcommerz.com/developer/cancel.php");
         postData.put("version", "3.00");
@@ -70,7 +70,7 @@ public class ParameterBuilder {
         Map<String, String> postData = new HashMap<String, String>();
         postData.put("total_amount", payment);
         postData.put("tran_id", transactionID);
-        postData.put("success_url", baseUrl + "data/pay-success");
+        postData.put("success_url", "https://xyzacademicportal.herokuapp.com/data/pay-success");
         postData.put("fail_url", "https://sandbox.sslcommerz.com/developer/fail.php");
         postData.put("cancel_url", "https://sandbox.sslcommerz.com/developer/cancel.php");
         postData.put("version", "3.00");
