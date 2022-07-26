@@ -51,37 +51,6 @@ public class RoutineService {
     }
 
 
-
-    // Get a single Subject by an id
-    public Subject getSubjectById(Integer id) {
-        return subjectRepository.findById(id).get();
-    }
-
-    // Update Subject information
-    public Subject updateSubject(Subject subject) {
-        return subjectRepository.save(subject);
-    }
-
-    // Delete Subject by their id
-    public void deleteSubjectById(Integer id) {
-        subjectRepository.deleteById(id);
-    }
-
-
-    // Get a list of subject using class name
-    public List<Subject> getAllSubjectByClass(String currentClass) {
-
-        List<Subject> subjectList = subjectRepository.findAll();
-        List<Subject> subjectListNew = new ArrayList<>();
-
-        for (Subject s : subjectList) {
-            if (s.getSubjectClass().equals(currentClass)) {
-                subjectListNew.add(s);
-            }
-        }
-        return subjectListNew;
-    }
-
     public ClassRoutine getRoutineById(Integer id) {
         return routineRepository.findById(id).get();
     }
