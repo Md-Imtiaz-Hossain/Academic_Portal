@@ -31,14 +31,14 @@ public class PaymentSchemeService {
     }
 
 
-    public List<PaymentScheme> getSchemeByClass(String classOf){
+    public List<PaymentScheme> getSchemeByClass(String classOf) {
 
         List<PaymentScheme> paymentSchemes = paymentSchemeRepository.findAll();
         List<PaymentScheme> paymentSchemeArrayList = new ArrayList<>();
 
-        for (PaymentScheme paymentScheme : paymentSchemes){
+        for (PaymentScheme paymentScheme : paymentSchemes) {
             String subjectClass = String.valueOf(paymentScheme.getPaymentClass());
-            if (subjectClass.equals(classOf)){
+            if (subjectClass.equals(classOf)) {
                 paymentSchemeArrayList.add(paymentScheme);
             }
         }
@@ -60,5 +60,14 @@ public class PaymentSchemeService {
 
     public void deleteSchemeById(Integer id) {
         paymentSchemeRepository.deleteById(id);
+    }
+
+    public Integer getSchemeTotal(String loggedUserClass) {
+        List<PaymentScheme> schemeByClass = getSchemeByClass(loggedUserClass);
+        Integer total = 0;
+        for (PaymentScheme paymentScheme : schemeByClass) {
+            total += paymentScheme.getAmount();
+        }
+        return total;
     }
 }

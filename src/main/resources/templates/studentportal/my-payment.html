@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Add Mark </h1>
+                        <h1 sec:authentication="principal.fullName"></h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Add Mark</li>
+                            <li class="breadcrumb-item active">All Scheme List</li>
                         </ol>
                     </div>
                 </div>
@@ -69,69 +69,49 @@
                     <div class="col-12">
 
                         <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">View Student & Marks <a
-                                        th:href="@{/central-result/list}"> List</a></h3>
-                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body">
 
-                            <form th:action="@{/central-result/addProcess/{id} (id=${user.id})}" method="POST"
-                                  enctype="multipart/form-data"
-                                  th:object="${result}">
+                                <table id="example1" class="table table-bordered table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Payment Name</th>
+                                        <th>To class</th>
+                                        <th>Year</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="scheme: ${schemeList}">
+                                        <td th:text="${scheme.id}"></td>
+                                        <td th:text="${scheme.paymentName}"></td>
+                                        <td th:text="${scheme.paymentClass}"></td>
+                                        <td th:text="${scheme.academicYear}"></td>
+                                        <td th:text="${scheme.amount}"></td>
+                                    </tr>
 
-                                <div class="card-body">
+                                    </tbody>
+                                </table>
 
-                                    <div class="row">
-                                        <div class="col-md-6">
+                                <form th:action="@{/data/handle-payment/{schemeTotal} (schemeTotal=${schemeTotal})}"
+                                      method="POST"
+                                      th:object="${paymentInformation}">
 
-                                            <div class="form-group">
-                                                <label for="ct1Mark">CT - 1</label>
-                                                <input type="number" class="form-control" id="ct1Mark"
-                                                       th:field="*{ct1Mark}"
-                                                       placeholder="ct - 1">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="ct2Mark">CT - 2</label>
-                                                <input type="number" class="form-control" id="ct2Mark"
-                                                       th:field="*{ct2Mark}"
-                                                       placeholder="ct - 2">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="ct3Mark">CT - 3</label>
-                                                <input type="number" class="form-control" id="ct3Mark"
-                                                       th:field="*{ct3Mark}"
-                                                       placeholder="ct - 3">
-                                            </div>
-
-                                        </div>
-
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
-
-                                            <div class="form-group">
-                                                <label for="midMark">Mid Mark</label>
-                                                <input type="number" class="form-control" id="midMark"
-                                                       th:field="*{midMark}"
-                                                       placeholder="Mid Mark">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="finalMark">Final Mark</label>
-                                                <input type="number" class="form-control" id="finalMark"
-                                                       th:field="*{finalMark}"
-                                                       placeholder="Final Mark">
-                                            </div>
-
-                                        </div>
-
+                                    <div class="navbar-nav ml-auto">
+                                        <h1 class="ml-auto" th:text="'Total- ' + ${schemeTotal}"></h1>
+                                        <h1 class="ml-auto" th:text="'Paied- ' + ${schemeTotal}"></h1>
+                                        <h1 class="ml-auto" th:text="'Due- ' + ${schemeTotal}"></h1>
                                     </div>
-                                </div>
-                                <div class="card-footer">
-                                    <button type="submit" class="btn btn-primary btn-block">Save</button>
-                                </div>
-                            </form>
 
+                                    <button type="submit" class="btn btn-primary btn-block ml-auto w-25">Pay Now
+                                    </button>
+
+                                </form>
+
+
+                            </div>
+                            <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
                     </div>
@@ -180,21 +160,24 @@
 <script>
     $(function () {
         $("#example1").DataTable({
-            "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "searching": false,
+            "paging": false,
+            "info": false
+            // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
-            "paging": true,
+            "paging": false,
             "lengthChange": false,
             "searching": false,
-            "ordering": true,
-            "info": true,
+            "ordering": false,
+            "info": false,
             "autoWidth": false,
             "responsive": true,
         });
     });
 </script>
-
-
 </body>
 </html>

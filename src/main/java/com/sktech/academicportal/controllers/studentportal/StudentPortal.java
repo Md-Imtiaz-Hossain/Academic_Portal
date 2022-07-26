@@ -1,15 +1,14 @@
 package com.sktech.academicportal.controllers.studentportal;
 
+import com.sktech.academicportal.entity.PaymentInformation;
 import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.service.ResultService;
-import com.sktech.academicportal.service.RoutineService;
-import com.sktech.academicportal.service.SubjectService;
-import com.sktech.academicportal.service.UserService;
+import com.sktech.academicportal.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -32,6 +31,9 @@ public class StudentPortal {
 
     @Autowired
     ResultService resultService;
+
+    @Autowired
+    PaymentSchemeService paymentSchemeService;
 
 
     // Logged in Student all subject class routine
@@ -69,6 +71,25 @@ public class StudentPortal {
 
         return "studentportal/my-result";
     }
+
+
+    // Logged in Student all subject class routine
+    @GetMapping("/my-payment")
+    public String myPayment(@ModelAttribute PaymentInformation paymentInformation, Model model, Principal principal) {
+        String userEmail = principal.getName();
+        User user = userService.getUserByEmail(userEmail);
+        String loggedUserClass = user.getCurrentClass();
+
+        model.addAttribute("pageTitle", "My Scheme list");
+        model.addAttribute("schemeList", paymentSchemeService.getSchemeByClass(loggedUserClass));
+        model.addAttribute("schemeTotal", paymentSchemeService.getSchemeTotal(loggedUserClass));
+        model.addAttribute("className", loggedUserClass);
+        model.addAttribute("paymentInformation", paymentInformation);
+
+
+        return "studentportal/my-payment";
+    }
+
 
 
 }

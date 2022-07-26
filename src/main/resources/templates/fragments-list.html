@@ -506,6 +506,17 @@
         </li>
 
         <li class="nav-item">
+            <a th:href="@{/student-portal/my-payment}" class="nav-link "
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-payment' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Student')">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    My payment Scheme (Logged-in Student)
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a th:href="@{/student-portal/my-result}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Student')">
