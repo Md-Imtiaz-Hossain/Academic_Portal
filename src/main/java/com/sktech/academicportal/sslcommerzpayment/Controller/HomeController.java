@@ -21,7 +21,7 @@ public class HomeController {
     @GetMapping("/form")
     public String indexPay(@ModelAttribute Appointment appointment, Model model) {
         model.addAttribute("Appointment", appointment);
-        return "sslcommerzpayment/Patient_appoint_doctor";
+        return "Patient_appoint_doctor";
     }
 
     @PostMapping(value = "/handle-payment")
@@ -67,7 +67,7 @@ public class HomeController {
         }
         System.out.println("This is successful page.. " + requestMapStr);
 //        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
-    return "sslcommerzpayment/Payment_Success";
+    return "Payment_Success";
     }
 
 

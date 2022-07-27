@@ -70,7 +70,7 @@ public class ParameterBuilder {
         Map<String, String> postData = new HashMap<String, String>();
         postData.put("total_amount", payment);
         postData.put("tran_id", transactionID);
-        postData.put("success_url", "https://xyzacademicportal.herokuapp.com/payment/pay-success");
+        postData.put("success_url", baseUrl + "payment/pay-success");
         postData.put("fail_url", "https://sandbox.sslcommerz.com/developer/fail.php");
         postData.put("cancel_url", "https://sandbox.sslcommerz.com/developer/cancel.php");
         postData.put("version", "3.00");
