@@ -1,16 +1,17 @@
-package com.sktech.academicportal.controllers.payment;
+package com.sktech.academicportal.sslcommerzpayment.Controller;
 
-import com.sktech.academicportal.commerz.TransactionResponseValidator;
+
+import com.sktech.academicportal.sslcommerzpayment.commerz.TransactionResponseValidator;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
-
 @RestController
-public class PaymentRESTController {
-
+@RequestMapping("/success")
+public class NewHomeController {
     @PostMapping("/pay-success-new")
     public String paymentSuccessNew(@RequestParam Map<String, String> requestMap) throws Exception {
         TransactionResponseValidator transactionResponseValidator = new TransactionResponseValidator();
@@ -19,5 +20,4 @@ public class PaymentRESTController {
 // Validator
         return "Everything is okay! ";
     }
-
 }
