@@ -1,4 +1,4 @@
-package com.sktech.academicportal.commerz.parametermappings;
+package com.sktech.academicportal.sslcommerzpayment.commerz.parametermappings;
 
 public class Gw {
     public String visa;

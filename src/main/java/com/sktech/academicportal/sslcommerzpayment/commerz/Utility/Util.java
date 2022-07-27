@@ -1,10 +1,10 @@
-package com.sktech.academicportal.commerz.Utility;
+package com.sktech.academicportal.sslcommerzpayment.commerz.Utility;
 
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sktech.academicportal.commerz.parametermappings.SSLCommerzInitResponse;
-import com.sktech.academicportal.commerz.parametermappings.SSLCommerzValidatorResponse;
+import com.sktech.academicportal.sslcommerzpayment.commerz.parametermappings.SSLCommerzInitResponse;
+import com.sktech.academicportal.sslcommerzpayment.commerz.parametermappings.SSLCommerzValidatorResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;
