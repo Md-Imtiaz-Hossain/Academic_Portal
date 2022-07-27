@@ -28,11 +28,11 @@ public class HomeController {
     public RedirectView payTest(@ModelAttribute Appointment appointment) throws Exception {
         String baseurl = "https://xyzacademicportal.herokuapp.com/";
         String payment = appointment.getPaid();
-        String transactionID = "TXID"+Math.random()*10000;
+        String transactionID = "TXID" + Math.random() * 10000;
         String time = appointment.getAppointTime();
         String patientID = appointment.getPatient_ID();
         String doctorID = appointment.getDoctor_ID();
-        System.out.println(payment+" "+" "+time+" "+doctorID+" "+patientID);
+        System.out.println(payment + " " + " " + time + " " + doctorID + " " + patientID);
         Map<String, String> transactionMap = ParameterBuilder.constructRequestParam(baseurl, payment, transactionID, patientID, doctorID);
 //        Map<String, String> transactionMap = ParameterBuilder.constructRequestParameters();
 
@@ -47,27 +47,27 @@ public class HomeController {
 
 
     @RequestMapping("/pay-success")
-    @ResponseBody
+//    @ResponseBody
     public String paymentSuccessful(@RequestParam Map<String, String> requestMap, @RequestParam Map<String, String> postData, Model model) {
 
         System.out.println(requestMap.get("cus_name"));
         String requestMapStr = "";
         String postDataStr = "";
-        for (String key: requestMap.keySet()) {
+        for (String key : requestMap.keySet()) {
             System.out.println("key = " + key + " value = " + requestMap.get(key));
-            String str = key =  key + " value = " + requestMap.get(key) + " \n";
+            String str = key = key + " value = " + requestMap.get(key) + " \n";
             requestMapStr = requestMapStr + str;
             requestMapStr = requestMapStr + '\n';
         }
 
-        for (String key: postData.keySet()) {
-            String str =  key + " value = " + postData.get(key) + " \n";
+        for (String key : postData.keySet()) {
+            String str = key + " value = " + postData.get(key) + " \n";
             postDataStr = postDataStr + str;
             postDataStr = postDataStr + '\n';
         }
-        System.out.println("This is successful page.. "+ requestMapStr);
-        return "The map came into comtroller is -> " + requestMapStr + " -------------- " +
-                postDataStr;
+        System.out.println("This is successful page.. " + requestMapStr);
+//        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
+    return "sslcommerzpayment/Payment_Success";
     }
 
 
