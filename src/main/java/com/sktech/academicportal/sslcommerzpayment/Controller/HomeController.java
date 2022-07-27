@@ -4,7 +4,7 @@ package com.sktech.academicportal.sslcommerzpayment.Controller;
 import com.sktech.academicportal.sslcommerzpayment.commerz.SSLCommerz;
 
 import com.sktech.academicportal.sslcommerzpayment.commerz.Utility.ParameterBuilder;
-import com.sktech.academicportal.sslcommerzpayment.entity.Appointment;
+import com.sktech.academicportal.sslcommerzpayment.entity.PaymentInformation;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,19 +19,19 @@ import java.util.Map;
 public class HomeController {
 
     @GetMapping("/form")
-    public String indexPay(@ModelAttribute Appointment appointment, Model model) {
-        model.addAttribute("Appointment", appointment);
-        return "Patient_appoint_doctor";
+    public String indexPay(@ModelAttribute PaymentInformation paymentInformation, Model model) {
+        model.addAttribute("paymentInformation", paymentInformation);
+        return "sslcommerzpayment/Patient_appoint_doctor";
     }
 
     @PostMapping(value = "/handle-payment")
-    public RedirectView payTest(@ModelAttribute Appointment appointment) throws Exception {
+    public RedirectView payTest(@ModelAttribute PaymentInformation paymentInformation) throws Exception {
         String baseurl = "https://xyzacademicportal.herokuapp.com/";
-        String payment = appointment.getPaid();
+        String payment = String.valueOf(paymentInformation.getPayableAmount());
         String transactionID = "TXID" + Math.random() * 10000;
-        String time = appointment.getAppointTime();
-        String patientID = appointment.getPatient_ID();
-        String doctorID = appointment.getDoctor_ID();
+        String time = paymentInformation.getPayedTime();
+        String patientID = paymentInformation.getStudentId();
+        String doctorID = paymentInformation.getStudentId();
         System.out.println(payment + " " + " " + time + " " + doctorID + " " + patientID);
         Map<String, String> transactionMap = ParameterBuilder.constructRequestParam(baseurl, payment, transactionID, patientID, doctorID);
 //        Map<String, String> transactionMap = ParameterBuilder.constructRequestParameters();
@@ -47,7 +47,7 @@ public class HomeController {
 
 
     @RequestMapping("/pay-success")
-//    @ResponseBody
+    @ResponseBody
     public String paymentSuccessful(@RequestParam Map<String, String> requestMap, @RequestParam Map<String, String> postData, Model model) {
 
         System.out.println(requestMap.get("cus_name"));
@@ -66,8 +66,8 @@ public class HomeController {
             postDataStr = postDataStr + '\n';
         }
         System.out.println("This is successful page.. " + requestMapStr);
-//        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
-    return "Payment_Success";
+        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
+//    return "Payment_Success";
     }
 
 
