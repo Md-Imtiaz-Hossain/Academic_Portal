@@ -14,7 +14,7 @@
 
                 <h2 class="text-center"> Appoint Doctor !</h2>
 
-                <form th:action="@{/handle-payment}" method="post" th:object="${Appointment}">
+                <form th:action="@{/payment/handle-payment}" method="post" th:object="${Appointment}">
                     <div class="mb-3">
                         <label class="form-label">Patient ID</label>
                         <input name="patient_ID" th:value="${Appointment.patient_ID}" required placeholder="Enter here" type="text" class="form-control">
