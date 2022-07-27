@@ -1,48 +1,39 @@
-package com.sktech.academicportal.controllers.payment;
+package com.sktech.academicportal.sslcommerzpayment.Controller;
 
 
-import com.sktech.academicportal.commerz.SSLCommerz;
-import com.sktech.academicportal.commerz.Utility.ParameterBuilder;
-import com.sktech.academicportal.entity.PaymentInformation;
-import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sktech.academicportal.sslcommerzpayment.commerz.SSLCommerz;
+
+import com.sktech.academicportal.sslcommerzpayment.commerz.Utility.ParameterBuilder;
+import com.sktech.academicportal.sslcommerzpayment.entity.Appointment;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.Map;
 
 @Controller
 @ComponentScan
-@RequestMapping("/data")
-public class PaymentInformationHandle {
+@RequestMapping("/payment")
+public class HomeController {
 
+    @GetMapping("/form")
+    public String indexPay(@ModelAttribute Appointment appointment, Model model) {
+        model.addAttribute("Appointment", appointment);
+        return "Patient_appoint_doctor";
+    }
 
-    @Autowired
-    UserService userService;
-
-
-    @PostMapping(value = "/handle-payment/{schemeTotal}")
-    public RedirectView payTest(@PathVariable Integer schemeTotal,
-                                @ModelAttribute PaymentInformation paymentInformation,
-                                Principal principal) throws Exception {
-
-        User user = userService.getUserByEmail(principal.getName());
-        Integer userId = user.getId();
-
+    @PostMapping(value = "/handle-payment")
+    public RedirectView payTest(@ModelAttribute Appointment appointment) throws Exception {
         String baseurl = "https://xyzacademicportal.herokuapp.com/";
-        String payment = String.valueOf(schemeTotal);
+        String payment = appointment.getPaid();
         String transactionID = "TXID" + Math.random() * 10000;
-        String time = String.valueOf(LocalDateTime.now());
-        String studentID = String.valueOf(userId);
-        String doctorID = String.valueOf(userId);
-        System.out.println(payment + " " + " " + time + " " + doctorID + " " + studentID);
-        Map<String, String> transactionMap = ParameterBuilder.constructRequestParam(baseurl, payment, transactionID, studentID, doctorID);
+        String time = appointment.getAppointTime();
+        String patientID = appointment.getPatient_ID();
+        String doctorID = appointment.getDoctor_ID();
+        System.out.println(payment + " " + " " + time + " " + doctorID + " " + patientID);
+        Map<String, String> transactionMap = ParameterBuilder.constructRequestParam(baseurl, payment, transactionID, patientID, doctorID);
 //        Map<String, String> transactionMap = ParameterBuilder.constructRequestParameters();
 
         SSLCommerz sslCommerz = new SSLCommerz("sktec62de70757d5df", "sktec62de70757d5df@ssl", true);
@@ -56,7 +47,7 @@ public class PaymentInformationHandle {
 
 
     @RequestMapping("/pay-success")
-    @ResponseBody
+//    @ResponseBody
     public String paymentSuccessful(@RequestParam Map<String, String> requestMap, @RequestParam Map<String, String> postData, Model model) {
 
         System.out.println(requestMap.get("cus_name"));
@@ -75,14 +66,10 @@ public class PaymentInformationHandle {
             postDataStr = postDataStr + '\n';
         }
         System.out.println("This is successful page.. " + requestMapStr);
-
-        model.addAttribute("requestMapStr", requestMapStr);
-        model.addAttribute("postData", postData);
-
-        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
-//        return "studentportal/payment-success";
-
+//        return "The map came into comtroller is -> " + requestMapStr + " -------------- " + postDataStr;
+    return "Payment_Success";
     }
 
 
 }
+

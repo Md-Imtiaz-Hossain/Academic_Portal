@@ -93,23 +93,6 @@
 
                                     </tbody>
                                 </table>
-
-                                <form th:action="@{/data/handle-payment/{schemeTotal} (schemeTotal=${schemeTotal})}"
-                                      method="POST"
-                                      th:object="${paymentInformation}">
-
-                                    <div class="navbar-nav ml-auto">
-                                        <h1 class="ml-auto" th:text="'Total- ' + ${schemeTotal}"></h1>
-                                        <h1 class="ml-auto" th:text="'Paied- ' + ${schemeTotal}"></h1>
-                                        <h1 class="ml-auto" th:text="'Due- ' + ${schemeTotal}"></h1>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary btn-block ml-auto w-25">Pay Now
-                                    </button>
-
-                                </form>
-
-
                             </div>
                             <!-- /.card-body -->
                         </div>

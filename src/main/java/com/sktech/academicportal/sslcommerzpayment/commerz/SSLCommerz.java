@@ -1,10 +1,11 @@
-package com.sktech.academicportal.commerz;
+package com.sktech.academicportal.sslcommerzpayment.commerz;
 
 
-import com.sktech.academicportal.commerz.Utility.ParameterBuilder;
-import com.sktech.academicportal.commerz.Utility.Util;
-import com.sktech.academicportal.commerz.parametermappings.SSLCommerzInitResponse;
-import com.sktech.academicportal.commerz.parametermappings.SSLCommerzValidatorResponse;
+
+import com.sktech.academicportal.sslcommerzpayment.commerz.Utility.ParameterBuilder;
+import com.sktech.academicportal.sslcommerzpayment.commerz.Utility.Util;
+import com.sktech.academicportal.sslcommerzpayment.commerz.parametermappings.SSLCommerzInitResponse;
+import com.sktech.academicportal.sslcommerzpayment.commerz.parametermappings.SSLCommerzValidatorResponse;
 
 import java.io.BufferedReader;
 import java.io.IOException;

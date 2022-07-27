@@ -1,4 +1,4 @@
-package com.sktech.academicportal.commerz;
+package com.sktech.academicportal.sslcommerzpayment.commerz;
 
 import java.util.Map;
 

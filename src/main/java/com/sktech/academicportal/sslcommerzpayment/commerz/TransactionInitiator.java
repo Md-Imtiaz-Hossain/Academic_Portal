@@ -1,8 +1,8 @@
-package com.sktech.academicportal.commerz;
+package com.sktech.academicportal.sslcommerzpayment.commerz;
 
 
 
-import com.sktech.academicportal.commerz.Utility.ParameterBuilder;
+import com.sktech.academicportal.sslcommerzpayment.commerz.Utility.ParameterBuilder;
 
 import java.util.Map;
 
