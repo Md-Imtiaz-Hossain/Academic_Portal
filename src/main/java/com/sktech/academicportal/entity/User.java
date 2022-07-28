@@ -122,6 +122,9 @@ public class User {
     )
     private Set<Subject> subjects = new HashSet<>();
 
+    @OneToOne(mappedBy = "user")
+    private Profile profile;
+
 
     public User(String email, String password, String firstName, String lastName) {
         this.email = email;
