@@ -255,6 +255,15 @@
                 </p>
             </a>
         </li>
+        <li class="nav-item">
+            <a th:href="@{/profile/update}" class="nav-link"
+               th:classappend="${#httpServletRequest.getRequestURI() == '/profile/update' ? 'active':''}">
+                <i class="nav-icon fas fa-user-alt"></i>
+                <p>
+                    Update Profile
+                </p>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a th:href="@{/user/list}" class="nav-link"

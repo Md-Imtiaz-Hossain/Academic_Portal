@@ -1,10 +1,207 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>update</title>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments-list::head">
 </head>
-<body>
-update
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+        <!-- Left navbar links -->
+        <ul th:replace="fragments-list::leftNavbar"></ul>
+
+        <!-- Right navbar links -->
+        <ul th:replace="fragments-list::rightNavbar"></ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Brand Logo -->
+        <a th:replace="fragments-list::brandLogo"></a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div th:replace="fragments-list::sidebarUserPanel"></div>
+
+            <!-- SidebarSearch Form -->
+            <div th:replace="fragments-list::sidebarSearchForm"></div>
+
+            <!-- Sidebar Menu -->
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Update Profile</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Update Profile</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+
+                        <div class="card">
+
+                            <form class="form-horizontal" th:action="@{/profile/save}"
+                                  th:object="${profile}" method="post">
+
+                                <div class="card-body">
+
+                                    <div class="form-group row">
+                                        <label for="followers" class="col-sm-2 col-form-label">Followers</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="followers"
+                                                   placeholder="followers"
+                                                   th:field="*{followers}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="following" class="col-sm-2 col-form-label">Following</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="following"
+                                                   placeholder="following"
+                                                   th:field="*{following}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="friends" class="col-sm-2 col-form-label">Total
+                                            Friends</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="friends"
+                                                   placeholder="friends"
+                                                   th:field="*{friends}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="note" class="col-sm-2 col-form-label">Note</label>
+                                        <div class="col-sm-10">
+                                                    <textarea th:field="*{note}" class="form-control" id="note"
+                                                              placeholder="note"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" class="form-control" id="inputSkills"
+                                                   placeholder="Skills"
+                                                   th:field="*{skills}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox"> I agree to the <a href="#">terms and
+                                                    conditions</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="offset-sm-2 col-sm-10">
+                                            <button type="submit" class="btn btn-danger">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+
+    <!-- Control Sidebar -->
+    <aside th:replace="fragments-list::rightNavbarOptions"></aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer th:replace="fragments-list::footer" class="main-footer"></footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
 </body>
 </html>

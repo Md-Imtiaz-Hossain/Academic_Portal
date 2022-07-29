@@ -122,7 +122,7 @@ public class User {
     )
     private Set<Subject> subjects = new HashSet<>();
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
     private Profile profile;
 
 

@@ -1,5 +1,6 @@
 package com.sktech.academicportal.controllers;
 
+import com.sktech.academicportal.controllers.profile.ProfileUpdate;
 import com.sktech.academicportal.entity.Profile;
 import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.User;
@@ -44,7 +45,6 @@ public class MainController {
         model.addAttribute("pageTitle", "Welcome | Dashboard");
         model.addAttribute("user", userService.getUserByEmail(principal.getName()));
         model.addAttribute("profile_", profileService.getLoggedInUserProfile(principal));
-        model.addAttribute("profile", new Profile());
 
         return "after-login-dashboard";
     }

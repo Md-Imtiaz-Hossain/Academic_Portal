@@ -21,16 +21,26 @@ public class ProfileUpdate {
     @Autowired
     ProfileService profileService;
 
-    @PostMapping("/info/{id}")
-    public String profileInfo(@PathVariable Integer id,
-                              @ModelAttribute("profile") Profile profile,
+
+    @GetMapping("/update")
+    public String profileUpdate(Model model, Principal principal) {
+        Profile loggedInUserProfile = profileService.getLoggedInUserProfile(principal);
+        model.addAttribute("pageTitle", "Profile Update");
+//        model.addAttribute("profile", loggedInUserProfile);
+        model.addAttribute("profile", new Profile());
+        return "profileupdate/update";
+    }
+
+    @PostMapping("/save")
+    public String profileInfo(@ModelAttribute("profile") Profile profile,
                               Principal principal) {
         User user = userService.getUserByEmail(principal.getName());
-        Profile existingProfile = profile;
-        existingProfile.setId(id);
-        existingProfile.setUser(user);
-        existingProfile.setSkills(profile.getSkills());
-        profileService.save(existingProfile);
+
+        profile.setUser(user);
+        profileService.save(profile);
+
         return "redirect:/after-login-dashboard";
     }
+
+
 }
