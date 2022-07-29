@@ -118,9 +118,9 @@
                             <button type="submit" class="btn btn-primary">Upload</button>
                         </div>
                     </form>
-                    <div class="m-3" style="width: 400px; height: 400px">
+                    <div class="m-3" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; width: 400px; height: 400px">
                         <label id="labelPreview" for="preview" class="form-check-label"></label>
-                        <img id="preview" class="m-3 border border-secondary" src="" style="max-width: 100%; max-height: 100%; ">
+                        <img id="preview" class="m-3 border border-secondary rounded border-4" src="" style="max-width: 100%; max-height: 100%; " hidden="true">
                     </div>
                 </div>
                 <!--End -->
@@ -189,7 +189,7 @@ imageFile.onchange = evt =>{
     const [file] = imageFile.files;
     if(file){
         preview.src = URL.createObjectURL(file);
-
+        preview.hidden = false;
         previewLabel.innerText = "Preview";
     }
 }
