@@ -91,8 +91,10 @@
                     </div>
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-4" th:each="image : ${images}">
                         <div class="bg-white rounded shadow-sm h-100">
+                            <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px; border:solid">
+                                <img th:src="'../'+${image.path}" alt="" class="img-fluid card-img-top" style=" width: auto;max-height: 100%;">
+                            </div>
 
-                            <img th:src="'../'+${image.path}" alt="" class="img-fluid card-img-top">
 
                             <div class="p-4 d-flex flex-column justify-content-end">
                                 <h5 th:text="${image.heading}"></h5>
@@ -116,7 +118,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body d-flex justify-content-center">
-                                        <div style="position:relative; text-align: left; color: lightgrey">
+                                        <div style="position:relative; text-align: left; color: #201518">
                                             <img id="modalImage"  th:src="'../'+ ${image.path}" class="img-fluid" style="max-width: 100%; max-height: 100%; vertical-align: center">
                                             <div th:text="${image.description}" style="position:absolute; bottom: 20px; left: 30px; font-size: 150%"></div>
                                         </div>
@@ -194,11 +196,11 @@
 
 
 
+                </div>
             </div>
-        </div>
 
-        <!-- /.content -->
-    </div>
+            <!-- /.content -->
+        </div>
     </div>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -246,7 +248,7 @@
 
 <!-- Page specific script -->
 <script>
-<!--    -->
+    <!--    -->
 </script>
 </body>
 </html>
