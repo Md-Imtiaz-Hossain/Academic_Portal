@@ -8,7 +8,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Getter
 @Setter
 @Entity
@@ -37,11 +36,6 @@ public class Profile {
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
-
-
-
-
-
 
 
 }

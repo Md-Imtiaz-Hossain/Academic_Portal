@@ -11,7 +11,6 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Getter
 @Setter
 @Entity
@@ -122,7 +121,7 @@ public class User {
     )
     private Set<Subject> subjects = new HashSet<>();
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "user")
     private Profile profile;
 
 

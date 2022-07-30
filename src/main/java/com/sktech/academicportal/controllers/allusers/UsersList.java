@@ -1,8 +1,10 @@
 package com.sktech.academicportal.controllers.allusers;
 
+import com.sktech.academicportal.entity.Profile;
 import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.helper.FileUploadUtil;
+import com.sktech.academicportal.service.ProfileService;
 import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -20,6 +23,8 @@ public class UsersList {
 
     @Autowired
     UserService userService;
+    @Autowired
+    ProfileService profileService;
 
 
     // View All User store in DB with Datatable

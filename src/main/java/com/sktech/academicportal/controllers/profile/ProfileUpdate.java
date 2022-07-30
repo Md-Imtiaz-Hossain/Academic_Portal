@@ -23,22 +23,19 @@ public class ProfileUpdate {
 
 
     @GetMapping("/update")
-    public String profileUpdate(Model model, Principal principal) {
-        Profile loggedInUserProfile = profileService.getLoggedInUserProfile(principal);
+    public String profileUpdate(Model model) {
         model.addAttribute("pageTitle", "Profile Update");
-//        model.addAttribute("profile", loggedInUserProfile);
         model.addAttribute("profile", new Profile());
         return "profileupdate/update";
     }
+
 
     @PostMapping("/save")
     public String profileInfo(@ModelAttribute("profile") Profile profile,
                               Principal principal) {
         User user = userService.getUserByEmail(principal.getName());
-
         profile.setUser(user);
         profileService.save(profile);
-
         return "redirect:/after-login-dashboard";
     }
 
