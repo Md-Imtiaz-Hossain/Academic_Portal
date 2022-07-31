@@ -74,7 +74,7 @@ public class ParameterBuilder {
         postData.put("fail_url", "https://sandbox.sslcommerz.com/developer/fail.php");
         postData.put("cancel_url", "https://sandbox.sslcommerz.com/developer/cancel.php");
         postData.put("version", "3.00");
-        postData.put("cus_name", "Patient-ID: "+patientID);
+        postData.put("cus_name", "Customer-ID: "+patientID);
         postData.put("cus_email", "xyz@mail.com");
         postData.put("cus_add1", "Dhaka");
         postData.put("cus_city", "Khilkhet");
@@ -83,7 +83,7 @@ public class ParameterBuilder {
         postData.put("cus_country", "Bangladesh");
         postData.put("cus_phone", "0111111111");
         postData.put("cus_fax", "0171111111");
-        postData.put("ship_name", "Doctor-ID: "+doctorID);
+        postData.put("ship_name", "Customer-ID: "+doctorID);
         postData.put("ship_add1", "Address Line On");
         postData.put("ship_add2", "Address Line Tw");
         postData.put("ship_city", "City Nam");

@@ -536,6 +536,17 @@
         </li>
 
         <li class="nav-item">
+            <a th:href="@{/teacher-evaluation/form}" class="nav-link "
+               th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-evaluation/form' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Student')">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    Teacher Evaluation (For Logged-in Student)
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a th:href="@{/payment/form}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/payment/form' ? 'active':''}">
                 <i class="nav-icon fas fa-list"></i>

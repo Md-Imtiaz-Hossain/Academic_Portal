@@ -21,7 +21,7 @@ public class HomeController {
     @GetMapping("/form")
     public String indexPay(@ModelAttribute PaymentInformation paymentInformation, Model model) {
         model.addAttribute("paymentInformation", paymentInformation);
-        return "sslcommerzpayment/Patient_appoint_doctor";
+        return "sslcommerzpayment/payment-information-form";
     }
 
     @PostMapping(value = "/handle-payment")

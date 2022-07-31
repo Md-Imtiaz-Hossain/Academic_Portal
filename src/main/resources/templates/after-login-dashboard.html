@@ -72,9 +72,12 @@
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile">
                                 <div class="text-center">
-                                    <img class="profile-user-img img-fluid img-circle"
-                                         src="/dist/img/user4-128x128.jpg"
-                                         alt="User profile picture">
+<!--                                    <span th:if="${user.photos == null}" class="fas fa-user ml-5-"></span>-->
+                                    <img th:if="${user.photos == null}" src="/static/images/default.jpg"
+                                         style="width: 100px ; height: 100px; border-radius: 50px"/>
+
+                                    <img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
+                                         style="width: 100px ; height: 100px; border-radius: 50px"/>
                                 </div>
 
                                 <h3 class="profile-username text-center">
