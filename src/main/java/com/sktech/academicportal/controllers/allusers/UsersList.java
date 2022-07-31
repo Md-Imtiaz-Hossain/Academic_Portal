@@ -65,9 +65,11 @@ public class UsersList {
                                      @RequestParam("image") MultipartFile multipartFile,
                                      BindingResult bindingResult, Model model) throws IOException {
 
-
         if (this.userRepository.getUserByEmail(user.getEmail()) != null) {
             bindingResult.rejectValue("email", "error.user", "An account already exists for this email.");
+            model.addAttribute("listRoles", userService.listRoles());
+        } else if (user.getPassword().length() < 8) {
+            bindingResult.rejectValue("password", "error.password", "Password must Min 8 character.");
             model.addAttribute("listRoles", userService.listRoles());
         }
 
