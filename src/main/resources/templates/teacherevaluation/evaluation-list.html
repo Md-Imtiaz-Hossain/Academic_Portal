@@ -50,12 +50,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Evaluate your Teacher</h1>
+                        <h1>All Back End User List</h1>
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Evaluate your Teacher</li>
+                            <li class="breadcrumb-item active">All Back End User List</li>
                         </ol>
                     </div>
                 </div>
@@ -67,9 +67,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
+
                         <div class="card">
-                            <h3 class="card-title p-3">View all your review <a
-                                    th:href="@{/teacher-evaluation/list}">List</a></h3>
+                            <div class="card-header">
+                                <h3 class="card-title">Add or Register a new User <a
+                                        th:href="@{/user/new}">Add</a></h3>
+                            </div>
                             <!-- /.card-header -->
                             <div class="card-body">
 
@@ -77,32 +80,50 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Class</th>
-                                        <th>Evaluate Subject</th>
+                                        <th>Student Name</th>
+                                        <th>Subject Name</th>
+                                        <th>Teacher Name</th>
+                                        <th>Q1</th>
+                                        <th>Q2</th>
+                                        <th>Q3</th>
+                                        <th>Q4</th>
+                                        <th>Q5</th>
+                                        <th>Q6</th>
+                                        <th>Q7</th>
+                                        <th>Q8</th>
+                                        <th>Q9</th>
+                                        <th>Q10</th>
+                                        <th>Comment</th>
+                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="user: ${user}">
+                                    <tr th:each="review: ${allReview}">
 
-                                        <td th:text="${user.id}"></td>
-
+                                        <td th:text="${review.id}"></td>
+                                        <td th:text="${review.reviewerId}"></td>
+                                        <td th:text="${review.subjectId}"></td>
+                                        <td th:text="${review.teacherId}"></td>
+                                        <td th:text="${review.questionOne}"></td>
+                                        <td th:text="${review.questionTwo}"></td>
+                                        <td th:text="${review.questionThree}"></td>
+                                        <td th:text="${review.questionFour}"></td>
+                                        <td th:text="${review.questionFive}"></td>
+                                        <td th:text="${review.questionSix}"></td>
+                                        <td th:text="${review.questionSeven}"></td>
+                                        <td th:text="${review.questionEight}"></td>
+                                        <td th:text="${review.questionNine}"></td>
+                                        <td th:text="${review.questionTen}"></td>
+                                        <td th:text="${review.comment}"></td>
                                         <td>
-                                            <span th:text="${user.firstName} + ' ' + ${user.lastName}"></span><br>
-                                        </td>
+                                            <a th:href="@{/user/edit/{id}(id=${review.id})}"
+                                               class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a>
 
-                                        <td th:text="${user.email}"></td>
-                                        <td th:text="${user.currentClass}"></td>
-                                        <td>
-                                            <div th:each=" sub : ${user.subjects}">
-                                                <ul>
-                                                    <li><a th:href="@{/teacher-evaluation/add-review/{userId}/{subjectId} (userId=${user.id}, subjectId=${sub.id})}"
-                                                           th:text="${sub.subjectName} + ' ' + ${sub.subjectCode} + ' Class- ' + ${sub.subjectClass}"
-                                                           th:value="${sub.id}"></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            <a th:href="@{/user/delete/{id}(id=${review.id})}"
+                                               onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"
+                                               class="btn btn-danger">
+                                                <i class="fas fa-trash ml-2"></i>
+                                            </a>
                                         </td>
                                     </tr>
                                     </tbody>
@@ -127,6 +148,7 @@
 
     <!-- Main Footer -->
     <footer th:replace="fragments-list::footer" class="main-footer"></footer>
+
 </div>
 <!-- ./wrapper -->
 

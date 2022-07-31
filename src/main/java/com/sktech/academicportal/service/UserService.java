@@ -224,4 +224,23 @@ public class UserService {
         classList.addAll(set);
         return set;
     }
+
+    public User getStudentByLoggedInformation(String name) {
+        User user = userRepository.getUserByEmail(name);
+        return user;
+    }
+
+    public User getUserBySubjectId(Integer subjectId) {
+        List<User> allUser = getAllUserWithoutStudentRole();
+
+
+        for(User u : allUser){
+            for (Subject s : u.getSubjects()){
+                if (s.getId().equals(subjectId)){
+                    return u;
+                }
+            }
+        }
+        return allUser.get(0);
+    }
 }
