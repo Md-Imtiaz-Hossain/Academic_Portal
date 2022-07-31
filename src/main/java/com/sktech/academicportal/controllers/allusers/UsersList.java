@@ -4,15 +4,22 @@ import com.sktech.academicportal.entity.Profile;
 import com.sktech.academicportal.entity.Role;
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.helper.FileUploadUtil;
+import com.sktech.academicportal.helper.Message;
+import com.sktech.academicportal.repositories.UserRepository;
 import com.sktech.academicportal.service.ProfileService;
 import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.io.EOFException;
 import java.io.IOException;
 import java.security.Principal;
 import java.util.List;
@@ -25,6 +32,8 @@ public class UsersList {
     UserService userService;
     @Autowired
     ProfileService profileService;
+    @Autowired
+    UserRepository userRepository;
 
 
     // View All User store in DB with Datatable
@@ -52,8 +61,21 @@ public class UsersList {
 
     // Process the fill up form after save button clicked.
     @PostMapping("/save")
-    public String processNewUserForm(@ModelAttribute("user") User user,
-                                     @RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String processNewUserForm(@Valid @ModelAttribute("user") User user,
+                                     @RequestParam("image") MultipartFile multipartFile,
+                                     BindingResult bindingResult, Model model) throws IOException {
+
+
+        if (this.userRepository.getUserByEmail(user.getEmail()) != null) {
+            bindingResult.rejectValue("email", "error.user", "An account already exists for this email.");
+            model.addAttribute("listRoles", userService.listRoles());
+        }
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("pageTitle", "User Registration");
+            model.addAttribute("listRoles", userService.listRoles());
+            return "backenduserslist/user-new-form";
+        }
 
         if (!multipartFile.isEmpty()) {
             String fileNameSelected = StringUtils.cleanPath(multipartFile.getOriginalFilename());
@@ -67,6 +89,8 @@ public class UsersList {
             if (user.getPhotos().isEmpty()) {
                 user.setPhotos(null);
             }
+            model.addAttribute("successMsg", "successfully signed up. Please Login!");
+            model.addAttribute("successMsgType", "alert-success");
             userService.saveUser(user);
         }
         return "redirect:/user/list";

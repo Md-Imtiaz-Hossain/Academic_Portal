@@ -4,6 +4,10 @@ import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -28,7 +32,10 @@ public class User {
     @Column(name = "last_name", nullable = false, length = 45)
     private String lastName;
 
-    @Column(name = "email", nullable = false, length = 40)
+
+    @Valid
+    @NotBlank(message = "Email can't be blank")
+    @Column(name = "email", nullable = false, length = 40, unique = true)
     private String email;
 
     @Column(name = "password", nullable = false, length = 64)
@@ -150,8 +157,6 @@ public class User {
     public Set<Role> getRoles() {
         return roles;
     }
-
-
 
 
 }

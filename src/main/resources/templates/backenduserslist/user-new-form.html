@@ -69,9 +69,19 @@
                     <div class="col-12">
 
                         <div class="card">
+
+
+                            <!--                            <div th:if="${session.message}"-->
+                            <!--                                 th:classappend="${session.message.type}"-->
+                            <!--                                 class="alert alert-primary" role="alert">-->
+                            <!--                                <p th:text="${session.message.content}"></p>-->
+                            <!--                                <th:block th:text="${#session.removeAttribute('message')}"></th:block>-->
+
+
                             <div class="card-header">
                                 <h3 class="card-title">View All User <a th:href="@{/user/list}">List</a></h3>
                             </div>
+
 
                             <form th:action="@{/user/save}" method="post"
                                   enctype="multipart/form-data"
@@ -93,7 +103,11 @@
                                                 <label for="email">Email</label>
                                                 <input type="email" class="form-control" id="email"
                                                        th:field="*{email}"
-                                                       placeholder="Email">
+                                                       placeholder="Email"
+                                                       th:classappend="${#fields.hasErrors('email')?'is-invalid':''}">
+                                                <div th:each="e : ${#fields.errors('email')}" th:text="${e}"
+                                                     class="invalid-feedback">
+                                                </div>
                                             </div>
 
                                             <div class="form-group">
@@ -126,8 +140,7 @@
                                                 <label>Password</label>
                                                 <input th:if="${user.id == null}" type="password"
                                                        class="form-control"
-                                                       th:field="*{password}" required minlength="8"
-                                                       maxlength="20"/>
+                                                       th:field="*{password}" required minlength="8" maxlength="20"/>
                                                 <input th:if="${user.id != null}" type="password"
                                                        class="form-control"
                                                        th:field="*{password}" minlength="8" maxlength="20"/>
