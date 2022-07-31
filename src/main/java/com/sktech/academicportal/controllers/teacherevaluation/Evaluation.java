@@ -82,5 +82,11 @@ public class Evaluation {
         return "redirect:/teacher-evaluation/form";
     }
 
+    @GetMapping("/delete/{evaluationId}")
+    public String deleteEvaluation(@PathVariable Integer evaluationId){
+        teacherEvaluationService.deleteEvaluation(evaluationId);
+        return "redirect:/teacher-evaluation/list";
+    }
+
 
 }

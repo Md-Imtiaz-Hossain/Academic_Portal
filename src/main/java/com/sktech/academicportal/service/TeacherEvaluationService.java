@@ -50,4 +50,9 @@ public class TeacherEvaluationService {
     public List<TeacherEvaluation> findAll() {
         return teacherEvaluationRepository.findAll();
     }
+
+    public void deleteEvaluation(Integer id){
+        teacherEvaluationRepository.deleteById(id);
+    }
+
 }

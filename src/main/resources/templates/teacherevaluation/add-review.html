@@ -121,7 +121,7 @@
                                         <!-- /.col -->
                                         <div class="col-md-6">
 
-                                            <!-- radio -->
+
                                             <div class="form-group">
                                                 <label><h3>Q1. Teacher is prepared for class.</h3></label>
 
@@ -158,6 +158,47 @@
                                                            th:field="*{questionOne}"
                                                            th:value="${4}">
                                                     <label for="customRadio4" class="custom-control-label">
+                                                        Most of the</label>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label><h3>Q2. Teacher plans class time and assignments that help students to problem solve and think critically.</h3></label>
+
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio" id="customRadio5"
+                                                           name="customRadio"
+                                                           th:field="*{questionTwo}"
+                                                           th:value="${1}">
+                                                    <label for="customRadio5" class="custom-control-label">
+                                                        Rarely </label>
+                                                </div>
+
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio" id="customRadio6"
+                                                           name="customRadio" checked
+                                                           th:field="*{questionTwo}"
+                                                           th:value="${2}">
+                                                    <label for="customRadio6" class="custom-control-label">
+                                                        Once in a while</label>
+                                                </div>
+
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio" id="customRadio7"
+                                                           name="customRadio"
+                                                           th:field="*{questionTwo}"
+                                                           th:value="${3}">
+                                                    <label for="customRadio7" class="custom-control-label">
+                                                        Sometimes </label>
+                                                </div>
+
+                                                <div class="custom-control custom-radio">
+                                                    <input class="custom-control-input" type="radio" id="customRadio8"
+                                                           name="customRadio"
+                                                           th:field="*{questionTwo}"
+                                                           th:value="${4}">
+                                                    <label for="customRadio8" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
 
