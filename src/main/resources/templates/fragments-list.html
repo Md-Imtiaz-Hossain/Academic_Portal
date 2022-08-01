@@ -268,7 +268,7 @@
         <li class="nav-item">
             <a th:href="@{/user/list}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/user/list' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Admin','RootAdmin')">
+               sec:authorize="hasAnyAuthority('RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     User List - <small>Root Admin 1st layer</small>
@@ -505,7 +505,7 @@
         <li class="nav-item">
             <a th:href="@{/student-portal/my-routine}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-routine' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Student')">
+               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     My Class routine (Logged-in Student)
@@ -516,7 +516,7 @@
         <li class="nav-item">
             <a th:href="@{/student-portal/my-payment}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-payment' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Student')">
+               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     My payment Scheme (Logged-in Student)
@@ -527,7 +527,7 @@
         <li class="nav-item">
             <a th:href="@{/student-portal/my-result}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Student')">
+               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     My Result (Logged-in Student)
@@ -537,7 +537,8 @@
 
         <li class="nav-item">
             <a th:href="@{/all-teacher-evaluation/list}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/all-teacher-evaluation/form' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/all-teacher-evaluation/form' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     All Teacher Evaluation (Admin)
@@ -548,7 +549,7 @@
         <li class="nav-item">
             <a th:href="@{/teacher-evaluation/form}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-evaluation/form' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Student')">
+               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     Teacher Evaluation (For Logged-in Student)
