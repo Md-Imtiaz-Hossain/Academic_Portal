@@ -25,7 +25,7 @@ public class SubjectAssignTeacher {
     public String subjectAssign( Model model ){
 
         model.addAttribute("pageTitle", "Teacher and Assigned Subjects");
-        model.addAttribute("user", userService.getAllUserWithoutStudentRole());
+        model.addAttribute("user", userService.getAllUserWithoutRootAdminAndAdminAndStudentRole());
 
         return "subjectassign/assign-And-list-teacher";
     }

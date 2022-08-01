@@ -129,12 +129,12 @@ public class UserService {
     }
 
     // This methode will return with user List which contain all Role except Admin and student
-    public List<User> getAllUserWithoutAdminAndStudentRole() {
+    public List<User> getAllUserWithoutRootAdminAndAdminAndStudentRole() {
         List<User> getAllUserWithoutAdminRole = new ArrayList<>();
         List<User> userList = userRepository.findAll();
         for (User u : userList) {
             for (Role r : u.getRoles()) {
-                if (Objects.equals(r.getName(), "Admin") || Objects.equals(r.getName(), "Student")) {
+                if (Objects.equals(r.getName(), "Admin") || Objects.equals(r.getName(), "Student")|| Objects.equals(r.getName(), "RootAdmin")) {
                     break;
                 } else {
                     getAllUserWithoutAdminRole.add(u);
@@ -145,12 +145,12 @@ public class UserService {
     }
 
     // This methode will return with user List which contain all Role except  Root Admin
-    public Set<User> getAllUserWithoutRootAdminRole() {
+    public Set<User> getAllUserWithoutRootAdminAndAdminRole() {
         Set<User> getAllUserWithoutAdminRole = new HashSet<>();
         List<User> userList = userRepository.findAll();
         for (User u : userList) {
             for (Role r : u.getRoles()) {
-                if (Objects.equals(r.getName(), "RootAdmin")) {
+                if (Objects.equals(r.getName(), "RootAdmin") || Objects.equals(r.getName(), "Admin") ) {
                     break;
                 } else {
                     getAllUserWithoutAdminRole.add(u);

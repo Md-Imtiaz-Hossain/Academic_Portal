@@ -26,7 +26,7 @@ public class NormalUserInfo {
     @GetMapping("/list")
     public String viewUserListPage(Model model) {
         model.addAttribute("pageTitle", "Normal User List");
-        model.addAttribute("user", userService.getAllUserWithoutRootAdminRole());
+        model.addAttribute("user", userService.getAllUserWithoutRootAdminAndAdminRole());
         return "normaluserlist/user-list";
     }
 

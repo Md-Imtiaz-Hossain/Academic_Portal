@@ -21,7 +21,7 @@ public class TeacherList {
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Teacher List");
-        model.addAttribute("getAllUserWithoutAdminAndStudentRole", userService.getAllUserWithoutAdminAndStudentRole());
+        model.addAttribute("getAllUserWithoutAdminAndStudentRole", userService.getAllUserWithoutRootAdminAndAdminAndStudentRole());
         return "teacherlist/teacher-list";
     }
 
