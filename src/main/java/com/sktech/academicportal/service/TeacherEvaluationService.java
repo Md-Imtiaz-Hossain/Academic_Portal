@@ -35,16 +35,17 @@ public class TeacherEvaluationService {
 
         User userByEmail = userService.getUserByEmail(principal.getName());
         Integer userId = userByEmail.getId();
-
         List<TeacherEvaluation> evaluations = teacherEvaluationRepository.findAll();
         List<TeacherEvaluation> newEvaluations = new ArrayList<>();
+
+
         for (TeacherEvaluation te : evaluations){
-            if (te.getReviewerId().equals(userId)){
+            Integer reviewerId = te.getReviewerId();
+            if (reviewerId == userId){
                 newEvaluations.add(te);
             }
         }
-        Set<TeacherEvaluation> evaluationSet = new HashSet<>(newEvaluations);
-        return evaluationSet;
+        return new HashSet<>(newEvaluations);
     }
 
     public List<TeacherEvaluation> findAll() {
@@ -55,4 +56,7 @@ public class TeacherEvaluationService {
         teacherEvaluationRepository.deleteById(id);
     }
 
+    public TeacherEvaluation findById(Integer reviewId) {
+        return teacherEvaluationRepository.findById(reviewId).get();
+    }
 }
