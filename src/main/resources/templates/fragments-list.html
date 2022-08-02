@@ -547,6 +547,16 @@
         </li>
 
         <li class="nav-item">
+            <a th:href="@{/student-application/send}" class="nav-link"
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/send' ? 'active':''}">
+                <i class="nav-icon fas fa-user-alt"></i>
+                <p>
+                    Student Application (Logged in student)
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
             <a th:href="@{/teacher-evaluation/form}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-evaluation/form' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
