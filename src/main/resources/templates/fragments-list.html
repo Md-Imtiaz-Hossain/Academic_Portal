@@ -547,13 +547,46 @@
         </li>
 
         <li class="nav-item">
-            <a th:href="@{/student-application/send}" class="nav-link"
-               th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/send' ? 'active':''}">
-                <i class="nav-icon fas fa-user-alt"></i>
+            <a th:href="@{/student-allApplication/send}" class="nav-link"
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-allApplication/send' ? 'active':''}">
+                <i class="nav-icon far fa-envelope"></i>
                 <p>
                     Student Application (Logged in student)
                 </p>
             </a>
+        </li>
+
+        <li class="nav-item">
+            <a href="#" class="nav-link">
+                <i class="nav-icon far fa-envelope"></i>
+                <p>
+                    Applications
+                    <i class="fas fa-angle-left right"></i>
+                </p>
+            </a>
+            <ul class="nav nav-treeview">
+                <li class="nav-item">
+                    <a th:href="@{/student-application/application-box}" class="nav-link"
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>All Application</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/student-application/send}" class="nav-link"
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/send' ? 'active':''}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Write allApplication</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/student-application/application-details}" class="nav-link"
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-details' ? 'active':''}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Application Details</p>
+                    </a>
+                </li>
+            </ul>
         </li>
 
         <li class="nav-item">

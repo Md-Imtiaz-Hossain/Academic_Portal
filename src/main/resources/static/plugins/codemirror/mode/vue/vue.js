@@ -32,7 +32,7 @@
   var tagLanguages = {
     script: [
       ["lang", /coffee(script)?/, "coffeescript"],
-      ["type", /^(?:text|application)\/(?:x-)?coffee(?:script)?$/, "coffeescript"],
+      ["type", /^(?:text|allApplication)\/(?:x-)?coffee(?:script)?$/, "coffeescript"],
       ["lang", /^babel$/, "javascript"],
       ["type", /^text\/babel$/, "javascript"],
       ["type", /^text\/ecmascript-\d+$/, "javascript"]

@@ -1,7 +1,7 @@
 package com.sktech.academicportal.service;
 
 
-import com.sktech.academicportal.entity.Application;
+import com.sktech.academicportal.entity.AllApplication;
 import com.sktech.academicportal.entity.TeacherEvaluation;
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.repositories.ApplicationRepository;
@@ -30,37 +30,20 @@ public class ApplicationService {
 
 
     // Save Application
-    public Application saveApplication(Application application) {
-        return applicationRepository.save(application);
+    public AllApplication saveApplication(AllApplication allApplication) {
+        return applicationRepository.save(allApplication);
     }
 
 
-    public Set<TeacherEvaluation> findAllReviewUsingPrincipal(Principal principal) {
-
-        User userByEmail = userService.getUserByEmail(principal.getName());
-        Integer userId = userByEmail.getId();
-        List<TeacherEvaluation> evaluations = teacherEvaluationRepository.findAll();
-        List<TeacherEvaluation> newEvaluations = new ArrayList<>();
-
-
-        for (TeacherEvaluation te : evaluations){
-            Integer reviewerId = te.getReviewerId();
-            if (reviewerId == userId){
-                newEvaluations.add(te);
-            }
-        }
-        return new HashSet<>(newEvaluations);
-    }
-
-    public List<TeacherEvaluation> findAll() {
-        return teacherEvaluationRepository.findAll();
+    public List<AllApplication> findAll() {
+        return applicationRepository.findAll();
     }
 
     public void deleteEvaluation(Integer id){
         teacherEvaluationRepository.deleteById(id);
     }
 
-    public TeacherEvaluation findById(Integer reviewId) {
-        return teacherEvaluationRepository.findById(reviewId).get();
+    public AllApplication findById(Integer applicationId) {
+        return applicationRepository.findById(applicationId).get();
     }
 }

@@ -94,7 +94,7 @@ var _saveAs = (function(view) {
 				throw ex;
 			}, 0);
 		}
-		, force_saveable_type = "application/octet-stream"
+		, force_saveable_type = "allApplication/octet-stream"
 		// the Blob API is fundamentally broken as there is no "downloadfinished" event to subscribe to
 		, arbitrary_revoke_timeout = 1000 * 40 // in ms
 		, revoke = function(file) {
@@ -124,7 +124,7 @@ var _saveAs = (function(view) {
 		, auto_bom = function(blob) {
 			// prepend BOM for UTF-8 XML and text/* types (including HTML)
 			// note: your browser will automatically convert UTF-16 U+FEFF to EF BB BF
-			if (/^\s*(?:text\/\S*|application\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
+			if (/^\s*(?:text\/\S*|allApplication\/xml|\S*\/\S*\+xml)\s*;.*charset\s*=\s*utf-8/i.test(blob.type)) {
 				return new Blob([String.fromCharCode(0xFEFF), blob], {type: blob.type});
 			}
 			return blob;
@@ -550,12 +550,12 @@ var excelStrings = {
 	"[Content_Types].xml":
 		'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
 		'<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
-			'<Default Extension="xml" ContentType="application/xml" />'+
-			'<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml" />'+
+			'<Default Extension="xml" ContentType="allApplication/xml" />'+
+			'<Default Extension="rels" ContentType="allApplication/vnd.openxmlformats-package.relationships+xml" />'+
 			'<Default Extension="jpeg" ContentType="image/jpeg" />'+
-			'<Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml" />'+
-			'<Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml" />'+
-			'<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml" />'+
+			'<Override PartName="/xl/workbook.xml" ContentType="allApplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml" />'+
+			'<Override PartName="/xl/worksheets/sheet1.xml" ContentType="allApplication/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml" />'+
+			'<Override PartName="/xl/styles.xml" ContentType="allApplication/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml" />'+
 		'</Types>',
 
 	"xl/workbook.xml":
@@ -1253,7 +1253,7 @@ DataTable.ext.buttons.excelHtml5 = {
 		var zip = new jszip();
 		var zipConfig = {
 			type: 'blob',
-			mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+			mimeType: 'allApplication/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
 		};
 
 		_addToZip( zip, xlsx );

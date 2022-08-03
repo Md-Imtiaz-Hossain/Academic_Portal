@@ -3,6 +3,7 @@ package com.sktech.academicportal.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "All_Application")
-public class Application {
+public class AllApplication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +32,11 @@ public class Application {
 
     @Column(name = "application_content")
     private String applicationContent;
+
+    @Column(name = "application_time")
+    private LocalDateTime applicationTime;
+
+
 
 
 }

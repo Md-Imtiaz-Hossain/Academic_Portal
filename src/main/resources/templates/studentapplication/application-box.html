@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments-list::head">
+</head>
+
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+        <!-- Left navbar links -->
+        <ul th:replace="fragments-list::leftNavbar"></ul>
+
+        <!-- Right navbar links -->
+        <ul th:replace="fragments-list::rightNavbar"></ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Brand Logo -->
+        <a th:replace="fragments-list::brandLogo"></a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div th:replace="fragments-list::sidebarUserPanel"></div>
+
+            <!-- SidebarSearch Form -->
+            <div th:replace="fragments-list::sidebarSearchForm"></div>
+
+            <!-- Sidebar Menu -->
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>All Application</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">All Application</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-md-3">
+                    <a th:href="@{/student-allApplication/send}" class="btn btn-primary btn-block mb-3">Write
+                        Application</a>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Folders</h3>
+
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <ul class="nav nav-pills flex-column">
+                                <li class="nav-item active">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-inbox"></i> Inbox
+                                        <span class="badge bg-primary float-right">12</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-envelope"></i> All Send applications
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="fas fa-bell"></i> Notification
+                                        <span class="badge bg-warning float-right">65</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+                <!-- /.col -->
+                <div class="col-md-9">
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h3 class="card-title">Inbox</h3>
+
+                            <div class="card-tools">
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control" placeholder="Search Mail">
+                                    <div class="input-group-append">
+                                        <div class="btn btn-primary">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.card-tools -->
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body p-0">
+                            <div class="mailbox-controls">
+                                <!-- Check all button -->
+                                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i
+                                        class="far fa-square"></i>
+                                </button>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-reply"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                                <!-- /.btn-group -->
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                                <div class="float-right">
+                                    1-50/200
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                </div>
+                                <!-- /.float-right -->
+                            </div>
+                            <div class="table-responsive mailbox-messages">
+                                <table class="table table-hover table-striped">
+                                    <tbody>
+                                    <thead>
+                                    <tr class="bg-cyan">
+                                        <th></th>
+                                        <th>From</th>
+                                        <th>Subject</th>
+                                        <th>Attachment</th>
+                                        <th>Time</th>
+                                    </tr>
+                                    </thead>
+                                    <tr th:each="applications : ${allApplication}">
+                                        <td>
+                                            <div class="icheck-primary">
+                                                <input type="checkbox" value="" id="check1">
+                                                <label for="check1"></label>
+                                            </div>
+                                        </td>
+                                        <td class="mailbox-name">
+                                            <a th:href="@{/student-application/application-details/{id}(id=${applications.id}) }"
+                                               th:text="${applications.sendFrom}">
+                                            </a>
+                                        </td>
+                                        <td class="mailbox-subject"><b th:text="${applications.applicationSubject}">AdminLTE
+                                            3.0 Issue</b></td>
+                                        <td class="mailbox-attachment">file</td>
+                                        <td class="mailbox-date"
+                                            th:text="${#temporals.format(applications.applicationTime, 'dd-MMMM-yyyy , hh:mm a')}">
+                                            5 mins ago
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <!-- /.table -->
+                            </div>
+                            <!-- /.mail-box-messages -->
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer p-0">
+                            <div class="mailbox-controls">
+                                <!-- Check all button -->
+                                <button type="button" class="btn btn-default btn-sm checkbox-toggle">
+                                    <i class="far fa-square"></i>
+                                </button>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-reply"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                        <i class="fas fa-share"></i>
+                                    </button>
+                                </div>
+                                <!-- /.btn-group -->
+                                <button type="button" class="btn btn-default btn-sm">
+                                    <i class="fas fa-sync-alt"></i>
+                                </button>
+                                <div class="float-right">
+                                    1-50/200
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-default btn-sm">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.btn-group -->
+                                </div>
+                                <!-- /.float-right -->
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <!-- Main Footer -->
+    <footer th:replace="fragments-list::footer" class="main-footer"></footer>
+
+    <!-- Control Sidebar -->
+    <aside th:replace="fragments-list::rightNavbarOptions"></aside>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        //Enable check and uncheck all functionality
+        $('.checkbox-toggle').click(function () {
+            var clicks = $(this).data('clicks')
+            if (clicks) {
+                //Uncheck all checkboxes
+                $('.mailbox-messages input[type=\'checkbox\']').prop('checked', false)
+                $('.checkbox-toggle .far.fa-check-square').removeClass('fa-check-square').addClass('fa-square')
+            } else {
+                //Check all checkboxes
+                $('.mailbox-messages input[type=\'checkbox\']').prop('checked', true)
+                $('.checkbox-toggle .far.fa-square').removeClass('fa-square').addClass('fa-check-square')
+            }
+            $(this).data('clicks', !clicks)
+        })
+
+        //Handle starring for font awesome
+        $('.mailbox-star').click(function (e) {
+            e.preventDefault()
+            //detect type
+            var $this = $(this).find('a > i')
+            var fa = $this.hasClass('fa')
+
+            //Switch states
+            if (fa) {
+                $this.toggleClass('fa-star')
+                $this.toggleClass('fa-star-o')
+            }
+        })
+    })
+</script>
+
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables  & Plugins -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App -->
+<script src="/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="/dist/js/demo.js"></script>
+<!-- Page specific script -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
+</script>
+</body>
+</html>
