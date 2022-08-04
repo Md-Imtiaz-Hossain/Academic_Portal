@@ -1,15 +1,280 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">-->
+<!--<title th:text="${pageTitle}">HomePage</title>-->
+
+<!--<body>-->
+<!--<div class="container-fluid">-->
+
+<!--    <div>-->
+<!--        <h1>Dashboard</h1>-->
+<!--        <a th:href="@{/after-login-dashboard}" target="_blank">Portal dashboard</a>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
-<title th:text="${pageTitle}">HomePage</title>
-
-<body>
-<div class="container-fluid">
-
-    <div>
-        <h1>Dashboard</h1>
-        <a th:href="@{/after-login-dashboard}" target="_blank">Portal dashboard</a>
+<head>
+    <title> XYZ Academic Education</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="/frontlayout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+</head>
+<body id="top">
+<div class="wrapper row0">
+    <div id="topbar" class="clear">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a th:href="@{/after-login-dashboard}" target="_blank">Login Here</a></li>
+            </ul>
+        </nav>
     </div>
 </div>
+
+<div class="wrapper row1">
+    <header id="header" class="clear">
+        <div id="logo" class="fl_left">
+            <h1><a href="#">XYZ Academic Education</a></h1>
+        </div>
+        <div class="fl_right">
+            <form class="clear" method="post" action="#">
+                <fieldset>
+                    <legend>Search:</legend>
+                    <input type="text" value="" placeholder="Search Here">
+                    <button class="fa fa-search" type="submit" title="Search"><em>Search</em></button>
+                </fieldset>
+            </form>
+        </div>
+    </header>
+</div>
+<div class="wrapper row2">
+    <div class="rounded">
+        <nav id="mainav" class="clear">
+            <ul class="clear">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a th:href="@{/after-login-dashboard}" target="_blank">Portal</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<div class="wrapper">
+    <div id="slider">
+        <div id="slide-wrapper" class="rounded clear">
+            <figure id="slide-1"><a class="view" href="#"><img src="/frontimages/demo/slider/1.png" alt=""></a>
+                <figcaption>
+                    <h2>Nullamlacus dui ipsum</h2>
+                    <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur
+                        pretium eu et ac vest penatibus id lacus parturpis.</p>
+                    <p class="right"><a href="#">Continue Reading &raquo;</a></p>
+                </figcaption>
+            </figure>
+            <figure id="slide-2"><a class="view" href="#"><img src="/frontimages/demo/slider/2.jpg" alt=""></a>
+                <figcaption>
+                    <h2>Aliquatjusto quisque nam</h2>
+                    <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur
+                        pretium eu et ac vest penatibus id lacus parturpis.</p>
+                    <p class="right"><a href="#">Continue Reading &raquo;</a></p>
+                </figcaption>
+            </figure>
+            <figure id="slide-3"><a class="view" href="#"><img src="/frontimages/demo/slider/3.jpg" alt=""></a>
+                <figcaption>
+                    <h2>Aliquatjusto quisque nam</h2>
+                    <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur
+                        pretium eu et ac vest penatibus id lacus parturpis.</p>
+                    <p class="right"><a href="#">Continue Reading &raquo;</a></p>
+                </figcaption>
+            </figure>
+            <figure id="slide-4"><a class="view" href="#"><img src="/frontimages/demo/slider/4.jpg" alt=""></a>
+                <figcaption>
+                    <h2>Aliquatjusto quisque nam</h2>
+                    <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur
+                        pretium eu et ac vest penatibus id lacus parturpis.</p>
+                    <p class="right"><a href="#">Continue Reading &raquo;</a></p>
+                </figcaption>
+            </figure>
+            <figure id="slide-5"><a class="view" href="#"><img src="/frontimages/demo/slider/5.jpg" alt=""></a>
+                <figcaption>
+                    <h2>Dapiensociis temper donec</h2>
+                    <p>Attincidunt vel nam a maurisus lacinia consectetus magnisl sed ac morbi. Inmaurisus habitur
+                        pretium eu et ac vest penatibus id lacus parturpis.</p>
+                    <p class="right"><a href="#">Continue Reading &raquo;</a></p>
+                </figcaption>
+            </figure>
+            <ul id="slide-tabs">
+                <li><a href="#slide-1">All About The Academy</a></li>
+                <li><a href="#slide-2">Why You Should Study With Us</a></li>
+                <li><a href="#slide-3">Education And Student Experience</a></li>
+                <li><a href="#slide-4">Alumni And Its Donors</a></li>
+                <li><a href="#slide-5">Latest Academy News &amp; Events</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="wrapper row3">
+    <div class="rounded">
+        <main class="container clear">
+            <!-- main body -->
+            <div class="group btmspace-30">
+                <!-- Left Column -->
+                <div class="one_quarter first">
+                    <ul class="nospace">
+                        <li class="btmspace-15"><a href="#"><em class="heading">Prospective Students</em> <img
+                                class="borderedbox" src="/frontimages/demo/220x95.gif" alt=""></a></li>
+                        <li class="btmspace-15"><a href="#"><em class="heading">Current Students</em> <img
+                                class="borderedbox" src="/frontimages/demo/220x95.gif" alt=""></a></li>
+                        <li class="btmspace-15"><a href="#"><em class="heading">Current Students</em> <img
+                                class="borderedbox" src="/frontimages/demo/220x95.gif" alt=""></a></li>
+                    </ul>
+                </div>
+                <!-- / Left Column -->
+                <!-- Middle Column -->
+                <div class="one_half">
+                    <h2>Latest News &amp; Events</h2>
+                    <ul class="nospace listing">
+                        <li class="clear">
+                            <div class="imgl borderedbox"><img src="/frontimages/demo/120x120.gif" alt=""></div>
+                            <p class="nospace btmspace-15"><a href="#">Sentumquisque morbi dui congue.</a></p>
+                            <p>This is a W3C compliant free website template from <a href="http://www.os-templates.com/"
+                                                                                     title="Free Website Templates">OS
+                                Templates</a>. This template is distributed using a <a
+                                    href="http://www.os-templates.com/template-terms">Website Template Licence</a></p>
+                        </li>
+                        <li class="clear">
+                            <div class="imgl borderedbox"><img src="/frontimages/demo/120x120.gif" alt=""></div>
+                            <p class="nospace btmspace-15"><a href="#">Sentumquisque morbi dui congue.</a></p>
+                            <p>You can use and modify the template for both personal and commercial use. You must keep
+                                all copyright information and credit links in the template and associated files.</p>
+                        </li>
+                    </ul>
+                    <p class="right"><a href="#">Click here to view all of the latest news and events &raquo;</a></p>
+                </div>
+                <!-- / Middle Column -->
+                <!-- Right Column -->
+                <div class="one_quarter sidebar">
+                    <div class="sdb_holder">
+                        <h6>Virtual Tour</h6>
+                        <div class="mediacontainer"><img src="/frontimages/demo/video.gif" alt="">
+                            <p><a href="#">View More Tour Videos Here</a></p>
+                        </div>
+                    </div>
+                    <div class="sdb_holder">
+                        <h6>Quick Information</h6>
+                        <ul class="nospace quickinfo">
+                            <li class="clear"><a href="#"><img src="/frontimages/demo/80x80.gif" alt=""> Make An
+                                Application</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- / Right Column -->
+            </div>
+            <div id="twitter" class="group btmspace-30">
+                <div class="one_quarter first center"><a href="#"><i class="fa fa-twitter fa-3x"></i><br>
+                    Follow Us On Twitter</a></div>
+                <div class="three_quarter bold">
+                    <p>Inteligula congue id elis donec sce sagittis intes id laoreet aenean. Massawisi condisse leo sem
+                        ac tincidunt nibh quis dui fauctor et donecnibh elis velit <a href="#">@name</a> - 10:15 AM
+                        yesterday</p>
+                </div>
+            </div>
+            <div class="group">
+                <h2>Quickly Find What You Are Looking For</h2>
+                <div class="one_quarter first">
+                    <ul class="nospace">
+                        <li><a href="#">Academic Advisory</a></li>
+                        <li><a href="#">Academic Assistance</a></li>
+                        <li><a href="#">Academic Calendars</a></li>
+                        <li><a href="#">Academics Office</a></li>
+                        <li><a href="#">Administration</a></li>
+                    </ul>
+                </div>
+                <div class="one_quarter">
+                    <ul class="nospace">
+                        <li><a href="#">Class Schedules</a></li>
+                        <li><a href="#">Counselling Center</a></li>
+                        <li><a href="#">Course Descriptions &amp; Catalogue</a></li>
+                        <li><a href="#">Department Directory</a></li>
+                        <li><a href="#">Departments &amp; Programs</a></li>
+                    </ul>
+                </div>
+                <div class="one_quarter">
+                    <ul class="nospace">
+                        <li><a href="#">Graduate Health Services</a></li>
+                        <li><a href="#">Graduate Housing</a></li>
+                        <li><a href="#">Graduate Programs</a></li>
+                        <li><a href="#">Graduate Student Association</a></li>
+                        <li><a href="#">Graduate Studies</a></li>
+                    </ul>
+                </div>
+                <div class="one_quarter">
+                    <ul class="nospace">
+                        <li><a href="#">Office of the Registrar</a></li>
+                        <li><a href="#">Online Learning</a></li>
+                        <li><a href="#">Parent Information</a></li>
+                        <li><a href="#">Residence Life</a></li>
+                        <li><a href="#">Residential Colleges</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- / main body -->
+            <div class="clear"></div>
+        </main>
+    </div>
+</div>
+<div class="wrapper row4">
+    <div class="rounded">
+        <footer id="footer" class="clear">
+            <div class="one_third first">
+                <figure class="center"><img class="btmspace-15" src="/frontimages/demo/worldmap.png" alt="">
+                    <figcaption><a href="#">Find Us With Google Maps &raquo;</a></figcaption>
+                </figure>
+            </div>
+            <div class="one_third">
+                <address>
+                    Long Educational Facility Name<br>
+                    Address Line 2<br>
+                    Town/City<br>
+                    Postcode/Zip<br>
+                    <br>
+                    <i class="fa fa-phone pright-10"></i> xxxx xxxx xxxxxx<br>
+                    <i class="fa fa-envelope-o pright-10"></i> <a href="#">contact@domain.com</a>
+                </address>
+            </div>
+            <div class="one_third">
+                <p class="nospace btmspace-10">Stay Up to Date With What's Happening</p>
+                <ul class="faico clear">
+                    <li><a class="faicon-twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a class="faicon-linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a class="faicon-facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a class="faicon-flickr" href="#"><i class="fa fa-flickr"></i></a></li>
+                    <li><a class="faicon-rss" href="#"><i class="fa fa-rss"></i></a></li>
+                </ul>
+                <form class="clear" method="post" action="#">
+                    <fieldset>
+                        <legend>Subscribe To Our Newsletter:</legend>
+                        <input type="text" value="" placeholder="Enter Email Here&hellip;">
+                        <button class="fa fa-sign-in" type="submit" title="Sign Up"><em>Sign Up</em></button>
+                    </fieldset>
+                </form>
+            </div>
+        </footer>
+    </div>
+</div>
+<div class="wrapper row5">
+    <div id="copyright" class="clear">
+        <p class="fl_left">Copyright &copy; 2022 - All Rights Reserved - <a href="#">XYZ Group</a></p>
+    </div>
+</div>
+<!-- JAVASCRIPTS -->
+<script src="/frontlayout/scripts/jquery.min.js"></script>
+<script src="/frontlayout/scripts/jquery.fitvids.min.js"></script>
+<script src="/frontlayout/scripts/jquery.mobilemenu.js"></script>
+<script src="/frontlayout/scripts/tabslet/jquery.tabslet.min.js"></script>
 </body>
 </html>

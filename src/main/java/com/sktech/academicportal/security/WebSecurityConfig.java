@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        String[] staticResources = {"/css/**", "/images/**", "/fonts/**", "/scripts/**", "/plugins/**",
+        String[] staticResources = {"/css/**", "/images/**", "/fonts/**", "/scripts/**", "/plugins/**", "/frontimages/**", "/frontlayout/**",
                 " /resources/**", "/js/**", "/login", "/api/**", "/", "/static/**", "/dist/css/**", "/dist/js/**", "/dist/img/**", "/dist/**"};
 
 
