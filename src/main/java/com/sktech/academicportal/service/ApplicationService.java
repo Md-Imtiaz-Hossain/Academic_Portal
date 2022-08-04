@@ -83,4 +83,8 @@ public class ApplicationService {
         }
         return applications;
     }
+
+    public void deleteApplicationById(Integer applicationId) {
+        applicationRepository.deleteById(applicationId);
+    }
 }

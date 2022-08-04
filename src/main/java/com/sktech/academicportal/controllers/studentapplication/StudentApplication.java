@@ -18,23 +18,27 @@ public class StudentApplication {
     @Autowired
     ApplicationService applicationService;
 
+    // Application Home
     @GetMapping("/send")
     public String doApplication(Model model, Principal principal) {
+        model.addAttribute("pageTitle", "Applications");
         model.addAttribute("from", principal.getName());
         model.addAttribute("application", new AllApplication());
         return "studentapplication/application-form";
     }
 
 
+    // Save or Send the application
     @PostMapping("/edit")
     public String edit(@ModelAttribute("application") AllApplication application,
-                             @RequestParam(value="action", required=true) String action,
+                       @RequestParam(value = "action", required = true) String action,
                        Principal principal) {
 
         if (action.equals("save")) {
             application.setApplicationStatus("Save");
             System.out.println(action);
             application.setSendFrom(principal.getName());
+            application.setApplicationTime(LocalDateTime.now());
             applicationService.saveApplication(application);
         }
 
@@ -48,34 +52,50 @@ public class StudentApplication {
         return "redirect:/student-application/send";
     }
 
+    // All Application(Status==Send) For Admin
     @GetMapping("/application-box")
-    public String allApplication(Model model, Principal principal){
-        List<AllApplication> allApplications =  applicationService.findAllApplicationWithoutSaveStatus();
+    public String allApplication(Model model, Principal principal) {
+        List<AllApplication> allApplications = applicationService.findAllApplicationWithoutSaveStatus();
         model.addAttribute("allApplication", allApplications);
-        return  "studentapplication/application-box";
+        model.addAttribute("pageTitle", "Admin | All Applications");
+        return "studentapplication/application-box";
     }
 
+
+    //  Application Came in tto Logged-in user
     @GetMapping("/user-application-box")
-    public String userApplication(Model model, Principal principal){
-        List<AllApplication> allApplications =  applicationService.findAllApplicationReceived(principal,"Send");
+    public String userApplication(Model model, Principal principal) {
+        List<AllApplication> allApplications = applicationService.findAllApplicationReceived(principal, "Send");
         model.addAttribute("allApplication", allApplications);
-        return  "studentapplication/application-box";
+        model.addAttribute("pageTitle", "User | All Applications");
+        return "studentapplication/application-box";
     }
 
+    // Application Details
     @GetMapping("/application-details/{applicationId}")
     public String applicationDetails(@PathVariable Integer applicationId,
-                                     Model model, Principal principal){
+                                     Model model, Principal principal) {
         model.addAttribute("specificApplication", applicationService.findById(applicationId));
-        return  "studentapplication/application-details";
+        model.addAttribute("pageTitle", "Application details");
+        return "studentapplication/application-details";
     }
 
+
+    // All send application from logged-in user
     @GetMapping("/all-send-application")
-    public String allSendApplication(Model model, Principal principal){
-        List<AllApplication> allApplications =  applicationService.findAllApplicationWithSendFromMe(principal,"Send");
+    public String allSendApplication(Model model, Principal principal) {
+        List<AllApplication> allApplications = applicationService.findAllApplicationWithSendFromMe(principal, "Send");
         model.addAttribute("allApplication", allApplications);
-        return  "studentapplication/application-box";
+        model.addAttribute("pageTitle", "Application Send");
+        return "studentapplication/application-box";
     }
 
+    // Delete Application
+    @GetMapping("/delete/{applicationId}")
+    public String deleteApplication(@PathVariable Integer applicationId) {
+        applicationService.deleteApplicationById(applicationId);
+        return "redirect:/student-application/send";
+    }
 
 
 }

@@ -222,7 +222,10 @@
                                     <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward
                                     </button>
                                 </div>
-                                <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete
+                                <button type="button" class="btn btn-default">
+                                    <a th:href="@{/student-application/delete/{id}(id=${specificApplication.id})}">
+                                        <i class="far fa-trash-alt"> Delete</i>
+                                    </a>
                                 </button>
                                 <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print
                                 </button>
