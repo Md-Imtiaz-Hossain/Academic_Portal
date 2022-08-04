@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequestMapping("/student-application")
@@ -30,8 +31,6 @@ public class StudentApplication {
                              @RequestParam(value="action", required=true) String action,
                        Principal principal) {
 
-        LocalDateTime localDateTime = LocalDateTime.now();
-
         if (action.equals("save")) {
             application.setApplicationStatus("Save");
             System.out.println(action);
@@ -51,22 +50,30 @@ public class StudentApplication {
 
     @GetMapping("/application-box")
     public String allApplication(Model model, Principal principal){
-        System.out.println("-------------------------------" + LocalDateTime.now());
-        System.out.println("${#temporals.format(localDateTime, 'dd-MMMM-yyyy', new java.util.Locale('en', 'EN'))}");
+        List<AllApplication> allApplications =  applicationService.findAllApplicationWithoutSaveStatus();
+        model.addAttribute("allApplication", allApplications);
+        return  "studentapplication/application-box";
+    }
 
-
-        model.addAttribute("datetime", LocalDateTime.now());
-        model.addAttribute("allApplication", applicationService.findAll());
+    @GetMapping("/user-application-box")
+    public String userApplication(Model model, Principal principal){
+        List<AllApplication> allApplications =  applicationService.findAllApplicationReceived(principal,"Send");
+        model.addAttribute("allApplication", allApplications);
         return  "studentapplication/application-box";
     }
 
     @GetMapping("/application-details/{applicationId}")
     public String applicationDetails(@PathVariable Integer applicationId,
                                      Model model, Principal principal){
-
         model.addAttribute("specificApplication", applicationService.findById(applicationId));
-
         return  "studentapplication/application-details";
+    }
+
+    @GetMapping("/all-send-application")
+    public String allSendApplication(Model model, Principal principal){
+        List<AllApplication> allApplications =  applicationService.findAllApplicationWithSendFromMe(principal,"Send");
+        model.addAttribute("allApplication", allApplications);
+        return  "studentapplication/application-box";
     }
 
 

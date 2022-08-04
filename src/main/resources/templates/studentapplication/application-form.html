@@ -82,20 +82,32 @@
                             <div class="card-body p-0">
                                 <ul class="nav nav-pills flex-column">
                                     <li class="nav-item active">
-                                        <a href="#" class="nav-link">
-                                            <i class="fas fa-inbox"></i> Inbox
-                                            <span class="badge bg-primary float-right">12</span>
+                                        <a href="#" class="nav-link active"
+                                           th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-send' ? 'active':''}">
+                                            <i class="fas fa-inbox"></i> Start your application
+                                        </a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a th:href="@{/student-application/application-box}" class="nav-link"
+                                           th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}">
+                                            <i class="fas fa-inbox"></i> All Application (Admin)
+                                        </a>
+                                    </li>
+                                    <li class="nav-item active">
+                                        <a th:href="@{/student-application/user-application-box}" class="nav-link"
+                                           th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-application-box' ? 'active':''}">
+                                            <i class="fas fa-inbox"></i> Inbox (Logged-in user)
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="far fa-envelope"></i> All Send applications
+                                        <a th:href="@{/student-application/all-send-application}" class="nav-link"
+                                           th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/all-send-application' ? 'active':''}">
+                                            <i class="far fa-envelope"></i> All Send applications (Logged-in user)
                                         </a>
                                     </li>
                                     <li class="nav-item">
                                         <a href="#" class="nav-link">
                                             <i class="fas fa-bell"></i> Notification
-                                            <span class="badge bg-warning float-right">65</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -117,7 +129,7 @@
                                   th:object="${application}">
                                 <div class="card-body">
 
-                                    <div class="form-group" >
+                                    <div class="form-group">
                                         <input disabled type="email" th:field="*{sendFrom}" class="form-control"
                                                th:placeholder="'From:  ' + ${from}">
                                     </div>

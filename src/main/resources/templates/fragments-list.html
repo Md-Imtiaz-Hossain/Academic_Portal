@@ -566,26 +566,34 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a th:href="@{/student-application/application-box}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>All Application</p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a th:href="@{/student-application/send}" class="nav-link"
                        th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/send' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Write allApplication</p>
+                        <p>Home</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a th:href="@{/student-application/application-details}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-details' ? 'active':''}">
+                    <a th:href="@{/student-application/application-box}" class="nav-link"
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Application Details</p>
+                        <p>All Application (Admin)</p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a th:href="@{/student-application/user-application-box}" class="nav-link"
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-application-box' ? 'active':''}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>All Application (Logged in user)</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/student-application/all-send-application}" class="nav-link"
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/all-send-application' ? 'active':''}">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>All Send Application (Logged-in user)</p>
+                    </a>
+                </li>
+
             </ul>
         </li>
 
