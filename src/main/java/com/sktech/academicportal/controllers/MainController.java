@@ -1,5 +1,6 @@
 package com.sktech.academicportal.controllers;
 
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.repositories.RoleRepository;
 import com.sktech.academicportal.service.ProfileService;
 import com.sktech.academicportal.service.UserService;
@@ -7,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.annotation.PostConstruct;
 import java.security.Principal;
 
 @Controller
@@ -21,6 +24,7 @@ public class MainController {
 
     @Autowired
     ProfileService profileService;
+
 
     @GetMapping("/")
     public String viewHomePage(Model model) {

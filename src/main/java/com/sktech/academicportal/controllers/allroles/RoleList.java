@@ -1,11 +1,15 @@
 package com.sktech.academicportal.controllers.allroles;
 
 import com.sktech.academicportal.entity.Role;
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.repositories.RoleRepository;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/user-role")
@@ -13,6 +17,10 @@ public class RoleList {
 
     @Autowired
     RoleRepository roleRepository;
+
+    @Autowired
+    UserService userService;
+
 
     // User role List
     @GetMapping("/list")

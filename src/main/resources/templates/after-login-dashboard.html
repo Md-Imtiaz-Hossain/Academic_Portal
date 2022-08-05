@@ -73,7 +73,7 @@
                             <div class="card-body box-profile">
                                 <div class="text-center">
 <!--                                    <span th:if="${user.photos == null}" class="fas fa-user ml-5-"></span>-->
-                                    <img th:if="${user.photos == null}" src="/static/images/default.jpg"
+                                    <img th:if="${user.photos == null}" th:src="@{/images/default.jpg}"
                                          style="width: 100px ; height: 100px; border-radius: 50px"/>
 
                                     <img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"
