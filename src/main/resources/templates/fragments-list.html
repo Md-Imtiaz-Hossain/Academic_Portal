@@ -52,7 +52,6 @@
     <link th:href="@{/images/education.png}" rel="icon">
 
 
-
 </head>
 <!--Head Link and stylesheet End-->
 
@@ -209,7 +208,8 @@
 
 <!-- Brand Logo Start-->
 <a th:fragment="brandLogo" href="#" class="brand-link">
-    <img th:src="@{/images/education.png}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3 border-2 border-danger"
+    <img th:src="@{/images/education.png}" alt="AdminLTE Logo"
+         class="brand-image img-circle elevation-3 border-2 border-danger"
          style="opacity: .8">
     <span class="brand-text font-weight-light">XYZ Admin</span>
 </a>
@@ -247,7 +247,6 @@
 <!--&lt;!&ndash; Sidebar user panel (optional) end&ndash;&gt;-->
 
 
-
 <!--<div class="text-center">-->
 <!--    &lt;!&ndash;                                    <span th:if="${user.photos == null}" class="fas fa-user ml-5-"></span>&ndash;&gt;-->
 <!--    <img th:if="${user.photos == null}" src="/static/images/default.jpg"-->
@@ -256,8 +255,6 @@
 <!--    <img th:if="${user.photos != null}" th:src="@{${user.photosImagePath}}"-->
 <!--         style="width: 100px ; height: 100px; border-radius: 50px"/>-->
 <!--</div>-->
-
-
 
 
 <!-- SidebarSearch Form start -->
@@ -305,7 +302,7 @@
                sec:authorize="hasAnyAuthority('RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    User List - <small>Root Admin 1st layer</small>
+                    User List - <small>RootAdmin</small>
                 </p>
             </a>
         </li>
@@ -317,117 +314,127 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    User List - <small>Site Admin 1st layer</small>
+                    User List - <small>Admin, RootAdmin</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/user-role/list}" class="nav-link"
-               th:classappend="${#httpServletRequest.getRequestURI() == '/user-role/list' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/user-role/list' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Role List - <small>Admin 1st layer</small>
+                    Role List - <small>RootAdmin</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/student/list}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/student/list' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student/list' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Student List - <small>Teacher 2nd layer</small>
+                    Student List - <small>Admin, RootAdmin, Teacher</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/teacher/list}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/teacher/list' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/teacher/list' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Teacher List - <small>Assistant 2nd layer</small>
+                    Teacher List - <small>Admin, RootAdmin</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/subject/list}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/subject/list' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/subject/list' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Subject List
+                    Subject List - <small>Admin, RootAdmin</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/payment-scheme/list}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/payment-scheme/list' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/payment-scheme/list' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Payment Scheme List
+                    Payment Scheme List - <small>Admin, RootAdmin</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/subject-assign-t/assign-teacher}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-t/assign-teacher' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-t/assign-teacher' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Subject Assign and View List (Teacher)
+                    Subject Assign to Teacher - <small>Admin, RootAdmin</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/subject-assign-s/assign-student}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-s/assign-student' ? 'active':''}">
-                <i class="nav-icon fas fa-list"></i>
+               th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-s/assign-student' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <p>
-                    Subject Assign and View List (Student)
+                    Subject Assign to Student - <small>Admin, RootAdmin, Teacher</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/teacher-portal/my-subject}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-portal/my-subject' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-portal/my-subject' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                    I am (logged-in teacher) taking this subject
+                    Teacher's taken subjects - <small>Admin, RootAdmin, Teacher</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/teacher-portal/my-class-routine}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-portal/my-class-routine' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-portal/my-class-routine' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    My (logged-in teacher) class routine
+                    Teacher's class routine - <small>Admin, RootAdmin, Teacher</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/student-subject-view/list}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/list' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/list' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    All Student And subject View and mark update
+                    All Student result - <small>Admin, RootAdmin, Teacher</small>
                 </p>
             </a>
         </li>
 
         <li class="nav-item">
             <a th:href="@{/student-subject-view/mark-list}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/mark-list' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/mark-list' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher', 'Student')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Student And Mark View
+                    Student result - <small>Admin, RootAdmin, Teacher, Student</small>
                 </p>
             </a>
         </li>
@@ -542,7 +549,7 @@
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    My Class routine (Logged-in Student)
+                    Student Class routine - <small>Admin, RootAdmin, Student</small>
                 </p>
             </a>
         </li>
@@ -553,7 +560,7 @@
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    My payment Scheme (Logged-in Student)
+                    Student payment Scheme - <small>Admin, RootAdmin, Student</small>
                 </p>
             </a>
         </li>
@@ -564,7 +571,7 @@
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    My Result (Logged-in Student)
+                    Student Result - <small>Admin, RootAdmin, Student</small>
                 </p>
             </a>
         </li>
@@ -575,7 +582,7 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    All Teacher Evaluation (Admin)
+                    All Teacher Evaluation - <small>Admin, RootAdmin</small>
                 </p>
             </a>
         </li>
@@ -598,23 +605,24 @@
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/student-application/application-box}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>All Application (Admin)</p>
+                        <p>All Application - <small>Admin, RootAdmin</small></p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/student-application/user-application-box}" class="nav-link"
                        th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-application-box' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>All Application (Logged in user)</p>
+                        <p>My Application (Logged-in user)</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/student-application/all-send-application}" class="nav-link"
                        th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/all-send-application' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>All Send Application (Logged-in user)</p>
+                        <p>Send Application (Logged-in user)</p>
                     </a>
                 </li>
 
@@ -627,7 +635,7 @@
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Teacher Evaluation (For Logged-in Student)
+                    Teacher Evaluation - <small>Admin, RootAdmin, Student</small>
                 </p>
             </a>
         </li>
@@ -648,7 +656,6 @@
                 <i class="nav-icon far fa-calendar-alt"></i>
                 <p>
                     Calendar
-                    <!--                    <span class="badge badge-info right">2</span>-->
                 </p>
             </a>
         </li>

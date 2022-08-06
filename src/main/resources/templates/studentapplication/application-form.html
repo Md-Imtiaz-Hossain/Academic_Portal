@@ -89,8 +89,9 @@
                                     </li>
                                     <li class="nav-item active">
                                         <a th:href="@{/student-application/application-box}" class="nav-link"
-                                           th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}">
-                                            <i class="fas fa-inbox"></i> All Application (Admin)
+                                           th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}"
+                                           sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
+                                            <i class="fas fa-inbox"></i> All Application - <small>Admin, RootAdmin</small></p>
                                         </a>
                                     </li>
                                     <li class="nav-item active">
