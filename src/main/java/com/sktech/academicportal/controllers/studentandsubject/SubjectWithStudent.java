@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/student-subject-view")
 public class SubjectWithStudent {
@@ -71,10 +73,8 @@ public class SubjectWithStudent {
     // List of student and assigned subject
     @GetMapping("/mark-list")
     public String markHome(Model model) {
-
         model.addAttribute("pageTitle", "Mark List with user and subject");
-        model.addAttribute("mark", resultService.getAllResul());
-
+        model.addAttribute("mark", resultService.getAllResulWithGrade());
         return "studentandsubjectlist/student-mark-list";
     }
 
@@ -116,8 +116,6 @@ public class SubjectWithStudent {
         resultService.deleteById(id);
         return "redirect:/student-subject-view/mark-list";
     }
-
-
 
 
 }

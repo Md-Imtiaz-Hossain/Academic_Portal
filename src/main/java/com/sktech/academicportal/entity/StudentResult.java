@@ -38,6 +38,16 @@ public class StudentResult {
     @Column(name = "final_mark")
     private Integer finalMark;
 
+    @Column(name = "ct_average_mark")
+    private Float ctAverageMark;
+
+    @Column(name = "total_mark")
+    private Float totalMark;
+
+    @Column(name = "final_grade")
+    private String finalGrade;
+
+
     @Column(name = "user_id")
     private Integer userId;
 

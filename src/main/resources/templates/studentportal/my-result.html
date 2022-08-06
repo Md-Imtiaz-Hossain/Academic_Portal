@@ -76,13 +76,16 @@
                                     <thead>
                                     <tr>
                                         <th>Id</th>
-                                        <th>user Name</th>
-                                        <th>subject Name</th>
+                                        <th>Student</th>
+                                        <th>Subject</th>
                                         <th>C.T. - 1</th>
                                         <th>C.T. - 2</th>
                                         <th>C.T. - 3</th>
-                                        <th>Mid term</th>
+                                        <th>Mid</th>
                                         <th>Final</th>
+                                        <th>CT avg</th>
+                                        <th>Total</th>
+                                        <th>Grade</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -96,7 +99,9 @@
                                         <td th:text="${m.ct3Mark}"></td>
                                         <td th:text="${m.midMark}"></td>
                                         <td th:text="${m.finalMark}"></td>
-
+                                        <td th:text="${m.ctAverageMark}"></td>
+                                        <td th:text="${m.totalMark}"></td>
+                                        <td th:text="${m.finalGrade}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
