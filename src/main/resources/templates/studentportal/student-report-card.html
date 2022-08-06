@@ -182,12 +182,12 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="11">
+                                        <td colspan="10">
                                             <span>Result Sheet</span>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="3">Course</td>
+                                        <td colspan="2">Course</td>
                                         <td rowspan="2"> Class Test 1</td>
                                         <td rowspan="2"> Class Test 2</td>
                                         <td rowspan="2"> Class Test 3</td>
@@ -196,43 +196,35 @@
                                         <td rowspan="2"> Total</td>
                                         <td colspan="2"> Grade</td>
                                     </tr>
-                                    <tr>
-                                        <td>Code</td>
-                                        <td colspan="2"> Name</td>
-                                        <td> Letter</td>
-                                        <td> Points</td>
-                                    </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>CS 225</td>
-                                        <td colspan="2">Data Structures</td>
-                                        <td> 5</td>
-                                        <td> 5</td>
-                                        <td> 5</td>
-                                        <td> 5</td>
-                                        <td> 5</td>
-                                        <td> 3.0</td>
-                                        <td> A</td>
-                                        <td> 12.0</td>
+                                    <tbody style="border: 3px solid #0b0b0b">
+                                    <tr th:each="m:${mark}">
+                                        <td colspan="2" th:text="${m.subjectName}">Data Structures</td>
+                                        <td th:text="${m.ct1Mark}"> 5</td>
+                                        <td th:text="${m.ct2Mark}"> 5</td>
+                                        <td th:text="${m.ct3Mark}"> 5</td>
+                                        <td th:text="${m.midMark}"> 5</td>
+                                        <td th:text="${m.finalMark}"> 5</td>
+                                        <td th:text="${m.totalMark}"> 3.0</td>
+                                        <td colspan="2" th:text="${m.finalGrade}"> A</td>
                                     </tr>
                                     </tbody>
                                     <tfoot>
                                     <tr>
-                                        <td colspan="8" class="footer">Total</td>
+                                        <td colspan="7" class="footer">Total</td>
                                         <td> 15.0</td>
                                         <td>55.95</td>
                                         <td colspan="2">55.95</td>
                                     </tr>
                                     <tr>
-                                        <td colspan="11">
+                                        <td colspan="10">
                                             <div style="align-items: center; justify-content: center; display: flex">
                                                 <span><b>Result</b></span>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td colspan="11">
+                                        <td colspan="10">
                                             <div style="width: 100%;height: 150px; margin: 10px; padding: 10px">
                                                 <u>Teacher Comment:</u>
                                             </div>
