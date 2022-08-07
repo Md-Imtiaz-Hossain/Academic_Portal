@@ -212,14 +212,13 @@
                                     <tfoot>
                                     <tr>
                                         <td colspan="7" class="footer">Total</td>
-                                        <td> 15.0</td>
-                                        <td>55.95</td>
-                                        <td colspan="2">55.95</td>
+                                        <td th:text="${totalMarkOfAllSubject}"> 15.0</td>
+                                        <td th:text="${totalGradeOfAllSubject}">55.95</td>
                                     </tr>
                                     <tr>
                                         <td colspan="10">
                                             <div style="align-items: center; justify-content: center; display: flex">
-                                                <span><b>Result</b></span>
+                                                <span><h2  th:text="${totalGradeOfAllSubject}"></h2></span>
                                             </div>
                                         </td>
                                     </tr>

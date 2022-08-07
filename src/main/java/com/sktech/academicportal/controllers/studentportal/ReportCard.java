@@ -20,8 +20,13 @@ public class ReportCard {
 
     @GetMapping("/view")
     public String cardHome(Model model, Principal principal){
+        Float totalMarkOfAllSubject = resultService.getTotalMarkOfAllSubject();
+        Float avgMarkOfAllSubject = totalMarkOfAllSubject/ resultService.totalSubject;
+        String totalGradeOfAllSubject = resultService.getGradesUsingMark(Math.round(avgMarkOfAllSubject));
         model.addAttribute("pageTitle", "Mark List with user and subject");
         model.addAttribute("mark", resultService.getAllResulWithGrade());
+        model.addAttribute("totalMarkOfAllSubject", totalMarkOfAllSubject);
+        model.addAttribute("totalGradeOfAllSubject", totalGradeOfAllSubject);
         return "/studentportal/student-report-card";
     }
 

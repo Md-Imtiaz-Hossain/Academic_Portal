@@ -147,4 +147,18 @@ public class ResultService {
 
         return grade;
     }
+
+
+    public int totalSubject;
+    public Float getTotalMarkOfAllSubject() {
+        List<StudentResult> studentResults = getAllResulWithGrade();
+
+        Float totalMarkOfAllSubject = 0f;
+
+        for (StudentResult studentResult : studentResults) {
+            totalMarkOfAllSubject = totalMarkOfAllSubject + studentResult.getTotalMark();
+            totalSubject++;
+        }
+        return totalMarkOfAllSubject;
+    }
 }
