@@ -114,6 +114,13 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
+                                        <a th:href="@{/student-application/user-saved-application-box}" class="nav-link"
+                                           th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-saved-application-box' ? 'active':''}">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Save Application (Logged-in user)</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
                                         <a href="#" class="nav-link">
                                             <i class="fas fa-bell"></i> Notification
                                         </a>

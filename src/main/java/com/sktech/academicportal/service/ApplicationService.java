@@ -84,6 +84,19 @@ public class ApplicationService {
         return applications;
     }
 
+    public Integer rowCount_findAllApplicationSaved = 0;
+    public List<AllApplication> findAllApplicationSaved(Principal principal, String save) {
+        List<AllApplication> allApplications = applicationRepository.findAll();
+        List<AllApplication> applications = new ArrayList<>();
+        for (AllApplication application : allApplications) {
+            if (application.getApplicationStatus().equals(save) && application.getSendFrom().equals(principal.getName())) {
+                applications.add(application);
+                rowCount_findAllApplicationSaved++;
+            }
+        }
+        return applications;
+    }
+
     public void deleteApplicationById(Integer applicationId) {
         applicationRepository.deleteById(applicationId);
     }

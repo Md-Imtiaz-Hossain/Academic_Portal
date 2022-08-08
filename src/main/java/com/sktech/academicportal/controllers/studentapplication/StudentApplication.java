@@ -62,7 +62,7 @@ public class StudentApplication {
     }
 
 
-    //  Application Came in tto Logged-in user
+    //  Application Came into Logged-in user
     @GetMapping("/user-application-box")
     public String userApplication(Model model, Principal principal) {
         List<AllApplication> allApplications = applicationService.findAllApplicationReceived(principal, "Send");
@@ -70,6 +70,17 @@ public class StudentApplication {
         model.addAttribute("pageTitle", "User | All Applications");
         return "studentapplication/application-box";
     }
+
+    // Saved Application view
+    @GetMapping("/user-saved-application-box")
+    public String userSavedApplication(Model model, Principal principal) {
+        List<AllApplication> allApplications = applicationService.findAllApplicationSaved(principal, "Save");
+        System.out.println("=================================" + allApplications);
+        model.addAttribute("allApplication", allApplications);
+        model.addAttribute("pageTitle", "User | All Save Applications");
+        return "studentapplication/application-box";
+    }
+
 
     // Application Details
     @GetMapping("/application-details/{applicationId}")

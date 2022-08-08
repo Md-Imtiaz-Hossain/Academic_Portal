@@ -27,7 +27,7 @@ public class ReportCard {
         model.addAttribute("mark", resultService.getAllResulWithGrade());
         model.addAttribute("totalMarkOfAllSubject", totalMarkOfAllSubject);
         model.addAttribute("totalGradeOfAllSubject", totalGradeOfAllSubject);
-        return "/studentportal/student-report-card";
+        return "studentportal/student-report-card";
     }
 
 }
