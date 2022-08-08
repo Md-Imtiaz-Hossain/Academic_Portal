@@ -75,6 +75,7 @@ public class SubjectWithStudent {
     public String markHome(Model model) {
         model.addAttribute("pageTitle", "Mark List with user and subject");
         model.addAttribute("mark", resultService.getAllResulWithGrade());
+        System.out.println("===============================================================" + resultService.getAllResulWithGrade());
         return "studentandsubjectlist/student-mark-list";
     }
 

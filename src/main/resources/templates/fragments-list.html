@@ -423,7 +423,7 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    All Student result - <small>Admin, RootAdmin, Teacher</small>
+                    All Student and Subject list For result assign - <small>Admin, RootAdmin, Teacher</small>
                 </p>
             </a>
         </li>
@@ -434,7 +434,18 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher', 'Student')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Student result - <small>Admin, RootAdmin, Teacher, Student</small>
+                    Show All Student result table- <small>Admin, RootAdmin, Teacher, Student</small>
+                </p>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a th:href="@{/student-portal/my-result}" class="nav-link "
+               th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
+                <i class="nav-icon fas fa-list"></i>
+                <p>
+                    My (Logged-in Student) Result - <small>Admin, RootAdmin, Student</small>
                 </p>
             </a>
         </li>
@@ -576,16 +587,7 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a th:href="@{/student-portal/my-result}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
-                <p>
-                    Student Result - <small>Admin, RootAdmin, Student</small>
-                </p>
-            </a>
-        </li>
+
 
         <li class="nav-item">
             <a th:href="@{/all-teacher-evaluation/list}" class="nav-link "
