@@ -1,12 +1,16 @@
 package com.sktech.academicportal.controllers.subject;
 
 import com.sktech.academicportal.entity.Subject;
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.service.SubjectService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/subject")
@@ -14,6 +18,15 @@ public class SubjectList {
 
     @Autowired
     SubjectService subjectService;
+
+    @Autowired
+    UserService userService;
+
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
 
 
     // List of all subject

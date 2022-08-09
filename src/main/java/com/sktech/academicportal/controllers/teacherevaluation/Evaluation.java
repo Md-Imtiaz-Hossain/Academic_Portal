@@ -32,6 +32,13 @@ public class Evaluation {
     @Autowired
     TeacherEvaluationService teacherEvaluationService;
 
+
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
+
     @GetMapping("/list")
     public String evaluationList(Model model, Principal principal) {
 

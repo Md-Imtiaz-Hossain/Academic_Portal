@@ -1,7 +1,9 @@
 package com.sktech.academicportal.controllers.studentapplication;
 
 import com.sktech.academicportal.entity.AllApplication;
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.service.ApplicationService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +19,15 @@ public class StudentApplication {
 
     @Autowired
     ApplicationService applicationService;
+
+    @Autowired
+    UserService userService;
+
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
 
     // Application Home
     @GetMapping("/send")

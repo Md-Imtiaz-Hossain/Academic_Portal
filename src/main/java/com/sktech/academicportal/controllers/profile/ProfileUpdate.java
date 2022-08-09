@@ -22,6 +22,13 @@ public class ProfileUpdate {
     ProfileService profileService;
 
 
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
+
+
     @GetMapping("/update")
     public String profileUpdate(Model model) {
         model.addAttribute("pageTitle", "Profile Update");

@@ -17,6 +17,11 @@ public class AboutUs {
     @Autowired
     UserService userService;
 
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
 
     @GetMapping("/us")
     public String aboutUs(){

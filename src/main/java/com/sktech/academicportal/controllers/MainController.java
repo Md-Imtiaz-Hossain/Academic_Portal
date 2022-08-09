@@ -43,6 +43,7 @@ public class MainController {
     public String afterLogin(Model model, Principal  principal) {
         model.addAttribute("pageTitle", "Welcome | Dashboard");
         model.addAttribute("user", userService.getUserByEmail(principal.getName()));
+        model.addAttribute("loggedInUser", userService.getUserByEmail(principal.getName()));
         return "after-login-dashboard";
     }
 

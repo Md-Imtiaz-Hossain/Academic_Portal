@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -23,6 +24,13 @@ public class SubjectWithStudent {
     SubjectService subjectService;
     @Autowired
     ResultService resultService;
+
+
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
 
     // List of student and assigned subject
     @GetMapping("/list")

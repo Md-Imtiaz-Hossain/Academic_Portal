@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -20,6 +21,12 @@ public class SubjectAssignTeacher {
 
     @Autowired
     SubjectService subjectService;
+
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
 
     @GetMapping("/assign-teacher")
     public String subjectAssign( Model model ){

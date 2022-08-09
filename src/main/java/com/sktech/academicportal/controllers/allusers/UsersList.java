@@ -36,6 +36,13 @@ public class UsersList {
     UserRepository userRepository;
 
 
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
+
+
     // View All User store in DB with Datatable
     @GetMapping("/list")
     public String viewUserListPage(Model model) {

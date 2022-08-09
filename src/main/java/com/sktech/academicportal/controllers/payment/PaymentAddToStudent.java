@@ -2,11 +2,13 @@ package com.sktech.academicportal.controllers.payment;
 
 import com.sktech.academicportal.entity.ClassRoutine;
 import com.sktech.academicportal.entity.PaymentScheme;
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.enums.AcademicClass;
 import com.sktech.academicportal.enums.WeekDay;
 import com.sktech.academicportal.service.PaymentSchemeService;
 import com.sktech.academicportal.service.RoutineService;
 import com.sktech.academicportal.service.SubjectService;
+import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +25,15 @@ public class PaymentAddToStudent {
 
     @Autowired
     PaymentSchemeService paymentSchemeService;
+
+    @Autowired
+    UserService userService;
+
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
 
     // View all payment scheme
     @GetMapping("/list")

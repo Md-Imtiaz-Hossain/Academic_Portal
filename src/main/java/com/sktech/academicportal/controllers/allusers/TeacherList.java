@@ -19,6 +19,12 @@ public class TeacherList {
     @Autowired
     UserService userService;
 
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
+
 
     // View All Student store in DB with Datatable
     @GetMapping("/list")

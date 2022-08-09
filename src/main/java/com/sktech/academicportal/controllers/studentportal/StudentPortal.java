@@ -35,6 +35,12 @@ public class StudentPortal {
     @Autowired
     PaymentSchemeService paymentSchemeService;
 
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
+
 
     // Logged in Student all subject class routine
     @GetMapping("/my-routine")

@@ -29,6 +29,13 @@ public class TeacherPortal {
     @Autowired
     SubjectService subjectService;
 
+
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
+
     // List of subject assign to me (logged in teacher).
     @GetMapping("/my-subject")
     public String teacherPortalHome(Model model, Principal principal) {

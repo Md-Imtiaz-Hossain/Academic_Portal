@@ -22,6 +22,14 @@ public class RoleList {
     UserService userService;
 
 
+    // Extra data go through model attribute before all other controller run.
+    @ModelAttribute("loggedInUser")
+    public User extraData(Principal principal) {
+        return userService.getUserByEmail(principal.getName());
+    }
+
+
+
     // User role List
     @GetMapping("/list")
     public String roleListHome(Model model) {
