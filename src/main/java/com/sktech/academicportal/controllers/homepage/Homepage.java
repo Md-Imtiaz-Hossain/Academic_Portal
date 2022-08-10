@@ -1,4 +1,4 @@
-package com.sktech.academicportal.allcontroller.homepage;
+package com.sktech.academicportal.controllers.homepage;
 
 import com.sktech.academicportal.entity.HomepageEntity;
 import com.sktech.academicportal.service.HomepageRepositoryService;
@@ -77,13 +77,11 @@ public class Homepage {
 
     @GetMapping("/init")
     public String initDefault(){
-        List<HomepageEntity> default_ = List.of(new HomepageEntity(1L,"Home", home),
-                new HomepageEntity(2L, "History", history),
-                new HomepageEntity(3L, "Achievements", achievement)) ;
+        List<HomepageEntity> default_ = List.of(new HomepageEntity("Home", null, home, true, false, true),
+                new HomepageEntity("History", null, history, true, false, true));
 //        Clearing all previous data and resetting all to default
         homepageRepositoryService.clearAll();
         homepageRepositoryService.saveMultiple(default_);
-        System.out.println(default_);
         return "redirect:/";
     }
 

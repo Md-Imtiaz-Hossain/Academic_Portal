@@ -25,69 +25,8 @@
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <!-- Bootstrap 5.0 -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" >
-    <style>
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            display: inline-block;
-        }
-
-        input[type="checkbox"][id^="myCheckbox"] {
-            display: none;
-        }
-
-        label {
-            border: 1px solid #fff;
-            padding: 10px;
-            display: block;
-            position: relative;
-            margin: 10px;
-            cursor: pointer;
-        }
-
-        label:before {
-            background-color: white;
-            color: white;
-            content: " ";
-            display: block;
-            border-radius: 50%;
-            border: 1px solid grey;
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            width: 25px;
-            height: 25px;
-            text-align: center;
-            line-height: 28px;
-            transition-duration: 0.4s;
-            transform: scale(0);
-        }
-
-        label img {
-            height: 100px;
-            width: 100px;
-            transition-duration: 0.2s;
-            transform-origin: 50% 50%;
-        }
-
-        :checked + label {
-            border-color: #ddd;
-        }
-
-        :checked + label:before {
-            content: "✓";
-            background-color: grey;
-            transform: scale(1);
-        }
-
-        :checked + label img {
-            transform: scale(0.9);
-            /* box-shadow: 0 0 5px #333; */
-            z-index: -1;
-        }
-    </style>
+    <!--  Custom  -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}" >
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -140,51 +79,45 @@
                              style="background: #a770ef;
                              background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
                              background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);">
-                            <h1 class="display-4">Image Gallery</h1>
-                            <p class="lead">All Images uploaded to gallery are found here</p>
+                            <h1 class="display-4">Carousel Editor</h1>
+                            <p class="lead">Select which images to show on homepage.(Max upto 10)</p>
                         </div>
                     </div>
                 </div>
+                <div class="row pb-5">
+                    <div class="col-lg-12 mx-auto">
+                        <form th:action="'/carousel/update'" method="post">
+                            <p class="lead pl-3">Here are the current selected images. Tap on the images to add or remove.</p>
+
+                        <div class="d-flex justify-content-start flex-wrap"
+                             style="background: #a770ef;" id="selectedImages">
+
+                        </div>
+                            <button class="btn btn-success" type="submit" style="position:absolute; right: 3%; bottom: 5%">Save me</button>
+                        </form>
+                    </div>
+                </div>
                 <!-- End -->
-                <div class="d-flex justify-content-center">
-                    <form th:action="@{edit/carousel/update}" method="post">
-                        <ul>
-                            <li>
-                                <input type="checkbox" id="myCheckbox1" name="selectImages"/>
-                                <label for="myCheckbox1"><img src="http://townandcountryremovals.com/wp-content/uploads/2013/10/firefox-logo-200x200.png" /><p>Hello</p></label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="myCheckbox2" name="selectImages"/>
-                                <label for="myCheckbox2"><img src="http://tech21info.com/admin/wp-content/uploads/2013/03/chrome-logo-200x200.png" /><p>sssssS</p></label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="myCheckbox4" name="selectImages"/>
-                                <label for="myCheckbox4"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="myCheckbox5" name="selectImages"/>
-                                <label for="myCheckbox5"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="myCheckbox6" name="selectImages"/>
-                                <label for="myCheckbox6"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="myCheckbox7" name="selectImages"/>
-                                <label for="myCheckbox7"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
-                            </li>
-                            <li>
-                                <input type="checkbox" id="myCheckbox8" name="selectImages"/>
-                                <label for="myCheckbox8"><img src="http://www.thebusinessofsports.com/wp-content/uploads/2010/10/facebook-icon-200x200.png" /><p>SSS</p></label>
-                            </li>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4 customImageCard" th:each="image : ${images}" th:attr="onclick=${'addImageToSelected('+''''+ image.path + '''' +  ',' + image.id+')'}">
+                        <div class="bg-white rounded shadow-sm h-100  image">
+                            <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px; border:solid">
+                                <img th:src="'../'+${image.path}" alt="" class="img-fluid card-img-top" style=" width: auto;max-height: 100%;">
+                            </div>
 
-                        </ul>
-                        <button class="btn btn-outline-success" type="submit" id="submitButton">Submit</button>
-                    </form>
-
+                            <div class="p-4 d-flex flex-column justify-content-end">
+                                <h5 th:text="${image.heading}"></h5>
+                                <p class="small text-muted mb-0" th:text="${image.description}"></p>
+                            </div>
+                        </div>
+                        <div class="middle">
+                            <div class="text">Add</div>
+                        </div>
+                    </div>
                 </div>
         <!-- /.content -->
         </div>
+    </div>
     </div>
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -232,12 +165,29 @@
 
 <!-- Page specific script -->
 <script>
-    $("input:checkbox").click(function() {
-        var bol = $("input:checkbox:checked").length >= 10;
-        var bol2 = $("inpu:checkbox:checked").length < 1;
-        $("input:checkbox").not(":checked").attr("disabled",bol);
-        $("submitButton").hide();
-    });
+    let l = 0;
+
+    function addImageToSelected(path, id){
+        let f = document.getElementById("selectedImages");
+        let n = document.createElement('div');
+        n.id = "image" + id + Math.floor(Math.random()*10000);
+        n.setAttribute("onclick", "removeImage("+n.id+")");
+        n.innerHTML =`<div class="customImageCard" style="position: relative"><img src="../` + path +`" class="rounded-circle p-2 image"  style="width: auto; height: 150px">
+                          <div class="middle">
+                                    <div class="text" style="background: none">Remove</div>
+                          </div>
+
+                      <input value=` + id + ` name="imageList" hidden></div>`;
+
+        f.appendChild(n);
+        // document.getElementById(n.id).onclick = removeImage(n.id);
+    }
+
+    function removeImage(id){
+        // let f = document.getElementById(id);
+        id.remove();
+        // f.remove();
+    }
 </script>
 </body>
 </html>

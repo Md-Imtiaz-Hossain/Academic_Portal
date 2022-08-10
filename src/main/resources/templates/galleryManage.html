@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <!-- Bootstrap 5.0 -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" >
+    <!--  Custom  -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}" >
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -87,8 +89,22 @@
                 <div class="row">
                     <div th:if="${#lists.isEmpty(images)}">
                         <h1>Seems there is nothing to show here</h1>
-                        <p>You can always add new images <a th:href="@{/upload/gallery}">here</a></p>
+                        <p>You can always add new images</p>
                     </div>
+<!--                    <a >-->
+                        <a class="col-xl-3 col-lg-4 col-md-6 mb-4 customLink" th:href="@{/upload/gallery}" >
+                            <div class="bg-white rounded shadow-sm h-100">
+                                <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px;">
+                                    <img th:src="@{/dist/img/imageAdd.png}" alt="" class="img-fluid card-img-top p-4" style=" width: auto;max-height: 100%;">
+                                </div>
+
+                                <div class="p-4 d-flex flex-column justify-content-end">
+                                    <h5 th:text="'Upload New Image'"></h5>
+                                </div>
+
+                            </div>
+                        </a>
+<!--                    </a>-->
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-4" th:each="image : ${images}">
                         <div class="bg-white rounded shadow-sm h-100">
                             <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px; border:solid">

@@ -1,0 +1,56 @@
+.customLink {
+    text-decoration: none;
+    /*animation: invertImage 0.2s reverse 1 ease-in backwards;*/
+}
+
+.customLink:hover{
+    animation: invertImage 0.2s normal 1 ease-in forwards;
+}
+
+
+
+@keyframes invertImage {
+    0% {
+        filter: invert(0%);
+    }
+
+    100% {
+        filter: invert(90%);
+    }
+
+}
+.image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.customImageCard .middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.customImageCard:hover .image {
+    opacity: 0.3;
+}
+
+.customImageCard:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    padding: 16px 32px;
+}
+

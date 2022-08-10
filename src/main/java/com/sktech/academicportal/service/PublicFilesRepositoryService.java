@@ -2,7 +2,7 @@ package com.sktech.academicportal.service;
 
 import com.sktech.academicportal.entity.PublicFiles;
 import com.sktech.academicportal.enums.FileTypes;
-import com.sktech.academicportal.repository.PublicFilesRepository;
+import com.sktech.academicportal.repositories.PublicFilesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

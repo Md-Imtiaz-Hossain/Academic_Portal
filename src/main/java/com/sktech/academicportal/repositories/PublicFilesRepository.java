@@ -1,4 +1,4 @@
-package com.sktech.academicportal.repository;
+package com.sktech.academicportal.repositories;
 
 import com.sktech.academicportal.entity.PublicFiles;
 import org.springframework.data.jpa.repository.JpaRepository;

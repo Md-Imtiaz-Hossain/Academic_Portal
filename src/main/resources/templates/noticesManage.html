@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <!-- Bootstrap 5.0 -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" >
+    <!--  Custom  -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}" >
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -87,8 +89,20 @@
                 <div class="row">
                     <div th:if="${#lists.isEmpty(notices)}">
                         <h1>Seems there is nothing to show here</h1>
-                        <p>You can always add new notices <a th:href="@{/upload/notice}">here</a></p>
+                        <p>You can always add new notices</p>
                     </div>
+                    <a class="col-xl-3 col-lg-4 col-md-6 mb-4 customLink" th:href="@{/upload/notice}" >
+                        <div class="bg-white rounded shadow-sm h-100">
+                            <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px;">
+                                <img th:src="@{/dist/img/addNoticeImage.png}" alt="" class="img-fluid card-img-top p-4" style=" width: auto;max-height: 100%;">
+                            </div>
+
+                            <div class="p-4 d-flex flex-column justify-content-end">
+                                <h5 th:text="'Upload New Notice'"></h5>
+                            </div>
+
+                        </div>
+                    </a>
 
                     <div class="col-xl-3 col-lg-4 col-md-6 mb-4" th:each="notice : ${notices}">
                         <div class="bg-white rounded shadow-sm h-100">
