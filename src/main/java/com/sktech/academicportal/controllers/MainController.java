@@ -25,6 +25,7 @@ public class MainController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
         if(hrs.getAll().isEmpty()) return "redirect:/homepage/init";
+        System.out.println(publicFilesRepositoryService.getAllPublicNotices());
         model.addAttribute("sections", hrs.getAll());
         return "index";
     }
@@ -47,7 +48,7 @@ public class MainController {
         System.out.println(ct.getAddress());
         System.out.println(json);
         ObjectMapper mapper = new ObjectMapper();
-
+//        mapper.readTree(json).get("phone");
         Contact cyt = mapper.readValue(json, Contact.class);
         System.out.println(cyt.getPhone());
         model.addAttribute("images", publicFilesRepositoryService.getAllPublicImages());
@@ -57,7 +58,7 @@ public class MainController {
     @PostMapping("/carousel/update")
     public String manage(@RequestParam("imageList")String hello){
         System.out.println(hello);
-        return "test";
+        return "redirect:/carousel/update";
     }
 
 

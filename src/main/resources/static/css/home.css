@@ -32,18 +32,16 @@ body .container-my section {
     scroll-margin-top: 54px;
 }
 
-body .container-my section:nth-of-type(1) {
+body .container-my section {
     background-color: #1c1c1c;
 }
 
-body .container-my section:nth-of-type(2) {
+body .container-my section:nth-of-type(2n) {
     background-color: #262626;
-    color: blue;
 }
 
-body .container-my section:nth-of-type(3) {
+body .container-my section:nth-of-type(3n) {
     background-color: #303030;
-    color: yellow;
 }
 
 body .container-my section h1 {

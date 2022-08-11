@@ -62,6 +62,7 @@ public class PublicFilesRepositoryService {
         for (PublicFiles p: getAllNotices()) {
             if(p.isPublic) notices.add(p);
         }
+        System.out.println("hello i am hea");
         return  notices;
     }
 
