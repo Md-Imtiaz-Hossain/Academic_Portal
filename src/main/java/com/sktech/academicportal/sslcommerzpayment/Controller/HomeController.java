@@ -72,7 +72,7 @@ public class HomeController {
 //    }
 
 
-    @PostMapping("/appoint-doctor/success")
+    @PostMapping("/success")
     public String patientAppointDoctorSuccess(@RequestParam Map<String, String> requestMap, Model model) {
         String transactionId = requestMap.get("tran_id");
 //        AppointDoctorTransaction appointDoctorTransaction = appointDoctorTransactionRepository.findByTxid(transactionId); // Fetching from database
@@ -104,7 +104,7 @@ public class HomeController {
 
         model.addAttribute("transactionId", transactionId);
 
-        return "sslcommerzpayment/Payment_Success";
+        return "sslcommerzpayment/payment-success";
     }
 
 
