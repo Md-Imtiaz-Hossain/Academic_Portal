@@ -28,31 +28,23 @@ public class SubjectList {
         return userService.getUserByEmail(principal.getName());
     }
 
-
     // List of all subject
     @GetMapping("/list")
-    public String subjectHome(Model model){
-
+    public String subjectList(Model model){
         model.addAttribute("pageTitle", "Subject List");
         model.addAttribute("subjectList", subjectService.getAllSubject());
-
         return "subjectlist/subject-list";
     }
-
 
     // For add a new Subject. Open a from for create new Subject
     @GetMapping("/new")
     public String addNewSubjectForm(Model model) {
-
         Subject subject = new Subject();
-
         model.addAttribute("pageTitle", "Add Subject");
         model.addAttribute("class", AcademicClass.values());
         model.addAttribute("subject", subject);
-
         return "subjectlist/subject-new-form";
     }
-
 
     // Process the fill up form after save button clicked.
     @PostMapping("/save")
@@ -60,7 +52,6 @@ public class SubjectList {
         subjectService.saveSubject(subject);
         return "redirect:/subject/list";
     }
-
 
     // Open the Update form for Subject Information updating
     @GetMapping("/edit/{id}")
@@ -70,7 +61,6 @@ public class SubjectList {
         model.addAttribute("subject", subjectService.getSubjectById(id));
         return "subjectlist/subject-update-form";
     }
-
 
     // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
@@ -84,7 +74,6 @@ public class SubjectList {
         subjectService.updateSubject(existingSubject);
         return "redirect:/subject/list";
     }
-
 
     // Delete the Subject information and confirm before delete.
     @GetMapping("/delete/{id}")

@@ -14,20 +14,16 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/profile")
 public class ProfileUpdate {
-
     @Autowired
     UserService userService;
-
     @Autowired
     ProfileService profileService;
-
 
     // Extra data go through model attribute before all other controller run.
     @ModelAttribute("loggedInUser")
     public User extraData(Principal principal) {
         return userService.getUserByEmail(principal.getName());
     }
-
 
     @GetMapping("/update")
     public String profileUpdate(Model model) {
@@ -36,15 +32,12 @@ public class ProfileUpdate {
         return "profileupdate/update";
     }
 
-
     @PostMapping("/save")
-    public String profileInfo(@ModelAttribute("profile") Profile profile,
-                              Principal principal) {
+    public String profileInfoSave(@ModelAttribute("profile") Profile profile, Principal principal) {
         User user = userService.getUserByEmail(principal.getName());
         profile.setUser(user);
         profileService.save(profile);
         return "redirect:/after-login-dashboard";
     }
-
 
 }

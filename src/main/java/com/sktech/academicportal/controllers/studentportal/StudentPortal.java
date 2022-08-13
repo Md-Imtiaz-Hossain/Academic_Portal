@@ -41,28 +41,23 @@ public class StudentPortal {
         return userService.getUserByEmail(principal.getName());
     }
 
-
     // Logged in Student all subject class routine
     @GetMapping("/my-routine")
     public String myRoutine(Model model, Principal principal) {
         String userEmail = principal.getName();
         User user = userService.getUserByEmail(userEmail);
         String loggedUserClass = user.getCurrentClass();
-
         model.addAttribute("pageTitle", "My class routine");
         model.addAttribute("routineList", routineService.getRoutineByClass(loggedUserClass));
         model.addAttribute("className", loggedUserClass);
-
         return "studentportal/my-routine";
     }
 
     // Logged in Student all subject result
     @GetMapping("/my-result")
     public String myResult(Model model, Principal principal) {
-
         String userEmail = principal.getName();
         User user = userService.getUserByEmail(userEmail);
-
         Set<StudentResult> results = new HashSet<>();
         List<StudentResult> resultList = resultService.getAllResul();
         System.out.println(resultList);
@@ -71,31 +66,23 @@ public class StudentPortal {
                 results.add(studentResult);
             }
         }
-
         model.addAttribute("pageTitle", "Mark List with Username and Subject name");
         model.addAttribute("mark", results);
-
         return "studentportal/my-result";
     }
 
-
-    // Logged in Student all subject class routine
+    // Logged in Student payment
     @GetMapping("/my-payment")
     public String myPayment(@ModelAttribute PaymentInformation paymentInformation, Model model, Principal principal) {
         String userEmail = principal.getName();
         User user = userService.getUserByEmail(userEmail);
         String loggedUserClass = user.getCurrentClass();
-
         model.addAttribute("pageTitle", "My Scheme list");
         model.addAttribute("schemeList", paymentSchemeService.getSchemeByClass(loggedUserClass));
         model.addAttribute("schemeTotal", paymentSchemeService.getSchemeTotal(loggedUserClass));
         model.addAttribute("className", loggedUserClass);
         model.addAttribute("paymentInformation", paymentInformation);
-
-
         return "studentportal/my-payment";
     }
-
-
 
 }

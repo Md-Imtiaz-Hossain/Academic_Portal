@@ -1,6 +1,5 @@
 package com.sktech.academicportal.service;
 
-import com.sktech.academicportal.entity.ClassRoutine;
 import com.sktech.academicportal.entity.PaymentScheme;
 import com.sktech.academicportal.repositories.PaymentSchemeRepository;
 import com.sktech.academicportal.repositories.RoutineRepository;
@@ -30,12 +29,9 @@ public class PaymentSchemeService {
         return paymentSchemeRepository.findAll();
     }
 
-
     public List<PaymentScheme> getSchemeByClass(String classOf) {
-
         List<PaymentScheme> paymentSchemes = paymentSchemeRepository.findAll();
         List<PaymentScheme> paymentSchemeArrayList = new ArrayList<>();
-
         for (PaymentScheme paymentScheme : paymentSchemes) {
             String subjectClass = String.valueOf(paymentScheme.getPaymentClass());
             if (subjectClass.equals(classOf)) {
@@ -48,7 +44,6 @@ public class PaymentSchemeService {
     public void save(PaymentScheme paymentScheme) {
         paymentSchemeRepository.save(paymentScheme);
     }
-
 
     public PaymentScheme getSchemeById(Integer id) {
         return paymentSchemeRepository.findById(id).get();

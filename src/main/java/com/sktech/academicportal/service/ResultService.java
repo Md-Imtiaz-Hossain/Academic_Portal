@@ -6,7 +6,6 @@ import com.sktech.academicportal.repositories.ResultRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,16 +36,13 @@ public class ResultService {
         return save.getId();
     }
 
-
     public void deleteById(Integer id) {
         resultRepository.deleteById(id);
     }
 
     public List<StudentResult> getResultUsingSubjectId(int assignedSubjectId) {
         List<StudentResult> studentResults = resultRepository.findAll();
-
         List<StudentResult> studentResultsAll = new ArrayList<>();
-
         for (StudentResult studentResult : studentResults) {
             if (studentResult.getSubjectId() == assignedSubjectId) {
                 studentResultsAll.add(studentResult);
@@ -56,12 +52,9 @@ public class ResultService {
     }
 
     public List<StudentResult> getResultUsingUserEmail(String email) {
-
         List<Subject> subjectToATeacher = userService.getAllAssignedSubjectToATeacher(email);
         List<StudentResult> studentResults = resultRepository.findAll();
-
         List<StudentResult> studentResultsAll = new ArrayList<>();
-
         for (StudentResult studentResult : studentResults) {
             for (Subject subject : subjectToATeacher) {
                 if (Objects.equals(studentResult.getSubjectId(), subject.getId())) {
@@ -74,19 +67,13 @@ public class ResultService {
 
     public List<StudentResult> getAllResulWithGrade() {
         List<StudentResult> studentResults = resultRepository.findAll();
-
         for (StudentResult result : studentResults) {
-
             Float avgCtMark = (result.getCt3Mark() + result.getCt2Mark() + result.getCt1Mark()) / 3f;
             result.setCtAverageMark(Float.valueOf(df.format(avgCtMark)));
-
             Float totalMarks = Float.valueOf(df.format(result.getFinalMark() + result.getMidMark() + avgCtMark));
             result.setTotalMark(totalMarks);
-
-
             Integer tot = Math.round(totalMarks);
             result.setFinalGrade(getGradesUsingMark(tot));
-
             resultRepository.save(getSingleResultById(result.getId()));
         }
         return resultRepository.findAll();
@@ -95,7 +82,6 @@ public class ResultService {
     public StudentResult getSingleResultById(Integer id) {
         return resultRepository.findById(id).get();
     }
-
 
     public List<Float> getTotalMark() {
         List<StudentResult> studentResults = resultRepository.findAll();
@@ -120,9 +106,7 @@ public class ResultService {
     }
 
     public String getGradesUsingMark(int marks) {
-
         String grade = "";
-
         if (marks >= 80 && marks <= 100) {
             grade = "Grade: A+, Point: 4.00, Remarks: Outstanding";
         } else if (marks >= 75 && marks <= 79) {
@@ -144,17 +128,14 @@ public class ResultService {
         } else if (marks >= 0 && marks <= 39) {
             grade = "Grade: F, Point: 0.00, Remarks: Fail";
         }
-
         return grade;
     }
 
-
     public int totalSubject;
+
     public Float getTotalMarkOfAllSubject() {
         List<StudentResult> studentResults = getAllResulWithGrade();
-
         Float totalMarkOfAllSubject = 0f;
-
         for (StudentResult studentResult : studentResults) {
             totalMarkOfAllSubject = totalMarkOfAllSubject + studentResult.getTotalMark();
             totalSubject++;

@@ -16,10 +16,8 @@ import java.util.List;
 @Controller
 @RequestMapping("/student-application")
 public class StudentApplication {
-
     @Autowired
     ApplicationService applicationService;
-
     @Autowired
     UserService userService;
 
@@ -37,7 +35,6 @@ public class StudentApplication {
         model.addAttribute("application", new AllApplication());
         return "studentapplication/application-form";
     }
-
 
     // Save or Send the application
     @PostMapping("/edit")
@@ -72,7 +69,6 @@ public class StudentApplication {
         return "studentapplication/application-box";
     }
 
-
     //  Application Came into Logged-in user
     @GetMapping("/user-application-box")
     public String userApplication(Model model, Principal principal) {
@@ -92,7 +88,6 @@ public class StudentApplication {
         return "studentapplication/application-box";
     }
 
-
     // Application Details
     @GetMapping("/application-details/{applicationId}")
     public String applicationDetails(@PathVariable Integer applicationId,
@@ -101,7 +96,6 @@ public class StudentApplication {
         model.addAttribute("pageTitle", "Application details");
         return "studentapplication/application-details";
     }
-
 
     // All send application from logged-in user
     @GetMapping("/all-send-application")

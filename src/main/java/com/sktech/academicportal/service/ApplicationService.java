@@ -30,7 +30,6 @@ public class ApplicationService {
         return applicationRepository.save(allApplication);
     }
 
-
     public List<AllApplication> findAll() {
         return applicationRepository.findAll();
     }
@@ -42,7 +41,6 @@ public class ApplicationService {
     public AllApplication findById(Integer applicationId) {
         return applicationRepository.findById(applicationId).get();
     }
-
 
     public Integer rowCount_findAllApplicationWithoutSaveStatus = 0;
     public List<AllApplication> findAllApplicationWithoutSaveStatus() {
@@ -69,7 +67,6 @@ public class ApplicationService {
         }
         return applications;
     }
-
 
     public Integer rowCount_findAllApplicationReceived = 0;
     public List<AllApplication> findAllApplicationReceived(Principal principal, String send) {

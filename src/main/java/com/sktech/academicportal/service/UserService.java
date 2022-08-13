@@ -47,10 +47,6 @@ public class UserService {
         return userRepository.findById(id).get();
     }
 
-    public Integer getUserByPrincipal(String s) {
-        return userRepository.getUserByEmail(s).getId();
-    }
-
     public User getUserByEmail(String s) {
         return userRepository.getUserByEmail(s);
     }
@@ -87,7 +83,6 @@ public class UserService {
         if (userByEmail == null) {
             return true;
         }
-
         if (id == null) {
             return false;
         } else {
@@ -112,10 +107,8 @@ public class UserService {
 
     // This methode will return with user List which contain Role-Student
     public List<User> getAllUserBySubjectId(Integer subjectId) {
-
         List<User> getAllUserBySubjectId = new ArrayList<>();
         List<User> userList = getAllUserByStudentRole();
-
         for (User u : userList) {
             for (Subject r : u.getSubjects()) {
                 if (Objects.equals(r.getId(), subjectId)) {
@@ -194,7 +187,6 @@ public class UserService {
         return passwordEncoder.encode(password);
     }
 
-
     public List<ClassRoutine> getAllClassRoutineByAssignSubject(List<Subject> allAssignedSubjectToATeacher) {
         List<ClassRoutine> routines = new ArrayList<>();
         List<ClassRoutine> routineList = routineService.getAllClassRoutine();
@@ -218,7 +210,6 @@ public class UserService {
                 }
             }
         }
-
         // Clear the duplication
         Set<String> set = new HashSet<>(classList);
         classList.addAll(set);
@@ -232,8 +223,6 @@ public class UserService {
 
     public User getUserBySubjectId(Integer subjectId) {
         List<User> allUser = getAllUserWithoutStudentRole();
-
-
         for(User u : allUser){
             for (Subject s : u.getSubjects()){
                 if (s.getId().equals(subjectId)){

@@ -12,15 +12,12 @@ public class MvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        // to expose directory on the file system to accessible by client
         exposeDirectory("user-photos", registry);
     }
-
     private void exposeDirectory(String pathPattern, ResourceHandlerRegistry registry) {
         Path path = Paths.get(pathPattern);
         String absolutePath = path.toFile().getAbsolutePath();
         String logicalPath = pathPattern.replace("../", "") + "/**";
-
         registry.addResourceHandler(logicalPath) // map the absolute path
                 .addResourceLocations("file:///" + absolutePath + "/");
     }

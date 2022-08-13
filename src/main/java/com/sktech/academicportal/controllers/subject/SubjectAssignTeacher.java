@@ -30,25 +30,18 @@ public class SubjectAssignTeacher {
 
     @GetMapping("/assign-teacher")
     public String subjectAssign( Model model ){
-
         model.addAttribute("pageTitle", "Teacher and Assigned Subjects");
         model.addAttribute("user", userService.getAllUserWithoutRootAdminAndAdminAndStudentRole());
-
         return "subjectassign/assign-And-list-teacher";
     }
-
-
 
     // Open the Update form for person Information updating
     @GetMapping("/edit/{id}")
     public String editUserForm(@PathVariable Integer id, Model model) {
-
         List<Subject> subjectList = subjectService.getAllSubject();
-
         model.addAttribute("pageTitle", "Update Assigned Subject Information");
         model.addAttribute("user", userService.getUserById(id));
         model.addAttribute("subjectList", subjectList);
-
         return "subjectassign/subject-Assign-update-form";
     }
 
@@ -56,12 +49,9 @@ public class SubjectAssignTeacher {
     // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("user") User user) {
-
         User existingUser = userService.getUserById(id);
         existingUser.setId(id);
         existingUser.setSubjects(user.getSubjects());
-
-        // save updated student object
         userService.updateUser(existingUser);
         return "redirect:/subject-assign-t/assign-teacher";
     }

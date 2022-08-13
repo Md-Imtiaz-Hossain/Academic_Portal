@@ -1,7 +1,6 @@
 package com.sktech.academicportal.controllers.teacherevaluation;
 
 
-import com.sktech.academicportal.entity.StudentResult;
 import com.sktech.academicportal.entity.Subject;
 import com.sktech.academicportal.entity.TeacherEvaluation;
 import com.sktech.academicportal.entity.User;
@@ -22,7 +21,6 @@ import java.util.Set;
 @RequestMapping("/teacher-evaluation")
 public class Evaluation {
 
-
     @Autowired
     UserService userService;
 
@@ -32,7 +30,6 @@ public class Evaluation {
     @Autowired
     TeacherEvaluationService teacherEvaluationService;
 
-
     // Extra data go through model attribute before all other controller run.
     @ModelAttribute("loggedInUser")
     public User extraData(Principal principal) {
@@ -41,7 +38,6 @@ public class Evaluation {
 
     @GetMapping("/list")
     public String evaluationList(Model model, Principal principal) {
-
         Set<TeacherEvaluation> evaluation = teacherEvaluationService.findAllReviewUsingPrincipal(principal);
         Integer reviewerId = null, subjectId = null, teacherId = null;
         for (TeacherEvaluation teacherEvaluation : evaluation) {
@@ -52,7 +48,6 @@ public class Evaluation {
         String reviewer = userService.getUserById(reviewerId).getFullName();
         String subject = subjectService.getSubjectById(subjectId).getSubjectName();
         String teacher = userService.getUserById(teacherId).getFullName();
-
         model.addAttribute("pageTitle", "Teacher evaluation List");
         model.addAttribute("reviewer", reviewer);
         model.addAttribute("subject", subject);
@@ -72,10 +67,8 @@ public class Evaluation {
     public String addReview(@PathVariable Integer studentId,
                             @PathVariable Integer subjectId,
                             Principal principal, Model model) {
-
         Subject subject = subjectService.getSubjectById(subjectId);
         User teacher = userService.getUserBySubjectId(subjectId);
-
         model.addAttribute("pageTitle", "Teacher evaluation");
         model.addAttribute("student", userService.getUserById(studentId));
         model.addAttribute("studentId", studentId);
@@ -93,7 +86,6 @@ public class Evaluation {
                               @PathVariable Integer studentId,
                               @PathVariable Integer teacherId,
                               @ModelAttribute("teacherEvaluation") TeacherEvaluation teacherEvaluation) {
-
         teacherEvaluation.setReviewerId(studentId);
         teacherEvaluation.setTeacherId(teacherId);
         teacherEvaluation.setSubjectId(subjectId);
@@ -105,15 +97,12 @@ public class Evaluation {
     @GetMapping("/edit/{reviewId}")
     public String editReview(@PathVariable Integer reviewId,
                              Principal principal, Model model) {
-
         TeacherEvaluation evaluation = teacherEvaluationService.findById(reviewId);
         Integer studentId = evaluation.getReviewerId();
         Integer subjectId = evaluation.getSubjectId();
         Integer teacherId = evaluation.getTeacherId();
-
         Subject subject = subjectService.getSubjectById(subjectId);
         User teacher = userService.getUserById(teacherId);
-
         model.addAttribute("pageTitle", "Teacher evaluation Update");
         model.addAttribute("student", userService.getUserById(studentId));
         model.addAttribute("studentId", studentId);
@@ -137,7 +126,6 @@ public class Evaluation {
         existingEvaluation.setReviewerId(studentId);
         existingEvaluation.setTeacherId(teacherId);
         existingEvaluation.setSubjectId(subjectId);
-
         existingEvaluation.setQuestionOne(teacherEvaluation.getQuestionOne());
         existingEvaluation.setQuestionTwo(teacherEvaluation.getQuestionTwo());
         existingEvaluation.setQuestionThree(teacherEvaluation.getQuestionThree());
@@ -149,7 +137,6 @@ public class Evaluation {
         existingEvaluation.setQuestionNine(teacherEvaluation.getQuestionNine());
         existingEvaluation.setQuestionTen(teacherEvaluation.getQuestionTen());
         existingEvaluation.setComment(teacherEvaluation.getComment());
-
         teacherEvaluationService.saveEvaluation(teacherEvaluation);
         return "redirect:/teacher-evaluation/list";
     }

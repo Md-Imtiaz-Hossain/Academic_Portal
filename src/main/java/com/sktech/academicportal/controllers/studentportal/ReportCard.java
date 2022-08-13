@@ -20,7 +20,6 @@ public class ReportCard {
 
     @Autowired
     ResultService resultService;
-
     @Autowired
     UserService userService;
 

@@ -41,13 +41,10 @@ public class SubjectService {
         subjectRepository.deleteById(id);
     }
 
-
     // Get a list of subject using class name
     public List<Subject> getAllSubjectByClass(String currentClass) {
-
         List<Subject> subjectList = subjectRepository.findAll();
         List<Subject> subjectListNew = new ArrayList<>();
-
         for (Subject s : subjectList) {
             if (s.getSubjectClass().equals(currentClass)) {
                 subjectListNew.add(s);

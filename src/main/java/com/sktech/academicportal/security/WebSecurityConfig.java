@@ -2,7 +2,6 @@ package com.sktech.academicportal.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -22,7 +21,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         return new PortalUserDetailsService();
     }
-
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -48,7 +46,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         String[] staticResources = {"/css/**", "/images/**", "/fonts/**", "/scripts/**", "/plugins/**", "/frontimages/**", "/frontlayout/**",
                 " /resources/**", "/js/**", "/login", "/api/**", "/", "/static/**", "/dist/css/**", "/dist/js/**", "/dist/img/**", "/dist/**"};
-
 
         http.authorizeRequests()
                 .antMatchers(staticResources).permitAll()
@@ -77,14 +74,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-
         web.ignoring().antMatchers("/css/**");
         web.ignoring().antMatchers("/scripts/**");
         web.ignoring().antMatchers("/images/**");
         web.ignoring().antMatchers("/js/**");
         web.ignoring().antMatchers("/webjars/**");
-
-
     }
 
 

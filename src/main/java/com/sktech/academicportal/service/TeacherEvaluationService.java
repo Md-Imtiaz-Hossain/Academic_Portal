@@ -1,18 +1,17 @@
 package com.sktech.academicportal.service;
 
 
-import com.sktech.academicportal.entity.*;
-import com.sktech.academicportal.repositories.ResultRepository;
-import com.sktech.academicportal.repositories.RoleRepository;
+import com.sktech.academicportal.entity.TeacherEvaluation;
+import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.repositories.TeacherEvaluationRepository;
-import com.sktech.academicportal.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 
 @Service
@@ -25,20 +24,15 @@ public class TeacherEvaluationService {
     UserService userService;
 
 
-    // Save Users
     public TeacherEvaluation saveEvaluation(TeacherEvaluation evaluation) {
         return teacherEvaluationRepository.save(evaluation);
     }
 
-
     public Set<TeacherEvaluation> findAllReviewUsingPrincipal(Principal principal) {
-
         User userByEmail = userService.getUserByEmail(principal.getName());
         Integer userId = userByEmail.getId();
         List<TeacherEvaluation> evaluations = teacherEvaluationRepository.findAll();
         List<TeacherEvaluation> newEvaluations = new ArrayList<>();
-
-
         for (TeacherEvaluation te : evaluations){
             Integer reviewerId = te.getReviewerId();
             if (reviewerId == userId){
