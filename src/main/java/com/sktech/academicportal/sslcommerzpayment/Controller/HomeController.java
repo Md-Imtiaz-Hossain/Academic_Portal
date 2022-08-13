@@ -38,7 +38,7 @@ public class HomeController {
         return sb.toString();
     }
 
-    @PostMapping(value = "/handle-payment")
+    @PostMapping("/handle-payment")
     public RedirectView payTest(@ModelAttribute PaymentInformation paymentInformation) throws Exception {
         String randomTxIdString = getRandomTxIdString();
         String fee = String.valueOf(paymentInformation.getPayableAmount());
@@ -51,27 +51,12 @@ public class HomeController {
         return redirectView;
     }
 
-
-//        @PostMapping(value = "/handle-payment")
-//    public String payTest(@ModelAttribute PaymentInformation paymentInformation) throws Exception {
-//
-//            System.out.println("======================================"+paymentInformation.getPayedTime());
-//            System.out.println("======================================"+paymentInformation.getPayableAmount());
-//            System.out.println("======================================"+paymentInformation.getStudentId());
-//            System.out.println("======================================"+paymentInformation.getStudentEmail());
-//
-//        return "redirect:/payment/form";
-//    }
-
-
-    @PostMapping(value = "/success")
+    @PostMapping("/success")
     public String patientAppointDoctorSuccess(@RequestParam Map<String, String> requestMap, Model model) {
         String transactionId = requestMap.get("tran_id");
         model.addAttribute("transactionId", transactionId);
-        return "payment-success";
+        return "sslcommerzpayment/payment-information-form";
     }
-
-
 
 
     @RequestMapping("/pay-success")
