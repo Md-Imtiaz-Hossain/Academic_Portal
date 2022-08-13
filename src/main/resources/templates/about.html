@@ -1,10 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
-    <title>About Us</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us page html</title>
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: rgb(52, 58, 64);
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            display: flex;
+            width: 100%;
+            box-shadow: 0 0 5px black;
+            text-align: center;
+            height: 40px;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+
+
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: rgb(223, 215, 215);
+            margin: 10px auto;
+            padding: 5px 30px;
+            width: 800px;
+            box-shadow: 0 0 5px black;
+        }
+
+        .hr {
+            display: flex;
+            align-items: center;
+        }
+
+        hr {
+            width: 30px;
+            height: 1px;
+            background: black;
+            margin: 0 15px;
+        }
+
+        h2 {
+            font-size: 25px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        .mission-txt {
+            font-size: 18px;
+            font-style: italic;
+            margin-top: 0;
+        }
+
+        div img {
+            width: 150px;
+            filter: drop-shadow(0 10px 5px black);
+        }
+
+        p {
+            text-align: justify;
+        }
+
+        .faculties {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .unit {
+            margin: 25px;
+            width: 250px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .unit img {
+            border-radius: 100px;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 10px;
+        }
+
+        .unit p {
+            text-align: left;
+            margin: 2px;
+        }
+
+        .unit p:first-of-type {
+            font-weight: bolder;
+            margin-bottom: 5px;
+        }
+
+        @media screen and (max-width: 820px) {
+            .wrapper {
+                width: 80%;
+                padding: 5px 30px;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<h1>About Us</h1>
+
+<div class="container">
+
+    <div class="wrapper">
+        <div class="hr">
+            <hr>
+            <h2>Our Mission</h2>
+            <hr>
+        </div>
+        <p class="mission-txt">"To Provide Quality Web Application at Low Cost"</p>
+    </div>
+
+    <div class="wrapper">
+        <h2>About <b>XYZ</b> Academic Portal</h2>
+        <div>
+            <img th:src="@{/images/img_3.png}" alt="img">
+            <p><b>Introduction:</b>
+                In today’s day and age, we are more and more relying on technology in almost every scope of our life. This
+                trend is increasing rapidly. We are shopping, ordering foods, renting cars etc. online, and using digital
+                payment methods to pay for them. But one area of our society which has seen little to no digitalization is
+                our academic life. Most schools still keep and store records in papers and manage every academic activity
+                manually / in person. School fees and other economic transactions are handled manually which may lead
+                to incorrect data handling which in turn wastes the student or the handling party’s time. Digitalization in
+                this area will have huge impact on our upcoming generation.</p>
+
+            <p>Our project <b>“School-College Management System”</b> is an example in which way any school/college or
+                equivalent academies can digitalize their whole academic management system efficiently. Everyone will
+                be able to visit the academy’s site and get all the basic information and notices. After logging in, teachers
+                will be able to manage their classes, students’ information, scheduling exams, results etc. Students will be
+                able to see their everyday routines, update their profile, check their results, view their academic expanses
+                etc. Other staffs will be able to manage the notices, economic transactions, admissions, alumni
+                management, student applications. There will also be automated online payment system with manual
+                options. And above all, the Head and Assistant Head Teacher will overlook the whole system and
+                effectively fill the role of Site Admin.</p>
+
+            <p><b>Scope:</b>
+                The scope of this project will be schools or colleges inside Bangladesh. Most schools and colleges are still
+                using pen and paper records to manage all academic activities and transactions. Our project will replace
+                most of the manual work and automate most of the processes which will be accessible anywhere online.
+                Our project’s main focus is on Bangladeshi schools and colleges. It may not be suitable for university
+                management or higher academic systems. After slight modifications, this project might work in other
+                countries.</p>
+
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <h2>Developers</h2>
+        <div class="faculties">
+            <div class="unit">
+                <img th:src="@{/images/imtiaz.jpg}" alt="">
+                <h3>Md Imtiaz Hossain</h3>
+                <p><b>Backend Developer</b></p>
+                <hr>
+                <p style="text-align: justify;" >A highly motivated and skilled engineering graduate, looking for an opportunity to connect with a group.
+                    So I can completely use my ability of Critical thinking, Problem-solving, and
+                    information in Software development to make an important expansion to the association alongside lifting my profession.</p>
+
+            </div>
+            <div class="unit">
+                <img th:src="@{/images/img_2.png}" alt="">
+                <h3>Sirajis Salekin Sajon</h3>
+                <p><b>Frontend Developer</b></p>
+                <hr>
+                <p style="text-align: justify;" >“A successful website does three things:
+                    It attracts the right kinds of visitors.
+                    Guides them to the main services or product you offer.
+                    Collect Contact details for future ongoing relation.”
+                    ― Mohamed Saad</p>
+
+            </div>
+        </div>
+    </div>
+
+</div>
 </body>
+
 </html>
