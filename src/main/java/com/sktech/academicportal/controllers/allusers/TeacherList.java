@@ -25,33 +25,27 @@ public class TeacherList {
         return userService.getUserByEmail(principal.getName());
     }
 
-
-    // View All Student store in DB with Datatable
+    // View All Teacher
     @GetMapping("/list")
-    public String viewLoginPage(Model model) {
+    public String teacherList(Model model) {
         model.addAttribute("pageTitle", "Teacher List");
         model.addAttribute("getAllUserWithoutAdminAndStudentRole", userService.getAllUserWithoutRootAdminAndAdminAndStudentRole());
         return "teacherlist/teacher-list";
     }
 
-
-    // Open the Update form for person Information updating
+    // Open the Update form for Teacher Information updating
     @GetMapping("/edit/{id}")
-    public String editStudentForm(@PathVariable Integer id, Model model) {
-
+    public String editTeacherForm(@PathVariable Integer id, Model model) {
         model.addAttribute("pageTitle", "Edit  Teacher Information");
         model.addAttribute("designation", Designation.values());
         model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("user", userService.getUserById(id));
-
         return "teacherlist/teacher-update-form";
     }
 
-
-    // Process the updated information after update button clicked.
+    // Process the updated form
     @PostMapping("/update/{id}")
-    public String updateStudent(@PathVariable Integer id, @ModelAttribute("user") User user, Model model) {
-
+    public String updateTeacher(@PathVariable Integer id, @ModelAttribute("user") User user) {
         User existingTeacher = userService.getUserById(id);
         existingTeacher.setId(id);
         existingTeacher.setFatherName(user.getFatherName());
@@ -63,12 +57,8 @@ public class TeacherList {
         existingTeacher.setAcademicID(user.getAcademicID());
         existingTeacher.setContactNo(user.getContactNo());
         existingTeacher.setAddress(user.getAddress());
-
-
-        // save updated student object
         userService.updateUser(existingTeacher);
         return "redirect:/teacher/list";
     }
-
 
 }

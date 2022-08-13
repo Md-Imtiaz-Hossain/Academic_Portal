@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head th:replace="fragments-list::head">
 </head>
 
@@ -9,58 +9,40 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
         <!-- Left navbar links -->
         <ul th:replace="fragments-list::leftNavbar"></ul>
-
         <!-- Right navbar links -->
         <ul th:replace="fragments-list::rightNavbar"></ul>
-
     </nav>
-    <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <!-- Brand Logo -->
         <a th:replace="fragments-list::brandLogo"></a>
-
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div th:replace="fragments-list::sidebarUserPanel"></div>
-
             <!-- SidebarSearch Form -->
             <div th:replace="fragments-list::sidebarSearchForm"></div>
-
             <!-- Sidebar Menu -->
             <nav th:replace="fragments-list::sidebarMenu"></nav>
-            <!-- /.sidebar-menu -->
-
         </div>
-        <!-- /.sidebar -->
     </aside>
 
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Update Teacher Information</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Update Teacher Information</li>
-                        </ol>
+                        <h1>Update Teacher</h1>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
@@ -68,19 +50,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">View <a th:href="@{/teacher/list}">List</a></h3>
+                                <h3 class="card-title"><a th:href="@{/teacher/list}"
+                                                               class="btn btn-info"><i class="fas fa-list"> Teacher List</i></a></h3>
                             </div>
-
                             <form th:action="@{/teacher/update/{id} (id=${user.id})}" th:object="${user}"
                                   method="POST">
-
-                                <!-- /.card-header -->
                                 <div class="card-body">
-
-
                                     <div class="row">
                                         <div class="col-md-6">
 
@@ -131,13 +108,10 @@
                                                        th:field="*{teachingEndDate}"
                                                        placeholder="Date">
                                             </div>
-
                                         </div>
-
 
                                         <!-- /.col -->
                                         <div class="col-md-6">
-
                                             <div class="form-group">
                                                 <label for="subjectSpeciality">Subject Speciality </label>
                                                 <input type="text" class="form-control" id="subjectSpeciality"
@@ -183,38 +157,18 @@
                                                        th:field="*{address}"
                                                        placeholder="Address">
                                             </div>
-
-                                            <!--                                            <div class="form-group">-->
-                                            <!--                                                <label for="inputEmail7">Password</label>-->
-                                            <!--                                                <input type="text" class="form-control" id="inputEmail7"-->
-                                            <!--                                                       th:field="*{password}"-->
-                                            <!--                                                       placeholder="Password">-->
-                                            <!--                                            </div>-->
-
                                         </div>
                                     </div>
-
-
                                 </div>
-                                <!-- /.card-body -->
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                 </div>
-
-
                             </form>
-
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     </div>
 
     <!-- Control Sidebar -->
@@ -223,10 +177,11 @@
 
     <!-- Main Footer -->
     <footer th:replace="fragments-list::footer" class="main-footer"></footer>
-</div>
-<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
+</div>
+
+
+<!---------------------- REQUIRED SCRIPTS ------------------------------------------->
 
 <!-- jQuery -->
 <script src="/plugins/jquery/jquery.min.js"></script>
