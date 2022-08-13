@@ -1,7 +1,5 @@
 package com.sktech.academicportal.sslcommerzpayment.commerz;
 
-
-
 import com.sktech.academicportal.sslcommerzpayment.commerz.Utility.ParameterBuilder;
 import com.sktech.academicportal.sslcommerzpayment.commerz.Utility.Util;
 import com.sktech.academicportal.sslcommerzpayment.commerz.parametermappings.SSLCommerzInitResponse;
@@ -69,8 +67,8 @@ public class SSLCommerz {
         this.storeTestMode = storeTestMode;
 
         if (storeTestMode) {
-             this.storeId = "sktec62de70757d5df";
-             this.storePass = "sktec62de70757d5df@ssl";
+            this.storeId = "sktec62de70757d5df";
+            this.storePass = "sktec62de70757d5df@ssl";
             this.sslczURL = "https://sandbox.sslcommerz.com/";
         }
 

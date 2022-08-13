@@ -17,26 +17,26 @@
 
                 <h2 class="text-center"> Pay Your Due !</h2>
 
-                <form th:action="@{/payment/handle-payment}" method="post" th:object="${paymentInformation}">
+                <form th:action="@{/payment/handle-payment}" th:object="${paymentInformation}" method="post">
                     <div class="mb-3">
                         <label class="form-label">Student ID</label>
-                        <input name="patient_ID" th:value="${paymentInformation.studentId}" required
+                        <input name="patient_ID" th:field="*{studentId}"
                                placeholder="Enter here" type="text" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Student Email</label>
-                        <input name="patient_ID" th:value="${paymentInformation.studentEmail}" required
+                        <input name="patient_ID" th:field="*{studentEmail}"
                                placeholder="Enter here" type="email" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Payed Time</label>
-                        <input name="appointTime" th:value="${paymentInformation.payedTime}" required
+                        <input name="appointTime" th:field="*{payedTime}"
                                placeholder="Enter here" type="text" class="form-control">
                     </div>
                     <div class="mb-3">
                         <label class="form-label">You need to Pay</label>
-                        <input name="paid" th:value="${paymentInformation.payableAmount}" required
-                               placeholder="Enter here" type="text" class="form-control">
+                        <input name="paid" th:field="*{payableAmount}" required
+                               placeholder="Enter here" type="number" class="form-control">
                     </div>
                     <button class="container text-center btn btn-outline-success btn-block mb-1" type="submit">Proceed
                         To Pay

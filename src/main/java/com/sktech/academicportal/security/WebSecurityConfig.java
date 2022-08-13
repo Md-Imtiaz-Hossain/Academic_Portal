@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers(staticResources).permitAll()
-                .antMatchers("/forgot-password", "/change-password", "/about/**").permitAll()
+                .antMatchers("/forgot-password", "/change-password", "/about/**", "/payment/**").permitAll()
                 .antMatchers("/users/**").hasAnyAuthority("Admin")
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
