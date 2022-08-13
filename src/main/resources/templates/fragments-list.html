@@ -183,9 +183,9 @@
             <a th:href="@{/student/list}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-child"></i>
                 <p>
-                    Student List - <small>Admin, RootAdmin, Teacher</small>
+                    Student
                 </p>
             </a>
         </li>
@@ -194,9 +194,9 @@
             <a th:href="@{/teacher/list}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/teacher/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-chalkboard-teacher"></i>
                 <p>
-                    Teacher List - <small>Admin, RootAdmin</small>
+                    Teacher
                 </p>
             </a>
         </li>
@@ -205,9 +205,9 @@
             <a th:href="@{/subject/list}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/subject/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-book-open"></i>
                 <p>
-                    Subject List - <small>Admin, RootAdmin</small>
+                    Subject
                 </p>
             </a>
         </li>
@@ -216,7 +216,7 @@
             <a th:href="@{/payment-scheme/list}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/payment-scheme/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-money-bill"></i>
                 <p>
                     Payment Scheme List - <small>Admin, RootAdmin</small>
                 </p>

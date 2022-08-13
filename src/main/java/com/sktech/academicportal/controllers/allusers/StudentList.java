@@ -25,8 +25,7 @@ public class StudentList {
         return userService.getUserByEmail(principal.getName());
     }
 
-
-    // View All Student store in DB with Datatable
+    // All Students
     @GetMapping("/list")
     public String viewLoginPage(Model model) {
         model.addAttribute("pageTitle", "Student List");
@@ -34,40 +33,31 @@ public class StudentList {
         return "studentlist/student-list";
     }
 
-
-    // Open the Update form for person Information updating
+    // Update Student Information
     @GetMapping("/edit/{id}")
     public String editStudentForm(@PathVariable Integer id, Model model) {
-
         model.addAttribute("pageTitle", "Edit  Student Information");
         model.addAttribute("currentClass", AcademicClass.values());
         model.addAttribute("classSection", AcademicSection.values());
         model.addAttribute("user", userService.getUserById(id));
-
         return "studentlist/student-update-form";
     }
 
-
-    // Process the updated information after update button clicked.
+    // Process student update information.
     @PostMapping("/update/{id}")
-    public String updateStudent(@PathVariable Integer id,  @ModelAttribute("user") User user, Model model) {
-
+    public String updateStudent(@PathVariable Integer id,  @ModelAttribute("user") User user) {
         User existingStudent = userService.getUserById(id);
         existingStudent.setId(id);
         existingStudent.setFatherName(user.getFatherName());
         existingStudent.setMotherName(user.getMotherName());
         existingStudent.setAdmissionDate(user.getAdmissionDate());
         existingStudent.setBirthDate(user.getBirthDate());
-
         existingStudent.setClassRoll(user.getClassRoll());
         existingStudent.setCurrentClass(user.getCurrentClass());
         existingStudent.setClassSection(user.getClassSection());
         existingStudent.setAcademicID(user.getAcademicID());
         existingStudent.setContactNo(user.getContactNo());
         existingStudent.setAddress(user.getAddress());
-
-
-        // save updated student object
         userService.updateUser(existingStudent);
         return "redirect:/student/list";
     }
