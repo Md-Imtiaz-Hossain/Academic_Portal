@@ -51,11 +51,11 @@ public class HomeController {
         return redirectView;
     }
 
-    @PostMapping("/success")
+    @GetMapping("/success")
     public String patientAppointDoctorSuccess(@RequestParam Map<String, String> requestMap, Model model) {
         String transactionId = requestMap.get("tran_id");
         model.addAttribute("transactionId", transactionId);
-        return "sslcommerzpayment/payment-information-form";
+        return "sslcommerzpayment/payment-success";
     }
 
 
