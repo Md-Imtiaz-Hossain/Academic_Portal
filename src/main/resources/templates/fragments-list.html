@@ -139,7 +139,7 @@
         <li class="nav-item">
             <a th:href="@{/profile/update}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/profile/update' ? 'active':''}">
-                <i class="nav-icon fas fa-user-alt"></i>
+                <i class="nav-icon fas fa-user-edit"></i>
                 <p>
                     Update Profile
                 </p>
@@ -150,9 +150,9 @@
             <a th:href="@{/user/list}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/user/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-user-secret"></i>
                 <p>
-                    User List - <small>RootAdmin</small>
+                   All User
                 </p>
             </a>
         </li>
@@ -161,9 +161,9 @@
             <a th:href="@{/normal-user/list}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/normal-user/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-users"></i>
                 <p>
-                    User List - <small>Admin, RootAdmin</small>
+                    User
                 </p>
             </a>
         </li>

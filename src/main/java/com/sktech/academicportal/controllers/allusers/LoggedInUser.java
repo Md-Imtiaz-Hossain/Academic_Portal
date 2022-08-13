@@ -18,8 +18,6 @@ public class LoggedInUser {
     @Autowired
     UserService userService;
 
-
-
     // Logged In User Name
     @GetMapping("/info")
     public String commonDate(Model model, Principal principal){
@@ -29,7 +27,5 @@ public class LoggedInUser {
         model.addAttribute("principleUser", user);
         return "fragments-list";
     }
-
-
 
 }
