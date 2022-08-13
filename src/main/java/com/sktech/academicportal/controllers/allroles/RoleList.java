@@ -21,41 +21,36 @@ public class RoleList {
     @Autowired
     UserService userService;
 
-
     // Extra data go through model attribute before all other controller run.
     @ModelAttribute("loggedInUser")
     public User extraData(Principal principal) {
         return userService.getUserByEmail(principal.getName());
     }
 
-
-
-    // User role List
+    // Role List
     @GetMapping("/list")
-    public String roleListHome(Model model) {
+    public String roleList(Model model) {
         model.addAttribute("pageTitle", "Role List");
         model.addAttribute("role", roleRepository.findAll());
         return "rolelist/role-list";
     }
 
-
-    // For create a new Role. Open a from for create new Role
+    // Open form for new role
     @GetMapping("/new")
-    public String addNewRoleForm(Model model) {
+    public String newRoleForm(Model model) {
         model.addAttribute("pageTitle", "Add Role Form");
         model.addAttribute("role", new Role());
         return "rolelist/role-new-form";
     }
 
-    // Process the fill up form after save button clicked.
+    // Process new role form
     @PostMapping("/save")
-    public String processNewRoleForm(@ModelAttribute("role") Role role) {
+    public String updateRoleForm(@ModelAttribute("role") Role role) {
         roleRepository.save(role);
         return "redirect:/user-role/list";
     }
 
-
-    // Open the Update form for Role Information updating
+    // Open form for role Update
     @GetMapping("/edit/{id}")
     public String editRoleForm(@PathVariable Integer id, Model model) {
         model.addAttribute("pageTitle", "Update  Role Information");
@@ -63,10 +58,9 @@ public class RoleList {
         return "rolelist/role-update-form";
     }
 
-
-    // Process the updated information after update button clicked.
+    // Process  updated role form
     @PostMapping("/update/{id}")
-    public String updateUser(@PathVariable Integer id, @ModelAttribute("role") Role role) {
+    public String updateRole(@PathVariable Integer id, @ModelAttribute("role") Role role) {
         Role existingRole = roleRepository.findById(id).get();
         existingRole.setId(id);
         existingRole.setName(role.getName());
@@ -75,13 +69,11 @@ public class RoleList {
         return "redirect:/user-role/list";
     }
 
-
     // Delete the Role information and confirm before delete.
     @GetMapping("/delete/{id}")
     public String deleteRole(@PathVariable Integer id) {
         roleRepository.deleteById(id);
         return "redirect:/user-role/list";
     }
-
 
 }

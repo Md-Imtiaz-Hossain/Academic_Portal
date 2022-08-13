@@ -172,9 +172,9 @@
             <a th:href="@{/user-role/list}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/user-role/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-people-carry"></i>
                 <p>
-                    Role List - <small>RootAdmin</small>
+                    Role
                 </p>
             </a>
         </li>
