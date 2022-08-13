@@ -217,7 +217,7 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-money-bill"></i>
                 <p>
-                    Payment Scheme List - <small>Admin, RootAdmin</small>
+                    Payment Scheme
                 </p>
             </a>
         </li>
@@ -226,7 +226,7 @@
             <a th:href="@{/subject-assign-t/assign-teacher}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-t/assign-teacher' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-tags"></i>
                 <p>
                     Subject Assign to Teacher - <small>Admin, RootAdmin</small>
                 </p>
@@ -237,6 +237,7 @@
             <a th:href="@{/subject-assign-s/assign-student}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/subject-assign-s/assign-student' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
+                <i class="nav-icon fas fa-tags"></i>
                 <p>
                     Subject Assign to Student - <small>Admin, RootAdmin, Teacher</small>
                 </p>
@@ -312,8 +313,8 @@
         <li class="nav-item">
             <a th:href="@{/routine/all-class}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/routine/all-class' ? 'active':''}">
-                <i class="far fa-circle nav-icon"></i>
-                <p>All Classes Routine</p>
+                <i class="nav-icon fas fa-table"></i>
+                <p> Classes Routine All</p>
             </a>
         </li>
 
@@ -418,9 +419,9 @@
             <a th:href="@{/student-portal/my-routine}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-routine' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fas fa-table"></i>
                 <p>
-                    Student Class routine - <small>Admin, RootAdmin, Student</small>
+                    My Class routine (S)
                 </p>
             </a>
         </li>

@@ -17,13 +17,10 @@ import java.security.Principal;
 @Controller
 @RequestMapping("/specific-routine")
 public class ClassWiseRoutine {
-
     @Autowired
     RoutineService routineService;
-
     @Autowired
     SubjectService subjectService;
-
     @Autowired
     UserService userService;
 
@@ -32,7 +29,6 @@ public class ClassWiseRoutine {
     public User extraData(Principal principal) {
         return userService.getUserByEmail(principal.getName());
     }
-
 
     @GetMapping("/class/{classOf}")
     public String home(@PathVariable String classOf, Model model) {
@@ -62,15 +58,12 @@ public class ClassWiseRoutine {
 
     @GetMapping("/edit/{id}/{className}")
     public String editRoutineForm(@PathVariable Integer id,
-                                  @PathVariable String className,
-                                  Model model) {
+                                  @PathVariable String className, Model model) {
         model.addAttribute("pageTitle", "Specific Routine Update");
         model.addAttribute("routine", routineService.getRoutineById(id));
         model.addAttribute("className", className);
         model.addAttribute("weekDays", WeekDay.values());
         model.addAttribute("subjects", subjectService.getAllSubjectByClass(className));
-        System.out.println("====================================================");
-        System.out.println(className);
         return "specificclassroutine/routine-update-form";
     }
 
@@ -78,7 +71,6 @@ public class ClassWiseRoutine {
     public String updateUser(@PathVariable Integer id,
                              @PathVariable String className,
                              @ModelAttribute("routine") ClassRoutine routine) {
-
         ClassRoutine existingRoutine = routineService.getRoutineById(id);
         existingRoutine.setId(id);
         existingRoutine.setWeekDay(routine.getWeekDay());
@@ -90,7 +82,6 @@ public class ClassWiseRoutine {
         existingRoutine.setPeriod5th(routine.getPeriod5th());
         existingRoutine.setPeriod6th(routine.getPeriod6th());
         routineService.updateRoutine(existingRoutine);
-
         return "redirect:/specific-routine/class/{className}";
     }
 

@@ -19,8 +19,9 @@ import java.security.Principal;
 public class AllClassRoutine {
 
     @Autowired
+    SubjectService subjectService;
+    @Autowired
     RoutineService routineService;
-
     @Autowired
     UserService userService;
 
@@ -29,9 +30,6 @@ public class AllClassRoutine {
     public User extraData(Principal principal) {
         return userService.getUserByEmail(principal.getName());
     }
-
-    @Autowired
-    SubjectService subjectService;
 
     // View all classes routine
     @GetMapping("/all-class")
@@ -72,7 +70,7 @@ public class AllClassRoutine {
     }
 
 
-    // Process the updated information after update button clicked.
+    // Process routine update
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Integer id, @ModelAttribute("routine") ClassRoutine routine) {
         ClassRoutine existingRoutine = routineService.getRoutineById(id);
@@ -89,7 +87,7 @@ public class AllClassRoutine {
         return "redirect:/routine/all-class";
     }
 
-
+    // Delete routine
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable Integer id) {
         routineService.deleteRoutineById(id);

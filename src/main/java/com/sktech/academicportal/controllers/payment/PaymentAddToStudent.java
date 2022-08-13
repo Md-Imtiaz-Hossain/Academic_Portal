@@ -1,12 +1,9 @@
 package com.sktech.academicportal.controllers.payment;
 
-import com.sktech.academicportal.entity.ClassRoutine;
 import com.sktech.academicportal.entity.PaymentScheme;
 import com.sktech.academicportal.entity.User;
 import com.sktech.academicportal.enums.AcademicClass;
-import com.sktech.academicportal.enums.WeekDay;
 import com.sktech.academicportal.service.PaymentSchemeService;
-import com.sktech.academicportal.service.RoutineService;
 import com.sktech.academicportal.service.SubjectService;
 import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +19,8 @@ public class PaymentAddToStudent {
 
     @Autowired
     SubjectService subjectService;
-
     @Autowired
     PaymentSchemeService paymentSchemeService;
-
     @Autowired
     UserService userService;
 
@@ -59,7 +54,6 @@ public class PaymentAddToStudent {
         return "redirect:/payment-scheme/list";
     }
 
-
     // Scheme Update form
     @GetMapping("/edit/{id}")
     public String editSchemeForm(@PathVariable Integer id, Model model) {
@@ -68,7 +62,6 @@ public class PaymentAddToStudent {
         model.addAttribute("classList", AcademicClass.values());
         return "payment/scheme-update-form";
     }
-
 
     // Process the updated information after update button clicked.
     @PostMapping("/update/{id}")
@@ -83,13 +76,10 @@ public class PaymentAddToStudent {
         return "redirect:/payment-scheme/list";
     }
 
-
     @GetMapping("/delete/{id}")
     public String deleteScheme(@PathVariable Integer id) {
         paymentSchemeService.deleteSchemeById(id);
         return "redirect:/payment-scheme/list";
     }
-
-
 
 }
