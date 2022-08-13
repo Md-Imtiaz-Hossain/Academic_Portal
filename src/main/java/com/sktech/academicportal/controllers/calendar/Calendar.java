@@ -1,7 +1,6 @@
 package com.sktech.academicportal.controllers.calendar;
 
 import com.sktech.academicportal.entity.User;
-import com.sktech.academicportal.repositories.UserRepository;
 import com.sktech.academicportal.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,12 +24,10 @@ public class Calendar {
         return userService.getUserByEmail(principal.getName());
     }
 
-
     @GetMapping("/view")
     public String calendar(Model model) {
         model.addAttribute("pageTitle", "Calendar");
         return "pages/calendar";
     }
-
 
 }

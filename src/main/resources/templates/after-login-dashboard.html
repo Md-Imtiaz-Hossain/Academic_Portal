@@ -9,38 +9,25 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
         <!-- Left navbar links -->
         <ul th:replace="fragments-list::leftNavbar"></ul>
-
         <!-- Right navbar links -->
         <ul th:replace="fragments-list::rightNavbar"></ul>
-
     </nav>
-    <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <!-- Brand Logo -->
         <a th:replace="fragments-list::brandLogo"></a>
-
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div th:replace="fragments-list::sidebarUserPanel"></div>
-
             <!-- SidebarSearch Form -->
             <div th:replace="fragments-list::sidebarSearchForm"></div>
-
             <!-- Sidebar Menu -->
             <nav th:replace="fragments-list::sidebarMenu"></nav>
-            <!-- /.sidebar-menu -->
-
         </div>
-        <!-- /.sidebar -->
     </aside>
 
 
