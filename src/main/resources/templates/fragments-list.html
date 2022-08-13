@@ -57,11 +57,6 @@
 
 <body>
 
-<div>
-
-</div>
-
-
 <!-- Left navbar links Start -->
 <ul th:fragment="leftNavbar" class="navbar-nav">
     <li class="nav-item">
@@ -69,9 +64,6 @@
     </li>
     <li class="nav-item d-none d-sm-inline-block">
         <a th:href="@{/after-login-dashboard}" class="nav-link">Home</a>
-    </li>
-    <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
     </li>
 </ul>
 <!-- Left navbar links End -->
@@ -164,7 +156,6 @@
                 </p>
             </a>
         </li>
-
 
         <li class="nav-item">
             <a th:href="@{/normal-user/list}" class="nav-link"
@@ -503,7 +494,6 @@
                         <p>Save Application (Logged-in user)</p>
                     </a>
                 </li>
-
             </ul>
         </li>
 
@@ -553,7 +543,6 @@
 
 <!-- Control Sidebar -->
 <aside th:fragment="rightNavbarOptions" class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
     <div class="p-3">
         <h5>Options</h5>
         <p>Customize your site as you want</p>
