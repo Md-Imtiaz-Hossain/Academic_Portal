@@ -36,7 +36,7 @@ public class ParameterBuilder {
         postData.put("total_amount", "150.00");
         postData.put("tran_id", "TESTASPNET1234");
 //        postData.put("success_url", baseUrl + "payment/success");
-        postData.put("success_url", "https://xyzacademicportal.herokuapp.com/payment/success");
+        postData.put("success_url", "https://xyzacademicportal.herokuapp.com/payment/success/");
         postData.put("fail_url", "https://sandbox.sslcommerz.com/developer/fail.php");
         postData.put("cancel_url", "https://sandbox.sslcommerz.com/developer/cancel.php");
         postData.put("version", "3.00");
@@ -66,7 +66,7 @@ public class ParameterBuilder {
     }
 
 
-    public static Map<String, String> constructRequestParam(String payment, String transactionID, String patientName) {
+    public static Map<String, String> constructRequestParam(String payment, String transactionID, String customerNme) {
         // CREATING LIST OF POST DATA
         //baseUrl = Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
         String baseUrl = "https://xyzacademicportal.herokuapp.com/";//Request.Url.Scheme + "://" + Request.Url.Authority + Request.ApplicationPath.TrimEnd('/') + "/";
@@ -78,7 +78,7 @@ public class ParameterBuilder {
         postData.put("fail_url", "https://sandbox.sslcommerz.com/developer/fail.php");
         postData.put("cancel_url", "https://sandbox.sslcommerz.com/developer/cancel.php");
         postData.put("version", "3.00");
-        postData.put("cus_name", patientName);
+        postData.put("cus_name", customerNme);
         postData.put("cus_email", "xyz@mail.com");
         postData.put("cus_add1", "Dhaka");
         postData.put("cus_city", "Khilkhet");

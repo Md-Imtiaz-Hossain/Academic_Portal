@@ -10,8 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import java.sql.Time;
-import java.time.LocalTime;
 import java.util.Map;
 import java.util.Random;
 
@@ -42,15 +40,9 @@ public class HomeController {
 
     @PostMapping(value = "/handle-payment")
     public RedirectView payTest(@ModelAttribute PaymentInformation paymentInformation) throws Exception {
-        String appointDrTxId = getRandomTxIdString();
-        Time appointTime = Time.valueOf(LocalTime.now());
-        String doctorFee = String.valueOf(paymentInformation.getPayableAmount()); // Doctor_Fee needed
-
-        String baseurl = "https://xyzacademicportal.herokuapp.com/";
-//        SSL redirect to payment
-        Map<String, String> transactionMap = ParameterBuilder.constructRequestParam(doctorFee, appointDrTxId, paymentInformation.getStudentEmail());
-//        Map<String, String> transactionMap = ParameterBuilder.constructRequestParameters();
-
+        String randomTxIdString = getRandomTxIdString();
+        String fee = String.valueOf(paymentInformation.getPayableAmount());
+        Map<String, String> transactionMap = ParameterBuilder.constructRequestParam(fee, randomTxIdString, paymentInformation.getStudentEmail());
         SSLCommerz sslCommerz = new SSLCommerz("sktec62de70757d5df", "sktec62de70757d5df@ssl", true);
         String url = sslCommerz.initiateTransaction(transactionMap, false);
         System.out.println(url);
@@ -75,36 +67,8 @@ public class HomeController {
     @PostMapping("/success")
     public String patientAppointDoctorSuccess(@RequestParam Map<String, String> requestMap, Model model) {
         String transactionId = requestMap.get("tran_id");
-//        AppointDoctorTransaction appointDoctorTransaction = appointDoctorTransactionRepository.findByTxid(transactionId); // Fetching from database
-//        appointDoctorTransaction.setTransactionStatus("Paid");
-//        appointDoctorTransactionRepository.save(appointDoctorTransaction);
-//        String doctorID = appointDoctorTransaction.getDoctorId(); // Doctor_ID needed
-//        String doctorFee = appointDoctorTransaction.getDoctorFee(); // Doctor_Fee needed
-//        Time appointTime = appointDoctorTransaction.getAppointmentTime(); // Appoint_Time needed
-//
-//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-//        LocalDateTime localDateTime = LocalDateTime.now();
-//
-//        Date appointDate = Date.valueOf(localDateTime.format(dateTimeFormatter)); // Appoint Date
-//
-//        updateDoctorsAvailableTimeDB(doctorID, appointTime);
-//
-//        AppointDoctor appointDoctor = new AppointDoctor(patientID, doctorID, doctorFee, appointTime, appointDate);
-//        appointDoctor = appointDoctorRepository.save(appointDoctor);
-//        Prescription prescription = new Prescription();
-//        prescription.setId(appointDoctor.getId());
-//        prescription.setSymptoms("");
-//        prescription.setTests(" ");
-//        prescription.setAdvice(" ");
-//        prescription.setMedicines(" ");
-//        appointDoctor.setPrescription(prescription);
-//        prescription.setAppointDoctor(appointDoctor);
-
-        System.out.println("==============================================================================="+transactionId);
-
         model.addAttribute("transactionId", transactionId);
-
-        return "sslcommerzpayment/payment-success";
+        return "payment-success";
     }
 
 
