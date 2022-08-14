@@ -280,7 +280,7 @@
         <li class="nav-item">
             <a th:href="@{/student-subject-view/mark-list}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/mark-list' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher', 'Student')">
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
                     All Student result
@@ -312,7 +312,8 @@
 
         <li class="nav-item">
             <a th:href="@{/routine/all-class}" class="nav-link"
-               th:classappend="${#httpServletRequest.getRequestURI() == '/routine/all-class' ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI() == '/routine/all-class' ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-table"></i>
                 Classes Routine All
             </a>
@@ -330,84 +331,96 @@
             <ul class="nav nav-treeview">
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/ONE}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/ONE' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/ONE' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 1</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/TWO}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TWO' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TWO' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 2</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/THREE}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/THREE' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/THREE' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 3</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/FOUR}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/FOUR' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/FOUR' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 4</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/FIVE}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/FIVE' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/FIVE' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 5</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/SIX}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/SIX' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/SIX' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 6</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/SEVEN}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/SEVEN' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/SEVEN' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 7</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/EIGHT}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/EIGHT' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/EIGHT' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 8</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/NINE}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/NINE' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/NINE' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 9</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/TEN}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TEN' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TEN' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 10</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/ELEVEN}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/ELEVEN' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/ELEVEN' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 11</p>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/specific-routine/class/TWELVE}" class="nav-link"
-                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TWELVE' ? 'active':''}">
+                       th:classappend="${#httpServletRequest.getRequestURI() == '/specific-routine/class/TWELVE' ? 'active':''}"
+                       sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Class - 12</p>
                     </a>
@@ -508,15 +521,15 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a th:href="@{/payment/form}" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI() == '/payment/form' ? 'active':''}">
-                <i class="nav-icon fas fa-money-bill"></i>
-                <p>
-                    Online Payment
-                </p>
-            </a>
-        </li>
+<!--        <li class="nav-item">-->
+<!--            <a th:href="@{/payment/form}" class="nav-link "-->
+<!--               th:classappend="${#httpServletRequest.getRequestURI() == '/payment/form' ? 'active':''}">-->
+<!--                <i class="nav-icon fas fa-money-bill"></i>-->
+<!--                <p>-->
+<!--                    Online Payment-->
+<!--                </p>-->
+<!--            </a>-->
+<!--        </li>-->
 
         <li class="nav-item">
             <a th:href="@{/calendar/view}" class="nav-link"
