@@ -9,57 +9,39 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
         <!-- Left navbar links -->
         <ul th:replace="fragments-list::leftNavbar"></ul>
-
         <!-- Right navbar links -->
         <ul th:replace="fragments-list::rightNavbar"></ul>
-
     </nav>
-    <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <!-- Brand Logo -->
         <a th:replace="fragments-list::brandLogo"></a>
-
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div th:replace="fragments-list::sidebarUserPanel"></div>
-
             <!-- SidebarSearch Form -->
             <div th:replace="fragments-list::sidebarSearchForm"></div>
-
             <!-- Sidebar Menu -->
             <nav th:replace="fragments-list::sidebarMenu"></nav>
-            <!-- /.sidebar-menu -->
-
         </div>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Routine Add form</h1>
-                    </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Routine Add form</li>
-                        </ol>
+                        <h1>Routine Add</h1>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
@@ -70,17 +52,16 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">View All Classes <a th:href="@{/specific-routine/class/{className} (className=${className})}">List</a></h3>
+                                <h3 class="card-title"><a
+                                        th:href="@{/specific-routine/class/{className} (className=${className})}"
+                                        class="btn btn-info"><i class="fas fa-list">View All Classes List</i></a></h3>
                             </div>
-
-                            <form th:action="@{/specific-routine/save/{className} (className=${className})}" method="post"
+                            <form th:action="@{/specific-routine/save/{className} (className=${className})}"
+                                  method="post"
                                   th:object="${routine}">
-
                                 <div class="card-body">
-
                                     <div class="row">
                                         <div class="col-md-6">
-
                                             <div class="form-group">
                                                 <label for="weekDay">Week Day </label>
                                                 <select th:field="*{weekDay}" id="weekDay"
@@ -99,12 +80,9 @@
                                                        th:value="${className}"
                                                        th:placeholder="${className}">
                                             </div>
-
                                         </div>
 
-                                        <!-- /.col -->
                                         <div class="col-md-6">
-
                                             <div class="form-group">
                                                 <label for="period1st">1st Period Subject <small> ( 10:10 am - 11:10 am
                                                     ) </small></label>
@@ -117,6 +95,7 @@
                                                     </option>
                                                 </select>
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="period2nd">2nd Period Subject <small> ( 11:10 am - 12:00 pm
                                                     ) </small></label>
@@ -129,6 +108,7 @@
                                                     </option>
                                                 </select>
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="period3rd">3rd Period Subject <small> ( 12:10 pm - 12:40 pm
                                                     ) </small></label>
@@ -141,6 +121,7 @@
                                                     </option>
                                                 </select>
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="period4th">4th Period Subject <small> ( 12:40 pm - 01:20 pm
                                                     ) </small></label>
@@ -153,6 +134,7 @@
                                                     </option>
                                                 </select>
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="period5th">5th Period Subject <small> ( 02:00 pm - 03:00 pm
                                                     ) </small></label>
@@ -165,6 +147,7 @@
                                                     </option>
                                                 </select>
                                             </div>
+
                                             <div class="form-group">
                                                 <label for="period6th">6th Period Subject <small> ( 03:00 pm - 04:00 pm
                                                     ) </small></label>
@@ -177,43 +160,33 @@
                                                     </option>
                                                 </select>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary btn-block">Submit</button>
                                 </div>
                             </form>
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     </div>
+
 
     <!-- Control Sidebar -->
     <aside th:replace="fragments-list::rightNavbarOptions"></aside>
-    <!-- /.control-sidebar -->
 
     <!-- Main Footer -->
     <footer th:replace="fragments-list::footer" class="main-footer"></footer>
+
 </div>
-<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
+<!---------------------- REQUIRED SCRIPTS ------------------------------------------->
 <script src="/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -226,11 +199,8 @@
 <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
-<!-- Page specific script -->
 <script>
     $(function () {
         $("#example1").DataTable({
@@ -248,7 +218,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>

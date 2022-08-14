@@ -41,7 +41,7 @@
                         <h1>Update Profile</h1>
                     </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
@@ -49,14 +49,10 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card">
-
                             <form class="form-horizontal" th:action="@{/profile/save}"
                                   th:object="${profile}" method="post">
-
                                 <div class="card-body">
-
                                     <div class="form-group row">
                                         <label for="followers" class="col-sm-2 col-form-label">Followers</label>
                                         <div class="col-sm-10">
@@ -118,20 +114,12 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </form>
-
-
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     </div>
 
     <!-- Control Sidebar -->

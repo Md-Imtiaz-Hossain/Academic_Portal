@@ -228,7 +228,7 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>
-                    Subject Assign to Teacher - <small>Admin, RootAdmin</small>
+                    Subject Assign to Teacher
                 </p>
             </a>
         </li>
@@ -239,7 +239,7 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>
-                    Subject Assign to Student - <small>Admin, RootAdmin, Teacher</small>
+                    Subject Assign to Student
                 </p>
             </a>
         </li>
@@ -250,7 +250,7 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-edit"></i>
                 <p>
-                    Teacher's taken subjects - <small>Admin, RootAdmin, Teacher</small>
+                    Teacher's taken subjects
                 </p>
             </a>
         </li>
@@ -259,9 +259,9 @@
             <a th:href="@{/teacher-portal/my-class-routine}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-portal/my-class-routine' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-table"></i>
                 <p>
-                    Teacher's class routine - <small>Admin, RootAdmin, Teacher</small>
+                    Teacher's class routine
                 </p>
             </a>
         </li>
@@ -270,9 +270,9 @@
             <a th:href="@{/student-subject-view/list}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-subject-view/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-pen"></i>
                 <p>
-                    All Student and Subject list For result assign - <small>Admin, RootAdmin, Teacher</small>
+                    All Student and Subject result assign
                 </p>
             </a>
         </li>
@@ -283,7 +283,7 @@
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher', 'Student')">
                 <i class="nav-icon fas fa-list"></i>
                 <p>
-                    Show All Student result table- <small>Admin, RootAdmin, Teacher, Student</small>
+                    All Student result
                 </p>
             </a>
         </li>
@@ -292,9 +292,9 @@
             <a th:href="@{/student-portal/my-result}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-money-check"></i>
                 <p>
-                    My (Logged-in Student) Result - <small>Admin, RootAdmin, Student</small>
+                    My Result
                 </p>
             </a>
         </li>
@@ -303,9 +303,9 @@
             <a th:href="@{/report-card/view}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/report-card/view' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher', 'Student')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-file"></i>
                 <p>
-                    Student Report Card - <small>Admin, RootAdmin, Teacher, Student</small>
+                    Report Card
                 </p>
             </a>
         </li>
@@ -314,7 +314,7 @@
             <a th:href="@{/routine/all-class}" class="nav-link"
                th:classappend="${#httpServletRequest.getRequestURI() == '/routine/all-class' ? 'active':''}">
                 <i class="nav-icon fas fa-table"></i>
-                <p> Classes Routine All</p>
+                Classes Routine All
             </a>
         </li>
 
@@ -323,7 +323,7 @@
                th:classappend="${#httpServletRequest.getRequestURI().startsWith('/specific-routine') ? 'active':''}">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
-                    Class routine
+                    Specific Class routine
                     <i class="fas fa-angle-left right"></i>
                 </p>
             </a>
@@ -419,9 +419,9 @@
             <a th:href="@{/student-portal/my-routine}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-routine' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
-                <i class="nav-icon fas fas fa-table"></i>
+                <i class="nav-icon fas fas fa-clock"></i>
                 <p>
-                    My Class routine (S)
+                    My Class routine
                 </p>
             </a>
         </li>
@@ -430,9 +430,9 @@
             <a th:href="@{/student-portal/my-payment}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-payment' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-money-bill"></i>
                 <p>
-                    Student payment Scheme - <small>Admin, RootAdmin, Student</small>
+                    My payment Scheme
                 </p>
             </a>
         </li>
@@ -441,9 +441,9 @@
             <a th:href="@{/all-teacher-evaluation/list}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/all-teacher-evaluation/list' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-percent"></i>
                 <p>
-                    All Teacher Evaluation - <small>Admin, RootAdmin</small>
+                    All Teacher Evaluation
                 </p>
             </a>
         </li>
@@ -501,9 +501,9 @@
             <a th:href="@{/teacher-evaluation/form}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-evaluation/form' ? 'active':''}"
                sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-marker"></i>
                 <p>
-                    Teacher Evaluation - <small>Admin, RootAdmin, Student</small>
+                    Give Teacher Evaluation
                 </p>
             </a>
         </li>
@@ -511,7 +511,7 @@
         <li class="nav-item">
             <a th:href="@{/payment/form}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/payment/form' ? 'active':''}">
-                <i class="nav-icon fas fa-list"></i>
+                <i class="nav-icon fas fa-money-bill"></i>
                 <p>
                     Online Payment
                 </p>

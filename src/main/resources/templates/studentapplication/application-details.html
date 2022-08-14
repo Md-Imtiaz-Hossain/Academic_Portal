@@ -9,38 +9,25 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
         <!-- Left navbar links -->
         <ul th:replace="fragments-list::leftNavbar"></ul>
-
         <!-- Right navbar links -->
         <ul th:replace="fragments-list::rightNavbar"></ul>
-
     </nav>
-    <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <!-- Brand Logo -->
         <a th:replace="fragments-list::brandLogo"></a>
-
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div th:replace="fragments-list::sidebarUserPanel"></div>
-
             <!-- SidebarSearch Form -->
             <div th:replace="fragments-list::sidebarSearchForm"></div>
-
             <!-- Sidebar Menu -->
             <nav th:replace="fragments-list::sidebarMenu"></nav>
-            <!-- /.sidebar-menu -->
-
         </div>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
@@ -52,14 +39,8 @@
                     <div class="col-sm-6">
                         <h1>Application Details</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Application Details</li>
-                        </ol>
-                    </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
@@ -69,11 +50,9 @@
                     <div class="col-md-3">
                         <a th:href="@{/student-application/send}" class="btn btn-primary btn-block mb-3">Back to
                             Home</a>
-
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Folders</h3>
-
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -85,49 +64,47 @@
                                     <li class="nav-item active">
                                         <a th:href="@{/student-application/send}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/send' ? 'active':''}">
-                                            <i class="fas fa-inbox"></i> Start your application
+                                            Start your application
                                         </a>
                                     </li>
+
                                     <li class="nav-item active">
                                         <a th:href="@{/student-application/application-box}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}"
                                            sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                                            <i class="fas fa-inbox"></i> All Application - <small>Admin, RootAdmin</small></p>
+                                            All Application
                                         </a>
                                     </li>
+
                                     <li class="nav-item active">
                                         <a th:href="@{/student-application/user-application-box}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-application-box' ? 'active':''}">
-                                            <i class="fas fa-inbox"></i> Inbox (Logged-in user)
+                                            Inbox
                                         </a>
                                     </li>
+
                                     <li class="nav-item">
                                         <a th:href="@{/student-application/all-send-application}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/all-send-application' ? 'active':''}">
-                                            <i class="far fa-envelope"></i> All Send applications (Logged-in user)
+                                            All Send applications
                                         </a>
                                     </li>
+
                                     <li class="nav-item">
                                         <a href="#" class="nav-link active"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/all-send-application' ? 'active':''}">
-                                            <i class="far fa-envelope"></i> Application Details
+                                            Application Details
                                         </a>
                                     </li>
+
                                     <li class="nav-item">
                                         <a th:href="@{/student-application/user-saved-application-box}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-saved-application-box' ? 'active':''}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Save Application (Logged-in user)</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fas fa-bell"></i> Notification
+                                            Save Application
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <!-- /.card-body -->
                         </div>
 
                     </div>
@@ -136,7 +113,6 @@
                         <div class="card card-primary card-outline">
                             <div class="card-header">
                                 <h3 class="card-title">Application Details</h3>
-
                                 <div class="card-tools">
                                     <a href="#" class="btn btn-tool" title="Previous"><i
                                             class="fas fa-chevron-left"> Previous </i></a>
@@ -144,7 +120,6 @@
                                             class="fas fa-chevron-right"></i></a>
                                 </div>
                             </div>
-                            <!-- /.card-header -->
                             <div class="card-body p-0">
                                 <div class="mailbox-read-info">
                                     <h5 th:text="'Subject: ' + ${specificApplication.applicationSubject}">
@@ -154,75 +129,9 @@
                                               th:text="${#temporals.format(specificApplication.applicationTime, 'dd-MMMM-yyyy , hh:mm a')}">15 Feb. 2015 11:03 PM</span>
                                     </h6>
                                 </div>
-                                <!-- /.mailbox-controls -->
                                 <div class="mailbox-read-message" th:text="${specificApplication.applicationContent}">
                                 </div>
-                                <!-- /.mailbox-read-message -->
                             </div>
-
-
-                            <!-- /.card-body -->
-                            <!--                            <div class="card-footer bg-white">-->
-                            <!--                                <ul class="mailbox-attachments d-flex align-items-stretch clearfix">-->
-                            <!--                                    <li>-->
-                            <!--                                        <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>-->
-
-                            <!--                                        <div class="mailbox-attachment-info">-->
-                            <!--                                            <a href="#" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>-->
-                            <!--                                                Sep2014-report.pdf</a>-->
-                            <!--                                            <span class="mailbox-attachment-size clearfix mt-1">-->
-                            <!--                          <span>1,245 KB</span>-->
-                            <!--                          <a href="#" class="btn btn-default btn-sm float-right"><i-->
-                            <!--                                  class="fas fa-cloud-download-alt"></i></a>-->
-                            <!--                        </span>-->
-                            <!--                                        </div>-->
-                            <!--                                    </li>-->
-                            <!--                                    <li>-->
-                            <!--                                        <span class="mailbox-attachment-icon"><i class="far fa-file-word"></i></span>-->
-
-                            <!--                                        <div class="mailbox-attachment-info">-->
-                            <!--                                            <a href="#" class="mailbox-attachment-name"><i class="fas fa-paperclip"></i>-->
-                            <!--                                                App Description.docx</a>-->
-                            <!--                                            <span class="mailbox-attachment-size clearfix mt-1">-->
-                            <!--                          <span>1,245 KB</span>-->
-                            <!--                          <a href="#" class="btn btn-default btn-sm float-right"><i-->
-                            <!--                                  class="fas fa-cloud-download-alt"></i></a>-->
-                            <!--                        </span>-->
-                            <!--                                        </div>-->
-                            <!--                                    </li>-->
-                            <!--                                    <li>-->
-                            <!--                                        <span class="mailbox-attachment-icon has-img"><img-->
-                            <!--                                                src="/dist/img/photo1.png" alt="Attachment"></span>-->
-
-                            <!--                                        <div class="mailbox-attachment-info">-->
-                            <!--                                            <a href="#" class="mailbox-attachment-name"><i class="fas fa-camera"></i>-->
-                            <!--                                                photo1.png</a>-->
-                            <!--                                            <span class="mailbox-attachment-size clearfix mt-1">-->
-                            <!--                          <span>2.67 MB</span>-->
-                            <!--                          <a href="#" class="btn btn-default btn-sm float-right"><i-->
-                            <!--                                  class="fas fa-cloud-download-alt"></i></a>-->
-                            <!--                        </span>-->
-                            <!--                                        </div>-->
-                            <!--                                    </li>-->
-                            <!--                                    <li>-->
-                            <!--                                        <span class="mailbox-attachment-icon has-img"><img-->
-                            <!--                                                src="/dist/img/photo2.png" alt="Attachment"></span>-->
-
-                            <!--                                        <div class="mailbox-attachment-info">-->
-                            <!--                                            <a href="#" class="mailbox-attachment-name"><i class="fas fa-camera"></i>-->
-                            <!--                                                photo2.png</a>-->
-                            <!--                                            <span class="mailbox-attachment-size clearfix mt-1">-->
-                            <!--                          <span>1.9 MB</span>-->
-                            <!--                          <a href="#" class="btn btn-default btn-sm float-right"><i-->
-                            <!--                                  class="fas fa-cloud-download-alt"></i></a>-->
-                            <!--                        </span>-->
-                            <!--                                        </div>-->
-                            <!--                                    </li>-->
-                            <!--                                </ul>-->
-                            <!--                            </div>-->
-
-
-                            <!-- /.card-footer -->
                             <div class="card-footer">
                                 <div class="float-right">
                                     <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply
@@ -238,39 +147,26 @@
                                 <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print
                                 </button>
                             </div>
-                            <!-- /.card-footer -->
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer">
-        <div class="float-right d-none d-sm-block">
-            <b>Version</b> 3.2.0
-        </div>
-        <strong>Copyright &copy; 2014-2021 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
-    </footer>
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-</div>
-<!-- ./wrapper -->
 
-<!-- jQuery -->
+
+    <!-- Main Footer -->
+    <footer th:replace="fragments-list::footer" class="main-footer"></footer>
+
+    <!-- Control Sidebar -->
+    <aside th:replace="fragments-list::rightNavbarOptions"></aside>
+
+</div>
+
+
 <script src="/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
 </body>
 </html>

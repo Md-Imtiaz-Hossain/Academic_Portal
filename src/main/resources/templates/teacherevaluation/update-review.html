@@ -9,42 +9,30 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
         <!-- Left navbar links -->
         <ul th:replace="fragments-list::leftNavbar"></ul>
-
         <!-- Right navbar links -->
         <ul th:replace="fragments-list::rightNavbar"></ul>
-
     </nav>
-    <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <!-- Brand Logo -->
         <a th:replace="fragments-list::brandLogo"></a>
-
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div th:replace="fragments-list::sidebarUserPanel"></div>
-
             <!-- SidebarSearch Form -->
             <div th:replace="fragments-list::sidebarSearchForm"></div>
-
             <!-- Sidebar Menu -->
             <nav th:replace="fragments-list::sidebarMenu"></nav>
-            <!-- /.sidebar-menu -->
-
         </div>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -52,14 +40,8 @@
                     <div class="col-sm-6">
                         <h1>Update review</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Update review</li>
-                        </ol>
-                    </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
@@ -67,7 +49,6 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
@@ -82,19 +63,15 @@
                                 (evaluationId=${teacherEvaluation.id}, subjectId=${subject.id}, studentId=${student.id}, teacherId=${teacher.id})}"
                                   method="POST"
                                   th:object="${teacherEvaluation}">
-
                                 <div class="card-body">
-
                                     <div class="row">
                                         <div class="col-md-6">
-
                                             <div class="form-group">
                                                 <label for="subjectInfo">Subject Information</label>
                                                 <input type="text" class="form-control" id="subjectInfo"
                                                        th:field="*{subjectId}" disabled
                                                        th:value="${subject.id}"
-                                                       th:placeholder="'Class- ' + ${subject.subjectClass} + ' , '+  ${subject.subjectName} + ' ' + ${subject.subjectCode}"
-                                                >
+                                                       th:placeholder="'Class- ' + ${subject.subjectClass} + ' , '+  ${subject.subjectName} + ' ' + ${subject.subjectCode}">
                                             </div>
 
                                             <div class="form-group">
@@ -102,8 +79,7 @@
                                                 <input type="text" class="form-control" id="studentInfo"
                                                        th:field="*{reviewerId}" disabled
                                                        th:value="${studentId}"
-                                                       th:placeholder=" ${student.fullName} +' , ' + 'Class- ' + ${student.currentClass}"
-                                                >
+                                                       th:placeholder=" ${student.fullName} +' , ' + 'Class- ' + ${student.currentClass}">
                                             </div>
 
                                             <div class="form-group">
@@ -111,19 +87,14 @@
                                                 <input type="text" class="form-control" id="teacherInfo"
                                                        th:field="*{teacherId}" disabled
                                                        th:value="${teacher.id}"
-                                                       th:placeholder="${teacher.fullName}"
-                                                >
+                                                       th:placeholder="${teacher.fullName}">
                                             </div>
-
-
                                         </div>
 
-                                        <!-- /.col -->
-                                        <div class="col-md-6">
 
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label><h3>Q1. Teacher is prepared for class.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio1"
                                                            name="customRadio1"
@@ -159,7 +130,6 @@
                                                     <label for="customRadio4" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -201,7 +171,6 @@
                                                     <label for="customRadio8" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -243,7 +212,6 @@
                                                     <label for="customRadio12" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -285,7 +253,6 @@
                                                     <label for="customRadio16" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -327,7 +294,6 @@
                                                     <label for="customRadio20" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -368,7 +334,6 @@
                                                     <label for="customRadio24" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -409,7 +374,6 @@
                                                     <label for="customRadio28" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -451,7 +415,6 @@
                                                     <label for="customRadio32" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -493,7 +456,6 @@
                                                     <label for="customRadio36" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -543,7 +505,6 @@
                                                 <textarea th:field="*{comment}" class="form-control" id="note"
                                                           placeholder="comment"></textarea>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -552,35 +513,23 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     </div>
+
 
     <!-- Control Sidebar -->
     <aside th:replace="fragments-list::rightNavbarOptions"></aside>
-    <!-- /.control-sidebar -->
-
 
     <!-- Main Footer -->
     <footer th:replace="fragments-list::footer" class="main-footer"></footer>
-
 </div>
-<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-
-<!-- jQuery -->
+<!---------------------- REQUIRED SCRIPTS ------------------------------------------->
 <script src="/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -593,16 +542,12 @@
 <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
-<!-- Page specific script -->
 <script>
     $(function () {
         $("#example1").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
@@ -615,7 +560,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>

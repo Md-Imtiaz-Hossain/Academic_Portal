@@ -9,42 +9,30 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
         <!-- Left navbar links -->
         <ul th:replace="fragments-list::leftNavbar"></ul>
-
         <!-- Right navbar links -->
         <ul th:replace="fragments-list::rightNavbar"></ul>
-
     </nav>
-    <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <!-- Brand Logo -->
         <a th:replace="fragments-list::brandLogo"></a>
-
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div th:replace="fragments-list::sidebarUserPanel"></div>
-
             <!-- SidebarSearch Form -->
             <div th:replace="fragments-list::sidebarSearchForm"></div>
-
             <!-- Sidebar Menu -->
             <nav th:replace="fragments-list::sidebarMenu"></nav>
-            <!-- /.sidebar-menu -->
-
         </div>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -52,14 +40,8 @@
                     <div class="col-sm-6">
                         <h1>Application</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Application</li>
-                        </ol>
-                    </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
@@ -68,11 +50,9 @@
                 <div class="row">
                     <div class="col-md-3">
                         <a href="#" class="btn btn-primary btn-block mb-3">Home</a>
-
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Folders</h3>
-
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                         <i class="fas fa-minus"></i>
@@ -84,59 +64,52 @@
                                     <li class="nav-item active">
                                         <a href="#" class="nav-link active"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-send' ? 'active':''}">
-                                            <i class="fas fa-inbox"></i> Start your application
+                                            Start your application
                                         </a>
                                     </li>
+
                                     <li class="nav-item active">
                                         <a th:href="@{/student-application/application-box}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}"
                                            sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
-                                            <i class="fas fa-inbox"></i> All Application - <small>Admin, RootAdmin</small></p>
+                                            All Application
                                         </a>
                                     </li>
+
                                     <li class="nav-item active">
                                         <a th:href="@{/student-application/user-application-box}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-application-box' ? 'active':''}">
-                                            <i class="fas fa-inbox"></i> Inbox (Logged-in user)
+                                            Inbox
                                         </a>
                                     </li>
+
                                     <li class="nav-item">
                                         <a th:href="@{/student-application/all-send-application}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/all-send-application' ? 'active':''}">
-                                            <i class="far fa-envelope"></i> All Send applications (Logged-in user)
+                                            Send applications
                                         </a>
                                     </li>
+
                                     <li class="nav-item">
                                         <a th:href="@{/student-application/user-saved-application-box}" class="nav-link"
                                            th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-saved-application-box' ? 'active':''}">
-                                            <i class="far fa-circle nav-icon"></i>
-                                            <p>Save Application (Logged-in user)</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">
-                                            <i class="fas fa-bell"></i> Notification
+                                            Save Applications
                                         </a>
                                     </li>
                                 </ul>
                             </div>
-                            <!-- /.card-body -->
                         </div>
 
                     </div>
-                    <!-- /.col -->
                     <div class="col-md-9">
                         <div class="card card-primary card-outline">
                             <div class="card-header">
                                 <h3 class="card-title">Start your allApplication</h3>
                             </div>
-                            <!-- /.card-header -->
-
                             <form data-th-action="@{/student-application/edit}" method="POST"
                                   enctype="multipart/form-data"
                                   th:object="${application}">
                                 <div class="card-body">
-
                                     <div class="form-group">
                                         <input disabled type="email" th:field="*{sendFrom}" class="form-control"
                                                th:placeholder="'From:  ' + ${from}">
@@ -148,24 +121,13 @@
                                         <input th:field="*{applicationSubject}" class="form-control"
                                                placeholder="Subject:">
                                     </div>
-
                                     <div class="form-group">
                                     <textarea type="text" th:field="*{applicationContent}" id="compose-textarea"
                                               class="form-control"
                                               style="height: 300px">
                                     </textarea>
-
-
                                     </div>
-                                    <!--                                <div class="form-group">-->
-                                    <!--                                    <div class="btn btn-default btn-file">-->
-                                    <!--                                        <i class="fas fa-paperclip"></i> Attachment-->
-                                    <!--                                        <input type="file" name="attachment">-->
-                                    <!--                                    </div>-->
-                                    <!--                                    <p class="help-block">Max. 32MB</p>-->
-                                    <!--                                </div>-->
                                 </div>
-                                <!-- /.card-body -->
                                 <div class="card-footer">
                                     <div class="float-right">
                                         <button type="submit" name="action" value="save"
@@ -176,53 +138,61 @@
                                                 class="btn btn-primary"><i class="far fa-envelope"></i>
                                             Send
                                         </button>
-
                                     </div>
-                                    <!--                                    <button type="reset" class="btn btn-default"><i class="fas fa-times"></i>-->
-                                    <!--                                        Discard-->
-                                    <!--                                    </button>-->
+                                    </button>
                                 </div>
-                                <!-- /.card-footer -->
-
                             </form>
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
-        <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
+
+
+    <!-- Control Sidebar -->
+    <aside th:replace="fragments-list::rightNavbarOptions"></aside>
 
     <!-- Main Footer -->
     <footer th:replace="fragments-list::footer" class="main-footer"></footer>
 
-    <!-- Control Sidebar -->
-    <aside th:replace="fragments-list::rightNavbarOptions"></aside>
-    <!-- /.control-sidebar -->
-
 </div>
-<!-- ./wrapper -->
 
-<!-- jQuery -->
+
+<!---------------------- REQUIRED SCRIPTS ------------------------------------------->
 <script src="/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <script src="/dist/js/adminlte.min.js"></script>
-<!-- Summernote -->
-<script src="/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
-<!-- Page specific script -->
 <script>
     $(function () {
-        //Add text editor
-        $('#compose-textarea').summernote()
-    })
+        $("#example1").DataTable({
+            "responsive": true, "lengthChange": false, "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": false,
+            "searching": false,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+        });
+    });
 </script>
 </body>
 </html>
+

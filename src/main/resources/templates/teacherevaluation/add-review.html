@@ -9,42 +9,30 @@
 
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-
         <!-- Left navbar links -->
         <ul th:replace="fragments-list::leftNavbar"></ul>
-
         <!-- Right navbar links -->
         <ul th:replace="fragments-list::rightNavbar"></ul>
-
     </nav>
-    <!-- /.navbar -->
-
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
-
         <!-- Brand Logo -->
         <a th:replace="fragments-list::brandLogo"></a>
-
         <!-- Sidebar -->
         <div class="sidebar">
-
             <!-- Sidebar user panel (optional) -->
             <div th:replace="fragments-list::sidebarUserPanel"></div>
-
             <!-- SidebarSearch Form -->
             <div th:replace="fragments-list::sidebarSearchForm"></div>
-
             <!-- Sidebar Menu -->
             <nav th:replace="fragments-list::sidebarMenu"></nav>
-            <!-- /.sidebar-menu -->
-
         </div>
-        <!-- /.sidebar -->
     </aside>
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -52,14 +40,8 @@
                     <div class="col-sm-6">
                         <h1>Add review</h1>
                     </div>
-                    <div class="col-sm-6">
-                        <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Add review</li>
-                        </ol>
-                    </div>
                 </div>
-            </div><!-- /.container-fluid -->
+            </div>
         </section>
 
         <!-- Main content -->
@@ -67,8 +49,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12">
-
                         <div class="card">
+
                             <div class="card-header">
                                 <h3 class="card-title">
                                     <span>Teacher Evaluation by Student</span>
@@ -87,7 +69,6 @@
 
                                     <div class="row">
                                         <div class="col-md-6">
-
                                             <div class="form-group">
                                                 <label for="subjectInfo">Subject Information</label>
                                                 <input type="text" class="form-control" id="subjectInfo"
@@ -114,16 +95,11 @@
                                                        th:placeholder="${teacher.fullName}"
                                                 >
                                             </div>
-
-
                                         </div>
 
-                                        <!-- /.col -->
                                         <div class="col-md-6">
-
                                             <div class="form-group">
                                                 <label><h3>Q1. Teacher is prepared for class.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio1"
                                                            name="customRadio1"
@@ -132,7 +108,6 @@
                                                     <label for="customRadio1" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio2"
                                                            name="customRadio1"
@@ -141,7 +116,6 @@
                                                     <label for="customRadio2" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio3"
                                                            name="customRadio1"
@@ -150,7 +124,6 @@
                                                     <label for="customRadio3" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio4"
                                                            name="customRadio1"
@@ -159,13 +132,11 @@
                                                     <label for="customRadio4" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q2. Teacher plans class time and assignments that help
                                                     students to problem solve and think critically.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio5"
                                                            name="customRadio1"
@@ -174,7 +145,6 @@
                                                     <label for="customRadio5" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio6"
                                                            name="customRadio1"
@@ -183,7 +153,6 @@
                                                     <label for="customRadio6" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio7"
                                                            name="customRadio1"
@@ -192,7 +161,6 @@
                                                     <label for="customRadio7" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio8"
                                                            name="customRadio1"
@@ -201,13 +169,11 @@
                                                     <label for="customRadio8" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q3. Teacher is flexible in accommodating for individual
                                                     student needs.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio9"
                                                            name="customRadio1"
@@ -216,7 +182,6 @@
                                                     <label for="customRadio9" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio10"
                                                            name="customRadio1"
@@ -225,7 +190,6 @@
                                                     <label for="customRadio10" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio11"
                                                            name="customRadio1"
@@ -234,7 +198,6 @@
                                                     <label for="customRadio11" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio12"
                                                            name="customRadio1"
@@ -243,13 +206,11 @@
                                                     <label for="customRadio12" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q4. Teacher is clear in giving directions and on explaining
                                                     what is expected on assignments and tests. </h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio13"
                                                            name="customRadio"
@@ -258,7 +219,6 @@
                                                     <label for="customRadio13" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio14"
                                                            name="customRadio" checked
@@ -267,7 +227,6 @@
                                                     <label for="customRadio14" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio15"
                                                            name="customRadio"
@@ -276,7 +235,6 @@
                                                     <label for="customRadio15" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio16"
                                                            name="customRadio"
@@ -285,13 +243,11 @@
                                                     <label for="customRadio16" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q5. Teacher allows you to be active in the classroom learning
                                                     environment.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio17"
                                                            name="customRadio"
@@ -300,7 +256,6 @@
                                                     <label for="customRadio17" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio18"
                                                            name="customRadio" checked
@@ -309,7 +264,6 @@
                                                     <label for="customRadio18" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio19"
                                                            name="customRadio"
@@ -318,7 +272,6 @@
                                                     <label for="customRadio19" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio20"
                                                            name="customRadio"
@@ -327,12 +280,10 @@
                                                     <label for="customRadio20" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q6. Teacher manages the time well.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio21"
                                                            name="customRadio"
@@ -341,7 +292,6 @@
                                                     <label for="customRadio21" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio22"
                                                            name="customRadio" checked
@@ -350,7 +300,6 @@
                                                     <label for="customRadio22" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio23"
                                                            name="customRadio"
@@ -359,7 +308,6 @@
                                                     <label for="customRadio23" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio24"
                                                            name="customRadio"
@@ -368,12 +316,10 @@
                                                     <label for="customRadio24" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q7. Teacher grades fairly. </h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio25"
                                                            name="customRadio"
@@ -382,7 +328,6 @@
                                                     <label for="customRadio25" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio26"
                                                            name="customRadio" checked
@@ -391,7 +336,6 @@
                                                     <label for="customRadio26" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio27"
                                                            name="customRadio"
@@ -400,7 +344,6 @@
                                                     <label for="customRadio27" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio28"
                                                            name="customRadio"
@@ -409,13 +352,11 @@
                                                     <label for="customRadio28" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q8. Teacher gives me good feedback on homework and projects
                                                     so that I can improve.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio29"
                                                            name="customRadio"
@@ -424,7 +365,6 @@
                                                     <label for="customRadio29" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio30"
                                                            name="customRadio" checked
@@ -433,7 +373,6 @@
                                                     <label for="customRadio30" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio31"
                                                            name="customRadio"
@@ -442,7 +381,6 @@
                                                     <label for="customRadio31" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio32"
                                                            name="customRadio"
@@ -451,13 +389,11 @@
                                                     <label for="customRadio32" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q9. Teacher is creative in developing activities and
                                                     lessons. </h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio33"
                                                            name="customRadio"
@@ -466,7 +402,6 @@
                                                     <label for="customRadio33" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio34"
                                                            name="customRadio" checked
@@ -475,7 +410,6 @@
                                                     <label for="customRadio34" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio35"
                                                            name="customRadio"
@@ -484,7 +418,6 @@
                                                     <label for="customRadio35" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio36"
                                                            name="customRadio"
@@ -493,13 +426,11 @@
                                                     <label for="customRadio36" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
                                                 <label><h3>Q10. Teacher encourages students to speak up and be active in
                                                     the class.</h3></label>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio37"
                                                            name="customRadio"
@@ -508,7 +439,6 @@
                                                     <label for="customRadio37" class="custom-control-label">
                                                         Rarely </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio38"
                                                            name="customRadio" checked
@@ -517,7 +447,6 @@
                                                     <label for="customRadio38" class="custom-control-label">
                                                         Once in a while</label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio39"
                                                            name="customRadio"
@@ -526,7 +455,6 @@
                                                     <label for="customRadio39" class="custom-control-label">
                                                         Sometimes </label>
                                                 </div>
-
                                                 <div class="custom-control custom-radio">
                                                     <input class="custom-control-input" type="radio" id="customRadio40"
                                                            name="customRadio"
@@ -535,7 +463,6 @@
                                                     <label for="customRadio40" class="custom-control-label">
                                                         Most of the</label>
                                                 </div>
-
                                             </div>
 
                                             <div class="form-group">
@@ -543,7 +470,6 @@
                                                 <textarea th:field="*{comment}" class="form-control" id="note"
                                                           placeholder="comment"></textarea>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -552,35 +478,24 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     </div>
 
     <!-- Control Sidebar -->
     <aside th:replace="fragments-list::rightNavbarOptions"></aside>
-    <!-- /.control-sidebar -->
-
 
     <!-- Main Footer -->
     <footer th:replace="fragments-list::footer" class="main-footer"></footer>
 
 </div>
-<!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
 
-<!-- jQuery -->
+<!---------------------- REQUIRED SCRIPTS ------------------------------------------->
 <script src="/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
 <script src="/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables  & Plugins -->
 <script src="/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
@@ -593,16 +508,12 @@
 <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- AdminLTE App -->
 <script src="/dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
 <script src="/dist/js/demo.js"></script>
-<!-- Page specific script -->
 <script>
     $(function () {
         $("#example1").DataTable({
             "responsive": true, "lengthChange": false, "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
         }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         $('#example2').DataTable({
             "paging": true,
@@ -615,7 +526,5 @@
         });
     });
 </script>
-
-
 </body>
 </html>
