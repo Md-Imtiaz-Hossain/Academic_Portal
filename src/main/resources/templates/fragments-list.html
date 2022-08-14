@@ -321,7 +321,8 @@
 
         <li class="nav-item">
             <a href="#" class="nav-link "
-               th:classappend="${#httpServletRequest.getRequestURI().startsWith('/specific-routine') ? 'active':''}">
+               th:classappend="${#httpServletRequest.getRequestURI().startsWith('/specific-routine') ? 'active':''}"
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher')">
                 <i class="nav-icon fas fa-table"></i>
                 <p>
                     Specific Class routine
