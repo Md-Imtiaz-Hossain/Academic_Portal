@@ -57,7 +57,6 @@
                                         <th>Email</th>
                                         <th>Role</th>
                                         <th>Assigned Subject</th>
-                                        <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -69,10 +68,6 @@
                                         <td th:text="${user.email}"></td>
                                         <td th:text="${user.roles}"></td>
                                         <td th:text="${user.subjects}"></td>
-                                        <td>
-                                            <a th:href="@{/subject-assign-t/edit/{id}(id=${user.id})}"
-                                               class="btn btn-primary">Assign Subject</a>
-                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
