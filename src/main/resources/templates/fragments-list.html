@@ -484,28 +484,28 @@
                        th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/application-box' ? 'active':''}"
                        sec:authorize="hasAnyAuthority('Admin', 'RootAdmin')">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>All Application - <small>Admin, RootAdmin</small></p>
+                        All Application
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/student-application/user-application-box}" class="nav-link"
                        th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-application-box' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>My Application (Logged-in user)</p>
+                        My Application
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/student-application/all-send-application}" class="nav-link"
                        th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/all-send-application' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Send Application (Logged-in user)</p>
+                        Send Application
                     </a>
                 </li>
                 <li class="nav-item">
                     <a th:href="@{/student-application/user-saved-application-box}" class="nav-link"
                        th:classappend="${#httpServletRequest.getRequestURI() == '/student-application/user-saved-application-box' ? 'active':''}">
                         <i class="far fa-circle nav-icon"></i>
-                        <p>Save Application (Logged-in user)</p>
+                        Save Application
                     </a>
                 </li>
             </ul>
