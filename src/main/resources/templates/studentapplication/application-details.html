@@ -113,13 +113,7 @@
                         <div class="card card-primary card-outline">
                             <div class="card-header">
                                 <h3 class="card-title">Application Details</h3>
-                                <div class="card-tools">
-                                    <a href="#" class="btn btn-tool" title="Previous"><i
-                                            class="fas fa-chevron-left"> Previous </i></a>
-                                    <a href="#" class="btn btn-tool" title="Next"> Next <i
-                                            class="fas fa-chevron-right"></i></a>
-                                </div>
-                            </div>
+                              </div>
                             <div class="card-body p-0">
                                 <div class="mailbox-read-info">
                                     <h5 th:text="'Subject: ' + ${specificApplication.applicationSubject}">
@@ -133,18 +127,10 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <div class="float-right">
-                                    <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply
-                                    </button>
-                                    <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward
-                                    </button>
-                                </div>
-                                <button type="button" class="btn btn-default">
+                                <button type="button" class="btn btn-danger">
                                     <a th:href="@{/student-application/delete/{id}(id=${specificApplication.id})}">
-                                        <i class="far fa-trash-alt"> Delete</i>
-                                    </a>
-                                </button>
-                                <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print
+                                    </a><i class="fas fa-trash"></i>
+                                    Delete
                                 </button>
                             </div>
                         </div>

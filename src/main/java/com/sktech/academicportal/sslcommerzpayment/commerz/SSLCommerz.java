@@ -267,11 +267,6 @@ public class SSLCommerz {
         }
     }
 
-    /// <summary>
-    /// Make PHP like MD5 Hashing
-    /// </summary>
-    /// <param name="s"></param>
-    /// <returns>md5 Hashed String</returns>
     private String md5(String s) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         byte[] bytesOfMessage = s.getBytes("UTF-8");
         MessageDigest md = MessageDigest.getInstance("MD5");

@@ -51,7 +51,7 @@ public class HomeController {
         return redirectView;
     }
 
-    @GetMapping("/success")
+    @PostMapping("/success")
     public String patientAppointDoctorSuccess(@RequestParam Map<String, String> requestMap, Model model) {
         String transactionId = requestMap.get("tran_id");
         model.addAttribute("transactionId", transactionId);

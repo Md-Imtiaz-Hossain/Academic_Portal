@@ -51,12 +51,11 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title">Student Mark <a
-                                        th:href="@{/student-subject-view/list}">Add</a></h3>
+                                <h3 class="card-title"><a
+                                        th:href="@{/student-subject-view/list}"
+                                        class="btn btn-info"><i class="fas fa-list"> Student Mark  List</i></a></h3>
                             </div>
-                            <!-- /.card-header -->
                             <div class="card-body">
-
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
@@ -88,11 +87,9 @@
                                         <td th:text="${m.ctAverageMark}"></td>
                                         <td th:text="${m.totalMark}"></td>
                                         <td th:text="${m.finalGrade}"></td>
-
                                         <td>
                                             <a th:href="@{/student-subject-view/edit/{id}(id=${m.id})}"
                                                class="btn btn-primary"><i class="fas fa-edit ml-2"></i></a>
-
                                             <a th:href="@{/student-subject-view/delete/{id}(id=${m.id})}"
                                                onclick="if (! (confirm('Are you sure you want to delete this Student?'))) return false"
                                                class="btn btn-danger">
@@ -103,17 +100,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <!-- /.card-body -->
                         </div>
-                        <!-- /.card -->
                     </div>
-                    <!-- /.col -->
                 </div>
-                <!-- /.row -->
             </div>
-            <!-- /.container-fluid -->
         </section>
-        <!-- /.content -->
     </div>
 
     <!-- Control Sidebar -->
