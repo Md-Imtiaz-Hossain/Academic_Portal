@@ -41,7 +41,8 @@ ID || Password
 <li> Spring Boot </li>
 <li> Spring Security </li>
 <li> Hibernate </li>
-<li> MySql </li>
+<li> PostgresSql (for deployment) </li>
+<li> MySql (for local testing) </li>
 <br>
 
 <b> Frontend </b>
