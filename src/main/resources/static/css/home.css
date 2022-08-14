@@ -34,6 +34,7 @@ body .container-my section {
 
 body .container-my section {
     background-color: #1c1c1c;
+
 }
 
 body .container-my section:nth-of-type(2n) {
@@ -129,5 +130,23 @@ body .container-my section img {
         -webkit-transform: translate(0%, 0%);
         transform: translate(0%, 0%);
     }
+}
+
+.noticeLink{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    color: black;
+    transition: color 0.25s;
+}
+
+.noticeLink:hover{
+    font-weight: bold;
+    color: red;
+}
+
+.fadeTextAnim{
+    -webkit-animation: fade-text 1.5s normal 1 ease;
+    animation: fade-text 1.5s normal 1 ease;
 }
 /*# sourceMappingURL=style.css.map*/

@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Update Carousel</title>
+    <title>Update Achievements Homepage</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -79,14 +79,14 @@
                              style="background: #a770ef;
                              background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
                              background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);">
-                            <h1 class="display-4">Carousel Editor</h1>
-                            <p class="lead">Select which images to show on homepage carousel.(Max upto 10)</p>
+                            <h1 class="display-4">Achievements Editor</h1>
+                            <p class="lead">Select which images to show on homepage Achievements section.(Max upto 3)</p>
                         </div>
                     </div>
                 </div>
                 <div class="row pb-5">
                     <div class="col-lg-12 mx-auto">
-                        <form th:action="'/carousel/update'" method="post">
+                        <form th:action="'/achievement/update'" method="post">
                             <p class="lead pl-3">Here are the current selected images. Tap on the images to add or remove.</p>
 
                         <div class="d-flex justify-content-start flex-wrap"
@@ -167,8 +167,8 @@
     let l = 0;
 
     function addImageToSelected(path, id, len){
-        if(len+l >= 10) {
-            alert("You can not select more than 10 images. Try removing some image to add more.")
+        if(len+l >= 3) {
+            alert("You can not select more than 3 images. Try removing some image to add more.")
             return;
         }
         let f = document.getElementById("selectedImages");

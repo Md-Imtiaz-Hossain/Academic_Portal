@@ -1,4 +1,4 @@
-package com.sktech.academicportal.controllers;
+package com.sktech.academicportal.controllers.global;
 
 import com.sktech.academicportal.entity.PublicFiles;
 import com.sktech.academicportal.helper.FileUploadUtil;

@@ -1,4 +1,4 @@
-package com.sktech.academicportal.helper;
+package com.sktech.academicportal.helper.misc;
 
 import lombok.*;
 
@@ -10,10 +10,6 @@ import lombok.*;
 public class Contact {
 
     private String email;
-    private String phone;
     private String address;
-
-
-
-
+    private String phone;
 }

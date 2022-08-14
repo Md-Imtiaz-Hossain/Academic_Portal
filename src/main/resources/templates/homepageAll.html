@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homepage Sections List</title>
+
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/plugins/fontawesome-free/css/all.min.css">
+    <!-- DataTables -->
+    <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+    <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/dist/css/adminlte.min.css">
+    <!-- Bootstrap 5.0 -->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" >
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+
+        <!-- Left navbar links -->
+        <ul th:replace="fragments-list::leftNavbar"></ul>
+
+        <!-- Right navbar links -->
+        <ul th:replace="fragments-list::rightNavbar"></ul>
+
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+
+        <!-- Brand Logo -->
+        <a th:replace="fragments-list::brandLogo"></a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <!-- Sidebar user panel (optional) -->
+            <div th:replace="fragments-list::sidebarUserPanel"></div>
+
+            <!-- SidebarSearch Form -->
+            <div th:replace="fragments-list::sidebarSearchForm"></div>
+
+            <!-- Sidebar Menu -->
+            <nav th:replace="fragments-list::sidebarMenu"></nav>
+            <!-- /.sidebar-menu -->
+
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="container-fluid">
+            <div class="px-lg-5">
+                <div class="row py-5">
+                    <div class="col-lg-12 mx-auto">
+                        <div
+                                class="text-white p-5 shadow-sm rounded"
+                                style="
+                background: #a770ef;
+                background: -webkit-linear-gradient(
+                  to right,
+                  #a770ef,
+                  #cf8bf3,
+                  #fdb99b
+                );
+                background: linear-gradient(
+                  to right,
+                  #a770ef,
+                  #cf8bf3,
+                  #fdb99b
+                );
+              "
+                        >
+                            <h1 class="display-4">All Homepage Sections</h1>
+                            <p class="lead">
+                                Manage what shows on the front Homepage of the website
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; margin: 3em">
+                    <span>&#8226;</span>
+                    <h2 class="mx-2">Nav Bar</h2>
+                    <button type="button" class="btn btn-outline-success mx-2" data-bs-toggle="modal"
+                            data-bs-target="#navbarEdit">Edit</button>
+                    <div
+                            class="modal fade"
+                            id="navbarEdit"
+                            tabindex="-1"
+                            aria-labelledby="navbarEditLabel"
+                            aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="navbarEditLabel">Edit Navbar</h5>
+                                    <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <form th:action="'/homepage/navbar/save'" method="post">
+                                    <div class="modal-body" id="formi">
+                                        <div style="display: flex; flex-wrap: nowrap; flex-shrink: 1">
+                                            <div style="margin: 0.5em 1em">
+                                                <p>Navbar Text</p>
+                                                <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        name="navbar-text"
+                                                        required
+                                                        readonly
+                                                        value="Home"
+                                                />
+                                            </div>
+                                            <div style="margin: 0.5em 1em">
+                                                <p>Nav Path</p>
+                                                <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        name="navbar-link"
+                                                        required
+                                                        readonly
+                                                        value="/"
+                                                />
+                                            </div>
+                                        </div>
+                                    <div style="display: flex; flex-wrap: nowrap; flex-shrink: 1" th:each="navitem: ${navbar_items}">
+                                        <div  style="margin: 0.5em 1em">
+                                            <input type="text" class="form-control" name="navbar-text" th:value="${navitem.navText}"  required/>
+                                        </div>
+                                        <div style="margin: 0.5em 1em">
+                                            <input type="text" class="form-control" name="navbar-link" th:value="${navitem.path}" required/>
+                                        </div>
+                                        <button type="button" onclick="removeMe(this)" class="btn btn-danger" style="margin: 0.5em 1em">Delete</button>
+                                    </div>
+                                    </div>
+
+                                    <button
+                                            type="button"
+                                            class="btn btn-primary mx-5"
+                                            th:attr="onclick=${'addNewDiv('+navbar_items_count +')'}"
+                                            id="buttonForAddinDiv"
+                                    >
+                                        Add New Navbar item
+                                    </button>
+                                    <hr class="bg-danger border-2 border-top border-danger" />
+                                    <div style="margin: 1em">
+                                        <p>Current Navigable Section ID</p>
+                                        <ul>
+                                            <li th:each="st : ${navigable_sections}" th:text="${st}"></li>
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal"
+                                        >
+                                            Close
+                                        </button>
+                                        <button type="Submit" class="btn btn-primary">Save Navbar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; margin: 3em">
+                    <span>&#8226;</span>
+                    <h2 class="mx-2">Carousel (Image Viewer)</h2>
+                    <a th:if="${carousel.isPublic}" th:href="@{'/homepage/hide/'+${carousel.id}}" class="btn btn-outline-primary">Hide</a>
+                    <a th:unless="${carousel.isPublic}" th:href="@{'/homepage/show/'+${carousel.id}}" class="btn btn-primary">Show</a>
+                    <a href="/edit/carousel" class="btn btn-outline-success mx-2">Edit</a>
+                </div>
+
+                <div style="display: flex; align-items: center; margin: 3em">
+                    <span>&#8226;</span>
+                    <h2 class="mx-2">History</h2>
+                    <a th:if="${history.isPublic}" th:href="@{'/homepage/hide/'+${history.id}}" class="btn btn-outline-primary">Hide</a>
+                    <a th:unless="${history.isPublic}" th:href="@{'/homepage/show/'+${history.id}}" class="btn btn-primary">Show</a>
+                    <button type="button" class="btn btn-outline-success mx-2"  data-bs-toggle="modal"
+                            data-bs-target="#editHistory">Edit</button>
+                    <div
+                            class="modal fade"
+                            id="editHistory"
+                            tabindex="-1"
+                            aria-labelledby="editHistoryLabel"
+                            aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editHistoryLabel">Edit History</h5>
+                                    <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <form method="post" th:action="@{/homepage/history/save}">
+                                <div class="modal-body">
+
+                                        <div class="mb-3">
+                                            <label for="videoId" class="col-form-label"
+                                            >Video Link</label
+                                            >
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="videoId"
+                                                    name="videoId"
+                                                    th:value="${history_data.videoId}"
+                                                    required
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="description" class="col-form-label"
+                                            >Description</label
+                                            >
+                                            <textarea
+                                                    class="form-control"
+                                                    id="description"
+                                                    name="description"
+                                                    th:text="${history_data.description}"
+                                                    required
+                                            ></textarea>
+                                        </div>
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                            type="button"
+                                            class="btn btn-secondary"
+                                            data-bs-dismiss="modal"
+                                    >
+                                        Close
+                                    </button>
+                                    <button type="submit" class="btn btn-primary">Save</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; margin: 3em">
+                    <span>&#8226;</span>
+                    <h2 class="mx-2">Achievements</h2>
+                    <a th:if="${achievement.isPublic}" th:href="@{'/homepage/hide/'+${achievement.id}}" class="btn btn-outline-primary">Hide</a>
+                    <a th:unless="${achievement.isPublic}" th:href="@{'/homepage/show/'+${achievement.id}}" class="btn btn-primary">Show</a>
+                    <a href="/edit/achievements" class="btn btn-outline-success mx-2">Edit</a>
+                </div>
+                <div style="display: flex; align-items: center; margin: 3em">
+                    <span>&#8226;</span>
+                    <h2 class="mx-2">Notices</h2>
+                    <a th:if="${notice.isPublic}" th:href="@{'/homepage/hide/'+${notice.id}}" class="btn btn-outline-primary">Hide</a>
+                    <a th:unless="${notice.isPublic}" th:href="@{'/homepage/show/'+${notice.id}}" class="btn btn-primary">Show</a>
+                    <button type="button" class="btn btn-outline-success mx-2 " data-bs-toggle="modal"
+                            data-bs-target="#editNotice">Edit Description</button>
+                    <div
+                            class="modal fade"
+                            id="editNotice"
+                            tabindex="-1"
+                            aria-labelledby="editNoticeLabel"
+                            aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editNoticeLabel">Edit Notice</h5>
+                                    <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <form method="post" th:action="@{/homepage/notice/save}">
+                                    <div class="modal-body">
+
+                                        <div class="mb-3">
+                                            <label for="noticedescription" class="col-form-label"
+                                            >Description</label
+                                            >
+                                            <textarea
+                                                    class="form-control"
+                                                    id="noticedescription"
+                                                    name="noticedescription"
+                                                    th:text="${notice.rawData}"
+                                                    required
+                                            ></textarea>
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal"
+                                        >
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+
+                                </div>
+                                </form>
+                            </div>
+                            </div>
+                    </div>
+                </div>
+
+                <div style="display: flex; align-items: center; margin: 3em">
+                    <span>&#8226;</span>
+                    <h2 class="mx-2">Contact Us</h2>
+                    <a th:if="${contactus.isPublic}" th:href="@{'/homepage/hide/'+${contactus.id}}" class="btn btn-outline-primary">Hide</a>
+                    <a th:unless="${contactus.isPublic}" th:href="@{'/homepage/show/'+${contactus.id}}" class="btn btn-primary">Show</a>
+                    <button type="button" class="btn btn-outline-success mx-2"  data-bs-toggle="modal"
+                            data-bs-target="#editContact">Edit</button>
+                    <div
+                            class="modal fade"
+                            id="editContact"
+                            tabindex="-1"
+                            aria-labelledby="editContactLabel"
+                            aria-hidden="true"
+                    >
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editContactLabel">Edit Contact</h5>
+                                    <button
+                                            type="button"
+                                            class="btn-close"
+                                            data-bs-dismiss="modal"
+                                            aria-label="Close"
+                                    ></button>
+                                </div>
+                                <form method="post" th:action="@{/homepage/contactinfo/save}">
+                                    <div class="modal-body">
+
+                                        <div class="mb-3">
+                                            <label for="email" class="col-form-label"
+                                            >Email</label
+                                            >
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="email"
+                                                    name="email"
+                                                    th:value="${contact_data.email}"
+                                                    required
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="address" class="col-form-label"
+                                            >Adress</label
+                                            >
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="address"
+                                                    name="address"
+                                                    th:value="${contact_data.address}"
+                                                    required
+                                            />
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="phone" class="col-form-label"
+                                            >Phone Number</label
+                                            >
+                                            <input
+                                                    type="text"
+                                                    class="form-control"
+                                                    id="phone"
+                                                    name="phone"
+                                                    th:value="${contact_data.phone}"
+                                                    required
+                                            />
+                                        </div>
+
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button
+                                                type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal"
+                                        >
+                                            Close
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- /.content -->
+    </div>
+    </div>
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+        <!-- Control sidebar content goes here -->
+        <div class="p-3">
+            <h5>Title</h5>
+            <p>Sidebar content</p>
+        </div>
+    </aside>
+    <!-- /.control-sidebar -->
+
+    <!-- Main Footer -->
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="float-right d-none d-sm-inline">
+            Anything you want
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2014-2021 <a href="#">XYZ Student Portal</a>.</strong> All rights reserved.
+    </footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- REQUIRED SCRIPTS -->
+
+<!-- jQuery -->
+<script src="/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 5 -->
+<<script th:src="@{/js/bootstrap.bundle.js}"></script>
+<!-- DataTables  & Plugins -->
+<script src="/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="/plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="/plugins/jszip/jszip.min.js"></script>
+<script src="/plugins/pdfmake/pdfmake.min.js"></script>
+<script src="/plugins/pdfmake/vfs_fonts.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<!-- AdminLTE App-->
+<script src="/dist/js/adminlte.min.js"></script>
+
+<!-- Page specific script -->
+<script>
+<!--    -->
+var l=0;
+function addNewDiv(n) {
+    l++;
+    if(l+n>=7) document.getElementById("buttonForAddinDiv").hidden = true;
+    let parent = document.getElementById("formi");
+    let nd = document.createElement("div");
+    nd.style = "display: flex; flex-wrap: nowrap; flex-shrink: 1";
+    nd.innerHTML = `<div style="margin: 0.5em 1em">
+                  <input type="text" class="form-control" name="navbar-text" required/>
+                </div>
+                <div style="margin: 0.5em 1em">
+                  <input type="text" class="form-control" name="navbar-link" required/>
+                </div>
+                <button type="button" onclick="removeMe(this)" class="btn btn-danger" style="margin: 0.5em 1em">Delete</button>
+              `;
+    parent.appendChild(nd);
+}
+function removeMe(lss) {
+    l--;
+    document.getElementById("formi").removeChild(lss.parentNode);
+    document.getElementById("buttonForAddinDiv").hidden = false;
+}
+</script>
+</body>
+</html>

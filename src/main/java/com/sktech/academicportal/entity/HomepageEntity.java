@@ -1,16 +1,8 @@
 package com.sktech.academicportal.entity;
 
-import com.sktech.academicportal.enums.PreBuiltSectionName;
-import com.sktech.academicportal.helper.ProcessHomeData;
-import com.sktech.academicportal.helper.StringToListConverter;
-import com.sktech.academicportal.service.PublicFilesRepositoryService;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import com.sktech.academicportal.helper.StringToListConverter;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,7 +19,7 @@ public class HomepageEntity {
 
     @Column(name = "section", nullable = false)
     private String section;
-    @Column(name = "rawData")
+    @Column(name = "rawData", columnDefinition = "TEXT")
     private String rawData;
     @Column(name = "processedData", columnDefinition = "TEXT")
     private String processedData;
@@ -40,13 +32,7 @@ public class HomepageEntity {
         this.section = section;
         this.isPublic = isPublic;
         this.isCustom = isCustom;
-        this.setRawData(rawData);
-    }
-
-    public void setRawData(String rawData) {
-        ProcessHomeData processHomeData = new ProcessHomeData();
         this.rawData = rawData;
-        this.processedData = processHomeData.htmlData(this.section,this.rawData);
-
     }
+
 }

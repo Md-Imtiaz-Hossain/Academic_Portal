@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Update Carousel</title>
+    <title>Upload to Achievement Gallery</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -25,8 +25,6 @@
     <link rel="stylesheet" href="/dist/css/adminlte.min.css">
     <!-- Bootstrap 5.0 -->
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}" >
-    <!--  Custom  -->
-    <link rel="stylesheet" type="text/css" th:href="@{/css/custom.css}" >
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
@@ -79,43 +77,62 @@
                              style="background: #a770ef;
                              background: -webkit-linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);
                              background: linear-gradient(to right, #a770ef, #cf8bf3, #fdb99b);">
-                            <h1 class="display-4">Carousel Editor</h1>
-                            <p class="lead">Select which images to show on homepage carousel.(Max upto 10)</p>
+                            <h1 class="display-4">Upload Image to Achievement Gallery</h1>
                         </div>
-                    </div>
-                </div>
-                <div class="row pb-5">
-                    <div class="col-lg-12 mx-auto">
-                        <form th:action="'/carousel/update'" method="post">
-                            <p class="lead pl-3">Here are the current selected images. Tap on the images to add or remove.</p>
-
-                        <div class="d-flex justify-content-start flex-wrap"
-                             style="background: #a770ef;" id="selectedImages" th:utext="${alreadySelectedSection}">
-                        </div>
-                            <button id="submitFormButton" class="btn btn-success" type="submit" style="position:absolute; right: 3%; bottom: 5%" hidden>Save</button>
-                        </form>
                     </div>
                 </div>
                 <!-- End -->
-                <div class="row">
-                    <div class="col-xl-3 col-lg-4 col-md-6 mb-4 customImageCard" th:each="image : ${images}" th:attr="onclick=${'addImageToSelected('+''''+ image.path + '''' +  ',' + image.id +  ',' + savedImagesCount+')'}">
-                        <div class="bg-white rounded shadow-sm h-100  image">
-                            <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 300px; border:solid">
-                                <img th:src="'../'+${image.path}" alt="" class="img-fluid card-img-top" style=" width: auto;max-height: 100%;">
-                            </div>
-
-                            <div class="p-4 d-flex flex-column justify-content-end">
-                                <h5 style="width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" th:text="${image.heading}"></h5>
-                                <p class="small text-muted mb-0" th:text="${image.description}"></p>
+                <!-- Upload  Form -->
+                <div class="d-flex justify-content-center">
+                    <form th:action="@{/upload/achievement/save}" method="post" enctype="multipart/form-data">
+                        <div class="form-group row p-2">
+                            <label class="col-5 col-form-label" for="imageFile">Select image</label>
+                            <div class="col-12">
+                                <input class="form-control" type="file" id="imageFile" name="image" accept="image/jpeg, image/png" required>
                             </div>
                         </div>
-                        <div class="middle">
-                            <div class="text">Add</div>
+                        <div class="form-group row p-2">
+                            <label class="col-5 col-form-label" for="heading">Heading</label>
+                            <div class="col-12">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">
+                                            H
+                                        </div>
+                                    </div>
+                                    <input id="heading" name="heading" placeholder="Heading" type="text" class="form-control" >
+                                </div>
+                            </div>
                         </div>
+                        <div class="form-group row p-2">
+                            <label for="description" class="col-5 col-form-label">Description</label>
+                            <div class="col-12">
+                                <textarea id="description" name="description" cols="40" rows="5" class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group row p-2 form-check form-switch">
+                            <label class="form-check-label" for="flexSwitchCheckChecked">Publicly Viewable</label>
+                            <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" name="isPublic" value="public" checked>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Upload</button>
+                        </div>
+                    </form>
+                    <div class="m-3" style="display: flex; flex-direction: column; justify-content: center; align-items: flex-start; width: 400px; height: 400px">
+                        <label id="labelPreview" for="preview" class="form-check-label"></label>
+                        <img id="preview" class="m-3 border border-secondary rounded border-4" src="" style="max-width: 100%; max-height: 100%; " hidden="true">
                     </div>
                 </div>
-        <!-- /.content -->
+                <!--End -->
+
+<!--<div class="d-flex justify-content-center">-->
+<!--    -->
+<!--    </div>-->
+
+            </div>
         </div>
+
+        <!-- /.content -->
     </div>
     </div>
     <!-- Control Sidebar -->
@@ -164,37 +181,18 @@
 
 <!-- Page specific script -->
 <script>
-    let l = 0;
-
-    function addImageToSelected(path, id, len){
-        if(len+l >= 10) {
-            alert("You can not select more than 10 images. Try removing some image to add more.")
-            return;
-        }
-        let f = document.getElementById("selectedImages");
-        document.getElementById("submitFormButton").hidden = false;
-        let n = document.createElement('div');
-        n.id = "image" + id + Math.floor(Math.random()*10000);
-        n.setAttribute("onclick", "removeImage("+n.id+")");
-        n.innerHTML =`<div class="customImageCard" style="position: relative"><img src="../` + path +`" class="rounded-circle p-2 image"  style="width: auto; height: 150px">
-                          <div class="middle">
-                                    <div class="text" style="background: none">Remove</div>
-                          </div>
-
-                      <input value=` + id + ` name="imageList" hidden></div>`;
-
-        f.appendChild(n);
-        l++;
-        // document.getElementById(n.id).onclick = removeImage(n.id);
+<!--    -->
+imageFile = document.getElementById("imageFile");
+preview = document.getElementById("preview");
+previewLabel = document.getElementById("labelPreview")
+imageFile.onchange = evt =>{
+    const [file] = imageFile.files;
+    if(file){
+        preview.src = URL.createObjectURL(file);
+        preview.hidden = false;
+        previewLabel.innerText = "Preview";
     }
-
-    function removeImage(id){
-        // let f = document.getElementById(id);
-        id.remove();
-        l--;
-        document.getElementById("submitFormButton").hidden=false;
-        // f.remove();
-    }
+}
 </script>
 </body>
 </html>

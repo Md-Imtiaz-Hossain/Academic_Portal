@@ -113,7 +113,7 @@
                                 <img th:src="@{/dist/img/web-icon.png}" alt="" class="img-fluid card-img-top">
                             </div>
                             <div class="p-4 d-flex flex-column justify-content-end">
-                                <h5 th:text="${notice.heading}"></h5>
+                                <h5 style="width: 100%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" th:text="${notice.heading}"></h5>
 
                                 <div class="m-1 p-1 d-flex justify-content-evenly" style="display: flex; justify-content:space-evenly; align-content: stretch">
                                     <a type="button" class="btn btn-outline-primary m-2 flex-fill" title="View" th:href="${notice.path}"><i class="fas fa-eye"></i></a>
@@ -193,7 +193,7 @@
                                                     <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked4" name="isPublic" value="public">
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">Upload</button>
+                                                    <button type="submit" class="btn btn-primary">Update</button>
                                                 </div>
                                             </form>
                                         </div>

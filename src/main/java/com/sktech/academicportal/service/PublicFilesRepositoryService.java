@@ -19,12 +19,27 @@ public class PublicFilesRepositoryService {
         return publicFilesRepository.findAll();
     }
 
+    public List<PublicFiles> getMultipleById(List<Long> ids){
+        List<PublicFiles> list = new ArrayList<>();
+        for (Long id:ids
+             ) {
+            list.add(getById(id));
+        }
+        return list;
+    }
+
     public List<PublicFiles> getAllImages(){
         List <PublicFiles> images = publicFilesRepository.findAllByType(FileTypes.GalleryImage.type);
-        //Reverse order to maintain upload order
-//        Collections.reverse(images); //Not working as intended
+
         return  images;
     }
+
+      public List<PublicFiles> getAllAchievements(){
+        List <PublicFiles> images = publicFilesRepository.findAllByType(FileTypes.Achievement.type);
+        return  images;
+    }
+
+
 
     public List<PublicFiles> getAllPublicImages(){
         List <PublicFiles> images = new ArrayList<>();
@@ -33,6 +48,15 @@ public class PublicFilesRepositoryService {
         }
 
         return  images;
+    }
+
+    public List<PublicFiles> getAllPublicAchievements(){
+        List <PublicFiles> achievements = new ArrayList<>();
+        for (PublicFiles p: publicFilesRepository.findAllByType(FileTypes.Achievement.type)) {
+            if(p.isPublic) achievements.add(p);
+        }
+
+        return  achievements;
     }
 
     public PublicFiles getById(Long id){

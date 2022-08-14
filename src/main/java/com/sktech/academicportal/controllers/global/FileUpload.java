@@ -1,4 +1,4 @@
-package com.sktech.academicportal.controllers;
+package com.sktech.academicportal.controllers.global;
 
 import com.sktech.academicportal.entity.PublicFiles;
 import com.sktech.academicportal.enums.FileTypes;
@@ -29,6 +29,11 @@ public class FileUpload {
     @GetMapping("/notice")
     public String uploadNoticePage(){
         return "uploadtonotice";
+    }
+
+    @GetMapping("/achievement")
+    public String uploadAchivementPage(){
+        return "uploadtoachievement";
     }
 
     @PostMapping("/galleryManage/save")
@@ -99,5 +104,31 @@ public class FileUpload {
             publicFilesRepositoryService.save(files);
 
         return "redirect:/noticeManage";
+    }
+
+    @PostMapping("/achievement/save")
+    public String uploadAchievement(@RequestParam("image")MultipartFile multipartFile,
+                                    @RequestParam("heading")String heading,
+                                    @RequestParam("description")String description,
+                                    @RequestParam(value = "isPublic", required = false)String isPublic) throws IOException{
+        if(!multipartFile.isEmpty()){
+            String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+            PublicFiles files = new PublicFiles();
+//          ========Upload========
+            String uploadDir = "images/achievement/";
+            String updatedFileName = FileUploadUtil.saveFile(uploadDir, fileName, multipartFile, false);
+//          ========Save to Database=======
+            files.setPath(uploadDir+updatedFileName);
+            files.setHeading(heading);
+            files.setDescription(description);
+            files.setType(FileTypes.Achievement.type);
+            files.setIsPublic(isPublic != null);
+            publicFilesRepositoryService.save(files);
+        }else {
+
+        }
+
+
+        return "redirect:/achievementManage";
     }
 }
