@@ -291,7 +291,7 @@
         <li class="nav-item">
             <a th:href="@{/student-portal/my-result}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/student-portal/my-result' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
+               sec:authorize="hasAnyAuthority('Student', 'RootAdmin')">
                 <i class="nav-icon fas fa-money-check"></i>
                 <p>
                     My Result
@@ -302,7 +302,7 @@
         <li class="nav-item">
             <a th:href="@{/report-card/view}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/report-card/view' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Teacher', 'Student')">
+               sec:authorize="hasAnyAuthority('Admin', 'RootAdmin', 'Student')">
                 <i class="nav-icon fas fa-file"></i>
                 <p>
                     Report Card
@@ -514,7 +514,7 @@
         <li class="nav-item">
             <a th:href="@{/teacher-evaluation/form}" class="nav-link "
                th:classappend="${#httpServletRequest.getRequestURI() == '/teacher-evaluation/form' ? 'active':''}"
-               sec:authorize="hasAnyAuthority('Student','Admin', 'RootAdmin')">
+               sec:authorize="hasAnyAuthority('Student', 'RootAdmin')">
                 <i class="nav-icon fas fa-marker"></i>
                 <p>
                     Give Teacher Evaluation

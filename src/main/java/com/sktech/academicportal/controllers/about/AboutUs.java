@@ -13,4 +13,9 @@ public class AboutUs {
     public String aboutUs(){
         return "about";
     }
+
+    @GetMapping("/dummy-user")
+    public String dummyUser(){
+        return "user";
+    }
 }
