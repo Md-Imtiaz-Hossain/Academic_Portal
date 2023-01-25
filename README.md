@@ -61,3 +61,11 @@ You are welcome to pull request.
 
 ## License
 Distributed under the MIT License. See [License](LICENSE) for more information.
+``` properties
+spring_profiles_active=prod
+PROD_DB_HOST=containers-us-west-146.railway.app
+PROD_DB_PORT=7967
+PROD_DB_NAME=railway
+PROD_DB_PASSWORD=gYNnGIWEj3aJk0mvVLwQ
+PROD_DB_USERNAME=postgres  
+```
