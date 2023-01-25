@@ -4,7 +4,7 @@ spring:
     url: jdbc:postgresql://${PROD_DB_HOST}:${PROD_DB_PORT}/${PROD_DB_NAME}
     username: ${PROD_DB_USERNAME}
     password: ${PROD_DB_PASSWORD}
-    name: spring-blog
+    name: railway
 
   sql:
     init:
@@ -42,15 +42,15 @@ spring:
 #    # TODO: It's not secure to leave credentials in code, need to move to github secrets/vault
 #    username: borrowmybook_user
 #    password: jCcqAg2fpwAy9QaQf4ica78L9gntJHOc
-#  jpa:
-#    show-sql: true
-#    properties:
-#      hibernate:
-#        dialect: org.hibernate.dialect.PostgreSQLDialect
-#    hibernate:
-#      # TODO: using "ddl-auto: none" is good practice. We will use Liquibase/FlyWay for db migration and versioning on UAT & PROD.
-#      ddl-auto: update
-#
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      # TODO: using "ddl-auto: none" is good practice. We will use Liquibase/FlyWay for db migration and versioning on UAT & PROD.
+      ddl-auto: update
+
 #      # To script-based schema creation and data population.
 #    defer-datasource-initialization: true
 #  sql:
