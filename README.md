@@ -8,6 +8,8 @@ management or higher academic systems. After slight modifications, this project 
 ## Test Live Website
 Website URL: https://academicportal-production.up.railway.app/
 
+Watch the [Demo here](https://youtu.be/12yMXGOHeTs)
+
 ##  Some Users to test
 ### `Admin:`
 ID || Password
