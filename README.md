@@ -20,17 +20,13 @@ ID || Password
 ID || Password
 >1. student_1_@gmail.com || student_1_
 >2. student_2_@gmail.com || student_2_
->3. student_3_@gmail.com || student_3_
->4. student_4_@gmail.com || student_4_
->5. student_5_@gmail.com || student_5_
->6. student_6_@gmail.com || student_6_
+
 
 ### `Teacher:`
 ID || Password
 >1. teacher_1_@gmail.com || teacher_1_
 >2. teacher_2_@gmail.com || teacher_2_
->3. teacher_3_@gmail.com || teacher_3_
->4. teacher_4_@gmail.com || teacher_4_
+
 
 
 ## Things and Tools Was Used in this project:
